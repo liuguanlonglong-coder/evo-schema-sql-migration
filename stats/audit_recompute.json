@@ -66,6 +66,14 @@
    }
   },
   "mismatch": [],
+  "c1_detail": {
+   "silent_nonempty": 141,
+   "ex": 13,
+   "silent_empty": 57,
+   "error_schema": 6,
+   "error_timeout": 1,
+   "abstain": 12
+  },
   "fig9_check": {
    "c1": {
     "fig": [

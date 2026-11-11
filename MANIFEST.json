@@ -98,8 +98,8 @@
    "bytes": 20029
   },
   "code/audit_recompute_fig9_ext.py": {
-   "sha1": "7103ef1f02d928bb045325f40087cfa838549ce6",
-   "bytes": 8291
+   "sha1": "37589f9b6f54e1a0989451e21e63407c1585c818",
+   "bytes": 9309
   },
   "code/audit_repeat_v3.py": {
    "sha1": "97c727f639b6118b3c68ddac072a8292aaed29a3",
@@ -398,8 +398,8 @@
    "bytes": 9712
   },
   "stats/audit_recompute.json": {
-   "sha1": "a967a08b5e55af0cb1cd1070ea442504383d210b",
-   "bytes": 3964
+   "sha1": "ea4696fed0eaedd9c8ef95d8e8c180919f019174",
+   "bytes": 4119
   },
   "stats/audit_units_v3.json": {
    "sha1": "1c128e6293def79238b9578821c1c705baa844b5",
@@ -634,7 +634,7 @@
   "recompute_ext_summary.py": "0484955cd4035e7713116047fa32edb6198d6830",
   "make_ch7_response_v22.py": "6146614bec527311a0d13878b092b2cb29fe4fc9",
   "audit_ext_paired.py": "84a9d091621bd11c9dac60cd64b543cafb0ddfc4",
-  "audit_recompute_fig9_ext.py": "7103ef1f02d928bb045325f40087cfa838549ce6"
+  "audit_recompute_fig9_ext.py": "37589f9b6f54e1a0989451e21e63407c1585c818"
  },
  "inputs": {
   "e1_dev_full.jsonl": "28f240706e61c89d2093d944e4d41320a8e96c53",

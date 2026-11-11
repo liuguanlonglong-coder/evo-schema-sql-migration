@@ -111,6 +111,35 @@ def part_a():
                      (dict(cnt) == dict(stored_cnt)),
         }
 
+    # C1 一列的内部构成（供复核报告使用）：静默错误里空结果集 vs 非空错值，
+    # 报错里列不存在 vs 6 秒超时中断。
+    c1 = Counter()
+    for i in ids:
+        rec = by["c1"].get(i)
+        if rec is None:
+            continue
+        d = os.path.join(MERGE_DB_DIR, f"{man[i]['db_id']}.sqlite")
+        g_rows, g_err = gold[i]
+        if not rec["sql"]:
+            c1["abstain"] += 1
+            continue
+        rows, err = run_sql(d, rec["sql"])
+        if err:
+            if "no such column" in err or "no such table" in err:
+                c1["error_schema"] += 1
+            elif "interrupted" in err:
+                c1["error_timeout"] += 1
+            else:
+                c1["error_other"] += 1
+            continue
+        if norm(rows) == norm(g_rows):
+            c1["ex"] += 1
+        elif len(rows) == 0:
+            c1["silent_empty"] += 1
+        else:
+            c1["silent_nonempty"] += 1
+    out["c1_detail"] = dict(c1)
+
     # 与图 9 中硬编码的四组数对照
     fig = {"c1": [13, 198, 7, 12], "c2": [23, 179, 9, 19],
            "c3m": [6, 223, 0, 1], "c3f": [183, 47, 0, 0]}

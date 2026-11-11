@@ -48,7 +48,13 @@ STATS = ["stats_ch7_v5.json", "paired_ci.json", "paired_ci_coverage.json",
          "audit_independence.json", "event_map_audit.json",
          "baseline_segment_aware.json", "m1_holdout_eval.json",
          "judge_strict_audit.json", "encoding_bounds_v2.json",
-         "encoding_bounds_v2_legacy.json"]
+         "encoding_bounds_v2_legacy.json", "llm_repeat_runs.json",
+         # 第 22 轮：七份只读审计产物 + 注入缺陷审计 + 扩充集两份汇总
+         "audit_units_v3.json", "audit_cluster_v3.json", "audit_gap_v3.json",
+         "sql_coverage_v3.json", "reversibility_v3.json",
+         "gold_independence_v3.json", "repeat_consistency_v3.json",
+         "lineage_injection_audit.json", "ext_eval_merge_col.json",
+         "ext_events_summary.json"]
 SCRIPTS = ["paired_ci.py", "paired_coverage.py", "stats_ch7_v5.py",
            "stats_cluster.py", "judge_sensitivity.py", "op_level.py",
            "holdout_audit.py", "run_c1c2c3.py", "run_rw_baseline.py",
@@ -69,7 +75,18 @@ SCRIPTS = ["paired_ci.py", "paired_coverage.py", "stats_ch7_v5.py",
            "make_ch7_response_v14.py", "slim_chapter7.py",
            "prepare_archive.py", "m1_holdout_eval.py",
            "judge_strict_audit.py", "probe_encoding_bounds_v2.py",
-           "make_p1_closure_docs.py", "fill_doi.py"]
+           "make_p1_closure_docs.py", "fill_doi.py", "make_doi_guide.py",
+           "make_ch7_response_v17.py", "make_repeat_runs.py",
+           "make_ch7_response_v18.py", "make_ch7_response_v19.py",
+           "probe_event_expansion.py", "build_evolution_ext.py",
+           "m1_ext.py", "run_ext_eval.py", "ext_summary.py",
+           "audit_data_lineage.py", "make_ch7_response_v20.py",
+           "make_ch7_response_v21.py",
+           # 第 22 轮：七份只读审计脚本 + 扩充集汇总重算 + 本轮说明
+           "audit_units_v3.py", "audit_cluster_v3.py", "audit_gap_v3.py",
+           "audit_sqlcov_v3.py", "audit_reversibility_v3.py",
+           "audit_gold_indep_v3.py", "audit_repeat_v3.py",
+           "recompute_ext_summary.py", "make_ch7_response_v22.py"]
 
 
 def sha1_of(p):
@@ -178,6 +195,29 @@ with open(os.path.join(OUTDIR, "outputs.jsonl"), "w", encoding="utf-8") as fo:
                                  "source": f}, ensure_ascii=False) + "\n")
             n_out += 1
 print(f"outputs.jsonl  {n_out} 条 (cond,id)")
+
+# ------------------------------------------------- outputs_ext.jsonl（扩充事件集）
+# 单独一个文件而不是并入 outputs.jsonl：并入会让 4,490 变成 6,4xx，
+# 而正文流转表与 README 都以 4,490 为可核对值。扩充集是另一套构造，
+# 分开落文件也更符合「两套构造不可相加」的表述。
+n_ext = 0
+with open(os.path.join(OUTDIR, "outputs_ext.jsonl"), "w", encoding="utf-8") as fo:
+    for f in sorted(os.listdir("results")):
+        if not (f.startswith("ext_eval_") and f.endswith(".jsonl")):
+            continue
+        # 第 22 轮：名字带 wrongtable 的是注入缺陷期间的作废产物，绝不能混进公开输出。
+        # 它只作为事故档案单独归档（见 ARCHIVE.md），不进 outputs_ext.jsonl。
+        if "wrongtable" in f:
+            continue
+        for l in open(os.path.join("results", f), encoding="utf-8"):
+            r = json.loads(l)
+            fo.write(json.dumps({"cond": r.get("cond"), "id": r["id"],
+                                 "outcome": r.get("outcome"),
+                                 "sql": r.get("sql") or "",
+                                 "shard": r.get("tag"), "source": f},
+                                ensure_ascii=False) + "\n")
+            n_ext += 1
+print(f"outputs_ext.jsonl  {n_ext} 条（扩充事件集，独立文件）")
 
 # ---------------------------------------------------------------- prompts.md
 spec = importlib.util.spec_from_file_location("rc", "run_c1c2c3.py")
@@ -317,12 +357,56 @@ for s_ in SCRIPTS:
         n_code += 1
 print(f"code/  {n_code} 个脚本")
 
+# ------------------------------------------------- 第 22 轮：作废产物归档（事故可核查）
+# 注入缺陷期间的扩充集产物不能删——删了就没人能核对「44.9% 是怎么来的」；
+# 但也不能混进正常输出。故单列 archive/ 并附说明，MANIFEST 照常记 sha1。
+ARCH = os.path.join(OUTDIR, "archive")
+os.makedirs(ARCH, exist_ok=True)
+n_arch = 0
+for _f in ("ext_eval_merge_col_v1_wrongtable.json",
+           "ext_eval_merge_col_v1_wrongtable.jsonl"):
+    _src = os.path.join("results", _f)
+    if os.path.exists(_src):
+        shutil.copy2(_src, os.path.join(ARCH, _f))
+        n_arch += 1
+_arch_md = f"""# 已作废产物（第 22 轮归档，共 {n_arch} 个文件）
+
+## 是什么
+
+`ext_eval_merge_col_v1_wrongtable.*` 是扩充事件集合并档在**注入缺陷期内**的评测产物，
+对应正文提到的旧读数 C3mp = 44.9%（弃答 111 条）。
+
+## 为什么作废
+
+当时的实验脚本 `m1_ext.py` 只设置了模块属性 `MP.EVO_DIR`，而 `m1_part.infer_db()`
+读的是环境变量 `EVO_DIR`，两者不一致时推断退回默认目录 `data/evolved_merge/<db>.sqlite`
+（主实验的合并库）。结果 28 个构造事件中有 18 个、479 条题中有 223 条被注入了
+**同一数据库里另一张表**的段位表达式。评测侧按旧列名过滤谱系行后为空，
+C3mp 退化成 C2，模型大量输出 CANNOT_ANSWER。
+
+## 怎么用
+
+**不要用它算任何指标。** 它在本包中的唯一用途是事故核查：
+读者可以把这份产物与 `data/manifest_ext_merge_col.jsonl` 逐条对照，
+复核「注入表 ≠ 应注入表」的事件确实集中在缺陷期内，并验证修复后的
+`stats/ext_eval_merge_col.json`（C3mp = 91.2%，437/479）与之不同源。
+
+判定口径见 `stats/lineage_injection_audit.json` 与第 7 章 7.16 节。
+"""
+open(os.path.join(OUTDIR, "ARCHIVE.md"), "w", encoding="utf-8").write(_arch_md)
+print(f"archive/  {n_arch} 个作废产物 + ARCHIVE.md")
+
 # ---------------------------------------------------------------- MANIFEST + README
-man = {"version": "materials-v6", "files": {}, "scripts": {}, "inputs": {}}
+man = {"version": "materials-v7", "files": {}, "scripts": {}, "inputs": {}}
+_SKIP_DIRS = {".git", "__pycache__", ".ipynb_checkpoints"}
+_SKIP_FILES = {"MANIFEST.json"}          # 自身无法自证 sha1，故不入清单
 for root, _dirs, fs in os.walk(OUTDIR):
+    _dirs[:] = [d for d in _dirs if d not in _SKIP_DIRS]
     for f in sorted(fs):
+        if f in _SKIP_FILES or f.endswith((".pyc", ".DS_Store")) or f == ".DS_Store":
+            continue
         p = os.path.join(root, f)
-        rel = os.path.relpath(p, OUTDIR)
+        rel = os.path.relpath(p, OUTDIR).replace(os.sep, "/")
         man["files"][rel] = {"sha1": sha1_of(p), "bytes": os.path.getsize(p)}
 for s in SCRIPTS:
     if os.path.exists(s):
@@ -335,16 +419,29 @@ man["manifest_v3_sha1"] = sha1_of("data/manifest_v3.jsonl")
 json.dump(man, open(os.path.join(OUTDIR, "MANIFEST.json"), "w", encoding="utf-8"),
           ensure_ascii=False, indent=1)
 
-readme = f"""# 公开材料包 v3
+readme = f"""# 公开材料包 v1.0
 
-本目录收录第 7 章全部可公开的复现材料。**不含数据库文件**（BIRD 以 CC BY-SA 4.0 发布，
+本目录收录结果部分的全部可公开复现材料。**不含数据库文件**（BIRD 以 CC BY-SA 4.0 发布，
 请从其官方渠道获取），仅含清单、规则、提示、逐题输出与统计产物。
+
+对应论文：*Schema Lineage Granularity for Historical SQL Migration under Schema Evolution*
+（中文题：模式演化下历史 SQL 迁移的谱系粒度研究）。
+
+| 投稿文档 | 规模 | 生成脚本 | 随包发布 |
+|---|---|---|---|
+| `PCS_中文论文_最终稿_v4.docx` | 4 张主表（表 1–表 4）、9 张图、29 条文献 | `make_final_cn_v4.py` | 否 |
+| `PCS_补充实验材料_v4.docx` | 45 张表（表 S-1 至表 S-45） | `make_supp_v4.py` | 否 |
+
+两个脚本都以既有 docx 为输入（作者的数值核对修订稿、`补充材料_第7章_v11.docx`），
+这些输入不随包发布，因此**本归档不承诺逐字节重建这两份文档**；它提供的是重算每一条读数
+所需的数据、脚本与统计产物。
 
 | 文件 | 内容 |
 |---|---|
 | `items.csv` | {n_row} 条演化项的逐题清单：题目、旧/新 SQL、演化 op、所属面板、`check_pass` |
 | `items_holdout.csv` | {n_hl} 条留出库条目的逐题清单（BIRD train 划分，未参与开发） |
 | `outputs.jsonl` | {n_out} 条 (条件, 题号) 的逐题输出：判定标签与生成 SQL（含主实验与留出库） |
+| `outputs_ext.jsonl` | {n_ext} 条扩充事件集逐题输出（独立文件；与 outputs.jsonl 属两套构造，不可相加） |
 | `evoschema_cols.csv` | 在 EvoSchema 公开列级样本上的逐条列引用 F1（C1/C2/C3m） |
 | `prompts.md` | 系统提示、各条件证据块、同一道题在五个条件下的实际渲染示例 |
 | `prompt_lengths.json` | 各面板各条件的提示长度（字符），用于核对「c_rw 提示更长」 |
@@ -382,18 +479,30 @@ nseg 2–6 × 5 分隔符 × 8 情形 × 60 行）→ `encoding_bounds_v2.json`�
 
 留出筛选漏斗：`holdout_funnel.py` → `holdout_funnel.json`。
 
-## 文档生成链（v11 + 正文瘦身，顺序不可颠倒）
+## 文档生成链（内部章节稿，顺序不可颠倒；投稿文档另由 `make_final_cn_v4.py` 与
+`make_supp_v4.py` 生成）
 
-1. `make_chapter7_v11.py` → 生成 **49 表完整版**《投稿版_第7章_实验结果_v11.docx》；
-2. `slim_chapter7.py` → 以完整版为输入，输出**主文 15 表**（文件名不变）、
-   《补充材料_第7章_v11.docx》（S-1 至 S-34）与《第7章_v11_完整版_49表.docx》备份；
+1. `make_chapter7_v11.py` → 生成**完整版**《投稿版_第7章_实验结果_v11.docx》
+   （表数随入稿增长，当前 64 表）；
+2. `slim_chapter7.py` → 以完整版为输入，输出**主文 23 表**（文件名不变）、
+   《补充材料_第7章_v11.docx》（当前 S-1 至 S-41）与
+   《第7章_v11_完整版_49表.docx》备份（文件名沿用历史约定，实际 64 表，内容随入稿增长）；
 3. `make_front_matter_v11.py` → 摘要 / 标题 / 贡献点 / 结论 / 投稿信，
    其 `_T()` 同时反查主文与补充材料的表号。
 
-只跑第 1 步会得到瘦身前的 49 表版本；只跑第 3 步会因缺少补充材料 docx 而报错。
+只跑第 1 步会得到瘦身前的完整版；只跑第 3 步会因缺少补充材料 docx 而报错。
+`slim_chapter7.py` 按内容哈希判断是否需要刷新素材库备份，因此新增表格后
+只要追加在正文末尾（不插入中间），KEEP 的主文表号就无需改动，
+新增表自动落到补充材料末尾；若在正文中间插表，则须整体平移 KEEP 表号与 S 号。
 所有数值均由脚本从 `results/*.jsonl` 与 `data/manifest_v3.jsonl`、
 `data/manifest_holdout_sample.jsonl` 重算，章节文档不含手写常量；
 `MANIFEST.json` 的 sha1 用于核对材料版本与正文一致。
+
+第 17 轮补入的三项 A 层复核（全严判定规则 / 留出库 M1 直接表达式 /
+段位编码压力测试 v2）数值分别来自
+`judge_strict_audit.json`、`m1_holdout_eval.json`、
+`encoding_bounds_v2.json` 与 `encoding_bounds_v2_legacy.json`；
+`--legacy` 模式复现 `to_expr` 修正前的对照，用于核对 20.0% → 100.0% 的变化。
 
 ## 归档与引用
 
@@ -411,7 +520,7 @@ nseg 2–6 × 5 分隔符 × 8 情形 × 60 行）→ `encoding_bounds_v2.json`�
 「草稿阶段预留 DOI → 回填 → 上传 → Publish」，不能反过来。
 `fill_doi.py` 写 `archive_info.json` 并重建全部材料；`prepare_archive.py` 与
 `make_front_matter_v11.py` 都读同一份文件，故 CITATION.cff、DAS.md、
-UPLOAD_CHECKLIST.md、投稿信第四段、表 9-2、表 9-3 六处口径一次同步。
+UPLOAD_CHECKLIST.md、投稿信、标题页与正文声明，口径一次同步。
 
     python fill_doi.py --doi 10.5281/zenodo.XXXXXXX --repo-name NAME --repo-url URL --author-family 姓 --author-given 名
     python fill_doi.py --status deposited --date-released YYYY-MM-DD   # Publish 后
@@ -430,6 +539,29 @@ UPLOAD_CHECKLIST.md、投稿信第四段、表 9-2、表 9-3 六处口径一次�
    属「换构造者、不换库」的外部检查。
 """
 open(os.path.join(OUTDIR, "README.md"), "w", encoding="utf-8").write(readme)
+with open(os.path.join(OUTDIR, "README.md"), "a", encoding="utf-8") as _fh:
+    _fh.write("""
+## 八、第 22 轮新增：七份只读审计产物
+
+本轮回应审稿的 12 条意见，新增七个「只读重算」脚本与对应产物。它们的共同特点是
+**只读既有的逐条判定，不重新调用模型**，因此任何人可以在几分钟内复算出正文读数：
+
+| 产物 | 脚本 | 回答哪一条 |
+|---|---|---|
+| `stats/audit_units_v3.json` | `audit_units_v3.py` | ① 事件数／题数／op 数四层口径 |
+| `stats/audit_cluster_v3.json` | `audit_cluster_v3.py` | ③ 条目／事件／库级符号检验、LOO、按库 bootstrap |
+| `stats/audit_gap_v3.json` | `audit_gap_v3.py` | ⑧ 同模型对比与分层标准化 |
+| `stats/sql_coverage_v3.json` | `audit_sqlcov_v3.py` | ⑦ 24 类 SQL 结构与目标列所在子句 |
+| `stats/reversibility_v3.json` | `audit_reversibility_v3.py` | ⑥ 十类边界 × 五分隔符 × 2–6 段 + 准入检测器 |
+| `stats/gold_independence_v3.json` | `audit_gold_indep_v3.py` | ② gold 同源性、信息补贴、表达形式消融 |
+| `stats/repeat_consistency_v3.json` | `audit_repeat_v3.py` | ⑨ 跨批次重复判定一致性 |
+
+另有两份与事故直接相关：`stats/lineage_injection_audit.json`（逐事件比对应注入表与实际注入表）
+与 `stats/ext_eval_merge_col.json`（修正后重算的扩充集汇总，version = ext-eval-v2；
+其 `provenance` 字段写明哪一份产物被取代）。
+
+**作废产物不要用**：`archive/` 目录收录了 44.9% 那一批输出，仅供事故核查，见 `ARCHIVE.md`。
+""")
 
 # ---------------------------------------------------------------- ENVIRONMENT.md
 import platform
@@ -515,14 +647,29 @@ python code/probe_encoding_bounds_v2.py  # 200 格压力测试（生产 to_expr�
 python code/probe_encoding_bounds_v2.py --legacy   # 修正前对照留档
 python code/m1_holdout_eval.py           # 留出库 M1 直接表达式（BIRD train）
 python code/judge_strict_audit.py        # 八个主对照全严规则复核
+python code/make_repeat_runs.py          # 5 次重复运行汇总 + 等效独立复核清单
 
 # 5) 生成章节与修订说明（顺序不可颠倒）
-python code/make_chapter7_v11.py
-python code/slim_chapter7.py             # 主文 15 表 + 补充材料
-python code/make_front_matter_v11.py
-python code/make_ch7_response_v14.py
-python code/make_p1_closure_docs.py
+python code/make_chapter7_v11.py         # 64 表完整版
+python code/slim_chapter7.py             # 主文 23 表 + 补充材料 S-1..S-41
+python code/make_front_matter_v11.py     # 摘要 / 结论 / 投稿信（读双文档反查表号）
+python code/make_ch7_response_v18.py     # 第 18 轮修订说明
+python code/make_ch7_response_v19.py     # 第 19 轮：逐条落实投稿清单
+python code/probe_event_expansion.py       # 扩容空间探查
+python code/build_evolution_ext.py --task merge_col --max-mb 130
+python code/build_evolution_ext.py --task split_col --max-mb 130
+python code/build_evolution_ext.py --task value_shift --max-mb 130
+python code/m1_ext.py --task merge_col   # 分片库上的 M1 抽取
+python code/run_ext_eval.py --task merge_col   # 扩充集端到端
+python code/ext_summary.py               # 事件统计汇总
+python code/audit_data_lineage.py        # 五层口径核对
+python code/make_ch7_response_v20.py     # 第 20 轮：独立事件扩容
+python code/make_ch7_response_v21.py     # 第 21 轮：研究定位收敛为实证研究
 ```
+
+注意：`slim_chapter7.py` 会覆盖主文文件名并刷新素材库备份，
+`make_front_matter_v11.py` 要求主文与补充材料 docx 同时存在；
+三步顺序不可颠倒。
 
 ## 五、各类数字的出处对照
 
@@ -543,5 +690,16 @@ python code/make_p1_closure_docs.py
 """
 open(os.path.join(OUTDIR, "ENVIRONMENT.md"), "w", encoding="utf-8").write(env)
 print("ENVIRONMENT.md 已生成")
+
+# ---------------------------------------------------------------- MANIFEST 收尾刷新
+# MANIFEST 在上面那段 walk 里生成，而 README.md / ENVIRONMENT.md 是 walk 之后才写的，
+# 若不回填，这两项的 sha1 永远是上一轮的内容——而 MANIFEST 的用处正是核对文件未被改动。
+for _n in ("README.md", "ENVIRONMENT.md"):
+    _p = os.path.join(OUTDIR, _n)
+    if os.path.exists(_p):
+        man["files"][_n] = {"sha1": sha1_of(_p), "bytes": os.path.getsize(_p)}
+json.dump(man, open(os.path.join(OUTDIR, "MANIFEST.json"), "w", encoding="utf-8"),
+          ensure_ascii=False, indent=1)
+print(f"MANIFEST.json: {len(man['files'])} 个文件 / {len(man['scripts'])} 个脚本（已剔除 .git）")
 
 print("-> 公开材料包/ 完成")

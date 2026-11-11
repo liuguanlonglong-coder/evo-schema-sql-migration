@@ -1,0 +1,1078 @@
+{
+ "version": "audit-cluster-v3",
+ "note": "扩充合并档 c3mp vs c3m；事件键 = 构造分片 tag（库__表__档_pN）。主检验用合格事件（≥3 题通过四步验证）；进入检验事件为敏感性。",
+ "ext_merge": {
+  "label": "ext_merge",
+  "n_items": 479,
+  "conditions": {
+   "c1": {
+    "n": 479,
+    "EX": 22,
+    "rate": 4.6,
+    "wilson95": [
+     3.1,
+     6.9
+    ]
+   },
+   "c2": {
+    "n": 479,
+    "EX": 41,
+    "rate": 8.6,
+    "wilson95": [
+     6.4,
+     11.4
+    ]
+   },
+   "c3m": {
+    "n": 479,
+    "EX": 35,
+    "rate": 7.3,
+    "wilson95": [
+     5.3,
+     10.0
+    ]
+   },
+   "c3mp": {
+    "n": 479,
+    "EX": 437,
+    "rate": 91.2,
+    "wilson95": [
+     88.4,
+     93.4
+    ]
+   }
+  },
+  "item_level": {
+   "n_pairs": 479,
+   "c3mp_only": 403,
+   "c3m_only": 1,
+   "delta_pt": 83.9,
+   "mcnemar_p": 0.0
+  },
+  "event_level_all": {
+   "n_events": 25,
+   "pos": 23,
+   "neg": 0,
+   "tie": 2,
+   "p": 0.0,
+   "mean_delta_pt": 80.2,
+   "min_delta_pt": 0.0,
+   "max_delta_pt": 100.0,
+   "events": [
+    {
+     "event": "california_schools__frpm__merge_col",
+     "db": "california_schools",
+     "n": 6,
+     "c3m_ex": 0,
+     "c3mp_ex": 6,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__frpm__merge_col_p2",
+     "db": "california_schools",
+     "n": 3,
+     "c3m_ex": 0,
+     "c3mp_ex": 3,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__satscores__merge_col",
+     "db": "california_schools",
+     "n": 1,
+     "c3m_ex": 0,
+     "c3mp_ex": 1,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__schools__merge_col_p1",
+     "db": "california_schools",
+     "n": 10,
+     "c3m_ex": 0,
+     "c3mp_ex": 10,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__schools__merge_col_p2",
+     "db": "california_schools",
+     "n": 1,
+     "c3m_ex": 0,
+     "c3mp_ex": 1,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col_p1",
+     "db": "card_games",
+     "n": 7,
+     "c3m_ex": 0,
+     "c3mp_ex": 7,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__budget__merge_col",
+     "db": "student_club",
+     "n": 22,
+     "c3m_ex": 0,
+     "c3mp_ex": 22,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__major__merge_col",
+     "db": "student_club",
+     "n": 31,
+     "c3m_ex": 0,
+     "c3mp_ex": 31,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col_p2",
+     "db": "student_club",
+     "n": 9,
+     "c3m_ex": 0,
+     "c3mp_ex": 9,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "financial__district__merge_col",
+     "db": "financial",
+     "n": 36,
+     "c3m_ex": 0,
+     "c3mp_ex": 35,
+     "delta_pt": 97.2,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col",
+     "db": "card_games",
+     "n": 20,
+     "c3m_ex": 0,
+     "c3mp_ex": 19,
+     "delta_pt": 95.0,
+     "sign": 1
+    },
+    {
+     "event": "formula_1__circuits__merge_col",
+     "db": "formula_1",
+     "n": 18,
+     "c3m_ex": 1,
+     "c3mp_ex": 17,
+     "delta_pt": 88.9,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col_p1",
+     "db": "student_club",
+     "n": 27,
+     "c3m_ex": 1,
+     "c3mp_ex": 25,
+     "delta_pt": 88.9,
+     "sign": 1
+    },
+    {
+     "event": "student_club__event__merge_col",
+     "db": "student_club",
+     "n": 49,
+     "c3m_ex": 4,
+     "c3mp_ex": 46,
+     "delta_pt": 85.7,
+     "sign": 1
+    },
+    {
+     "event": "student_club__income__merge_col",
+     "db": "student_club",
+     "n": 7,
+     "c3m_ex": 1,
+     "c3mp_ex": 7,
+     "delta_pt": 85.7,
+     "sign": 1
+    },
+    {
+     "event": "financial__client__merge_col",
+     "db": "financial",
+     "n": 29,
+     "c3m_ex": 4,
+     "c3mp_ex": 28,
+     "delta_pt": 82.8,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col",
+     "db": "student_club",
+     "n": 39,
+     "c3m_ex": 5,
+     "c3mp_ex": 37,
+     "delta_pt": 82.1,
+     "sign": 1
+    },
+    {
+     "event": "thrombosis_prediction__Patient__merge_col",
+     "db": "thrombosis_prediction",
+     "n": 66,
+     "c3m_ex": 5,
+     "c3mp_ex": 59,
+     "delta_pt": 81.8,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__frpm__merge_col_p1",
+     "db": "california_schools",
+     "n": 5,
+     "c3m_ex": 0,
+     "c3mp_ex": 4,
+     "delta_pt": 80.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__schools__merge_col",
+     "db": "california_schools",
+     "n": 19,
+     "c3m_ex": 2,
+     "c3mp_ex": 17,
+     "delta_pt": 78.9,
+     "sign": 1
+    },
+    {
+     "event": "formula_1__drivers__merge_col",
+     "db": "formula_1",
+     "n": 54,
+     "c3m_ex": 8,
+     "c3mp_ex": 41,
+     "delta_pt": 61.1,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col_p2",
+     "db": "card_games",
+     "n": 4,
+     "c3m_ex": 0,
+     "c3mp_ex": 2,
+     "delta_pt": 50.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__zip_code__merge_col",
+     "db": "student_club",
+     "n": 13,
+     "c3m_ex": 3,
+     "c3mp_ex": 9,
+     "delta_pt": 46.2,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__frpm__merge_col_p3",
+     "db": "california_schools",
+     "n": 2,
+     "c3m_ex": 1,
+     "c3mp_ex": 1,
+     "delta_pt": 0.0,
+     "sign": 0
+    },
+    {
+     "event": "financial__district__merge_col_p1",
+     "db": "financial",
+     "n": 1,
+     "c3m_ex": 0,
+     "c3mp_ex": 0,
+     "delta_pt": 0.0,
+     "sign": 0
+    }
+   ]
+  },
+  "event_level_eligible": {
+   "n_events": 18,
+   "pos": 18,
+   "neg": 0,
+   "tie": 0,
+   "p": 8e-06,
+   "mean_delta_pt": 84.7,
+   "min_delta_pt": 46.2,
+   "max_delta_pt": 100.0,
+   "events": [
+    {
+     "event": "california_schools__schools__merge_col_p1",
+     "db": "california_schools",
+     "n": 10,
+     "c3m_ex": 0,
+     "c3mp_ex": 10,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col_p1",
+     "db": "card_games",
+     "n": 7,
+     "c3m_ex": 0,
+     "c3mp_ex": 7,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__budget__merge_col",
+     "db": "student_club",
+     "n": 22,
+     "c3m_ex": 0,
+     "c3mp_ex": 22,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__major__merge_col",
+     "db": "student_club",
+     "n": 31,
+     "c3m_ex": 0,
+     "c3mp_ex": 31,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col_p2",
+     "db": "student_club",
+     "n": 9,
+     "c3m_ex": 0,
+     "c3mp_ex": 9,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "financial__district__merge_col",
+     "db": "financial",
+     "n": 36,
+     "c3m_ex": 0,
+     "c3mp_ex": 35,
+     "delta_pt": 97.2,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col",
+     "db": "card_games",
+     "n": 20,
+     "c3m_ex": 0,
+     "c3mp_ex": 19,
+     "delta_pt": 95.0,
+     "sign": 1
+    },
+    {
+     "event": "formula_1__circuits__merge_col",
+     "db": "formula_1",
+     "n": 18,
+     "c3m_ex": 1,
+     "c3mp_ex": 17,
+     "delta_pt": 88.9,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col_p1",
+     "db": "student_club",
+     "n": 27,
+     "c3m_ex": 1,
+     "c3mp_ex": 25,
+     "delta_pt": 88.9,
+     "sign": 1
+    },
+    {
+     "event": "student_club__event__merge_col",
+     "db": "student_club",
+     "n": 49,
+     "c3m_ex": 4,
+     "c3mp_ex": 46,
+     "delta_pt": 85.7,
+     "sign": 1
+    },
+    {
+     "event": "student_club__income__merge_col",
+     "db": "student_club",
+     "n": 7,
+     "c3m_ex": 1,
+     "c3mp_ex": 7,
+     "delta_pt": 85.7,
+     "sign": 1
+    },
+    {
+     "event": "financial__client__merge_col",
+     "db": "financial",
+     "n": 29,
+     "c3m_ex": 4,
+     "c3mp_ex": 28,
+     "delta_pt": 82.8,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col",
+     "db": "student_club",
+     "n": 39,
+     "c3m_ex": 5,
+     "c3mp_ex": 37,
+     "delta_pt": 82.1,
+     "sign": 1
+    },
+    {
+     "event": "thrombosis_prediction__Patient__merge_col",
+     "db": "thrombosis_prediction",
+     "n": 66,
+     "c3m_ex": 5,
+     "c3mp_ex": 59,
+     "delta_pt": 81.8,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__schools__merge_col",
+     "db": "california_schools",
+     "n": 19,
+     "c3m_ex": 2,
+     "c3mp_ex": 17,
+     "delta_pt": 78.9,
+     "sign": 1
+    },
+    {
+     "event": "formula_1__drivers__merge_col",
+     "db": "formula_1",
+     "n": 54,
+     "c3m_ex": 8,
+     "c3mp_ex": 41,
+     "delta_pt": 61.1,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col_p2",
+     "db": "card_games",
+     "n": 4,
+     "c3m_ex": 0,
+     "c3mp_ex": 2,
+     "delta_pt": 50.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__zip_code__merge_col",
+     "db": "student_club",
+     "n": 13,
+     "c3m_ex": 3,
+     "c3mp_ex": 9,
+     "delta_pt": 46.2,
+     "sign": 1
+    }
+   ]
+  },
+  "event_level_entered": {
+   "n_events": 23,
+   "pos": 23,
+   "neg": 0,
+   "tie": 0,
+   "p": 0.0,
+   "mean_delta_pt": 87.1,
+   "min_delta_pt": 46.2,
+   "max_delta_pt": 100.0,
+   "events": [
+    {
+     "event": "california_schools__frpm__merge_col",
+     "db": "california_schools",
+     "n": 6,
+     "c3m_ex": 0,
+     "c3mp_ex": 6,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__frpm__merge_col_p2",
+     "db": "california_schools",
+     "n": 3,
+     "c3m_ex": 0,
+     "c3mp_ex": 3,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__satscores__merge_col",
+     "db": "california_schools",
+     "n": 1,
+     "c3m_ex": 0,
+     "c3mp_ex": 1,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__schools__merge_col_p1",
+     "db": "california_schools",
+     "n": 10,
+     "c3m_ex": 0,
+     "c3mp_ex": 10,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__schools__merge_col_p2",
+     "db": "california_schools",
+     "n": 1,
+     "c3m_ex": 0,
+     "c3mp_ex": 1,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col_p1",
+     "db": "card_games",
+     "n": 7,
+     "c3m_ex": 0,
+     "c3mp_ex": 7,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__budget__merge_col",
+     "db": "student_club",
+     "n": 22,
+     "c3m_ex": 0,
+     "c3mp_ex": 22,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__major__merge_col",
+     "db": "student_club",
+     "n": 31,
+     "c3m_ex": 0,
+     "c3mp_ex": 31,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col_p2",
+     "db": "student_club",
+     "n": 9,
+     "c3m_ex": 0,
+     "c3mp_ex": 9,
+     "delta_pt": 100.0,
+     "sign": 1
+    },
+    {
+     "event": "financial__district__merge_col",
+     "db": "financial",
+     "n": 36,
+     "c3m_ex": 0,
+     "c3mp_ex": 35,
+     "delta_pt": 97.2,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col",
+     "db": "card_games",
+     "n": 20,
+     "c3m_ex": 0,
+     "c3mp_ex": 19,
+     "delta_pt": 95.0,
+     "sign": 1
+    },
+    {
+     "event": "formula_1__circuits__merge_col",
+     "db": "formula_1",
+     "n": 18,
+     "c3m_ex": 1,
+     "c3mp_ex": 17,
+     "delta_pt": 88.9,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col_p1",
+     "db": "student_club",
+     "n": 27,
+     "c3m_ex": 1,
+     "c3mp_ex": 25,
+     "delta_pt": 88.9,
+     "sign": 1
+    },
+    {
+     "event": "student_club__event__merge_col",
+     "db": "student_club",
+     "n": 49,
+     "c3m_ex": 4,
+     "c3mp_ex": 46,
+     "delta_pt": 85.7,
+     "sign": 1
+    },
+    {
+     "event": "student_club__income__merge_col",
+     "db": "student_club",
+     "n": 7,
+     "c3m_ex": 1,
+     "c3mp_ex": 7,
+     "delta_pt": 85.7,
+     "sign": 1
+    },
+    {
+     "event": "financial__client__merge_col",
+     "db": "financial",
+     "n": 29,
+     "c3m_ex": 4,
+     "c3mp_ex": 28,
+     "delta_pt": 82.8,
+     "sign": 1
+    },
+    {
+     "event": "student_club__member__merge_col",
+     "db": "student_club",
+     "n": 39,
+     "c3m_ex": 5,
+     "c3mp_ex": 37,
+     "delta_pt": 82.1,
+     "sign": 1
+    },
+    {
+     "event": "thrombosis_prediction__Patient__merge_col",
+     "db": "thrombosis_prediction",
+     "n": 66,
+     "c3m_ex": 5,
+     "c3mp_ex": 59,
+     "delta_pt": 81.8,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__frpm__merge_col_p1",
+     "db": "california_schools",
+     "n": 5,
+     "c3m_ex": 0,
+     "c3mp_ex": 4,
+     "delta_pt": 80.0,
+     "sign": 1
+    },
+    {
+     "event": "california_schools__schools__merge_col",
+     "db": "california_schools",
+     "n": 19,
+     "c3m_ex": 2,
+     "c3mp_ex": 17,
+     "delta_pt": 78.9,
+     "sign": 1
+    },
+    {
+     "event": "formula_1__drivers__merge_col",
+     "db": "formula_1",
+     "n": 54,
+     "c3m_ex": 8,
+     "c3mp_ex": 41,
+     "delta_pt": 61.1,
+     "sign": 1
+    },
+    {
+     "event": "card_games__cards__merge_col_p2",
+     "db": "card_games",
+     "n": 4,
+     "c3m_ex": 0,
+     "c3mp_ex": 2,
+     "delta_pt": 50.0,
+     "sign": 1
+    },
+    {
+     "event": "student_club__zip_code__merge_col",
+     "db": "student_club",
+     "n": 13,
+     "c3m_ex": 3,
+     "c3mp_ex": 9,
+     "delta_pt": 46.2,
+     "sign": 1
+    }
+   ]
+  },
+  "by_db": [
+   {
+    "db": "california_schools",
+    "n_items": 47,
+    "n_events": 8,
+    "c3m_rate": 6.4,
+    "c3mp_rate": 91.5,
+    "delta_pt": 85.1,
+    "pos": 7,
+    "neg": 0,
+    "tie": 1,
+    "event_mean_delta_pt": 82.4
+   },
+   {
+    "db": "card_games",
+    "n_items": 31,
+    "n_events": 3,
+    "c3m_rate": 0.0,
+    "c3mp_rate": 90.3,
+    "delta_pt": 90.3,
+    "pos": 3,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 81.7
+   },
+   {
+    "db": "financial",
+    "n_items": 66,
+    "n_events": 3,
+    "c3m_rate": 6.1,
+    "c3mp_rate": 95.5,
+    "delta_pt": 89.4,
+    "pos": 2,
+    "neg": 0,
+    "tie": 1,
+    "event_mean_delta_pt": 60.0
+   },
+   {
+    "db": "formula_1",
+    "n_items": 72,
+    "n_events": 2,
+    "c3m_rate": 12.5,
+    "c3mp_rate": 80.6,
+    "delta_pt": 68.1,
+    "pos": 2,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 75.0
+   },
+   {
+    "db": "student_club",
+    "n_items": 197,
+    "n_events": 8,
+    "c3m_rate": 7.1,
+    "c3mp_rate": 94.4,
+    "delta_pt": 87.3,
+    "pos": 8,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 86.1
+   },
+   {
+    "db": "thrombosis_prediction",
+    "n_items": 66,
+    "n_events": 1,
+    "c3m_rate": 7.6,
+    "c3mp_rate": 89.4,
+    "delta_pt": 81.8,
+    "pos": 1,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 81.8
+   }
+  ],
+  "db_level": {
+   "n_dbs": 6,
+   "pos": 6,
+   "neg": 0,
+   "p": 0.03125
+  },
+  "leave_one_db_out": [
+   {
+    "dropped": "california_schools",
+    "n_events": 17,
+    "pos": 16,
+    "neg": 0,
+    "p": 3.1e-05,
+    "mean_delta_pt": 79.1
+   },
+   {
+    "dropped": "card_games",
+    "n_events": 22,
+    "pos": 20,
+    "neg": 0,
+    "p": 2e-06,
+    "mean_delta_pt": 80.0
+   },
+   {
+    "dropped": "financial",
+    "n_events": 22,
+    "pos": 21,
+    "neg": 0,
+    "p": 1e-06,
+    "mean_delta_pt": 82.9
+   },
+   {
+    "dropped": "formula_1",
+    "n_events": 23,
+    "pos": 21,
+    "neg": 0,
+    "p": 1e-06,
+    "mean_delta_pt": 80.6
+   },
+   {
+    "dropped": "student_club",
+    "n_events": 17,
+    "pos": 15,
+    "neg": 0,
+    "p": 6.1e-05,
+    "mean_delta_pt": 77.4
+   },
+   {
+    "dropped": "thrombosis_prediction",
+    "n_events": 24,
+    "pos": 22,
+    "neg": 0,
+    "p": 0.0,
+    "mean_delta_pt": 80.1
+   }
+  ],
+  "cluster_bootstrap": {
+   "resamples": 10000,
+   "seed": 20261111,
+   "unit": "database",
+   "event_mean_delta_pt": {
+    "point": 80.2,
+    "ci95": [
+     70.5,
+     84.5
+    ]
+   },
+   "item_pooled_delta_pt": {
+    "point": 83.9,
+    "ci95": [
+     76.1,
+     88.1
+    ]
+   },
+   "note": "重采样的是库（簇），同一库内全部事件一起进出，因此区间反映库间变异；6 个库时该区间偏宽属预期。"
+  }
+ },
+ "main_merge": {
+  "label": "main_merge_v32",
+  "n_items": 230,
+  "conditions": {
+   "c1": {
+    "n": 230,
+    "EX": 13,
+    "rate": 5.7,
+    "wilson95": [
+     3.3,
+     9.4
+    ]
+   },
+   "c2": {
+    "n": 230,
+    "EX": 23,
+    "rate": 10.0,
+    "wilson95": [
+     6.8,
+     14.6
+    ]
+   },
+   "c3f": {
+    "n": 230,
+    "EX": 183,
+    "rate": 79.6,
+    "wilson95": [
+     73.9,
+     84.3
+    ]
+   },
+   "c3m": {
+    "n": 230,
+    "EX": 6,
+    "rate": 2.6,
+    "wilson95": [
+     1.2,
+     5.6
+    ]
+   },
+   "c3mp": {
+    "n": 230,
+    "EX": 183,
+    "rate": 79.6,
+    "wilson95": [
+     73.9,
+     84.3
+    ]
+   }
+  },
+  "item_level": {
+   "n_pairs": 230,
+   "c3mp_only": 177,
+   "c3m_only": 0,
+   "delta_pt": 77.0,
+   "mcnemar_p": 0.0
+  },
+  "event_level_all": {
+   "n_events": 5,
+   "pos": 5,
+   "neg": 0,
+   "tie": 0,
+   "p": 0.0625,
+   "mean_delta_pt": 77.0,
+   "min_delta_pt": 66.7,
+   "max_delta_pt": 95.9,
+   "events": [
+    {
+     "event": "student_club|member|attr_001",
+     "db": "student_club",
+     "n": 49,
+     "c3m_ex": 0,
+     "c3mp_ex": 47,
+     "delta_pt": 95.9,
+     "sign": 1
+    },
+    {
+     "event": "formula_1|drivers|attr_001",
+     "db": "formula_1",
+     "n": 54,
+     "c3m_ex": 1,
+     "c3mp_ex": 42,
+     "delta_pt": 75.9,
+     "sign": 1
+    },
+    {
+     "event": "financial|district|attr_001",
+     "db": "financial",
+     "n": 37,
+     "c3m_ex": 0,
+     "c3mp_ex": 28,
+     "delta_pt": 75.7,
+     "sign": 1
+    },
+    {
+     "event": "california_schools|schools|attr_001",
+     "db": "california_schools",
+     "n": 24,
+     "c3m_ex": 2,
+     "c3mp_ex": 19,
+     "delta_pt": 70.8,
+     "sign": 1
+    },
+    {
+     "event": "thrombosis_prediction|patient|attr_001",
+     "db": "thrombosis_prediction",
+     "n": 66,
+     "c3m_ex": 3,
+     "c3mp_ex": 47,
+     "delta_pt": 66.7,
+     "sign": 1
+    }
+   ]
+  },
+  "by_db": [
+   {
+    "db": "california_schools",
+    "n_items": 24,
+    "n_events": 1,
+    "c3m_rate": 8.3,
+    "c3mp_rate": 79.2,
+    "delta_pt": 70.8,
+    "pos": 1,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 70.8
+   },
+   {
+    "db": "financial",
+    "n_items": 37,
+    "n_events": 1,
+    "c3m_rate": 0.0,
+    "c3mp_rate": 75.7,
+    "delta_pt": 75.7,
+    "pos": 1,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 75.7
+   },
+   {
+    "db": "formula_1",
+    "n_items": 54,
+    "n_events": 1,
+    "c3m_rate": 1.9,
+    "c3mp_rate": 77.8,
+    "delta_pt": 75.9,
+    "pos": 1,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 75.9
+   },
+   {
+    "db": "student_club",
+    "n_items": 49,
+    "n_events": 1,
+    "c3m_rate": 0.0,
+    "c3mp_rate": 95.9,
+    "delta_pt": 95.9,
+    "pos": 1,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 95.9
+   },
+   {
+    "db": "thrombosis_prediction",
+    "n_items": 66,
+    "n_events": 1,
+    "c3m_rate": 4.5,
+    "c3mp_rate": 71.2,
+    "delta_pt": 66.7,
+    "pos": 1,
+    "neg": 0,
+    "tie": 0,
+    "event_mean_delta_pt": 66.7
+   }
+  ],
+  "db_level": {
+   "n_dbs": 5,
+   "pos": 5,
+   "neg": 0,
+   "p": 0.0625
+  },
+  "leave_one_db_out": [
+   {
+    "dropped": "california_schools",
+    "n_events": 4,
+    "pos": 4,
+    "neg": 0,
+    "p": 0.125,
+    "mean_delta_pt": 78.6
+   },
+   {
+    "dropped": "financial",
+    "n_events": 4,
+    "pos": 4,
+    "neg": 0,
+    "p": 0.125,
+    "mean_delta_pt": 77.3
+   },
+   {
+    "dropped": "formula_1",
+    "n_events": 4,
+    "pos": 4,
+    "neg": 0,
+    "p": 0.125,
+    "mean_delta_pt": 77.3
+   },
+   {
+    "dropped": "student_club",
+    "n_events": 4,
+    "pos": 4,
+    "neg": 0,
+    "p": 0.125,
+    "mean_delta_pt": 72.3
+   },
+   {
+    "dropped": "thrombosis_prediction",
+    "n_events": 4,
+    "pos": 4,
+    "neg": 0,
+    "p": 0.125,
+    "mean_delta_pt": 79.6
+   }
+  ],
+  "cluster_bootstrap": {
+   "resamples": 10000,
+   "seed": 20261111,
+   "unit": "database",
+   "event_mean_delta_pt": {
+    "point": 77.0,
+    "ci95": [
+     69.4,
+     86.9
+    ]
+   },
+   "item_pooled_delta_pt": {
+    "point": 77.0,
+    "ci95": [
+     68.8,
+     88.2
+    ]
+   },
+   "note": "重采样的是库（簇），同一库内全部事件一起进出，因此区间反映库间变异；6 个库时该区间偏宽属预期。"
+  }
+ }
+}

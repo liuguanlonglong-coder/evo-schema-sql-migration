@@ -1,0 +1,834 @@
+{
+ "version": "sql-coverage-v3",
+ "note": "逐条 sqlglot 解析 old_sql（sqlite 方言）；解析失败单列，不计入任何一类，避免把「解析不了」算成「不支持」。",
+ "paper": {
+  "label": "610 主实验",
+  "n": 610,
+  "n_parsed": 610,
+  "parse_fail": 0,
+  "features": {
+   "join_any": {
+    "k": 503,
+    "pct": 82.5
+   },
+   "join_inner": {
+    "k": 500,
+    "pct": 82.0
+   },
+   "join_left": {
+    "k": 3,
+    "pct": 0.5
+   },
+   "join_using_or_natural": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "cte": {
+    "k": 1,
+    "pct": 0.2
+   },
+   "subquery_any": {
+    "k": 32,
+    "pct": 5.2
+   },
+   "subquery_correlated": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "group_by": {
+    "k": 46,
+    "pct": 7.5
+   },
+   "having": {
+    "k": 4,
+    "pct": 0.7
+   },
+   "order_by": {
+    "k": 148,
+    "pct": 24.3
+   },
+   "limit": {
+    "k": 124,
+    "pct": 20.3
+   },
+   "distinct": {
+    "k": 101,
+    "pct": 16.6
+   },
+   "aggregate": {
+    "k": 245,
+    "pct": 40.2
+   },
+   "union_like": {
+    "k": 1,
+    "pct": 0.2
+   },
+   "window": {
+    "k": 4,
+    "pct": 0.7
+   },
+   "case_expr": {
+    "k": 44,
+    "pct": 7.2
+   },
+   "star_projection": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "qualified_star": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "cast": {
+    "k": 59,
+    "pct": 9.7
+   },
+   "like": {
+    "k": 9,
+    "pct": 1.5
+   },
+   "in_list": {
+    "k": 9,
+    "pct": 1.5
+   },
+   "between": {
+    "k": 42,
+    "pct": 6.9
+   },
+   "is_null": {
+    "k": 30,
+    "pct": 4.9
+   },
+   "date_fn": {
+    "k": 5,
+    "pct": 0.8
+   },
+   "multi_table": {
+    "k": 510,
+    "pct": 83.6
+   }
+  },
+  "joins_hist": {
+   "0": 107,
+   "1": 390,
+   "2": 92,
+   "3": 19,
+   "4": 2
+  }
+ },
+ "by_evo": {
+  "merge_col": {
+   "label": "merge_col",
+   "n": 230,
+   "n_parsed": 230,
+   "parse_fail": 0,
+   "features": {
+    "join_any": {
+     "k": 195,
+     "pct": 84.8
+    },
+    "join_inner": {
+     "k": 195,
+     "pct": 84.8
+    },
+    "join_left": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "join_using_or_natural": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cte": {
+     "k": 1,
+     "pct": 0.4
+    },
+    "subquery_any": {
+     "k": 7,
+     "pct": 3.0
+    },
+    "subquery_correlated": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "group_by": {
+     "k": 14,
+     "pct": 6.1
+    },
+    "having": {
+     "k": 1,
+     "pct": 0.4
+    },
+    "order_by": {
+     "k": 45,
+     "pct": 19.6
+    },
+    "limit": {
+     "k": 39,
+     "pct": 17.0
+    },
+    "distinct": {
+     "k": 33,
+     "pct": 14.3
+    },
+    "aggregate": {
+     "k": 94,
+     "pct": 40.9
+    },
+    "union_like": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "window": {
+     "k": 1,
+     "pct": 0.4
+    },
+    "case_expr": {
+     "k": 18,
+     "pct": 7.8
+    },
+    "star_projection": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "qualified_star": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cast": {
+     "k": 22,
+     "pct": 9.6
+    },
+    "like": {
+     "k": 4,
+     "pct": 1.7
+    },
+    "in_list": {
+     "k": 4,
+     "pct": 1.7
+    },
+    "between": {
+     "k": 15,
+     "pct": 6.5
+    },
+    "is_null": {
+     "k": 10,
+     "pct": 4.3
+    },
+    "date_fn": {
+     "k": 1,
+     "pct": 0.4
+    },
+    "multi_table": {
+     "k": 197,
+     "pct": 85.7
+    }
+   },
+   "joins_hist": {
+    "0": 35,
+    "1": 143,
+    "2": 46,
+    "3": 5,
+    "4": 1
+   }
+  },
+  "rename": {
+   "label": "rename",
+   "n": 96,
+   "n_parsed": 96,
+   "parse_fail": 0,
+   "features": {
+    "join_any": {
+     "k": 80,
+     "pct": 83.3
+    },
+    "join_inner": {
+     "k": 80,
+     "pct": 83.3
+    },
+    "join_left": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "join_using_or_natural": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cte": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "subquery_any": {
+     "k": 6,
+     "pct": 6.2
+    },
+    "subquery_correlated": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "group_by": {
+     "k": 9,
+     "pct": 9.4
+    },
+    "having": {
+     "k": 1,
+     "pct": 1.0
+    },
+    "order_by": {
+     "k": 24,
+     "pct": 25.0
+    },
+    "limit": {
+     "k": 21,
+     "pct": 21.9
+    },
+    "distinct": {
+     "k": 22,
+     "pct": 22.9
+    },
+    "aggregate": {
+     "k": 36,
+     "pct": 37.5
+    },
+    "union_like": {
+     "k": 1,
+     "pct": 1.0
+    },
+    "window": {
+     "k": 1,
+     "pct": 1.0
+    },
+    "case_expr": {
+     "k": 3,
+     "pct": 3.1
+    },
+    "star_projection": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "qualified_star": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cast": {
+     "k": 6,
+     "pct": 6.2
+    },
+    "like": {
+     "k": 2,
+     "pct": 2.1
+    },
+    "in_list": {
+     "k": 3,
+     "pct": 3.1
+    },
+    "between": {
+     "k": 5,
+     "pct": 5.2
+    },
+    "is_null": {
+     "k": 5,
+     "pct": 5.2
+    },
+    "date_fn": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "multi_table": {
+     "k": 83,
+     "pct": 86.5
+    }
+   },
+   "joins_hist": {
+    "0": 16,
+    "1": 66,
+    "2": 12,
+    "3": 2
+   }
+  },
+  "rename_hard": {
+   "label": "rename_hard",
+   "n": 90,
+   "n_parsed": 90,
+   "parse_fail": 0,
+   "features": {
+    "join_any": {
+     "k": 71,
+     "pct": 78.9
+    },
+    "join_inner": {
+     "k": 70,
+     "pct": 77.8
+    },
+    "join_left": {
+     "k": 1,
+     "pct": 1.1
+    },
+    "join_using_or_natural": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cte": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "subquery_any": {
+     "k": 8,
+     "pct": 8.9
+    },
+    "subquery_correlated": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "group_by": {
+     "k": 8,
+     "pct": 8.9
+    },
+    "having": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "order_by": {
+     "k": 21,
+     "pct": 23.3
+    },
+    "limit": {
+     "k": 16,
+     "pct": 17.8
+    },
+    "distinct": {
+     "k": 11,
+     "pct": 12.2
+    },
+    "aggregate": {
+     "k": 41,
+     "pct": 45.6
+    },
+    "union_like": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "window": {
+     "k": 1,
+     "pct": 1.1
+    },
+    "case_expr": {
+     "k": 6,
+     "pct": 6.7
+    },
+    "star_projection": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "qualified_star": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cast": {
+     "k": 12,
+     "pct": 13.3
+    },
+    "like": {
+     "k": 1,
+     "pct": 1.1
+    },
+    "in_list": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "between": {
+     "k": 5,
+     "pct": 5.6
+    },
+    "is_null": {
+     "k": 4,
+     "pct": 4.4
+    },
+    "date_fn": {
+     "k": 1,
+     "pct": 1.1
+    },
+    "multi_table": {
+     "k": 72,
+     "pct": 80.0
+    }
+   },
+   "joins_hist": {
+    "0": 19,
+    "1": 53,
+    "2": 14,
+    "3": 3,
+    "4": 1
+   }
+  },
+  "rename_medium": {
+   "label": "rename_medium",
+   "n": 90,
+   "n_parsed": 90,
+   "parse_fail": 0,
+   "features": {
+    "join_any": {
+     "k": 71,
+     "pct": 78.9
+    },
+    "join_inner": {
+     "k": 70,
+     "pct": 77.8
+    },
+    "join_left": {
+     "k": 1,
+     "pct": 1.1
+    },
+    "join_using_or_natural": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cte": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "subquery_any": {
+     "k": 6,
+     "pct": 6.7
+    },
+    "subquery_correlated": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "group_by": {
+     "k": 11,
+     "pct": 12.2
+    },
+    "having": {
+     "k": 1,
+     "pct": 1.1
+    },
+    "order_by": {
+     "k": 22,
+     "pct": 24.4
+    },
+    "limit": {
+     "k": 18,
+     "pct": 20.0
+    },
+    "distinct": {
+     "k": 12,
+     "pct": 13.3
+    },
+    "aggregate": {
+     "k": 41,
+     "pct": 45.6
+    },
+    "union_like": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "window": {
+     "k": 1,
+     "pct": 1.1
+    },
+    "case_expr": {
+     "k": 8,
+     "pct": 8.9
+    },
+    "star_projection": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "qualified_star": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cast": {
+     "k": 10,
+     "pct": 11.1
+    },
+    "like": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "in_list": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "between": {
+     "k": 2,
+     "pct": 2.2
+    },
+    "is_null": {
+     "k": 3,
+     "pct": 3.3
+    },
+    "date_fn": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "multi_table": {
+     "k": 72,
+     "pct": 80.0
+    }
+   },
+   "joins_hist": {
+    "0": 19,
+    "1": 56,
+    "2": 12,
+    "3": 3
+   }
+  },
+  "split_col": {
+   "label": "split_col",
+   "n": 104,
+   "n_parsed": 104,
+   "parse_fail": 0,
+   "features": {
+    "join_any": {
+     "k": 86,
+     "pct": 82.7
+    },
+    "join_inner": {
+     "k": 85,
+     "pct": 81.7
+    },
+    "join_left": {
+     "k": 1,
+     "pct": 1.0
+    },
+    "join_using_or_natural": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cte": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "subquery_any": {
+     "k": 5,
+     "pct": 4.8
+    },
+    "subquery_correlated": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "group_by": {
+     "k": 4,
+     "pct": 3.8
+    },
+    "having": {
+     "k": 1,
+     "pct": 1.0
+    },
+    "order_by": {
+     "k": 36,
+     "pct": 34.6
+    },
+    "limit": {
+     "k": 30,
+     "pct": 28.8
+    },
+    "distinct": {
+     "k": 23,
+     "pct": 22.1
+    },
+    "aggregate": {
+     "k": 33,
+     "pct": 31.7
+    },
+    "union_like": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "window": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "case_expr": {
+     "k": 9,
+     "pct": 8.7
+    },
+    "star_projection": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "qualified_star": {
+     "k": 0,
+     "pct": 0.0
+    },
+    "cast": {
+     "k": 9,
+     "pct": 8.7
+    },
+    "like": {
+     "k": 2,
+     "pct": 1.9
+    },
+    "in_list": {
+     "k": 2,
+     "pct": 1.9
+    },
+    "between": {
+     "k": 15,
+     "pct": 14.4
+    },
+    "is_null": {
+     "k": 8,
+     "pct": 7.7
+    },
+    "date_fn": {
+     "k": 3,
+     "pct": 2.9
+    },
+    "multi_table": {
+     "k": 86,
+     "pct": 82.7
+    }
+   },
+   "joins_hist": {
+    "0": 18,
+    "1": 72,
+    "2": 8,
+    "3": 6
+   }
+  }
+ },
+ "ext_merge": {
+  "label": "扩充合并 479",
+  "n": 479,
+  "n_parsed": 479,
+  "parse_fail": 0,
+  "features": {
+   "join_any": {
+    "k": 394,
+    "pct": 82.3
+   },
+   "join_inner": {
+    "k": 394,
+    "pct": 82.3
+   },
+   "join_left": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "join_using_or_natural": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "cte": {
+    "k": 1,
+    "pct": 0.2
+   },
+   "subquery_any": {
+    "k": 17,
+    "pct": 3.5
+   },
+   "subquery_correlated": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "group_by": {
+    "k": 30,
+    "pct": 6.3
+   },
+   "having": {
+    "k": 4,
+    "pct": 0.8
+   },
+   "order_by": {
+    "k": 84,
+    "pct": 17.5
+   },
+   "limit": {
+    "k": 72,
+    "pct": 15.0
+   },
+   "distinct": {
+    "k": 58,
+    "pct": 12.1
+   },
+   "aggregate": {
+    "k": 199,
+    "pct": 41.5
+   },
+   "union_like": {
+    "k": 2,
+    "pct": 0.4
+   },
+   "window": {
+    "k": 1,
+    "pct": 0.2
+   },
+   "case_expr": {
+    "k": 38,
+    "pct": 7.9
+   },
+   "star_projection": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "qualified_star": {
+    "k": 0,
+    "pct": 0.0
+   },
+   "cast": {
+    "k": 45,
+    "pct": 9.4
+   },
+   "like": {
+    "k": 12,
+    "pct": 2.5
+   },
+   "in_list": {
+    "k": 6,
+    "pct": 1.3
+   },
+   "between": {
+    "k": 24,
+    "pct": 5.0
+   },
+   "is_null": {
+    "k": 17,
+    "pct": 3.5
+   },
+   "date_fn": {
+    "k": 1,
+    "pct": 0.2
+   },
+   "multi_table": {
+    "k": 399,
+    "pct": 83.3
+   }
+  },
+  "joins_hist": {
+   "0": 85,
+   "1": 294,
+   "2": 78,
+   "3": 20,
+   "4": 2
+  }
+ },
+ "target_position": {
+  "n": 610,
+  "clauses": {
+   "Where": {
+    "k": 323,
+    "pct": 53.0
+   },
+   "SELECT": {
+    "k": 294,
+    "pct": 48.2
+   },
+   "Order": {
+    "k": 42,
+    "pct": 6.9
+   },
+   "Group": {
+    "k": 27,
+    "pct": 4.4
+   },
+   "Join": {
+    "k": 18,
+    "pct": 3.0
+   }
+  },
+  "items_without_position": 0
+ }
+}

@@ -1,0 +1,1621 @@
+{
+ "version": "ext-events-summary-v1",
+ "by_task": {
+  "merge_col": {
+   "events": 28,
+   "events_effective": 22,
+   "events_ge3": 18,
+   "dbs": 6,
+   "tables": 15,
+   "items": 479,
+   "items_pass": 453,
+   "pass_rate": 94.6,
+   "items_per_event": 17.1,
+   "items_per_effective_event": 21.8,
+   "per_db_events": {
+    "california_schools": 8,
+    "card_games": 5,
+    "financial": 4,
+    "formula_1": 2,
+    "student_club": 8,
+    "thrombosis_prediction": 1
+   },
+   "max_event_items": 66,
+   "max_event_share_pct": 13.8,
+   "column_pairs": [
+    {
+     "db": "thrombosis_prediction",
+     "table": "Patient",
+     "cols": [
+      "SEX",
+      "Admission"
+     ],
+     "n_items": 66,
+     "n_pass": 66
+    },
+    {
+     "db": "formula_1",
+     "table": "drivers",
+     "cols": [
+      "surname",
+      "forename"
+     ],
+     "n_items": 54,
+     "n_pass": 54
+    },
+    {
+     "db": "student_club",
+     "table": "event",
+     "cols": [
+      "event_name",
+      "event_date"
+     ],
+     "n_items": 49,
+     "n_pass": 49
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "last_name",
+      "first_name"
+     ],
+     "n_items": 49,
+     "n_pass": 49
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A2",
+      "A3"
+     ],
+     "n_items": 37,
+     "n_pass": 37
+    },
+    {
+     "db": "student_club",
+     "table": "major",
+     "cols": [
+      "major_name",
+      "college"
+     ],
+     "n_items": 31,
+     "n_pass": 31
+    },
+    {
+     "db": "financial",
+     "table": "client",
+     "cols": [
+      "gender",
+      "birth_date"
+     ],
+     "n_items": 29,
+     "n_pass": 29
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "position",
+      "t_shirt_size"
+     ],
+     "n_items": 28,
+     "n_pass": 28
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "County",
+      "StatusType"
+     ],
+     "n_items": 24,
+     "n_pass": 24
+    },
+    {
+     "db": "student_club",
+     "table": "budget",
+     "cols": [
+      "category",
+      "event_status"
+     ],
+     "n_items": 22,
+     "n_pass": 22
+    },
+    {
+     "db": "formula_1",
+     "table": "circuits",
+     "cols": [
+      "country",
+      "location"
+     ],
+     "n_items": 18,
+     "n_pass": 18
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "borderColor",
+      "frameVersion"
+     ],
+     "n_items": 22,
+     "n_pass": 16
+    },
+    {
+     "db": "student_club",
+     "table": "zip_code",
+     "cols": [
+      "state",
+      "city"
+     ],
+     "n_items": 13,
+     "n_pass": 13
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "rarity",
+      "layout"
+     ],
+     "n_items": 9,
+     "n_pass": 9
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "phone",
+      "email"
+     ],
+     "n_items": 9,
+     "n_pass": 9
+    },
+    {
+     "db": "student_club",
+     "table": "income",
+     "cols": [
+      "source",
+      "date_received"
+     ],
+     "n_items": 7,
+     "n_pass": 6
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "DOC",
+      "District"
+     ],
+     "n_items": 10,
+     "n_pass": 5
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "number",
+      "types"
+     ],
+     "n_items": 4,
+     "n_pass": 3
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "County Name",
+      "District Name"
+     ],
+     "n_items": 5,
+     "n_pass": 2
+    },
+    {
+     "db": "california_schools",
+     "table": "satscores",
+     "cols": [
+      "cname",
+      "dname"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "DOCType",
+      "LastUpdate"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A4",
+      "A5"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "School Name",
+      "Low Grade"
+     ],
+     "n_items": 8,
+     "n_pass": 0
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "High Grade",
+      "Academic Year"
+     ],
+     "n_items": 3,
+     "n_pass": 0
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "County Code",
+      "School Code"
+     ],
+     "n_items": 2,
+     "n_pass": 0
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "mtgjsonV4Id",
+      "printings"
+     ],
+     "n_items": 0,
+     "n_pass": 0
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "scryfallId",
+      "scryfallOracleId"
+     ],
+     "n_items": 0,
+     "n_pass": 0
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A6",
+      "A7"
+     ],
+     "n_items": 0,
+     "n_pass": 0
+    }
+   ]
+  },
+  "split_col": {
+   "events": 24,
+   "events_effective": 24,
+   "events_ge3": 20,
+   "dbs": 6,
+   "tables": 15,
+   "items": 218,
+   "items_pass": 198,
+   "pass_rate": 90.8,
+   "items_per_event": 9.1,
+   "items_per_effective_event": 9.1,
+   "per_db_events": {
+    "california_schools": 4,
+    "card_games": 5,
+    "financial": 2,
+    "formula_1": 2,
+    "student_club": 7,
+    "thrombosis_prediction": 4
+   },
+   "max_event_items": 51,
+   "max_event_share_pct": 23.4,
+   "separators": {
+    "'-'": 183,
+    "' '": 34,
+    "'/'": 1
+   },
+   "separator_kinds": 3,
+   "column_pairs": [
+    {
+     "db": "thrombosis_prediction",
+     "table": "Patient",
+     "cols": [
+      "Birthday"
+     ],
+     "n_items": 51,
+     "n_pass": 51
+    },
+    {
+     "db": "formula_1",
+     "table": "drivers",
+     "cols": [
+      "dob"
+     ],
+     "n_items": 20,
+     "n_pass": 20
+    },
+    {
+     "db": "formula_1",
+     "table": "races",
+     "cols": [
+      "date"
+     ],
+     "n_items": 14,
+     "n_pass": 14
+    },
+    {
+     "db": "student_club",
+     "table": "event",
+     "cols": [
+      "event_date"
+     ],
+     "n_items": 13,
+     "n_pass": 13
+    },
+    {
+     "db": "financial",
+     "table": "client",
+     "cols": [
+      "birth_date"
+     ],
+     "n_items": 12,
+     "n_pass": 12
+    },
+    {
+     "db": "student_club",
+     "table": "major",
+     "cols": [
+      "college"
+     ],
+     "n_items": 12,
+     "n_pass": 12
+    },
+    {
+     "db": "student_club",
+     "table": "major",
+     "cols": [
+      "department"
+     ],
+     "n_items": 9,
+     "n_pass": 9
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "Phone"
+     ],
+     "n_items": 8,
+     "n_pass": 8
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "OpenDate"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "card_games",
+     "table": "sets",
+     "cols": [
+      "releaseDate"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "student_club",
+     "table": "event",
+     "cols": [
+      "location"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "student_club",
+     "table": "expense",
+     "cols": [
+      "expense_date"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "phone"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "card_games",
+     "table": "rulings",
+     "cols": [
+      "date"
+     ],
+     "n_items": 5,
+     "n_pass": 5
+    },
+    {
+     "db": "student_club",
+     "table": "income",
+     "cols": [
+      "date_received"
+     ],
+     "n_items": 6,
+     "n_pass": 5
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Patient",
+     "cols": [
+      "First Date"
+     ],
+     "n_items": 15,
+     "n_pass": 5
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "ClosedDate"
+     ],
+     "n_items": 4,
+     "n_pass": 4
+    },
+    {
+     "db": "financial",
+     "table": "card",
+     "cols": [
+      "issued"
+     ],
+     "n_items": 4,
+     "n_pass": 4
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Patient",
+     "cols": [
+      "Description"
+     ],
+     "n_items": 4,
+     "n_pass": 4
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "Examination Date"
+     ],
+     "n_items": 12,
+     "n_pass": 3
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "DOCType"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "originalReleaseDate"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "flavorName"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "card_games",
+     "table": "cards",
+     "cols": [
+      "purchaseUrls"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    }
+   ]
+  },
+  "value_shift": {
+   "events": 113,
+   "events_effective": 90,
+   "events_ge3": 48,
+   "dbs": 8,
+   "tables": 32,
+   "items": 853,
+   "items_pass": 595,
+   "pass_rate": 69.8,
+   "items_per_event": 7.5,
+   "items_per_effective_event": 9.5,
+   "per_db_events": {
+    "california_schools": 25,
+    "debit_card_specializing": 1,
+    "financial": 11,
+    "formula_1": 12,
+    "student_club": 23,
+    "superhero": 10,
+    "thrombosis_prediction": 29,
+    "toxicology": 2
+   },
+   "max_event_items": 71,
+   "max_event_share_pct": 8.3,
+   "column_pairs": [
+    {
+     "db": "toxicology",
+     "table": "atom",
+     "cols": [
+      "element"
+     ],
+     "n_items": 71,
+     "n_pass": 71
+    },
+    {
+     "db": "toxicology",
+     "table": "bond",
+     "cols": [
+      "bond_type"
+     ],
+     "n_items": 60,
+     "n_pass": 54
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "last_name"
+     ],
+     "n_items": 48,
+     "n_pass": 47
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "first_name"
+     ],
+     "n_items": 43,
+     "n_pass": 43
+    },
+    {
+     "db": "student_club",
+     "table": "event",
+     "cols": [
+      "event_name"
+     ],
+     "n_items": 42,
+     "n_pass": 36
+    },
+    {
+     "db": "superhero",
+     "table": "publisher",
+     "cols": [
+      "publisher_name"
+     ],
+     "n_items": 27,
+     "n_pass": 27
+    },
+    {
+     "db": "superhero",
+     "table": "superpower",
+     "cols": [
+      "power_name"
+     ],
+     "n_items": 24,
+     "n_pass": 24
+    },
+    {
+     "db": "student_club",
+     "table": "major",
+     "cols": [
+      "major_name"
+     ],
+     "n_items": 23,
+     "n_pass": 23
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A2"
+     ],
+     "n_items": 22,
+     "n_pass": 22
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "County"
+     ],
+     "n_items": 22,
+     "n_pass": 21
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "position"
+     ],
+     "n_items": 22,
+     "n_pass": 21
+    },
+    {
+     "db": "student_club",
+     "table": "budget",
+     "cols": [
+      "category"
+     ],
+     "n_items": 20,
+     "n_pass": 20
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Patient",
+     "cols": [
+      "Admission"
+     ],
+     "n_items": 19,
+     "n_pass": 19
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A3"
+     ],
+     "n_items": 18,
+     "n_pass": 18
+    },
+    {
+     "db": "financial",
+     "table": "account",
+     "cols": [
+      "frequency"
+     ],
+     "n_items": 16,
+     "n_pass": 16
+    },
+    {
+     "db": "student_club",
+     "table": "expense",
+     "cols": [
+      "expense_description"
+     ],
+     "n_items": 16,
+     "n_pass": 16
+    },
+    {
+     "db": "formula_1",
+     "table": "circuits",
+     "cols": [
+      "country"
+     ],
+     "n_items": 14,
+     "n_pass": 14
+    },
+    {
+     "db": "student_club",
+     "table": "major",
+     "cols": [
+      "college"
+     ],
+     "n_items": 12,
+     "n_pass": 12
+    },
+    {
+     "db": "superhero",
+     "table": "attribute",
+     "cols": [
+      "attribute_name"
+     ],
+     "n_items": 12,
+     "n_pass": 12
+    },
+    {
+     "db": "student_club",
+     "table": "zip_code",
+     "cols": [
+      "state"
+     ],
+     "n_items": 11,
+     "n_pass": 11
+    },
+    {
+     "db": "formula_1",
+     "table": "circuits",
+     "cols": [
+      "lat"
+     ],
+     "n_items": 9,
+     "n_pass": 9
+    },
+    {
+     "db": "student_club",
+     "table": "major",
+     "cols": [
+      "department"
+     ],
+     "n_items": 9,
+     "n_pass": 9
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "Symptoms"
+     ],
+     "n_items": 9,
+     "n_pass": 9
+    },
+    {
+     "db": "financial",
+     "table": "loan",
+     "cols": [
+      "status"
+     ],
+     "n_items": 8,
+     "n_pass": 8
+    },
+    {
+     "db": "formula_1",
+     "table": "circuits",
+     "cols": [
+      "lng"
+     ],
+     "n_items": 8,
+     "n_pass": 8
+    },
+    {
+     "db": "formula_1",
+     "table": "circuits",
+     "cols": [
+      "location"
+     ],
+     "n_items": 8,
+     "n_pass": 8
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "t_shirt_size"
+     ],
+     "n_items": 8,
+     "n_pass": 8
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "StatusType"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "student_club",
+     "table": "event",
+     "cols": [
+      "location"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "phone"
+     ],
+     "n_items": 7,
+     "n_pass": 7
+    },
+    {
+     "db": "superhero",
+     "table": "hero_attribute",
+     "cols": [
+      "attribute_value"
+     ],
+     "n_items": 20,
+     "n_pass": 7
+    },
+    {
+     "db": "student_club",
+     "table": "expense",
+     "cols": [
+      "cost"
+     ],
+     "n_items": 25,
+     "n_pass": 6
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A11"
+     ],
+     "n_items": 9,
+     "n_pass": 5
+    },
+    {
+     "db": "student_club",
+     "table": "income",
+     "cols": [
+      "source"
+     ],
+     "n_items": 5,
+     "n_pass": 5
+    },
+    {
+     "db": "student_club",
+     "table": "income",
+     "cols": [
+      "date_received"
+     ],
+     "n_items": 6,
+     "n_pass": 5
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "ANA Pattern"
+     ],
+     "n_items": 5,
+     "n_pass": 5
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "Charter Funding Type"
+     ],
+     "n_items": 4,
+     "n_pass": 4
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "Virtual"
+     ],
+     "n_items": 4,
+     "n_pass": 4
+    },
+    {
+     "db": "formula_1",
+     "table": "drivers",
+     "cols": [
+      "code"
+     ],
+     "n_items": 4,
+     "n_pass": 4
+    },
+    {
+     "db": "student_club",
+     "table": "expense",
+     "cols": [
+      "expense_date"
+     ],
+     "n_items": 7,
+     "n_pass": 4
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "County Name"
+     ],
+     "n_items": 3,
+     "n_pass": 3
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "NSLP Provision Status"
+     ],
+     "n_items": 3,
+     "n_pass": 3
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "FundingType"
+     ],
+     "n_items": 3,
+     "n_pass": 3
+    },
+    {
+     "db": "student_club",
+     "table": "budget",
+     "cols": [
+      "spent"
+     ],
+     "n_items": 11,
+     "n_pass": 3
+    },
+    {
+     "db": "student_club",
+     "table": "budget",
+     "cols": [
+      "event_status"
+     ],
+     "n_items": 3,
+     "n_pass": 3
+    },
+    {
+     "db": "student_club",
+     "table": "event",
+     "cols": [
+      "status"
+     ],
+     "n_items": 3,
+     "n_pass": 3
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "aCL IgA"
+     ],
+     "n_items": 4,
+     "n_pass": 3
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Patient",
+     "cols": [
+      "Description"
+     ],
+     "n_items": 4,
+     "n_pass": 3
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "Low Grade"
+     ],
+     "n_items": 4,
+     "n_pass": 2
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "School Type"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "GSserved"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "EdOpsCode"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "formula_1",
+     "table": "results",
+     "cols": [
+      "fastestLap"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "student_club",
+     "table": "event",
+     "cols": [
+      "event_date"
+     ],
+     "n_items": 13,
+     "n_pass": 2
+    },
+    {
+     "db": "student_club",
+     "table": "member",
+     "cols": [
+      "email"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "ANA"
+     ],
+     "n_items": 3,
+     "n_pass": 2
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "RNP"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "SC170"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "SSB"
+     ],
+     "n_items": 3,
+     "n_pass": 2
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "APTT"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "SM"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "SSA"
+     ],
+     "n_items": 2,
+     "n_pass": 2
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "Educational Option Type"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "satscores",
+     "cols": [
+      "cname"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "DOC"
+     ],
+     "n_items": 6,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "GSoffered"
+     ],
+     "n_items": 2,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "AdmLName3"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "DOCType"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "EILCode"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "EILName"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "EdOpsName"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "SOCType"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "debit_card_specializing",
+     "table": "transactions_1k",
+     "cols": [
+      "Amount"
+     ],
+     "n_items": 4,
+     "n_pass": 1
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A15"
+     ],
+     "n_items": 3,
+     "n_pass": 1
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A16"
+     ],
+     "n_items": 2,
+     "n_pass": 1
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A12"
+     ],
+     "n_items": 2,
+     "n_pass": 1
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A13"
+     ],
+     "n_items": 3,
+     "n_pass": 1
+    },
+    {
+     "db": "financial",
+     "table": "district",
+     "cols": [
+      "A4"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "financial",
+     "table": "loan",
+     "cols": [
+      "duration"
+     ],
+     "n_items": 4,
+     "n_pass": 1
+    },
+    {
+     "db": "formula_1",
+     "table": "circuits",
+     "cols": [
+      "circuitRef"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "formula_1",
+     "table": "races",
+     "cols": [
+      "round"
+     ],
+     "n_items": 2,
+     "n_pass": 1
+    },
+    {
+     "db": "formula_1",
+     "table": "results",
+     "cols": [
+      "positionOrder"
+     ],
+     "n_items": 3,
+     "n_pass": 1
+    },
+    {
+     "db": "student_club",
+     "table": "budget",
+     "cols": [
+      "remaining"
+     ],
+     "n_items": 7,
+     "n_pass": 1
+    },
+    {
+     "db": "superhero",
+     "table": "superhero",
+     "cols": [
+      "height_cm"
+     ],
+     "n_items": 14,
+     "n_pass": 1
+    },
+    {
+     "db": "superhero",
+     "table": "superhero",
+     "cols": [
+      "weight_kg"
+     ],
+     "n_items": 12,
+     "n_pass": 1
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "ALB"
+     ],
+     "n_items": 8,
+     "n_pass": 1
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "T-BIL"
+     ],
+     "n_items": 6,
+     "n_pass": 1
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "RA"
+     ],
+     "n_items": 2,
+     "n_pass": 1
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "C3"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "C4"
+     ],
+     "n_items": 1,
+     "n_pass": 1
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "High Grade"
+     ],
+     "n_items": 2,
+     "n_pass": 0
+    },
+    {
+     "db": "california_schools",
+     "table": "frpm",
+     "cols": [
+      "County Code"
+     ],
+     "n_items": 1,
+     "n_pass": 0
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "SOC"
+     ],
+     "n_items": 5,
+     "n_pass": 0
+    },
+    {
+     "db": "california_schools",
+     "table": "schools",
+     "cols": [
+      "AdmFName3"
+     ],
+     "n_items": 1,
+     "n_pass": 0
+    },
+    {
+     "db": "formula_1",
+     "table": "results",
+     "cols": [
+      "rank"
+     ],
+     "n_items": 6,
+     "n_pass": 0
+    },
+    {
+     "db": "formula_1",
+     "table": "results",
+     "cols": [
+      "laps"
+     ],
+     "n_items": 2,
+     "n_pass": 0
+    },
+    {
+     "db": "formula_1",
+     "table": "results",
+     "cols": [
+      "grid"
+     ],
+     "n_items": 1,
+     "n_pass": 0
+    },
+    {
+     "db": "superhero",
+     "table": "alignment",
+     "cols": [
+      "alignment"
+     ],
+     "n_items": 12,
+     "n_pass": 0
+    },
+    {
+     "db": "superhero",
+     "table": "colour",
+     "cols": [
+      "colour"
+     ],
+     "n_items": 26,
+     "n_pass": 0
+    },
+    {
+     "db": "superhero",
+     "table": "gender",
+     "cols": [
+      "gender"
+     ],
+     "n_items": 15,
+     "n_pass": 0
+    },
+    {
+     "db": "superhero",
+     "table": "race",
+     "cols": [
+      "race"
+     ],
+     "n_items": 16,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "Thrombosis"
+     ],
+     "n_items": 9,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "aCL IgM"
+     ],
+     "n_items": 3,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Examination",
+     "cols": [
+      "aCL IgG"
+     ],
+     "n_items": 3,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "UA"
+     ],
+     "n_items": 7,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "TP"
+     ],
+     "n_items": 6,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "CRE"
+     ],
+     "n_items": 6,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "PT"
+     ],
+     "n_items": 4,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "RBC"
+     ],
+     "n_items": 3,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "U-PRO"
+     ],
+     "n_items": 3,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "HGB"
+     ],
+     "n_items": 3,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "DNA"
+     ],
+     "n_items": 2,
+     "n_pass": 0
+    },
+    {
+     "db": "thrombosis_prediction",
+     "table": "Laboratory",
+     "cols": [
+      "UN"
+     ],
+     "n_items": 2,
+     "n_pass": 0
+    }
+   ]
+  }
+ },
+ "main_experiment": {
+  "paper_set": {
+   "items": 610,
+   "ops": 90,
+   "events": 61,
+   "events_v13_triplet": 58,
+   "dbs": 11,
+   "by_evo": {
+    "rename": 96,
+    "rename_hard": 90,
+    "rename_medium": 90,
+    "merge_col": 230,
+    "split_col": 104
+   }
+  },
+  "segment_set": {
+   "items": 334,
+   "ops": 15,
+   "events": 10,
+   "dbs": 5
+  },
+  "note": "主实验 610 条 / 90 op / 61 事件 / 11 库；其中段位相关（合并+拆分）334 条 / 15 op / 10 事件 / 5 库。扩充事件集只用于事件级复核，不与主实验条目合并计算，也不作为主实验的分母。"
+ }
+}

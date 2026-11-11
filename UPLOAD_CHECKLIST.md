@@ -38,7 +38,7 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 
        git init
        git add .
-       git commit -m "Reproduction materials v11 (15-table main text + 34-table supplement)"
+       git commit -m "Reproduction materials v1.0"
        git remote add origin [GITHUB_REPOSITORY_URL]
        git branch -M main
        git push -u origin main
@@ -81,7 +81,7 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 - [x] `DAS.md`：STATUS 改已归档，替换仓库名与 DOI
 - [x] `UPLOAD_CHECKLIST.md`：仓库地址与状态
 - [x] 投稿信第四段：改为「已归档于 DOI」
-- [x] 章外文档表 9-2 状态改「已完成」、表 9-3 的 `[repository DOI]` 替换
+- [x] 标题页与正文的数据可用性声明改为「已归档于 DOI」
 - [x] 重新生成 `摘要_标题_贡献点_结论_v11.docx` 与 `公开材料包_v11.zip`
 
 ## Step 5  上传最终包并 Publish（本人）
@@ -103,11 +103,11 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 
 - [ ] DOI 链接可公开访问，且无需登录即可下载。
 - [ ] Zenodo record 中可见 zip / 文件列表与 `MANIFEST.json`。
-- [ ] record 里的 DOI == CITATION.cff 的 doi == DAS 的 DOI == 表 9-3 的 DOI。
+- [ ] record 里的 DOI == CITATION.cff 的 doi == DAS 的 DOI == 正文声明的 DOI。
 - [ ] 稿件正文的「补充材料表 S-M」与公开包中的补充材料文档一致。
-- [ ] DAS、投稿信、表 9-2、表 9-3 四处表述完全一致（都写「已归档」）。
+- [ ] DAS、投稿信、标题页、正文声明四处表述完全一致（都写「已归档」）。
 - [ ] 若归档最终未完成，DAS 改为「可经合理请求获取」，并删除所有已发布措辞。
 
 ---
 
-当前状态（2026-11-11）：Step 1 本地准备已完成；Step 0 / 2–6 **均未执行**，GitHub 仓库与 Zenodo DOI 尚不存在。稿件中一切「已公开 / released artefact / DAS is included」措辞均已删除，不要恢复。
+当前状态（2026-11-11）：DOI 已预留 = 10.5281/zenodo.24123813（status=reserved）；Step 4 回填已完成，尚待 Step 5 上传并 Publish，之后把 status 改为 deposited。

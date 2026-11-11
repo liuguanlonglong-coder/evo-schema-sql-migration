@@ -1,0 +1,37 @@
+{
+ "version": "gold-independence-v3",
+ "merge": {
+  "n": 230,
+  "identical": 230,
+  "different": 0,
+  "rewrite_failed": 0,
+  "identical_pct": 100.0,
+  "inserted_char_share_median": 38.6,
+  "examples": []
+ },
+ "split": {
+  "n": 104,
+  "identical": 104,
+  "different": 0,
+  "rewrite_failed": 0,
+  "identical_pct": 100.0,
+  "inserted_char_share_median": 14.3,
+  "examples": []
+ },
+ "ablation": {
+  "n_pairs": 230,
+  "c3mp_literal": {
+   "k": 183,
+   "rate": 79.6
+  },
+  "c3mp_nat": {
+   "k": 149,
+   "rate": 64.8
+  },
+  "delta_pt": 14.8,
+  "only_literal": 38,
+  "only_natural": 4,
+  "mcnemar_p": 6e-08,
+  "note": "同一批题、同一模型、同一提示骨架，只把「可复制的段位表达式」换成等价自然语言描述；因此差值度量的是表达形式，而非信息量。"
+ }
+}

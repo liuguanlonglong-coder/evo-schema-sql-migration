@@ -1,0 +1,82 @@
+{
+ "version": "ext-eval-v2",
+ "task": "merge_col",
+ "n_items": 479,
+ "conditions": {
+  "c1": {
+   "n": 479,
+   "EX": 22,
+   "rate": 4.6,
+   "by_outcome": {
+    "SILENT": 343,
+    "EX": 22,
+    "ERROR": 2,
+    "ABSTAIN": 112
+   },
+   "events": 25
+  },
+  "c2": {
+   "n": 479,
+   "EX": 41,
+   "rate": 8.6,
+   "by_outcome": {
+    "EX": 41,
+    "ABSTAIN": 233,
+    "SILENT": 203,
+    "ERROR": 2
+   },
+   "events": 25
+  },
+  "c3m": {
+   "n": 479,
+   "EX": 35,
+   "rate": 7.3,
+   "by_outcome": {
+    "SILENT": 431,
+    "EX": 35,
+    "ERROR": 7,
+    "ABSTAIN": 6
+   },
+   "events": 25
+  },
+  "c3mp": {
+   "n": 479,
+   "EX": 437,
+   "rate": 91.2,
+   "by_outcome": {
+    "EX": 437,
+    "SILENT": 39,
+    "ABSTAIN": 3
+   },
+   "events": 25
+  }
+ },
+ "paired_by_event": {
+  "c3mp-c3m": {
+   "pos_events": 23,
+   "neg_events": 0,
+   "tie": 0,
+   "n_events": 23,
+   "p": 2.4e-07
+  },
+  "c3m-c2": {
+   "pos_events": 6,
+   "neg_events": 9,
+   "tie": 1,
+   "n_events": 16,
+   "p": 0.60723877
+  },
+  "c2-c1": {
+   "pos_events": 10,
+   "neg_events": 1,
+   "tie": 1,
+   "n_events": 12,
+   "p": 0.01171875
+  }
+ },
+ "provenance": {
+  "note": "第 22 轮修复 m1_ext.py 的 EVO_DIR 注入缺陷后只重跑 c3mp；c1/c2/c3m 不读段位谱系，不受该缺陷影响，沿用第 20 轮产物。",
+  "c3mp_rerun": "results/ext_eval_merge_col.jsonl（479 条，2026-11-11）",
+  "superseded": "results/ext_eval_merge_col_v1_wrongtable.json（44.9%，其中 18/28 事件注入了另一张表的段位表达式）"
+ }
+}

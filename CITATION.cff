@@ -1,22 +1,28 @@
 cff-version: 1.2.0
 message: "If you use these materials, please cite both this archive and the associated article."
-title: "Reproduction materials: segment-level schema lineage for historical SQL migration"
+title: "Reproduction materials for: Schema Lineage Granularity for Historical SQL Migration under Schema Evolution"
 abstract: >-
-  Per-item outputs, evolution manifests, prompts, statistical routines, boundary probes
-  and the full 49-table chapter together with its 15-table main text and 34-table
-  supplementary material, supporting a controlled study of schema-lineage granularity
-  in historical SQL migration on BIRD dev/train databases.
+  Per-item judge outputs, evolution manifests, prompt specifications, statistical
+  routines, boundary probes and the scripts that generate them, supporting a controlled
+  study of schema-lineage granularity for historical SQL migration on BIRD dev/train
+  databases (610 controlled items over 11 databases; column-level lineage versus
+  segment-level expression lineage under a fixed deterministic rewriter). The manuscript
+  itself (4 main-text tables, 9 figures) and its 45 supplementary tables (Table S-1 to
+  Table S-45, published as Online Resource 1 with the article) are NOT included in this
+  archive; the archive holds the data, scripts and statistical products needed to
+  recompute every reported number.
 type: dataset
 authors:
-  - family-names: "[AUTHOR_FAMILY_NAME]"
-    given-names: "[AUTHOR_GIVEN_NAME]"
-    email: "liuguanlonglong@gmail.com"
-version: "v11-slim"
+  - family-names: "Liu"
+    given-names: "Guanlong"
+    affiliation: "Department of Information Engineering, Linyi Vocational University of Science and Technology, Linyi, Shandong 276025, China"
+    email: "liuguanlong@lyvust.edu.cn"
+version: "v1.0"
 date-released: "[YYYY-MM-DD]"
-doi: "[REPOSITORY_DOI]"
+doi: "10.5281/zenodo.24123813"
 license: "CC-BY-4.0"
-repository-code: "[GITHUB_REPOSITORY_URL]"
-url: "[ZENODO_RECORD_URL]"
+repository-code: "https://github.com/liuguanlonglong-coder/evo-schema-sql-migration"
+url: "https://zenodo.org/records/24123813"
 keywords:
   - schema evolution
   - schema lineage
@@ -25,4 +31,4 @@ keywords:
   - SQLite
   - reproducibility
 notes: >-
-  Square-bracketed fields are placeholders and MUST be replaced before the record is made public. BIRD database files are not redistributed here; obtain them from the official BIRD release under its original licence.
+  DOI reserved; only date-released remains a placeholder and is filled on publication. BIRD database files are not redistributed here; obtain them from the official BIRD release under its original licence.

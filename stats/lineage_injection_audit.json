@@ -1,0 +1,330 @@
+{
+ "version": "lineage-injection-audit-v1",
+ "n_events": 25,
+ "n_events_mismatched_v1": 15,
+ "n_items_mismatched_v1": 223,
+ "n_items_total": 502,
+ "events": [
+  {
+   "tag": "thrombosis_prediction__Patient__merge_col",
+   "db": "thrombosis_prediction",
+   "table": "Patient",
+   "items": 66,
+   "table_v1": [
+    "Patient"
+   ],
+   "table_v2": [
+    "Patient"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "formula_1__drivers__merge_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "items": 54,
+   "table_v1": [
+    "drivers"
+   ],
+   "table_v2": [
+    "drivers"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "student_club__event__merge_col",
+   "db": "student_club",
+   "table": "event",
+   "items": 49,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "event"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "student_club__member__merge_col",
+   "db": "student_club",
+   "table": "member",
+   "items": 49,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "member"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "financial__district__merge_col",
+   "db": "financial",
+   "table": "district",
+   "items": 37,
+   "table_v1": [
+    "district"
+   ],
+   "table_v2": [
+    "district"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "student_club__major__merge_col",
+   "db": "student_club",
+   "table": "major",
+   "items": 31,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "major"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "financial__client__merge_col",
+   "db": "financial",
+   "table": "client",
+   "items": 29,
+   "table_v1": [
+    "district"
+   ],
+   "table_v2": [
+    "client"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "student_club__member__merge_col_p1",
+   "db": "student_club",
+   "table": "member",
+   "items": 28,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "member"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "california_schools__schools__merge_col",
+   "db": "california_schools",
+   "table": "schools",
+   "items": 24,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "schools"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "card_games__cards__merge_col",
+   "db": "card_games",
+   "table": "cards",
+   "items": 22,
+   "table_v1": [],
+   "table_v2": [
+    "cards"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "student_club__budget__merge_col",
+   "db": "student_club",
+   "table": "budget",
+   "items": 22,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "budget"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "formula_1__circuits__merge_col",
+   "db": "formula_1",
+   "table": "circuits",
+   "items": 18,
+   "table_v1": [
+    "drivers"
+   ],
+   "table_v2": [
+    "circuits"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "student_club__zip_code__merge_col",
+   "db": "student_club",
+   "table": "zip_code",
+   "items": 13,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "zip_code"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "california_schools__schools__merge_col_p1",
+   "db": "california_schools",
+   "table": "schools",
+   "items": 10,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "schools"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "card_games__cards__merge_col_p1",
+   "db": "card_games",
+   "table": "cards",
+   "items": 9,
+   "table_v1": [],
+   "table_v2": [
+    "cards"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "student_club__member__merge_col_p2",
+   "db": "student_club",
+   "table": "member",
+   "items": 9,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "member"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "california_schools__frpm__merge_col",
+   "db": "california_schools",
+   "table": "frpm",
+   "items": 8,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "frpm"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "student_club__income__merge_col",
+   "db": "student_club",
+   "table": "income",
+   "items": 7,
+   "table_v1": [
+    "member"
+   ],
+   "table_v2": [
+    "income"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "california_schools__frpm__merge_col_p1",
+   "db": "california_schools",
+   "table": "frpm",
+   "items": 5,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "frpm"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "card_games__cards__merge_col_p2",
+   "db": "card_games",
+   "table": "cards",
+   "items": 4,
+   "table_v1": [],
+   "table_v2": [
+    "cards"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "california_schools__frpm__merge_col_p2",
+   "db": "california_schools",
+   "table": "frpm",
+   "items": 3,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "frpm"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "california_schools__frpm__merge_col_p3",
+   "db": "california_schools",
+   "table": "frpm",
+   "items": 2,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "frpm"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "california_schools__satscores__merge_col",
+   "db": "california_schools",
+   "table": "satscores",
+   "items": 1,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "satscores"
+   ],
+   "fixed": true
+  },
+  {
+   "tag": "california_schools__schools__merge_col_p2",
+   "db": "california_schools",
+   "table": "schools",
+   "items": 1,
+   "table_v1": [
+    "schools"
+   ],
+   "table_v2": [
+    "schools"
+   ],
+   "fixed": false
+  },
+  {
+   "tag": "financial__district__merge_col_p1",
+   "db": "financial",
+   "table": "district",
+   "items": 1,
+   "table_v1": [
+    "district"
+   ],
+   "table_v2": [
+    "district"
+   ],
+   "fixed": false
+  }
+ ],
+ "n_const_mismatched": 18,
+ "const_note": "28 个构造事件中 18 个受影响；其中 3 个构造后无题（card_games p3/p4、financial district p2），故有题事件中受影响者为 15 个。"
+}

@@ -1,0 +1,328 @@
+{
+ "version": "audit-gap-v3",
+ "note": "两集均为 DeepSeek-V4.1-Flash 逐条判定；主实验另一版为 V3.2（79.6%），同模型对比如本文件所示。",
+ "overall": {
+  "main": {
+   "ex": 202,
+   "n": 230,
+   "rate": 87.8
+  },
+  "ext": {
+   "ex": 437,
+   "n": 479,
+   "rate": 91.2
+  }
+ },
+ "by_db": {
+  "main": [
+   {
+    "stratum": "california_schools",
+    "n": 24,
+    "ex": 22,
+    "rate": 91.7
+   },
+   {
+    "stratum": "financial",
+    "n": 37,
+    "ex": 35,
+    "rate": 94.6
+   },
+   {
+    "stratum": "formula_1",
+    "n": 54,
+    "ex": 40,
+    "rate": 74.1
+   },
+   {
+    "stratum": "student_club",
+    "n": 49,
+    "ex": 46,
+    "rate": 93.9
+   },
+   {
+    "stratum": "thrombosis_prediction",
+    "n": 66,
+    "ex": 59,
+    "rate": 89.4
+   }
+  ],
+  "ext": [
+   {
+    "stratum": "california_schools",
+    "n": 47,
+    "ex": 43,
+    "rate": 91.5
+   },
+   {
+    "stratum": "card_games",
+    "n": 31,
+    "ex": 28,
+    "rate": 90.3
+   },
+   {
+    "stratum": "financial",
+    "n": 66,
+    "ex": 63,
+    "rate": 95.5
+   },
+   {
+    "stratum": "formula_1",
+    "n": 72,
+    "ex": 58,
+    "rate": 80.6
+   },
+   {
+    "stratum": "student_club",
+    "n": 197,
+    "ex": 186,
+    "rate": 94.4
+   },
+   {
+    "stratum": "thrombosis_prediction",
+    "n": 66,
+    "ex": 59,
+    "rate": 89.4
+   }
+  ]
+ },
+ "by_ref": {
+  "main": [
+   {
+    "stratum": "5-19",
+    "n": 2,
+    "ex": 2,
+    "rate": 100.0
+   },
+   {
+    "stratum": "20+",
+    "n": 228,
+    "ex": 200,
+    "rate": 87.7
+   }
+  ],
+  "ext": [
+   {
+    "stratum": "1-4",
+    "n": 29,
+    "ex": 24,
+    "rate": 82.8
+   },
+   {
+    "stratum": "5-19",
+    "n": 108,
+    "ex": 102,
+    "rate": 94.4
+   },
+   {
+    "stratum": "20+",
+    "n": 342,
+    "ex": 311,
+    "rate": 90.9
+   }
+  ]
+ },
+ "by_width": {
+  "main": [
+   {
+    "stratum": "<10",
+    "n": 169,
+    "ex": 145,
+    "rate": 85.8
+   },
+   {
+    "stratum": "10-19",
+    "n": 37,
+    "ex": 35,
+    "rate": 94.6
+   },
+   {
+    "stratum": "20+",
+    "n": 24,
+    "ex": 22,
+    "rate": 91.7
+   }
+  ],
+  "ext": [
+   {
+    "stratum": "<10",
+    "n": 364,
+    "ex": 331,
+    "rate": 90.9
+   },
+   {
+    "stratum": "10-19",
+    "n": 38,
+    "ex": 36,
+    "rate": 94.7
+   },
+   {
+    "stratum": "20+",
+    "n": 77,
+    "ex": 70,
+    "rate": 90.9
+   }
+  ]
+ },
+ "by_join": {
+  "main": [
+   {
+    "stratum": "0",
+    "n": 35,
+    "ex": 33,
+    "rate": 94.3
+   },
+   {
+    "stratum": "1",
+    "n": 143,
+    "ex": 124,
+    "rate": 86.7
+   },
+   {
+    "stratum": "2+",
+    "n": 52,
+    "ex": 45,
+    "rate": 86.5
+   }
+  ],
+  "ext": [
+   {
+    "stratum": "0",
+    "n": 85,
+    "ex": 82,
+    "rate": 96.5
+   },
+   {
+    "stratum": "1",
+    "n": 294,
+    "ex": 262,
+    "rate": 89.1
+   },
+   {
+    "stratum": "2+",
+    "n": 100,
+    "ex": 93,
+    "rate": 93.0
+   }
+  ]
+ },
+ "by_seg": {
+  "main": [
+   {
+    "stratum": 0,
+    "n": 199,
+    "ex": 176,
+    "rate": 88.4
+   },
+   {
+    "stratum": 1,
+    "n": 31,
+    "ex": 26,
+    "rate": 83.9
+   }
+  ],
+  "ext": [
+   {
+    "stratum": 0,
+    "n": 390,
+    "ex": 354,
+    "rate": 90.8
+   },
+   {
+    "stratum": 1,
+    "n": 89,
+    "ex": 83,
+    "rate": 93.3
+   }
+  ]
+ },
+ "by_group": {
+  "main": [
+   {
+    "stratum": false,
+    "n": 216,
+    "ex": 188,
+    "rate": 87.0
+   },
+   {
+    "stratum": true,
+    "n": 14,
+    "ex": 14,
+    "rate": 100.0
+   }
+  ],
+  "ext": [
+   {
+    "stratum": false,
+    "n": 449,
+    "ex": 411,
+    "rate": 91.5
+   },
+   {
+    "stratum": true,
+    "n": 30,
+    "ex": 26,
+    "rate": 86.7
+   }
+  ]
+ },
+ "by_subq": {
+  "main": [
+   {
+    "stratum": false,
+    "n": 223,
+    "ex": 197,
+    "rate": 88.3
+   },
+   {
+    "stratum": true,
+    "n": 7,
+    "ex": 5,
+    "rate": 71.4
+   }
+  ],
+  "ext": [
+   {
+    "stratum": false,
+    "n": 462,
+    "ex": 422,
+    "rate": 91.3
+   },
+   {
+    "stratum": true,
+    "n": 17,
+    "ex": 15,
+    "rate": 88.2
+   }
+  ]
+ },
+ "standardization": {
+  "by_db": {
+   "standardized_rate": 89.6,
+   "weight_mass": 1.0,
+   "strata_used": 5,
+   "strata_total": 6,
+   "ext_items_in_overlapping_strata": 448
+  },
+  "by_db_ref": {
+   "standardized_rate": 88.7,
+   "weight_mass": 1.0,
+   "strata_used": 6,
+   "strata_total": 14,
+   "ext_items_in_overlapping_strata": 354
+  },
+  "by_db_ref_width": {
+   "standardized_rate": 88.8,
+   "weight_mass": 1.0,
+   "strata_used": 6,
+   "strata_total": 16,
+   "ext_items_in_overlapping_strata": 331
+  },
+  "main_to_ext_by_ref": {
+   "standardized_rate": 90.7,
+   "weight_mass": 0.939,
+   "strata_used": 2,
+   "strata_total": 2,
+   "ext_items_in_overlapping_strata": 230
+  }
+ }
+}

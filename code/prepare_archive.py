@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""为 Applied Intelligence 的 Data Availability Statement 准备公开归档元数据。
+"""为 Programming and Computer Software (PCS) 投稿准备公开归档元数据。
 
 产出（写入 公开材料包/ 并在工作目录生成上传用 zip）：
   CITATION.cff          引用元数据
@@ -22,7 +22,10 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 os.chdir(BASE)
 OUT = "公开材料包"
 ZIP = "公开材料包_v11.zip"
-ACCOUNT = "liuguanlonglong@gmail.com"
+ACCOUNT = "liuguanlonglong@gmail.com"        # GitHub / Zenodo 注册邮箱（仅清单里提示用）
+AUTHOR_EMAIL = "liuguanlong@lyvust.edu.cn"   # 稿件与 CITATION.cff 的通讯邮箱
+AUTHOR_AFFIL = ("Department of Information Engineering, Linyi Vocational University "
+                "of Science and Technology, Linyi, Shandong 276025, China")
 INFO = "archive_info.json"
 
 # archive_info.json 由 fill_doi.py 在作者拿到 Zenodo 预留 DOI 后写入。
@@ -62,39 +65,58 @@ for h in hits[:10]:
 # ---------------------------------------------------------------- 2. CITATION.cff
 # status=reserved 时 DOI 已可写入文件（Zenodo 允许预留 DOI 后回填再上传），
 # 但 record 尚未 Publish，故 date-released / url 仍用占位；deposited 时全部落定。
-_author_family = AI.get("author_family", "[AUTHOR_FAMILY_NAME]")
-_author_given = AI.get("author_given", "[AUTHOR_GIVEN_NAME]")
+_author_family = AI.get("author_family", "Liu")
+_author_given = AI.get("author_given", "Guanlong")
+_author_affil = AI.get("author_affiliation", AUTHOR_AFFIL)
 _date_released = AI.get("date_released", "[YYYY-MM-DD]") if AI.get("status") == "deposited" else "[YYYY-MM-DD]"
 _doi = AI.get("doi", "[REPOSITORY_DOI]")
-_repo_url = AI.get("repo_url", "[GITHUB_REPOSITORY_URL]")
-_record_url = AI.get("record_url", "[ZENODO_RECORD_URL]") if AI.get("status") == "deposited" else "[ZENODO_RECORD_URL]"
-_cff_notes = ("Metadata are complete. BIRD database files are not redistributed here; "
-              "obtain them from the official BIRD release under its original licence."
-              if DEPOSITED else
-              "Square-bracketed fields are placeholders and MUST be replaced before the record "
+_repo_url = AI.get("repo_url") or ""
+# record 页面地址可由 DOI 直接推导（Zenodo 的 DOI 末段就是 record id），
+# 不必等 Publish：发布后该地址即生效，先写上可以少一个占位符。
+_record_url = AI.get("record_url") or ""
+if not _record_url and _doi != "[REPOSITORY_DOI]":
+    _m = re.match(r"10\.5281/zenodo\.(\d+)$", str(_doi).strip())
+    if _m:
+        _record_url = f"https://zenodo.org/records/{_m.group(1)}"
+_cff_notes = (
+    "Metadata are complete. BIRD database files are not redistributed here; "
+    "obtain them from the official BIRD release under its original licence."
+    if AI.get("status") == "deposited" else
+    "DOI reserved; only date-released remains a placeholder and is filled on publication. "
+    "BIRD database files are not redistributed here; obtain them from the official BIRD "
+    "release under its original licence."
+    if DEPOSITED else
+    "Square-bracketed fields are placeholders and MUST be replaced before the record "
               "is made public. BIRD database files are not redistributed here; obtain them from "
               "the official BIRD release under its original licence.")
 
+_repo_line = f'repository-code: "{_repo_url}"\n' if _repo_url else ""
+_url_line = f'url: "{_record_url}"\n' if _record_url else ""
+
 citation = f"""cff-version: 1.2.0
 message: "If you use these materials, please cite both this archive and the associated article."
-title: "Reproduction materials: segment-level schema lineage for historical SQL migration"
+title: "Reproduction materials for: Schema Lineage Granularity for Historical SQL Migration under Schema Evolution"
 abstract: >-
-  Per-item outputs, evolution manifests, prompts, statistical routines, boundary probes
-  and the full 49-table chapter together with its 15-table main text and 34-table
-  supplementary material, supporting a controlled study of schema-lineage granularity
-  in historical SQL migration on BIRD dev/train databases.
+  Per-item judge outputs, evolution manifests, prompt specifications, statistical
+  routines, boundary probes and the scripts that generate them, supporting a controlled
+  study of schema-lineage granularity for historical SQL migration on BIRD dev/train
+  databases (610 controlled items over 11 databases; column-level lineage versus
+  segment-level expression lineage under a fixed deterministic rewriter). The manuscript
+  itself (4 main-text tables, 9 figures) and its 45 supplementary tables (Table S-1 to
+  Table S-45, published as Online Resource 1 with the article) are NOT included in this
+  archive; the archive holds the data, scripts and statistical products needed to
+  recompute every reported number.
 type: dataset
 authors:
   - family-names: "{_author_family}"
     given-names: "{_author_given}"
-    email: "{ACCOUNT}"
-version: "v11-slim"
+    affiliation: "{_author_affil}"
+    email: "{AUTHOR_EMAIL}"
+version: "v1.0"
 date-released: "{_date_released}"
 doi: "{_doi}"
 license: "CC-BY-4.0"
-repository-code: "{_repo_url}"
-url: "{_record_url}"
-keywords:
+{_repo_line}{_url_line}keywords:
   - schema evolution
   - schema lineage
   - text-to-SQL
@@ -107,11 +129,11 @@ notes: >-
 open(os.path.join(OUT, "CITATION.cff"), "w", encoding="utf-8").write(citation)
 
 # ---------------------------------------------------------------- 3. LICENSE
-lic = """License for the reproduction materials (v11)
+lic = """License for the reproduction materials (v1.0)
 
 Unless stated otherwise, all items in this archive -- including items.csv,
-outputs.jsonl, prompts.md, evolution_rules.md, stats/*.json, the chapter
-documents, DAS.md and UPLOAD_CHECKLIST.md -- are made available under the
+outputs.jsonl, prompts.md, evolution_rules.md, stats/*.json, DAS.md and
+UPLOAD_CHECKLIST.md -- are made available under the
 Creative Commons Attribution 4.0 International licence (CC BY 4.0).
 You may share and adapt them provided you give appropriate credit.
 
@@ -141,7 +163,7 @@ open(os.path.join(OUT, "LICENSE"), "w", encoding="utf-8").write(lic)
 if DEPOSITED and AI.get("status") == "deposited":
     _das_status = ("STATUS: **archive deposited**. The Zenodo record is published and the "
                    "DOI below is live. This English statement may be pasted into the manuscript.")
-    _das_cn = ("归档已完成。下方英文声明可直接写入投稿稿；投稿信第四段、表 9-2、表 9-3 "
+    _das_cn = ("归档已完成。下方英文声明可直接写入投稿稿；投稿信、标题页与正文数据可用性声明 "
                "由 make_front_matter_v11.py 读取同一份 archive_info.json 自动生成，口径一致。")
 elif DEPOSITED:  # reserved：DOI 已预留，record 尚未 Publish
     _das_status = ("STATUS: **DOI reserved, record NOT yet published**. The DOI has been "
@@ -151,7 +173,7 @@ elif DEPOSITED:  # reserved：DOI 已预留，record 尚未 Publish
                    "Run fill_doi.py --status deposited after publishing.")
     _das_cn = (f"DOI 已预留（{AI.get('doi')}），但 Zenodo record 尚未 Publish。\n"
                "CITATION.cff 已写入真实 DOI（供上传使用），稿件中的 DAS 正文、投稿信、\n"
-               "表 9-2、表 9-3 仍保持「将归档」口径，这是刻意的，不是漏改。\n"
+               "标题页与正文声明仍保持「将归档」口径，这是刻意的，不是漏改。\n"
                "Publish 之后运行 python fill_doi.py --status deposited 再一次性切换。\n"
                "**不要先 Publish 再回填文件**——发布后文件与 DOI 都不可修改。")
 else:
@@ -159,8 +181,8 @@ else:
                    "> placeholder. Do NOT paste the English statement below into the manuscript\n"
                    "> before the GitHub repository and Zenodo DOI actually exist. The current\n"
                    "> cover letter therefore says the deposit will be completed prior to\n"
-                   "> publication, and Tables 9-2 / 9-3 in the front-matter file are marked\n"
-                   "> \"not completed\".")
+                   "> publication, and the data availability statements in the title page\n"
+                   "> and the manuscript are marked \"not completed\".")
     _das_cn = ("归档尚未完成。下方英文声明不能在投稿稿中使用。\n"
                "注意顺序：Zenodo 允许在草稿阶段「预留 DOI」，拿到 DOI 后先回填本文件、\n"
                "CITATION.cff 与稿件，重新打包，再上传最终 zip 并 Publish。\n"
@@ -178,7 +200,7 @@ das = f"""# Data Availability Statement (DAS) -- template
 
 ## 中文说明（给作者）
 
-Applied Intelligence 对原创研究要求提供 Data Availability Statement。
+Programming and Computer Software（PCS）要求提供 Data Availability Statement。
 本声明要说明三件事：材料在哪、如何取得、有什么限制。
 公开包 `公开材料包/` 内含逐题清单与输出、提示与演化规则、全部统计产物、
 生成脚本本体、环境说明与 sha1 清单，**不含 BIRD 数据库文件**（第三方数据，
@@ -187,8 +209,8 @@ Applied Intelligence 对原创研究要求提供 Data Availability Statement。
 {_das_cn}
 
 归档落地需同步修改的六处（建议用 `python fill_doi.py` 一次完成，不要手改）：
-`CITATION.cff`、`DAS.md`、`UPLOAD_CHECKLIST.md`、投稿信第四段、
-章外文档表 9-2 与表 9-3。
+`CITATION.cff`、`DAS.md`、`UPLOAD_CHECKLIST.md`、投稿信，以及投稿标题页与正文的
+数据可用性声明。
 
 ## English statement (paste into the manuscript AFTER deposit)
 
@@ -196,9 +218,9 @@ Data availability statement: The datasets generated and analysed during the
 current study, together with all scripts, per-item outputs, statistical
 routines, prompt specifications and the environment specification, are
 available in the {_das_repo} repository at {_das_doi}.
-The complete 49-table version of the results chapter and the 34-table
-supplementary material referenced by the main text are included in the
-same record. The source SQLite databases are drawn from the publicly
+The supplementary tables referenced by the manuscript (Table S-1 to Table S-45)
+are provided as Online Resource 1 accompanying the article. The source SQLite
+databases are drawn from the publicly
 available BIRD benchmark (dev and train splits) and are not redistributed
 here; they must be obtained from the official BIRD release under its
 original licence. No new human-subject data were collected.
@@ -212,13 +234,13 @@ original licence. No new human-subject data were collected.
 | `[GITHUB_REPOSITORY_URL]` | 仓库地址 | 建库后 |
 | `[ZENODO_RECORD_URL]` | Zenodo record 页面 | Publish 后 |
 | `[YYYY-MM-DD]` | 发布日期 | Publish 当天 |
-| `[AUTHOR_FAMILY_NAME]` / `[AUTHOR_GIVEN_NAME]` | 作者姓名 | 提交前 |
+| 作者姓名 / 单位 / 邮箱 | 已在 CITATION.cff 填实（Liu Guanlong，信息工程系，`liuguanlong@lyvust.edu.cn`）；`fill_doi.py --author-family/--author-given` 可覆盖 | 已填 |
 
 ## 与稿件内部一致性的约束
 
 1. 投稿信第四段目前写的是「材料包已整理，将在发表前公开归档」，归档完成后
    改为「已归档于 [REPOSITORY_DOI]」。
-2. 章外文档表 9-2 状态由「未完成」改为「已完成」；表 9-3 的
+2. 标题页与正文的数据可用性声明由「未完成」改为「已完成」，
    `[repository DOI]` 占位符替换为真实 DOI。
 3. 若归档最终未完成，DAS 必须改写为「材料可经合理请求向通讯作者获取」，
    且不得声称已有公开链接 —— 这是审稿人已经点名过的真实性红线。
@@ -277,7 +299,7 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 
        git init
        git add .
-       git commit -m "Reproduction materials v11 (15-table main text + 34-table supplement)"
+       git commit -m "Reproduction materials v1.0"
        git remote add origin [GITHUB_REPOSITORY_URL]
        git branch -M main
        git push -u origin main
@@ -320,7 +342,7 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 - [x] `DAS.md`：STATUS 改已归档，替换仓库名与 DOI
 - [x] `UPLOAD_CHECKLIST.md`：仓库地址与状态
 - [x] 投稿信第四段：改为「已归档于 DOI」
-- [x] 章外文档表 9-2 状态改「已完成」、表 9-3 的 `[repository DOI]` 替换
+- [x] 标题页与正文的数据可用性声明改为「已归档于 DOI」
 - [x] 重新生成 `摘要_标题_贡献点_结论_v11.docx` 与 `公开材料包_v11.zip`
 
 ## Step 5  上传最终包并 Publish（本人）
@@ -342,9 +364,9 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 
 - [ ] DOI 链接可公开访问，且无需登录即可下载。
 - [ ] Zenodo record 中可见 zip / 文件列表与 `MANIFEST.json`。
-- [ ] record 里的 DOI == CITATION.cff 的 doi == DAS 的 DOI == 表 9-3 的 DOI。
+- [ ] record 里的 DOI == CITATION.cff 的 doi == DAS 的 DOI == 正文声明的 DOI。
 - [ ] 稿件正文的「补充材料表 S-M」与公开包中的补充材料文档一致。
-- [ ] DAS、投稿信、表 9-2、表 9-3 四处表述完全一致（都写「已归档」）。
+- [ ] DAS、投稿信、标题页、正文声明四处表述完全一致（都写「已归档」）。
 - [ ] 若归档最终未完成，DAS 改为「可经合理请求获取」，并删除所有已发布措辞。
 
 ---
@@ -353,13 +375,41 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 """
 open(os.path.join(OUT, "UPLOAD_CHECKLIST.md"), "w", encoding="utf-8").write(checklist)
 
+# ---------------------------------------------------------------- 5b. MANIFEST 增量刷新
+# CITATION.cff / LICENSE / DAS.md / UPLOAD_CHECKLIST.md 在本脚本里晚于
+# pack_materials.py 写 MANIFEST，不刷新的话这四条的 sha1 与字节数会与实际文件不符，
+# 而 MANIFEST 正是用来核对「包内文件未被改动」的，过期即失去意义。
+import hashlib
+
+
+def _sha1_file(path):
+    h = hashlib.sha1()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+_mpath = os.path.join(OUT, "MANIFEST.json")
+if os.path.exists(_mpath):
+    _man = json.load(open(_mpath, encoding="utf-8"))
+    _files = _man.setdefault("files", {})
+    for _n in ("CITATION.cff", "LICENSE", "DAS.md", "UPLOAD_CHECKLIST.md"):
+        _p = os.path.join(OUT, _n)
+        if os.path.exists(_p):
+            _files[_n] = {"sha1": _sha1_file(_p), "bytes": os.path.getsize(_p)}
+    json.dump(_man, open(_mpath, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("MANIFEST.json: 已刷新 4 项归档元数据的 sha1")
+
 # ---------------------------------------------------------------- 6. zip
 with zipfile.ZipFile(ZIP, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
     for root, dirs, fs in os.walk(OUT):
         dirs[:] = [d for d in dirs if d not in ("__pycache__", ".git")]
         for f in fs:
             p = os.path.join(root, f)
-            z.write(p, os.path.relpath(p, "."))
+            # 条目从 OUT 起算：否则每条都带「公开材料包/」这个非 ASCII 前缀，
+            # 解压后多一层中文目录，GitHub / Zenodo 的自动解包也可能乱码
+            z.write(p, os.path.relpath(p, OUT))
 print("归档包:", ZIP, round(os.path.getsize(ZIP) / 1024 / 1024, 2), "MB")
 print("新增文件:", "CITATION.cff / LICENSE / DAS.md / UPLOAD_CHECKLIST.md")
 print("提示: 邮箱不是凭据，Step 0/2-6 需作者本人执行；AI 未登录、未推送、未申请 DOI。")

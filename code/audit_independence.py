@@ -37,7 +37,7 @@ from m1_lineage import gold_by_keys, evaluate  # noqa: E402
 MANIFEST = "data/manifest_v3.jsonl"
 LIN = os.path.join(BASE, "data", "lineage_infer")
 OUT = os.path.join(BASE, "results", "audit_independence.json")
-VERSION = "audit-independence-v1"
+VERSION = "audit-independence-v2"
 
 SEG_EVOS = ("merge_col", "split_col")
 # 论文主实验口径：610 条 = 改名 276 + 合并 230 + 拆分 104
@@ -69,7 +69,10 @@ def event_key(evo, db, table, old, new):
     if evo in SEG_EVOS:
         m = re.search(r"(attr_\d+)", str(new))
         col = m.group(1) if m else str(new)
-        return (db, table.lower(), col)
+        # v2 修正：键必须含 evo。合并与拆分在同一 (库, 表) 上会产出同名新列 attr_001，
+        # 旧键忽略 evo，把两类相反的编码改变并成同一事件（5 库中 3 库中招），
+        # 段位档 10 次事件被塌缩为 7 次，610 集 61 次被塌缩为 58 次。
+        return (evo, db, table.lower(), col)
     if evo.startswith("rename") or evo.startswith("value_shift"):
         return (db, table.lower(), evo)
     return (db, table.lower(), evo, old.lower())
@@ -153,11 +156,24 @@ def section_a(rows):
             pairs610.append((k, ek))
     ops610 = {k for k, _ in pairs610}
     ev610 = {ek for _, ek in pairs610}
+    # 旧三元组键（缺 evo）的事件数，仅供正文说明「上一版报了多少」，不作推断
+    ev610_legacy = set()
+    for r in sub610:
+        for op in r["ops"]:
+            if r["evo_type"] in SEG_EVOS:
+                m = re.search(r"(attr_\d+)", str(op[3]))
+                ev610_legacy.add((r["db_id"], op[1].lower(),
+                                  m.group(1) if m else str(op[3])))
+            elif r["evo_type"].startswith("rename") or r["evo_type"].startswith("value_shift"):
+                ev610_legacy.add((r["db_id"], op[1].lower(), r["evo_type"]))
+            else:
+                ev610_legacy.add((r["db_id"], op[1].lower(), r["evo_type"], op[2].lower()))
     seg610 = [(k, ek) for k, ek in pairs610 if k[0] in SEG_EVOS]
     tot = {
         "items": len(sub610),
         "ops": len(ops610),
         "events": len(ev610),
+        "events_v13_triplet": len(ev610_legacy),
         "dbs": len({r["db_id"] for r in sub610}),
         "by_evo": dict(collections.Counter(r["evo_type"] for r in sub610)),
     }
@@ -309,7 +325,8 @@ def _gold_seg(rows):
 def _seg_event(k, expr):
     """段位档事件键：(db, table, 新列)，新列从表达式里取 attr_xxx。"""
     m = re.search(r"(ATTR_\d+)", _norm(expr))
-    return (k[1], k[2], m.group(1) if m else _norm(expr))
+    # 同 event_key：键必须含 evo，否则合并与拆分的同名新列会被并成一件事
+    return (k[0], k[1], k[2], m.group(1) if m else _norm(expr))
 
 
 def section_d(rows):
@@ -378,7 +395,8 @@ def main():
         "version": VERSION,
         "manifest": MANIFEST,
         "note": ("三层口径并列：条目数(items) / 唯一 op 数(ops) / 独立演化事件数(events)。"
-                 "段位档事件 = (db, table, 新列)；改名档事件 = (db, table, 演化档)。"
+                 "段位档事件 = (演化档, db, table, 新列)；改名档事件 = (db, table, 演化档)。"
+                 "v2 修正：段位档事件键补入 evo，此前缺 evo 会把合并与拆分的同名新列并为一事件。"
                  "事件级成功 = 该事件全部 op 都对（最严）。"
                  "paper_set 取 ids_xm_full.txt(276) + ids_ms.txt(334) = 610 条。"
                  "D 节独立于 evaluate()，直接比段位表达式字符串。"),

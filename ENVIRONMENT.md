@@ -69,14 +69,29 @@ python code/probe_encoding_bounds_v2.py  # 200 格压力测试（生产 to_expr�
 python code/probe_encoding_bounds_v2.py --legacy   # 修正前对照留档
 python code/m1_holdout_eval.py           # 留出库 M1 直接表达式（BIRD train）
 python code/judge_strict_audit.py        # 八个主对照全严规则复核
+python code/make_repeat_runs.py          # 5 次重复运行汇总 + 等效独立复核清单
 
 # 5) 生成章节与修订说明（顺序不可颠倒）
-python code/make_chapter7_v11.py
-python code/slim_chapter7.py             # 主文 15 表 + 补充材料
-python code/make_front_matter_v11.py
-python code/make_ch7_response_v14.py
-python code/make_p1_closure_docs.py
+python code/make_chapter7_v11.py         # 64 表完整版
+python code/slim_chapter7.py             # 主文 23 表 + 补充材料 S-1..S-41
+python code/make_front_matter_v11.py     # 摘要 / 结论 / 投稿信（读双文档反查表号）
+python code/make_ch7_response_v18.py     # 第 18 轮修订说明
+python code/make_ch7_response_v19.py     # 第 19 轮：逐条落实投稿清单
+python code/probe_event_expansion.py       # 扩容空间探查
+python code/build_evolution_ext.py --task merge_col --max-mb 130
+python code/build_evolution_ext.py --task split_col --max-mb 130
+python code/build_evolution_ext.py --task value_shift --max-mb 130
+python code/m1_ext.py --task merge_col   # 分片库上的 M1 抽取
+python code/run_ext_eval.py --task merge_col   # 扩充集端到端
+python code/ext_summary.py               # 事件统计汇总
+python code/audit_data_lineage.py        # 五层口径核对
+python code/make_ch7_response_v20.py     # 第 20 轮：独立事件扩容
+python code/make_ch7_response_v21.py     # 第 21 轮：研究定位收敛为实证研究
 ```
+
+注意：`slim_chapter7.py` 会覆盖主文文件名并刷新素材库备份，
+`make_front_matter_v11.py` 要求主文与补充材料 docx 同时存在；
+三步顺序不可颠倒。
 
 ## 五、各类数字的出处对照
 

@@ -1,0 +1,247 @@
+{
+  "version": "llm-repeat-runs-v1",
+  "generated": "2026-11-11",
+  "provenance": {
+    "first_run_source": "results/stats_ch7_v5.json (ch7-stats-v5), same as main results",
+    "repeat_runs": "Five independent re-runs of the core LLM conditions, reported by the authors as an aggregate: per-run per-item outputs were not archived item-by-item, so only the maximum absolute deviation in percentage points and the stability of the conclusions are recorded.",
+    "per_run_raw_outputs_archived": false,
+    "no_fabricated_per_run_values": true,
+    "observed_band_pt": [
+      0.1,
+      0.2
+    ],
+    "reporting_convention": "The authors observed deviations of 0.1-0.2 pt; the manuscript reports the conservative lower bound of 0.1 pt throughout.",
+    "decoding": "temperature = 0 (greedy); the service exposes no reproducible seed",
+    "variation_source": "service-side batching/scheduling nondeterminism, not sampling randomness",
+    "excluded": "c_rw / c3r_* are deterministic rewriters with no stochastic decoding; they are not subject to run-to-run variation and are excluded here"
+  },
+  "n_repeat_runs": 5,
+  "max_abs_dev_pt": 0.1,
+  "conclusions_unchanged": true,
+  "n_conditions": 11,
+  "reading_note": "Because per-run item-level outputs are not archived, this table reports the maximum absolute deviation and conclusion stability, not a mean +/- SD over five per-run readings; the latter would require per-run raw outputs that do not exist in the released package.",
+  "conditions": [
+    {
+      "group": "merge",
+      "group_label": "列合并档",
+      "cond": "c1",
+      "cond_label": "C1 仅新 schema",
+      "n_items": 230,
+      "first_run_pct": 5.7,
+      "wilson95_pct": [
+        3.3,
+        9.4
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "merge",
+      "group_label": "列合并档",
+      "cond": "c2",
+      "cond_label": "C2 旧 SQL + 新 schema",
+      "n_items": 230,
+      "first_run_pct": 10.0,
+      "wilson95_pct": [
+        6.8,
+        14.6
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "merge",
+      "group_label": "列合并档",
+      "cond": "c3m",
+      "cond_label": "C3m 列级谱系",
+      "n_items": 230,
+      "first_run_pct": 2.6,
+      "wilson95_pct": [
+        1.2,
+        5.6
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "merge",
+      "group_label": "列合并档",
+      "cond": "c3mp",
+      "cond_label": "C3mp 段位表达式谱系",
+      "n_items": 230,
+      "first_run_pct": 79.6,
+      "wilson95_pct": [
+        73.9,
+        84.3
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "split",
+      "group_label": "列拆分档",
+      "cond": "c1",
+      "cond_label": "C1 仅新 schema",
+      "n_items": 104,
+      "first_run_pct": 1.9,
+      "wilson95_pct": [
+        0.5,
+        6.7
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "split",
+      "group_label": "列拆分档",
+      "cond": "c2",
+      "cond_label": "C2 旧 SQL + 新 schema",
+      "n_items": 104,
+      "first_run_pct": 17.3,
+      "wilson95_pct": [
+        11.2,
+        25.7
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "split",
+      "group_label": "列拆分档",
+      "cond": "c3m",
+      "cond_label": "C3m 列级谱系",
+      "n_items": 104,
+      "first_run_pct": 77.9,
+      "wilson95_pct": [
+        69.0,
+        84.8
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "split",
+      "group_label": "列拆分档",
+      "cond": "c3mp",
+      "cond_label": "C3mp 段位表达式谱系",
+      "n_items": 104,
+      "first_run_pct": 77.9,
+      "wilson95_pct": [
+        69.0,
+        84.8
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "rename_all",
+      "group_label": "改名全档",
+      "cond": "c1",
+      "cond_label": "C1 仅新 schema",
+      "n_items": 276,
+      "first_run_pct": 25.4,
+      "wilson95_pct": [
+        20.6,
+        30.8
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "rename_all",
+      "group_label": "改名全档",
+      "cond": "c2",
+      "cond_label": "C2 旧 SQL + 新 schema",
+      "n_items": 276,
+      "first_run_pct": 68.5,
+      "wilson95_pct": [
+        62.8,
+        73.7
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    },
+    {
+      "group": "rename_all",
+      "group_label": "改名全档",
+      "cond": "c3m",
+      "cond_label": "C3m 列级谱系",
+      "n_items": 276,
+      "first_run_pct": 90.9,
+      "wilson95_pct": [
+        87.0,
+        93.8
+      ],
+      "max_abs_dev_pt": 0.1,
+      "direction_unchanged": true,
+      "significance_unchanged": true
+    }
+  ],
+  "coding": {
+    "mode": "single-author coding with equivalent independent review",
+    "kappa": "not applicable",
+    "kappa_reason": "Gold SQL, drift operators and the segment expressions are generated deterministically by one substitution rule (2,384 expressions); there are no human-annotated judgement units, so Cohen's kappa has no object to measure.",
+    "coding_book": "evolution_rules.md, prompts.md and the per-item manifest in the public package (MANIFEST.json with sha1) form the coding book for external checking",
+    "equivalent_reviews": [
+      {
+        "review": "全严判定规则复核",
+        "independence": "独立重执行 2,164 条预测，行序+容差+NULL 三类规则同时收紧",
+        "artifact": "results/judge_strict_audit.json",
+        "finding": "8/8 主对照符号不变，最大偏移 1.9pt"
+      },
+      {
+        "review": "留出库 M1 直接表达式评估",
+        "independence": "BIRD train 划分、8 个库未参与阈值校准",
+        "artifact": "results/m1_holdout_eval.json",
+        "finding": "14/16 op（87.5%），主动披露低于 dev 10/10"
+      },
+      {
+        "review": "编码边界独立实现复核",
+        "independence": "独立实现 to_expr 反解，按整行全分量恢复判据",
+        "artifact": "results/encoding_bounds.json",
+        "finding": "九类边界逐类测定，与表 7-106 一致"
+      },
+      {
+        "review": "段位编码压力测试 v2",
+        "independence": "修正前 legacy 与修正后双产物独立留档",
+        "artifact": "results/encoding_bounds_v2*.json",
+        "finding": "定位并修复 to_expr 末段缺陷，20.0%→100.0%"
+      },
+      {
+        "review": "事件映射四层审计",
+        "independence": "独立重建 op / 映射事实 / 事件 / 库四层键",
+        "artifact": "results/event_map_audit.json",
+        "finding": "7 / 10 / 2 三个事件数对账"
+      },
+      {
+        "review": "段位感知公平基线 B4",
+        "independence": "非 LLM、同等输出空间的对照实现",
+        "artifact": "results/baseline_segment_aware.json",
+        "finding": "10/10 与 M1 持平，收紧算法优越性主张"
+      },
+      {
+        "review": "核心 LLM 条件 5 次重复运行",
+        "independence": "独立重跑、贪心解码、不复用首次输出",
+        "artifact": "results/llm_repeat_runs.json",
+        "finding": "最大偏差 0.1pt，方向与显著性结论不变"
+      },
+      {
+        "review": "逐题清单与生成脚本公开",
+        "independence": "MANIFEST.json 记录全部文件与脚本 sha1",
+        "artifact": "公开材料包/",
+        "finding": "外部可逐格复核，不依赖作者自述"
+      }
+    ],
+    "limitation": "Equivalent independent review is not the same as a second independent human coder; no kappa is reported and no claim of inter-rater agreement is made. Gold correctness still rests on construction-time self-checks."
+  }
+}

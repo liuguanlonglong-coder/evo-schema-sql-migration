@@ -61,7 +61,7 @@ _EB = _AB["M1+形态指纹"]["段位档"]        # n = 15，type_ok = 15
 
 # 统计独立性审计：条目 / op / 事件三层口径，与段位表达式的真实恢复率
 ADI = json.load(open("results/audit_independence.json", encoding="utf-8"))
-assert ADI["version"] == "audit-independence-v1", "独立性审计产物缺失（audit_independence.py）"
+assert ADI["version"] == "audit-independence-v2", "独立性审计产物缺失（audit_independence.py，需 v2）"
 AD_A, AD_B, AD_C, AD_D = (ADI["A_units"], ADI["B_segment"],
                           ADI["C_nonsegment"], ADI["D_segment_expr"])
 AD_PS, AD_SG = AD_A["paper_set"], AD_A["segment_set"]
@@ -73,10 +73,95 @@ EMA = json.load(open("results/event_map_audit.json", encoding="utf-8"))
 assert EMA["version"] == "event-map-audit-v1"
 B4 = json.load(open("results/baseline_segment_aware.json", encoding="utf-8"))
 assert B4["version"] == "segment-aware-baseline-v1"
+# 第 17 轮：A 层三项复核（数值一律从产物读取，不手写常量）
+MHO = json.load(open("results/m1_holdout_eval.json", encoding="utf-8"))
+assert MHO["version"] == "m1-holdout-eval-v1"
+JSA = json.load(open("results/judge_strict_audit.json", encoding="utf-8"))
+assert JSA["version"] == "judge-strict-audit-v1"
+EBV = json.load(open("results/encoding_bounds_v2.json", encoding="utf-8"))
+assert EBV["version"] == "encoding-bounds-v2"
+EBL = json.load(open("results/encoding_bounds_v2_legacy.json", encoding="utf-8"))
+assert EBL["config"]["mode"] == "legacy_prefix"
+MHO_OP = MHO["op_level"]
+MHO_EV = MHO["event_level"]
+MHO_DB = MHO["db_level"]
+# 第 18 轮：5 次重复运行汇总 + 单作者编码/等效独立复核
+RPT = json.load(open("results/llm_repeat_runs.json", encoding="utf-8"))
+assert RPT["version"] == "llm-repeat-runs-v1", "重复运行产物缺失或版本不符"
+RPT_P = RPT["provenance"]
 # 章外统一改报正确口径：事件数 10、p = 0.0020
 EVN = EMA["sign_correct"]["n"]          # 10
 EVP = EMA["sign_correct"]["p_exact"]    # 0.001953
 SGEV = EMA["counts"]["events_correct"]  # 10（段位档事件）
+
+# 第 21 轮：定位修订所需的两组数字（第零节起即要用，故提前加载）
+# ① 扩充合并档的端到端配对（事件级符号检验；数字全部从产物读取）
+_XEM = json.load(open("results/ext_eval_merge_col.json", encoding="utf-8"))
+_XPM = _XEM["paired_by_event"]["c3mp-c3m"]
+# ② 检索式探针 E2：40 条、单库、阴性对照。数字从逐条输出重算，不手写。
+import collections as _col
+from math import comb as _comb
+
+_E2ROWS = [json.loads(_l) for _l in
+           open("results/e2_e2_main.jsonl", encoding="utf-8") if _l.strip()]
+_E2BY = _col.defaultdict(dict)
+for _r in _E2ROWS:
+    _E2BY[_r["id"]][_r["cond"]] = _r["outcome"]
+_E2SUM = json.load(open("results/e2_e2_main_summary.json", encoding="utf-8"))
+_E2 = {
+    "n": len(_E2BY),
+    "n_db": len({_r["db_id"] for _r in _E2ROWS}),
+    "panels": "+".join(sorted({_r["evo_type"] for _r in _E2ROWS})),
+    "db": ",".join(sorted({_r["db_id"] for _r in _E2ROWS})),
+    "silent": sum(1 for _r in _E2ROWS if _r["outcome"] == "SILENT"),
+    "n_runs": len(_E2ROWS),
+    "c4_ex": sum(1 for _v in _E2BY.values() if _v.get("c4") == "EX"),
+    "c5_ex": sum(1 for _v in _E2BY.values() if _v.get("c5") == "EX"),
+    "b": sum(1 for _v in _E2BY.values()
+             if _v.get("c5") == "EX" and _v.get("c4") != "EX"),
+    "c": sum(1 for _v in _E2BY.values()
+             if _v.get("c4") == "EX" and _v.get("c5") != "EX"),
+}
+assert _E2["n"] == _E2SUM["n_samples"] == 40, "E2 逐条数与 summary 不一致"
+assert _E2["c4_ex"] == _E2SUM["by_cond"]["c4"]["EX"]
+assert _E2["c5_ex"] == _E2SUM["by_cond"]["c5"]["EX"]
+_E2N = _E2["b"] + _E2["c"]
+_E2["p"] = (1.0 if _E2N == 0 else
+            min(1.0, 2 * sum(_comb(_E2N, _k)
+                             for _k in range(0, min(_E2["b"], _E2["c"]) + 1)) / 2 ** _E2N))
+_E2["c4_rate"] = 100.0 * _E2["c4_ex"] / _E2["n"]
+_E2["c5_rate"] = 100.0 * _E2["c5_ex"] / _E2["n"]
+
+# 第 22 轮：扩充集的四层计数与事件级/库级检验（与第 7 章同一产物、同一口径）
+AUF = json.load(open("results/audit_units_v3.json", encoding="utf-8"))
+assert AUF["version"] == "audit-units-v3"
+AX_M = AUF["ext"]["merge_col"]
+ACF = json.load(open("results/audit_cluster_v3.json", encoding="utf-8"))
+assert ACF["version"] == "audit-cluster-v3"
+ACE_ALL, ACE_ELI = ACF["ext_merge"]["event_level_all"], ACF["ext_merge"]["event_level_eligible"]
+ACE_DB = ACF["ext_merge"]["db_level"]
+
+# ---- 补充材料表号反查 -------------------------------------------------------
+# 主文瘦身后，S 号由「未被主文保留的表按文档顺序」决定，任何中间插表都会整体平移。
+# 因此这里不写死 S 号，改为按表题关键词反查；反查失败则直接报错，绝不静默用旧号。
+_KW = {"strict": "全严规则", "enc": "段位编码压力测试", "hler": "H-LER",
+       "rep": "重复运行的读数稳定性", "single": "单作者编码",
+       "strat": "分层对比", "advice": "建议替换的表述"}
+_SMAP = {}
+if os.path.exists("补充材料_第7章_v11.docx"):
+    _SD = Document("补充材料_第7章_v11.docx")
+    for _p_ in _SD.paragraphs:
+        _m_ = re.match(r"^表\s*S-(\d+)\s\s(.+)$", _p_.text.strip())
+        if not _m_:
+            continue
+        for _k_, _kw_ in _KW.items():
+            if _kw_ in _m_.group(2):
+                _SMAP.setdefault(_k_, int(_m_.group(1)))
+assert len(_SMAP) == len(_KW), ("补充材料表号反查失败，先运行 slim_chapter7.py："
+                               f"{sorted(set(_KW) - set(_SMAP))}")
+SN = lambda k: f"S-{_SMAP[k]}"
+_NSUPP = max(_SMAP.values())
+
 
 _n = lambda k: S[k]["n"]
 N_ALL = _n("rename_all") + _n("merge") + _n("split")
@@ -209,7 +294,70 @@ NOTE("目标期刊：**Applied Intelligence**（Springer，ISSN 0924-669X）。"
      "末尾附「数字 → 出处」自检表与「投稿前待核清单」，两处都需逐行核对后再粘贴。"
      "正文证据见《投稿版_第7章_实验结果_v11.docx》。"
      "本版的核心变化不是加数字，而是换主句：全文第一位的结论从「我们构造基准并比较两种执行器」"
-     "改为「同一执行器下，谱系的粒度决定迁移成败」。")
+     "改为「同一执行器下，谱系的粒度决定迁移成败」。"
+     "第 21 轮另加第零节：把**研究类型**写进标题（An Empirical Study of …），"
+     "并逐处清理 RAG 与「NL2SQL 系统」的遗留口径——"
+     "因为现有检索证据只有 40 条、单库、阴性对照，撑不起一个系统类主张。")
+
+# ===================================================================== 零
+H("零、定位：这是一项实证研究，不是一个系统")
+P("第 21 轮只做一件事：把研究类型写在最显眼的位置，并清掉与它不一致的旧口径。"
+  "起因是外部意见指出，本项目的检索证据只有 40 道题、属于阴性对照，且没有实现完整检索模块；"
+  "在这种情况下若把 RAG 放进标题、摘要或主要贡献，审稿人一旦翻到实验部分就会判定"
+  "「研究问题与实验内容不一致」——这与数值是否正确无关，属于定位错误。")
+P("因此本文的类型声明改为三句话：① 标题以 An Empirical Study of 开头，"
+  "声明产出是证据而非系统；② 摘要首段交代研究类型与「不实现检索模块」；"
+  "③ 三条贡献点全部写成实证发现，不出现「我们提出／构建了某系统」。"
+  "下列两张表分别是「本文主张什么」与「旧口径在哪些位置泄漏」，两表都必须与正文一致。")
+CAP("表 0-1  本文主张与不主张的六件事")
+TABLE(["主张", "是否成立", "依据", "处置"],
+      [["提出 RAG-NL2SQL 系统", "否",
+        f"无检索模块，谱系整块注入提示；唯一检索式探针 {_E2['n']} 条"
+        f"（改名档、单库 {_E2['db']}）、p = {_E2['p']:.2f}",
+        "标题、摘要、关键词、贡献点一律不出现"],
+       ["提出端到端 NL2SQL 生成方法", "否",
+        "生成侧只用单一基座与一套提示模板，未训练、未调优、无多模型集成",
+        "不主张方法创新"],
+       ["给出谱系抽取器 M1", "有限",
+        f"段位档 {AD_SG['ops']}/{AD_SG['ops']} 对基线 0/{AD_SG['ops']}；"
+        f"字符级表达 10/10 与段位感知基线持平；值改写两档落后 "
+        f"{AD_SH['ours_ok']}/{AD_SH['n_ops']} 对 {AD_SH['base_ok']}/{AD_SH['n_ops']}",
+        "只写「段位专用抽取器」，不写「更好的匹配器」"],
+       ["给出粒度效应的受控证据", "是（主贡献）",
+        f"同一执行器下 {_rm['c3r_name']['rate']:.1f}% 对 {_rm['c3r_infer']['rate']:.1f}%；"
+        f"扩充构造后事件级 {_XPM['pos_events']} 正 {_XPM['neg_events']} 负"
+        f"（n={_XPM['n_events']}，p={_XPM['p']:.3f}）",
+        "置于贡献点首位，且限于合并方向"],
+       ["给出确定性重写基线", "是（佐证）",
+        "gold 由同一条替换规则生成，其 100.0% 是构造内上界",
+        "不作工程选型结论"],
+       ["评测了一种检索方法", "否",
+        f"{_E2['n']} 条、{_E2['n_db']} 个数据库的阴性对照，无召回策略、无多路证据、无冲突裁决",
+        "只在 7.7.3 作局限披露，不进摘要与贡献点"]],
+      [3.0, 1.6, 7.2, 4.4], ["l", "c", "l", "l"], font=8.2)
+NOTE("第四行是唯一可以放在标题里的主张；其余五行要么是佐证，要么必须消失。"
+     "第三行的「有限」不是谦辞：M1 只在段位这一件事上不可替代，"
+     "在不需要段位的 121 个算子上与嵌入基线同为 100%，在值改写两档明显更弱。")
+CAP("表 0-2  旧口径的七个泄漏点与现状")
+TABLE(["位置", "旧口径", "现状"],
+      [["标题", "曾以问句「谱系要细到哪一层」作主标题，未声明研究类型",
+        "改为 An Empirical Study of Schema Lineage Granularity for Historical SQL "
+        "Migration under Schema Evolution"],
+       ["英文摘要", "未交代研究类型；「不实现检索模块」只在末段以否定句出现一次",
+        "首段写明 empirical study 与 no retrieval module，末段保留原否定句作呼应"],
+       ["中文摘要", "同上", "首段写明「一项实证研究」与「不实现检索模块」"],
+       ["关键词", "早期版本含「检索增强生成」", "5 个关键词全部指称正文实存内容，检索类词列入删除候选"],
+       ["贡献点", "以「我们构建／提出」开头，读者会期待一个系统",
+        "三条均改写为实证发现；另立「定位」行负向声明不主张系统"],
+       ["结论", "未交代研究类型", "首句写明「作为一项实证研究」"],
+       ["投稿信", "主题句为 an applied AI study，未说明不做系统",
+        "改为 empirical study，并在第二段加一句 no system 声明"]],
+      [1.8, 6.0, 8.4], ["l", "l", "l"], font=8.2)
+NOTE("第 7 章内部的四处相关表述（7.1.1、7.7.3 ⑦、7.10、7.11 ③）已同轮改写："
+     "原句是「若整篇论文仍以 RAG 为主线，二者只能选一」的待决口吻，"
+     "现改为已决断，并把检索式探针写成 "
+     f"{_E2['n']} 条 / {_E2['n_db']} 库 / 阴性对照（p = {_E2['p']:.2f}）的完整口径。"
+     "保留一个待决问句在正文里，等于把定位问题的处置权交还给审稿人。")
 
 # ===================================================================== 一
 H("一、第十轮要解决的三件事")
@@ -242,44 +390,59 @@ NOTE("第三件事的规则不是新解释，而是把已经发生过的一次�
      "规则若是事后为了自洽而定的，读者能看出来；这里能指出它第一次生效的位置，所以站得住。")
 
 # ===================================================================== 二
-H("二、标题：三案与取舍")
-P("主张改变后，标题的推荐顺序也变了。粒度成为唯一核心，「确定性重写基线」退为支撑证据，"
-  "因此不宜再与它并列出现在主标题里。RAG 与「端到端 NL2SQL」仍不得出现。")
-PL("**A（推荐）** 谱系要细到哪一层：schema 演化下历史 SQL 迁移的粒度效应")
-PL("**B** 同一执行器，两种粒度：段位表达式谱系能否救回历史 SQL")
-PL("**C** 列合并与列拆分之后：历史 SQL 迁移中的谱系粒度与确定性重写基线")
-NOTE("A 把问句放在最前，与新主张一致，且「粒度效应」是可被证伪的命题；"
-     "B 最能体现本轮重摆（控制了执行器），但「救回」偏口语；"
-     "C 是 v10 的推荐，本轮降为备选——它并列了两个自变量，"
-     "而数据表明两者不是并列关系：表示效应约为执行器效应的 "
-     f"{abs(D['merge']['evidence_effect_pt'] / D['merge']['executor_effect_pt']):.1f} 倍。"
-     "三案均不含 RAG。副标题「——以电子病历结构化字段为例」仍不建议加，"
-     "因为本章没有医疗数据与检索系统实验。")
+H("二、标题：三案与取舍（第 21 轮改为以研究类型开头）")
+P("定位改变后，标题的第一个成分必须是研究类型而不是研究对象。"
+  "理由很直接：标题若写对象（RAG、NL2SQL、检索增强），读者会去实验部分找那个系统，"
+  "找不到就判「声称与内容不符」；标题若写研究类型（An Empirical Study of），"
+  "读者的预期变成「你分离出了哪个变量、证据有多强」，而这恰好是本文能交付的东西。")
+PL("**A（推荐，投稿用）** An Empirical Study of Schema Lineage Granularity for "
+   "Historical SQL Migration under Schema Evolution")
+PL("　　中文对照：schema 演化下历史 SQL 迁移的谱系粒度实证研究")
+PL("**B** How Fine Must Lineage Be? Granularity Effects in Migrating Historical SQL "
+   "under Schema Evolution")
+PL("**C** One Executor, Two Granularities: Segment-Expression Lineage for Historical SQL")
+NOTE("A 的四个成分各对应正文一处，没有装饰词："
+     "**An Empirical Study of** 声明研究类型（第零节表 0-1 的第六行因此不成立）；"
+     "**Schema Lineage Granularity** 是唯一自变量（7.4、7.5）；"
+     "**Historical SQL Migration** 是任务，刻意不写 NL2SQL 生成（7.1.1 已划清与 Text-to-SQL 的界）；"
+     "**under Schema Evolution** 是前提条件而非贡献（7.2 的构造）。"
+     "B 是上一轮的推荐，本轮降为备选：问句标题会让审稿人期待「你打算怎么做到」，"
+     "而本文既不实现检索也不实现生成系统，问句容易读成承诺未兑现；"
+     "C 最能体现「控制了执行器」，但它并列了两个成分、且仍带问句色彩。"
+     "三案均不含 RAG、NL2SQL 与医疗字样——"
+     "副标题「——以电子病历结构化字段为例」不建议加，因为本研究没有医疗数据；"
+     "英文主标题 15 词，在 Applied Intelligence 的常见长度内。"
+     "若改用 B 或 C，投稿信第一段引号内与摘要首句须同步替换，三处不能只改一处。")
 
 # ===================================================================== 三
 H("三、英文摘要（实测 __ENWORDS__ 词，Applied Intelligence 要求 150–250 词）")
+_XEXT = json.load(open("results/ext_events_summary.json", encoding="utf-8"))["by_task"]
+
 _EN_ABS = [
-    ("Schema evolution breaks historical SQL. When columns are merged into one "
-     "delimited column, column-level lineage returns the whole string, so the migration "
-     "runs but is semantically wrong. The question is not which model rewrites the query "
-     "but how fine lineage must be."),
-    ("On 11 BIRD databases (610 items) we build a lineage-granularity ladder. "
-     "With the executor fixed, we compare M1 (label-free inference, "
-     "development-set-calibrated thresholds) against name, value-overlap and embedding matchers."),
-    ("Under one executor, merged items reach 0.9% with column-level and 100.0% with "
-     "segment-level lineage—a property of lineage, not the executor. A prompted model "
-     "reaches 79.6%; the rewriter's 100.0% is construction-internal, as its gold SQL uses "
-     "the same substitution. Splits gain nothing (77.9%)."),
-    ("M1 recovers the operation type and target column on 15/15 operations, versus 0/15 for "
-     "three matchers unable to emit segment expressions: expressiveness, not accuracy. "
-     "Character-level agreement with gold expressions is a separate reading (10/10, five "
-     "events), and a segment-aware non-LLM baseline with equal output space also scores "
-     "10/10; we claim no algorithmic gain. Ten events give p = 0.0020."),
-    ("M1+shape ties the embedding matcher on 121 non-reencoded operations, losing on 26 "
-     "recoded ones (53.8% vs 100%). The 610 items rest on 90 operations and 58 events, so "
-     "contrasts use event-level tests. Two boundary classes are non-invertible but never "
-     "fired in 215,216 rows. On seven held-out databases the direction recurs in 6 events "
-     "and reverses in 1. We implement no retrieval module."),
+    ("We report an empirical study of schema lineage granularity for historical SQL "
+     "migration under schema evolution. When columns are merged into one delimited "
+     "column, column-level lineage returns the whole string: the migration executes but "
+     "is semantically wrong. We build no retrieval module and no NL-to-SQL system; "
+     "lineage enters the prompt whole."),
+    ("On 11 BIRD databases we build a 610-item ladder (90 operations, 61 events) under "
+     "retrospective synthetic evolution; all informed development, so the main study is "
+     "not held out."),
+    ("With the executor fixed, merged items reach 0.9% execution-result agreement with "
+     "column-level and 100.0% with segment-level lineage, a property of the representation "
+     "rather than the executor. A prompted model reaches 79.6%; the rewriter's 100.0% is "
+     "construction-internal, its gold SQL using the same substitution. Splits gain "
+     "nothing (77.9%)."),
+    ("M1 recovers operation type and target column on 15/15 segment-bearing operations "
+     "versus 0/15 for matchers unable to emit segment expressions: expressiveness, not "
+     "accuracy. Character-level agreement (10/10, five events) matches a segment-aware "
+     "baseline, so no algorithmic gain is claimed; M1 loses under value recoding "
+     "(53.8% vs 100%)."),
+    (f"Scope is the evaluated SQLite subset and three operators. Held-out confirmation "
+     f"covers 165 items on 7 databases: 6 events recur, 1 reverses; a recovery study "
+     f"(481 items, 8 databases) reaches 14/16. Expanding merge to "
+     f"{AX_M['constructed']} constructed events is event-level significant "
+     f"({ACE_ELI['pos']}/{ACE_ELI['n_events']} qualified, p<1e-6); 5 events cannot. "
+     f"A {_E2['n']}-item retrieval probe is a negative control (p={_E2['p']:.2f})."),
 ]
 for _seg in _EN_ABS:
     PB(_seg)
@@ -290,8 +453,10 @@ NOTE("__ENNOTE__")
 # ===================================================================== 四
 H("四、中文摘要（实测 __CNCHARS__ 字）")
 _CN_ABS = [
-    ("schema 演化会使历史 SQL 失效：当多列被合并为带分隔符的单列时，列级映射会把整串返回，"
-     "迁移结果可执行却语义错误。要问的核心问题不是用哪个模型重写，而是谱系必须细到哪一层。"),
+    ("本文是一项关于谱系粒度的实证研究，不是系统论文：不实现检索模块，也不实现端到端 NL2SQL 生成，"
+     "谱系整块注入提示，故不主张任何系统能力。schema 演化会使历史 SQL 失效："
+     "当多列被合并为带分隔符的单列时，列级映射会把整串返回，迁移结果可执行却语义错误。"
+     "要问的核心问题不是用哪个模型重写，而是谱系必须细到哪一层。"),
     ("我们在 11 个 BIRD 数据库上构造 610 条受控样本（改名 276、列合并 230、列拆分 104），"
      "条件阶梯从「仅新 schema」逐级升到指明段位位置的可执行表达式谱系（SUBSTR/INSTR）。"
      "执行器固定不变：由确定性重写器沿谱系替换列引用；"
@@ -311,13 +476,49 @@ _CN_ABS = [
      f"仅在值改写两档落后（{AD_SH['ours_ok']}/{AD_SH['n_ops']} 对 "
      f"{AD_SH['base_ok']}/{AD_SH['n_ops']}）。"
      "故 M1 是段位专用抽取器，在通用列匹配上与语义方法等价，在值改写档上更弱。"),
-    (f"适用范围必须与结果同时给出：{AD_PS['items']} 条背后只有 {AD_PS['ops']} 个演化算子、"
+    (f"适用范围必须与结果同时给出。评测性质：主实验是回顾性合成评测——"
+     "数据库内容取自 BIRD，但改名、合并与拆分由受控脚本施加，且 11 个库都参与过方法开发"
+     "与阈值校准，故它不是干净的留出测试；SQL 范围限于所评估的 SQLite 子集与这三类演化算子，"
+     "CTE、复杂子查询、JOIN USING/NATURAL JOIN、聚合与 HAVING、投影星号、"
+     "位置 ORDER BY、显式类型转换及其他方言均未纳入。"
+     f"单元口径：{AD_PS['items']} 条背后只有 {AD_PS['ops']} 个演化算子、"
      f"{AD_PS['events']} 次独立演化事件，段位档 {AD_SG['ops']} 个算子更只对应 "
      f"{SGEV} 次事件，故合并与拆分两档一律以事件为单位复核。"
+     "这一功效瓶颈只能靠构造解决：按表分片重建后，合并档构造事件由 5 次扩至 "
+     f"{AX_M['constructed']} 次（有题 {_XEXT['merge_col']['events']}、有效 "
+     f"{_XEXT['merge_col']['events_effective']}、合格 "
+     f"{_XEXT['merge_col']['events_ge3']}），拆分档 {_XEXT['split_col']['events']} 次"
+     f"（合格 {_XEXT['split_col']['events_ge3']}），值改写档 "
+     f"{_XEXT['value_shift']['events']} 次（有效 "
+     f"{_XEXT['value_shift']['events_effective']}）；四层口径不可相加。"
+     "在扩充集合并档上重跑端到端后，段位谱系优于列级谱系的合格事件为 "
+     f"{ACE_ELI['pos']} 正 {ACE_ELI['neg']} 负（n={ACE_ELI['n_events']}），"
+     f"有题事件 {ACE_ALL['pos']} 正 {ACE_ALL['neg']} 负另 {ACE_ALL['tie']} 持平，"
+     f"库级 {ACE_DB['pos']}/{ACE_DB['n_dbs']}；这是事件层面首次取得显著性——"
+     "10 次事件时最小可达 p 为 0.0625，无论方向多稳定都不可能越过 0.05 线。"
      "编码边界已逐类测定：空值分量与非末段内含分隔符不可恢复，"
      "空串、末段内含分隔符、首尾空白、多字节字符四类可恢复；"
      "21.5 万行真实数据扫描中前两类出现 0 次，故零越界应读作构造未触发。"
-     "在 7 个未参与开发的库上方向重现（独立变更事件 6 正 1 负）；本文未实现检索模块。"),
+     "留出侧的两项实验范围不同、不可相加：端到端留出确认 165 条、7 个库、"
+     "12 个变更事件单元，合并档方向 6 正 1 负；谱系表达式直接恢复 481 条、"
+     f"{MHO_OP['n_units']} 个算子、{MHO_EV['n_units']} 次事件、{MHO_DB['n_units']} 个库，"
+     f"M1 为 {MHO_OP['matched']}/{MHO_OP['n_units']}（{MHO_OP['rate_pct']:.1f}%），"
+     "故两者既不合并报告，也不互为分母；本文未实现检索模块。"
+     f"三项独立复核进一步界定适用范围：全严判定规则下 {JSA['sign_stable_count']} 个主对照符号不变"
+     f"（最大偏移 {JSA['max_abs_delta_pt']:.1f}pt）；"
+     f"2–6 段编码压力测试定位并修复了末段表达式缺陷（末段含分隔符可恢复率 "
+     f"{EBL['by_case']['sep_in_last']:.1f}% → {EBV['by_case']['sep_in_last']:.1f}%），"
+     f"全部真实 gold 表达式均为两段，历史数值零回归"
+     f"（详见补充材料表 {SN('strict')} 至 {SN('enc')}）。"
+     f"核心语言模型条件另独立重跑 {RPT['n_repeat_runs']} 次，各条件读数相对首次报告值的"
+     f"最大偏差为 {RPT['max_abs_dev_pt']:.1f} 个百分点，主对照方向与显著性判定均不变；"
+     "标注采用单作者编码并附等效独立复核清单，gold 由确定性程序生成、无人工判读单元，"
+     f"故不报告 kappa（详见补充材料表 {SN('rep')} 至 {SN('single')}）。"
+     f"定位上还需交代一句：本文不涉及检索系统。唯一的检索式探针为 {_E2['n']} 条、"
+     f"{_E2['n_db']} 个数据库的阴性对照（C4 {_E2['c4_rate']:.1f}% 对 C5 {_E2['c5_rate']:.1f}%，"
+     f"不一致对 {_E2['b']}:{_E2['c']}，p = {_E2['p']:.2f}），"
+     "只能说明「补一个检索到的过期示例不足以救回迁移」，不能评价召回、排序或多路证据，"
+     "故全文不以检索为研究问题，标题与关键词亦不含检索类术语。"),
 ]
 for _seg in _CN_ABS:
     PB(_seg)
@@ -328,21 +529,44 @@ NOTE("__CNNOTE__")
 # ===================================================================== 五
 H("五、关键词与贡献点")
 P("关键词 5 个，全部指称正文真实存在的内容：")
-PL("schema 演化；历史 SQL 迁移；表达式级谱系；确定性查询重写；执行等价")
+PL("schema 演化；历史 SQL 迁移；表达式级谱系；确定性查询重写；执行结果一致率")
 NOTE("删除候选：RAG、检索增强生成、NL2SQL 端到端、提示工程——这些词所指的模块在本研究中不存在。"
-     "Applied Intelligence 要求 4–6 个关键词，此处 5 个在区间内。")
+     "Applied Intelligence 要求 4–6 个关键词，此处 5 个在区间内。"
+     "第六个关键词曾考虑补 empirical study。最终不加——研究类型已由标题首位承载，"
+     "重复一次等于占掉一个本可用于检索性的词位；若编辑或审稿人要求补足 6 个，"
+     "按推荐顺序补「controlled evaluation」，仍不补任何检索类词。"
+     "检索类词在本版是硬禁区：正文 7.7.3 的检索式探针只有 "
+     f"{_E2['n']} 条、{_E2['n_db']} 个数据库、p = {_E2['p']:.2f}，"
+     "写进关键词等于把阴性对照升格为研究主题。"
+     "第五个关键词原本写作「执行等价」，本轮改为「执行结果一致率」："
+     "正文的操作性指标是 execution-result agreement，"
+     "若关键词写「等价」，等于在检索层面声称本文做了形式化语义等价证明——"
+     "而 7.1.3 已明确那是未做的。关键词、摘要、正文三处的措辞必须同源。")
 
-P("贡献点三条重写。主句变了，第一条与第三条的位置因此互换：粒度证据升为首位，"
-  "规则基线退为佐证；第二条改为带边界的正面贡献。")
-TABLE(["", "v10 的写法", "v11 写法"],
-      [["贡献一",
+P("贡献点四条：第一条是新增的定位声明，用负向写法把「不主张什么」先钉住；"
+  "其余三条重写，因为主句变了，粒度证据升为首位、规则基线退为佐证、第二条改为带边界的正面贡献。")
+TABLE(["", "上一版的写法", "本版写法"],
+      [["定位",
+        "未声明研究类型；三条贡献均以「我们构建／提出」开头，读者会期待一个系统",
+        "本文是实证研究，不是系统论文：不提出 RAG-NL2SQL 系统、不实现检索模块、"
+        "不做端到端生成方法；谱系整块注入提示，"
+        f"唯一检索式探针 {_E2['n']} 条、{_E2['n_db']} 个数据库、阴性对照"
+        f"（p = {_E2['p']:.2f}），只作局限披露，不进贡献"],
+       ["贡献一",
         "给出粒度命题的受控证据：合并档由 "
         f"{_mg['c3m']['rate']:.1f}% 升至 {_mg['c3mp']['rate']:.1f}%（证据效应 "
         f"{_m(D['merge']['evidence_effect_pt'])}pt）",
-        "把「谱系粒度」作为独立变量分离出来：固定同一执行器，"
+        "以受控实证设计把「谱系粒度」分离为独立变量（不提出系统）：固定同一执行器，"
         f"合并档列级谱系 {_rm['c3r_name']['rate']:.1f}%、段位表达式 "
         f"{_rm['c3r_infer']['rate']:.1f}%。两侧执行器相同，差距只能归于谱系表示——"
-        "这是全文唯一不受构造循环性影响的结论。拆分方向效应为零，故命题限于「一列内多段编码」"],
+        "这是全文唯一不受构造循环性影响的结论。拆分方向效应为零，故命题限于「一列内多段编码」；"
+        "并把该效应落到失败形态上：C3m 的 223 条静默错误里 220 条仍引用合并后的新列、"
+        "仅 5 条含切段构造，而 C3mp 的 47 条静默错误里 45 条已含切段构造、失败点下移到取值与谓词层——"
+        "粒度改变的不是「找不找得到列」，而是错误留在哪一层」；"
+        "为摆脱事件数不足的功效限制，按表分片把合并档事件由 5 扩到 "
+        f"{_XEXT['merge_col']['events_effective']} 个有效事件，同一方向在事件层面达到 "
+        f"{_XPM['pos_events']} 正 {_XPM['neg_events']} 负（n={_XPM['n_events']}，"
+        f"p={_XPM['p']:.3f}），是本章唯一一次事件级显著性"],
        ["贡献二",
         "把误差来源定位到「谱系能否被正确发现」，未见库留下 "
         f"{_gap_ho:.1f}pt 缺口",
@@ -365,22 +589,59 @@ TABLE(["", "v10 的写法", "v11 写法"],
        ["作用域", "证据来自两段可逆拼接的合成编码；未覆盖空值与值内分隔符",
         "同上；另加：留出确认 7 库 165 条且含一个负向库（regional_sales）；"
         "未实现检索；投影星号题在本构造下无法被忠实评价"]],
-      [1.5, 5.4, 10.0], ["c", "l", "l"], font=8.3)
+      [1.4, 5.0, 9.8], ["c", "l", "l"], font=8.3)
 NOTE("贡献二的写法在本轮又改了一次，而且是往更不利的方向改。v10 只说「把误差定位到谱系发现」，"
      "读者无法判断 M1 本身值多少；v11 给出 15/15 对 0/15 的对照。"
      "但本轮核对判定函数后确认：那个 15/15 度量的是「识别出这是合并或拆分」，"
      "因为判定前 gold 的目标表达式已被归一为纯列名，段位字符串从未进入比较。"
      "因此同一段必须再补一句——段位表达式本身的字符级一致率为 10/10，"
-     "却只覆盖 2 次独立事件，事件级 p = 0.5；段位价值的统计证据不在抽取环节，而在端到端环节。"
+     f"覆盖合并档全部 {EMA['counts']['events_correct_by_evo']['merge_col']} 次独立事件，"
+     "该事件级符号检验 p = 0.0625，已等于 n = 5 时的最小可达值，"
+     "故不能作为「抽取能力显著」的证据；段位价值的统计证据不在抽取环节，而在端到端环节。"
      "同理，上一版写的「通用匹配上不如嵌入基线的 91.8%」也是错的："
      "拆开后 610 条主实验集内的 121 个算子两者持平于 100%，"
      "缺口 12 个全部来自集外的值改写两档。"
      "两处都改成了更弱、但经得起复算的表述——这比保留一个好看的数字重要。")
 
+P("相关工作与本任务的边界，用一张四列表比三句话更清楚。这张表建议直接贴进引言相关工作末尾，"
+  "四个维度分别回答「输入是什么」「输出是什么」「用不用历史 SQL」「能不能表达列内段位」。"
+  "第四列是本任务与前三条工作线的真正分界：不是他们做得不够准，而是他们的输出空间里"
+  "没有「一段取自哪一位」这种对象。填表时不写「已有方法都无法处理段位表达式」这类总括句——"
+  "那是一个超出检索范围的断言；只写各条工作线的输出形态，把差别留在第四列。")
+CAP("表 5-1  三条相关工作线与本任务的边界（建议贴入引言相关工作末尾）")
+TABLE(["工作线", "输入", "输出", "用历史 SQL", "表达列内段位"],
+      [["schema 匹配（Rahm 与 Bernstein 2001；Cupid 2001；COMA 2002；Kang 与 Naughton 2003）",
+        "两套 schema 及其实例统计",
+        "元素之间的对应关系，多为列对；复杂匹配扩展到子句",
+        "否", "否"],
+       ["schema 演化的查询重写（PRISM/PRISM++ 一类）",
+        "旧查询 + 已知的演化算子",
+        "适配新 schema 的查询；替换粒度为整列",
+        "是", "否"],
+       ["Text-to-SQL 的 schema 扰动鲁棒性（EvoSchema 等）",
+        "自然语言问题 + 当前 schema",
+        "新生成的查询；题目从自然语言出发",
+        "否", "否"],
+       ["本任务（谱系粒度）",
+        "旧 SQL + 演化后 schema + 自动抽取的谱系证据",
+        "迁移后的查询；证据可为列级或段位表达式",
+        "是", "是（SUBSTR/INSTR 形式的段位表达式）"]],
+      [4.6, 3.4, 4.4, 1.9, 3.4], ["l", "l", "l", "c", "l"], font=8.2)
+NOTE("英文版对应段落（可直接用于 Introduction 末尾）："
+     "Prior schema-matching work primarily estimates correspondences between schema elements, "
+     "while schema-evolution rewriting focuses on adapting queries to changed schemas. "
+     "This study isolates a narrower question: when an old column is embedded as a segment of "
+     "a merged column, does column-level lineage retain enough information to migrate "
+     "historical SQL?")
+NOTE("两点提醒。其一，第四列写「否」不是贬低，而是陈述输出空间的形状——"
+     "列级匹配把两个旧列映射到同一个新列时会折叠成一对多，信息在这一步就已经丢失；"
+     "其二，表内每一项都须与引言正文的引文一一对应，若某处引文最终被替换，"
+     "本表对应行也要同步改写，不能只改正文。")
+
 
 # ===================================================================== 六
 H("六、结论段")
-PB(f"本文的证据支持一个窄命题：当 schema 演化把多列合并为带分隔符的一列时，"
+PB(f"作为一项实证研究，本文的证据支持一个窄命题：当 schema 演化把多列合并为带分隔符的一列时，"
    f"谱系粒度是迁移成败的决定因素。固定同一个确定性改写器，"
    f"列级谱系只到 {_rm['c3r_name']['rate']:.1f}%，段位表达式谱系到 "
    f"{_rm['c3r_infer']['rate']:.1f}%；把同一份段位谱系交给语言模型则到 "
@@ -388,7 +649,7 @@ PB(f"本文的证据支持一个窄命题：当 schema 演化把多列合并为�
    f"唯一变化的是表示与执行器，而表示的效应（{_m(D['merge']['evidence_effect_pt'])}pt）"
    f"约为执行器效应（{_m(D['merge']['executor_effect_pt'])}pt）的 "
    f"{abs(D['merge']['evidence_effect_pt'] / D['merge']['executor_effect_pt']):.1f} 倍。")
-PB(f"由此得到两条对后续工作更有用的读数。其一，该任务的瓶颈在谱系发现："
+PB(f"由此得到三条对后续工作更有用的读数。其一，该任务的瓶颈在谱系发现："
    f"自动抽取在开发库上与构造映射逐条等价，在未见库上留下 {_gap_ho:.1f}pt 的硬失败缺口，"
    f"且缺口全部表现为执行报错而非静默错。"
    f"其二，确定性重写是一条必须报告的强基线，但它的 "
@@ -398,6 +659,13 @@ PB(f"由此得到两条对后续工作更有用的读数。其一，该任务的
    f"{_EB['n']} 个 op 上全部识别出合并或拆分、三条基线为 0（事件级 p = {EVP:.4f}，"
    f"原因之一是基线的输出空间不含段位表达式）；在不含值改写的非段位档上"
    f"它与嵌入基线持平（各 {AD_IN['n_ops']}/{AD_IN['n_ops']}）；"
+   f"其三，粒度命题的统计强度不再依赖十个事件：按表分片重建构造后，"
+   f"合并档有 {_XEXT['merge_col']['events_effective']} 个有效事件、"
+   f"拆分档 {_XEXT['split_col']['events_effective']} 个、值改写档 "
+   f"{_XEXT['value_shift']['events_effective']} 个，"
+   f"端到端上段位谱系优于列级谱系的事件为 {_XPM['pos_events']} 正 "
+   f"{_XPM['neg_events']} 负（p={_XPM['p']:.3f}）——"
+   f"此前的「不显著」是功效不足，而非效应不存在；"
    f"只在值改写两档落后（{AD_SH['ours_ok']}/{AD_SH['n_ops']} 对 "
    f"{AD_SH['base_ok']}/{AD_SH['n_ops']}）。"
    f"它是段位专用抽取器，不是更好的通用匹配器，也不是更差的通用匹配器。")
@@ -409,9 +677,27 @@ PB("这些结论的外推受五重限制，均已在正文量化：样本为 11 
    "而真实数据扫描中这两类致命情形出现 0 次，故不覆盖此类取值分布；"
    "含投影星号的查询在本构造下无法被忠实评价，而样本中恰好没有此类条目；"
    "规则基线与语言模型的对照只覆盖「谓词结构不变、仅需替换列引用」的迁移，"
-   "需要改写谓词字面值或查询结构的迁移未纳入评测。"
+   "需要改写谓词字面值或查询结构的迁移未纳入评测；"
+   "三项独立复核还给出一条对方法不利的量化边界：M1 在未见库上的段位表达式恢复仅 "
+   f"{MHO_OP['matched']}/{MHO_OP['n_units']}（{MHO_OP['rate_pct']:.1f}%，"
+   f"Wilson 上限 {MHO_OP['wilson95_pct'][1]:.1f}%），明显低于开发集的 10/10，"
+   f"故不能把开发集读数外推为通用恢复能力（补充材料表 {SN('hler')}）。"
+   f"核心语言模型条件独立重跑 {RPT['n_repeat_runs']} 次后，各条件读数相对首次报告值的"
+   f"最大偏差为 {RPT['max_abs_dev_pt']:.1f} 个百分点，方向与显著性结论不变；"
+   "逐轮逐题原始输出未按条目存档，故只报告汇总偏差与结论稳定性，"
+   f"不报告缺乏数据支撑的均值与标准差（补充材料表 {SN('rep')}）。"
+   "标注采用单作者编码，并以判定器全严复核、未见库独立评估、编码边界独立实现等构成"
+   "等效独立复核；gold 由确定性程序生成、无人工判读单元，故不报告 kappa，"
+   f"也不把复核清单表述为双人编码已完成（补充材料表 {SN('single')}）。"
    "本文因此不主张跨库泛化，不主张已解决真实历史 schema 演化，"
    "也不主张确定性方法在工程上优于语言模型。")
+PB("最后交代研究类型，因为它决定上面这些结论该被怎样读。本文是一项实证研究，不是系统论文："
+   "不提出 RAG-NL2SQL 系统，不实现检索模块，也不提出端到端生成方法——谱系整块注入提示，"
+   f"唯一的检索式探针为 {_E2['n']} 条、{_E2['n_db']} 个数据库的阴性对照"
+   f"（C4 {_E2['c4_rate']:.1f}% 对 C5 {_E2['c5_rate']:.1f}%，p = {_E2['p']:.2f}）。"
+   "因此本文的贡献是「把一个变量分离出来并给出效应量」，而不是「造出一个能用的系统」；"
+   "若要支撑后者，至少需要多路召回、证据冲突裁决与弃答判定三部分，本文一部都没有做。"
+   "把这条边界写进结论而不是留给读者发现，是本文对自身证据强度的一次校准。")
 
 
 # ===================================================================== 七
@@ -421,17 +707,27 @@ P("这封信的写法与常规不同：第二段先给主命题，第三段主�
   "若把这些留给审稿人自己发现，整封信的可信度都会被折价。")
 PB("Dear Editor-in-Chief,", size=10.5)
 PB("We submit for consideration in Applied Intelligence the manuscript entitled "
-   "“How Fine Must Lineage Be? Granularity Effects in Migrating Historical SQL under "
-   "Schema Evolution”.", size=10.5)
-PB("Schema evolution invalidates historical SQL. Our study isolates a variable that prior "
-   "work has not separated: how fine the lineage must be. Holding the executor fixed, "
-   "execution equivalence on merged columns is 0.9% with column-level lineage and 100.0% "
+   "“An Empirical Study of Schema Lineage Granularity for Historical SQL Migration "
+   "under Schema Evolution”.", size=10.5)
+PB("Schema evolution invalidates historical SQL. This is an empirical study, not a system "
+   "paper: we propose no retrieval module and no end-to-end NL-to-SQL system, and lineage "
+   "is injected into the prompt as a whole; the one retrieval-style probe we ran is a "
+   "negative control (40 items, a single database, p = 0.25) and is reported only as a "
+   "limitation. Our study isolates a variable that prior work has not separated: how fine "
+   "the lineage must be. Holding the executor fixed, "
+   "execution-result agreement on merged columns is 0.9% with column-level lineage and 100.0% "
    "with an executable expression that pins segment positions; a prompted model given the "
    "same lineage reaches 79.6%. Because both sides run through the same rewriter, the gap "
    "can be attributed to the lineage representation rather than to the generator. The "
-   "effect is absent for splits, which bounds the claim. Across seven held-out databases "
-   "the direction recurs in six of seven independent change events, and we report the "
-   "single negative case in the main results rather than in the limitations.", size=10.5)
+   "effect is absent for splits, which bounds the claim. We keep two held-out studies "
+   "apart: an end-to-end confirmation over 165 items on seven unseen databases, where the "
+   "merge direction recurs in six of seven independent change events and we report the "
+   "single negative case in the main results; and a separate direct lineage-expression "
+   "recovery study over 481 items from eight databases, where M1 recovers 14 of 16 "
+   "operations. The two sets differ in databases, items and target of judgement, so we "
+   "never add or pool them. Scope is the evaluated SQLite query subset and the rename, "
+   "merge and split operators; CTE, JOIN USING, HAVING, asterisk projection, ordinal "
+   "ORDER BY, explicit casts and other dialects are untested.", size=10.5)
 PB("Because a reviewer may reasonably ask whether a language model is needed at all, the "
    "manuscript also reports a deterministic rewriter built on the same lineage. Given "
    "identical lineage it outperforms the tested model by 20.4 points on merged columns and "
@@ -453,7 +749,15 @@ PB("Because a reviewer may reasonably ask whether a language model is needed at 
    "On the 121 operations without value recoding M1+shape ties the embedding matcher at 100%, "
    "and loses only on the 26 recoded ones, 53.8% against 100%. The contribution we claim is "
    "diagnostic: what matters is the granularity of the lineage, not the generator or the "
-   "matching algorithm.", size=10.5)
+   "matching algorithm. We repeated the core model conditions five times independently; "
+   "every condition deviated from the first run by at most 0.1 percentage points, with all "
+   "contrast directions and significance decisions unchanged. Per-run per-item outputs were "
+   "not archived item-by-item, so we report the aggregate maximum deviation and conclusion "
+   "stability rather than an unsupported mean or standard deviation. Coding was performed by "
+   "one author; because the gold SQL and drift operators are generated deterministically by a "
+   "single substitution rule, there are no human-annotated judgement units and Cohen's kappa "
+   "is not applicable. Instead we provide an auditable set of equivalent independent reviews, "
+   "and we do not claim that double coding or inter-rater agreement was established.", size=10.5)
 if ARCH_DONE:
     _cover_avail = (
         "All scripts, per-item outputs, statistical routines and the environment "
@@ -467,7 +771,7 @@ else:
         "a public repository with a persistent identifier prior to publication; the Data "
         "Availability Statement will then give that link, and we have not yet completed the "
         "deposit. ")
-PB("The work fits the journal's scope as an applied AI study with a controlled evaluation "
+PB("The work fits the journal's scope as an empirical study with a controlled evaluation "
    "protocol. " + _cover_avail +
    "The manuscript is original, is not under consideration elsewhere, and all "
    "authors have approved the submission. We declare no competing interests.", size=10.5)
@@ -487,13 +791,18 @@ NOTE("第二段是这封信的实质内容，第三段是主动交代，两段�
 
 
 # ===================================================================== 八
-H("八、必须与摘要同进同出的六条限定")
-P("以下六条，在摘要、结论、投稿信与贡献点中只要缺一条，就会重新出现第一节表里的不一致。"
-  "前四条沿用上一轮，第五条是主张重摆后新增的，第六条是本轮补的比较域限定。")
+H("八、必须与摘要同进同出的七条限定")
+P("以下七条，在摘要、结论、投稿信与贡献点中只要缺一条，就会重新出现第一节表里的不一致。"
+  "前四条沿用上一轮，第五条是主张重摆后新增的，第六条是比较域限定，"
+  "第七条是本轮新增的定位限定——它约束的不是某个数字，而是整篇的研究类型。")
 PL(f"**① 编码可逆性**：写「两段、可逆、非空、不含分隔符的取值分布」，不写「一般的列合并」。"
    f"真实数据侧的证据是 21.5 万行扫描、0 行越界，且四类边界已在隔离库逐类测定"
    f"（空值分量与非末段内含分隔符不可恢复，空串、末段内含分隔符等可恢复）——"
-   f"这恰好说明构造没有对这类型数据做压力测试，而不是说明数据干净。")
+   f"这恰好说明构造没有对这类型数据做压力测试，而不是说明数据干净。"
+   f"第 17 轮补入的 2–6 段压力测试进一步把前者坐实：修正 to_expr 末段缺陷后，"
+   f"末段含分隔符的可恢复率由 {EBL['by_case']['sep_in_last']:.1f}% 升至 "
+   f"{EBV['by_case']['sep_in_last']:.1f}%，但 NULL 分量与非末段含分隔符两类仍为 0%——"
+   f"限定语不因实现修复而放宽（补充材料表 {SN('enc')}）。")
 PL(f"**② 构造内上界**：规则 100% 必须与「gold 由同一条替换规则机械生成」同句出现，"
    f"或紧邻一句内出现。这一条对摘要、贡献三、结论、投稿信四处同时生效。"
    f"本轮主张重摆后，它从「主结果」降为「佐证」，但限定语一个字都不能少——"
@@ -513,6 +822,10 @@ PL(f"**⑤ M1 的定位必须分三档**：写「段位档 {AD_SG['ops']}/{AD_SG
    f"不含值改写时与嵌入基线持平（各 {AD_IN['n_ops']}/{AD_IN['n_ops']}），"
    f"值改写两档落后（{AD_SH['ours_ok']}/{AD_SH['n_ops']} 对 {AD_SH['base_ok']}/{AD_SH['n_ops']}）。"
    f"单写第一档会被读成「M1 更好」，而事实是它就只解决段位这一件事。"
+   f"第 17 轮再加一条外部效度读数：同一 part 分支在 BIRD train 留出库上只恢复 "
+   f"{MHO_OP['matched']}/{MHO_OP['n_units']} 个 op（{MHO_OP['rate_pct']:.1f}%），"
+   f"明显低于 dev 的 10/10，故凡出现 10/10 必须同句说明它是开发集读数、"
+   f"不构成通用恢复能力（补充材料表 {SN('hler')}）。"
    f"这不是谦逊问题：审稿人自己复算时若发现作者只报强项、略去持平与落后两档，"
    f"全部正向数字都要重新打折。")
 PL(f"**⑥ 比较域**：凡出现「规则改写高出所测模型 X pt」，必须同句或紧邻写明"
@@ -522,6 +835,13 @@ PL(f"**⑥ 比较域**：凡出现「规则改写高出所测模型 X pt」，�
    f"这一条与第 ②条不是同一件事：②限定「这个数怎么来的」，⑥限定「这个数能比到哪」。"
    f"缺了⑥，二十个百分点的对照会被读成「确定性方法普遍优于语言模型」，"
    f"而这恰好是本章数据支持不了、且最容易被真实演化数据推翻的一句。")
+PL(f"**⑦ 研究类型**：凡出现「我们提出／构建了一个 RAG-NL2SQL 系统」「检索增强的迁移框架」一类句子，"
+   f"一律删。全文只有一处可以提检索，即 7.7.3 的阴性对照，且必须带 "
+   f"{_E2['n']} 条 / {_E2['n_db']} 个数据库 / p = {_E2['p']:.2f} 三个限定。"
+   f"标题以 An Empirical Study of 开头，摘要首段交代不实现检索模块，"
+   f"三条贡献点均为实证发现——这三处只要有一处回到系统口径，"
+   f"定位就从「证据不足」变成「声称与内容不符」，后者是无法靠补充实验挽回的。"
+   f"这一条与第⑥条的区别：⑥限的是「这个比较能走多远」，⑦限的是「这篇是什么类型的论文」。")
 NOTE("第四条的起因是第九轮评审的措辞「不能暗示星号能力已经通过基准验证」——"
      "这类暗示往往不是刻意写的，而是「能力已实现并经探针验证」这种顺手的句子造成的。"
      "第五条的起因是本轮自查：三条匹配基线早已存在且已报告，"
@@ -529,7 +849,11 @@ NOTE("第四条的起因是第九轮评审的措辞「不能暗示星号能力�
      "两条的共同点是，问题都不在数字，而在数字旁边缺少的那半句。"
      "第六条的性质不同：数字没错，来源也交代了，缺的是「这个比较能走多远」的边界。"
      "这类缺口不会引发数值争议，只会让结论在没有证据的地方继续外推——"
-     "而外推部分一旦被真实演化数据否掉，读者会连带怀疑数字本身。")
+     "而外推部分一旦被真实演化数据否掉，读者会连带怀疑数字本身。"
+     "第七条来自外部意见而非自查，性质又不同一层：它一个数字都不改，"
+     "却决定这些数字被当作什么来读。标题写系统，读者就按系统的标准审；"
+     "标题写实证研究，读者才按「变量是否被分离、证据是否够」来审——"
+     "而本文能交付的恰好是后者。")
 
 # ===================================================================== 九
 H("九、投稿前待核清单")
@@ -604,10 +928,25 @@ P("粘贴前逐行核对。任一行对不上，说明章内章外已经开始�
 _TBL = {}
 
 
+def _count_caps(f):
+    """数一份 docx 里的表题数；章外文档的表数表述不写死。"""
+    import re as _re
+    from docx import Document as _Doc
+    if not os.path.exists(f):
+        raise SystemExit(f"缺少 {f}；先运行 make_chapter7_v11.py 再运行 slim_chapter7.py")
+    return sum(1 for p0 in _Doc(f).paragraphs
+               if _re.match(r"^表\s*(?:7|S)-\d+\s\s", p0.text.strip()))
+
+
+_NSUPP = _count_caps("补充材料_第7章_v11.docx")
+_NFULL = _count_caps("第7章_v11_完整版_49表.docx")
+
+
 def _T(keyword):
     """按表题关键词反查表号。上一版把表号写死，在两次重排后全部失效。
 
-    正文瘦身后表格分布在两份文档：主文 表 7-1..7-15、补充材料 表 S-1..S-34。
+    正文瘦身后表格分布在两份文档：主文 表 7-1..7-15、补充材料 表 S-1..S-37
+    （表数随入稿动态增长，第 17 轮由 34 增至 37）。
     这里同时反查，命中补充材料时在出处后标注，避免自检表与主文分叉。
     """
     import re as _re
@@ -666,9 +1005,14 @@ TABLE(["数字／表述", "取值", "出处"],
        ["星号探针", f"投影星号 {RWA['projection_star_items']} 条；P1–P4 自检通过",
         _T("星号展开的合成探针")],
        ["EvoSchema 单元级", "合并 3 映射、最大占 92.7%、p = 0.5",
-        _T("按独立映射单元重算的外部对照")]],
+        _T("按独立映射单元重算的外部对照")],
+       ["检索式探针（E2）", f"{_E2['n']} 条 / {_E2['n_db']} 库 / "
+        f"C4 {_E2['c4_rate']:.1f}% 对 C5 {_E2['c5_rate']:.1f}% / "
+        f"不一致对 {_E2['b']}:{_E2['c']} / p = {_E2['p']:.2f}",
+        "e2_e2_main.jsonl（逐条重算，与 summary 交叉校验）"]],
       [2.5, 9.4, 3.6], ["l", "l", "l"], font=8.2)
-NOTE("表号由 _T() 按表题从两份 docx 反查（主文 表 7-1 至 7-15、补充材料 表 S-1 至 S-34），"
+NOTE("表号由 _T() 按表题从两份 docx 反查（主文 表 7-1 至 7-15、"
+     f"补充材料 表 S-1 至 S-{_NSUPP}），"
      "因此章内增删或搬移表格触发重排后，这里会自动跟着变。"
      "这一改动针对的是一个实际出过的错误：v9 的自检表把「合并档阶梯」手写成了另两张表的旧编号，"
      "而表格在两次重排后已经换了含义——正文与表题由脚本同步改写，手写的表号却不会。"
@@ -678,8 +1022,9 @@ NOTE("表号由 _T() 按表题从两份 docx 反查（主文 表 7-1 至 7-15、
 # ===================================================================== 十一
 H("十一、本文件不做的事")
 PL("不改第 7 章的数值与判定口径；章内证据见《投稿版_第7章_实验结果_v11.docx》"
-   "（主文 15 表）与《补充材料_第7章_v11.docx》（S-1 至 S-34），"
-   "完整 49 表素材库见《第7章_v11_完整版_49表.docx》。")
+   f"（主文 15 表）与《补充材料_第7章_v11.docx》（S-1 至 S-{_NSUPP}），"
+   f"完整 {_NFULL} 表素材库见《第7章_v11_完整版_49表.docx》"
+   "（文件名沿用瘦身时的历史约定，内容随入稿增长）。")
 PL("不再保留 JMS 口径。目标期刊已确定为 Applied Intelligence，"
    "该刊不要求 PRISMA/SANRA、不设字数上限、不需要循证检索式，"
    "因此这些内容一律不进摘要、贡献点与投稿信；"
@@ -688,25 +1033,39 @@ PL("不代拟审稿回复信。回复信应逐条引用本文件第五、六、�
    "而不是重新组织措辞——两处措辞一旦不同，审稿人会认为作者自己也没统一口径。")
 PL("不虚构文献条目。第九节表 9-1 只给作者、年份与出处，"
    "卷期页码留空待补，这是刻意的取舍。")
+PL("不补检索实验去换取「RAG」这个标题词。若真要以 RAG 为题，至少需要多路召回、"
+   "证据冲突裁决与弃答判定三部分，那是另一篇论文的工作量；"
+   "把 40 条阴性对照包装成检索研究，代价是审稿人翻到实验部分当场识破，"
+   "且此后所有数值都会按「作者是否夸大」重新打折。")
 
 # 回填实测字数
-_ENNOTE = (f"实测 {_EN_N} 词，在 150–250 词区间内。"
-           "第三段与第四段各有一句不可删："
-           "「construction-internal…the very substitution it applies」是构造循环性的限定语，"
-           "缺了它 100.0% 会被读成独立验证的性能；"
-           "「not a better general matcher」是 M1 定位的另一半，"
-           "缺了它第四段的 15/15 就成了单向宣传。"
-           "第三段的 0.9% 与 100.0% 必须同句出现——它们共用同一个执行器，"
-           "这是全文唯一不受构造循环性影响的对比，分开写就没有这个性质了。"
-           "若需压到 200 词以内，先删第五段的 215,216 与 6 正 1 负，保留「reversible two-segment」。")
+_ENNOTE = (f"实测 {_EN_N} 词，落在本轮设定的 220–235 词目标区间内（刊方区间为 150–250 词）。"
+           "压到这一区间的原因不是刊方要求，而是投稿系统的计数口径与 Word 不同："
+           "连字符、缩写、百分号的处理各有出入，贴着上限写等于把风险留给自己，"
+           "故主动留出余量。"
+           "第 21 轮的改写位置有两处：首句由「Schema evolution breaks historical SQL」"
+           "改为「We report an empirical study of…」，把研究类型放在第一位；"
+           "同段末补「We build no retrieval module and no NL-to-SQL system」；"
+           "末段补「A 40-item retrieval probe is a negative control（p=0.25）」。"
+           "为腾出这三句，删去的是「The question is not which model rewrites the query」"
+           "这一设问句，以及 16 operations、ten events could not 等可从正文补齐的细节。"
+           "三处限定语仍然在："
+           "「construction-internal…the same substitution」是构造循环性的限定；"
+           "「expressiveness, not accuracy」与「no algorithmic gain is claimed」"
+           "两句是 M1 定位的两半，缺任一半 15/15 都会变成单向宣传；"
+           "末段两项留出实验分列（165 条 / 7 库 与 481 条 / 8 库），不得合并成一句。")
 _CNNOTE = (f"实测 {_CN_N} 字（含标点）。Applied Intelligence 只约束英文摘要 150–250 词，"
            "中文摘要不受该刊字数限制，仅供中文版本或作者自用，故此处只报实测值、不设目标值。"
-           "本篇的第三段与第四段是这一轮重摆的落点：第三段给出「同一执行器、两种粒度」，"
+           "第 21 轮在首段加了研究类型声明（实证研究、不实现检索模块、不实现端到端生成），"
+           "末段加了检索式探针的完整口径（40 条 / 1 库 / p = 0.25）——"
+           "这两处不是补充说明，而是把「本文是什么」提前到读者形成预期的位置。"
+           "第三段与第四段仍是这一版的主张落点：第三段给出「同一执行器、两种粒度」，"
            f"第四段给出 M1 的段位档 15/15 对 0/15（事件级 p = {EVP:.4f}）、不含值改写时与嵌入"
            "基线持平、仅值改写两档落后——三档并陈，缺一档都会被读成单向宣传。"
-           "两段的顺序不可互换——先立粒度这个主命题，再谈方法定位；"
+           "两段顺序不可互换：先立粒度这个主命题，再谈方法定位；"
            "若把 M1 放在前面，读者会以为这是一篇「提出新抽取器」的论文。")
-_ABSLENOK = (f"英文实测 {_EN_N} 词、关键词 5 个，均在要求区间内")
+_ABSLENOK = (f"英文实测 {_EN_N} 词（刊方区间 150–250；第 21 轮改写研究类型与检索探针口径后"
+             f"为 {_EN_N} 词，仍在上限内留有余量）、关键词 5 个，均在要求区间内")
 _MAP = {"__ENWORDS__": str(_EN_N), "__CNCHARS__": str(_CN_N),
         "__ENNOTE__": _ENNOTE, "__CNNOTE__": _CNNOTE, "__ABSLENOK__": _ABSLENOK}
 

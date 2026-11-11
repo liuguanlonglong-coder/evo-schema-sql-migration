@@ -1,0 +1,611 @@
+{
+ "version": "audit-units-v3",
+ "definitions": {
+  "items": "逐题记录数",
+  "base": "基础题数 = distinct (库, 题号)",
+  "ops": "原子操作数 = distinct (演化档, 库, 表, 旧列)",
+  "events": "独立演化事件数 = (演化档, 库, 表, 新列)；非段位档为 (库, 表, 演化档)",
+  "dbs": "库数",
+  "event_funnel": "constructed ≥ evaluated ≥ effective ≥ eligible ≥ tested"
+ },
+ "main": {
+  "dep_abstain": {
+   "items": 601,
+   "base": 601,
+   "ops": 23,
+   "events": 23,
+   "dbs": 8
+  },
+  "dep_successor": {
+   "items": 601,
+   "base": 601,
+   "ops": 23,
+   "events": 23,
+   "dbs": 8
+  },
+  "merge_col": {
+   "items": 230,
+   "base": 230,
+   "ops": 10,
+   "events": 5,
+   "dbs": 5
+  },
+  "rename": {
+   "items": 865,
+   "base": 865,
+   "ops": 33,
+   "events": 23,
+   "dbs": 11
+  },
+  "rename_hard": {
+   "items": 591,
+   "base": 591,
+   "ops": 24,
+   "events": 16,
+   "dbs": 8
+  },
+  "rename_medium": {
+   "items": 339,
+   "base": 339,
+   "ops": 18,
+   "events": 12,
+   "dbs": 7
+  },
+  "split_col": {
+   "items": 104,
+   "base": 104,
+   "ops": 5,
+   "events": 5,
+   "dbs": 5
+  },
+  "value_shift": {
+   "items": 350,
+   "base": 350,
+   "ops": 13,
+   "events": 11,
+   "dbs": 6
+  },
+  "value_shift_named": {
+   "items": 350,
+   "base": 350,
+   "ops": 13,
+   "events": 11,
+   "dbs": 6
+  },
+  "paper_set": {
+   "items": 610,
+   "base": 437,
+   "ops": 90,
+   "events": 61,
+   "dbs": 11,
+   "_note": "610 条 = ids_xm_full(276) + ids_ms(334)；base 437 为 distinct (库,题号)"
+  },
+  "segment_set": {
+   "items": 334,
+   "base": 299,
+   "ops": 15,
+   "events": 10,
+   "dbs": 5
+  }
+ },
+ "ext": {
+  "merge_col": {
+   "name": "merge_col",
+   "items": 479,
+   "base": 407,
+   "ops": 56,
+   "events": 28,
+   "dbs": 6,
+   "tables": 15,
+   "constructed": 28,
+   "evaluated": 25,
+   "effective": 22,
+   "eligible": 18,
+   "tested": 23,
+   "items_per_event": 17.1,
+   "max_event_share_pct": 0.42,
+   "note": "ops 按 (evo,库,表,旧列) 重算；manifest 的 ops 字段只登记了一个代表 op（构造时 applied 的首列），故不与本表相等。"
+  },
+  "split_col": {
+   "name": "split_col",
+   "items": 218,
+   "base": 209,
+   "ops": 24,
+   "events": 24,
+   "dbs": 6,
+   "tables": 15,
+   "constructed": 24,
+   "evaluated": 0,
+   "effective": 0,
+   "eligible": 0,
+   "tested": 0,
+   "items_per_event": 9.1,
+   "max_event_share_pct": 0.46,
+   "note": "ops 按 (evo,库,表,旧列) 重算；manifest 的 ops 字段只登记了一个代表 op（构造时 applied 的首列），故不与本表相等。"
+  },
+  "value_shift": {
+   "name": "value_shift",
+   "items": 853,
+   "base": 649,
+   "ops": 113,
+   "events": 113,
+   "dbs": 8,
+   "tables": 32,
+   "constructed": 113,
+   "evaluated": 0,
+   "effective": 0,
+   "eligible": 0,
+   "tested": 0,
+   "items_per_event": 7.5,
+   "max_event_share_pct": 0.12,
+   "note": "ops 按 (evo,库,表,旧列) 重算；manifest 的 ops 字段只登记了一个代表 op（构造时 applied 的首列），故不与本表相等。"
+  }
+ },
+ "holdout": {
+  "items": 165,
+  "rows": 495,
+  "conds": {
+   "c2": 165,
+   "c3m": 165,
+   "c3mp": 165
+  },
+  "dbs": 7,
+  "db_list": [
+   "books",
+   "movie_3",
+   "movies_4",
+   "olympics",
+   "regional_sales",
+   "retail_world",
+   "soccer_2016"
+  ],
+  "units": {
+   "items": 165,
+   "base": 157,
+   "ops": 19,
+   "events": 12,
+   "dbs": 7
+  },
+  "manifest_holdout_items": 625
+ },
+ "runs": [
+  {
+   "file": "e1_ab_nat_0.jsonl",
+   "rows": 78,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ab_nat_1.jsonl",
+   "rows": 78,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ab_nat_2.jsonl",
+   "rows": 76,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ab_nat_3.jsonl",
+   "rows": 76,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ab_nat_4.jsonl",
+   "rows": 76,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ab_nat_5.jsonl",
+   "rows": 76,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_base_merge.jsonl",
+   "rows": 230,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_base_rename.jsonl",
+   "rows": 550,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_base_split.jsonl",
+   "rows": 208,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_c3m_paired.jsonl",
+   "rows": 155,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_c3noise_paired.jsonl",
+   "rows": 120,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_dep_ab_p1.jsonl",
+   "rows": 162,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_dep_ab_p2.jsonl",
+   "rows": 162,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_dep_succ_ds.jsonl",
+   "rows": 324,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_dev_full.jsonl",
+   "rows": 287,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_diff_3lvl.jsonl",
+   "rows": 180,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_ds_c3f.jsonl",
+   "rows": 275,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ds_one.jsonl",
+   "rows": 2,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ds_one_b1.jsonl",
+   "rows": 1,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ds_one_b2.jsonl",
+   "rows": 1,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_expand_hard.jsonl",
+   "rows": 240,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_expand_med.jsonl",
+   "rows": 240,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_holdout_books.jsonl",
+   "rows": 90,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-10"
+  },
+  {
+   "file": "e1_holdout_movie_3.jsonl",
+   "rows": 45,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-10"
+  },
+  {
+   "file": "e1_holdout_movies_4.jsonl",
+   "rows": 90,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-10"
+  },
+  {
+   "file": "e1_holdout_olympics.jsonl",
+   "rows": 90,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-10"
+  },
+  {
+   "file": "e1_holdout_regional_sales.jsonl",
+   "rows": 45,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-10"
+  },
+  {
+   "file": "e1_holdout_retail_world.jsonl",
+   "rows": 45,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-10"
+  },
+  {
+   "file": "e1_holdout_soccer_2016.jsonl",
+   "rows": 90,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-10"
+  },
+  {
+   "file": "e1_lat_qc.jsonl",
+   "rows": 5,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_lat_qg.jsonl",
+   "rows": 5,
+   "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ms_ds.jsonl",
+   "rows": 1336,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ms_ds_p.jsonl",
+   "rows": 230,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ms_ds_p_split.jsonl",
+   "rows": 104,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ms_qc.jsonl",
+   "rows": 1336,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ms_qc_p.jsonl",
+   "rows": 230,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ms_qc_p_oldsep_split.jsonl",
+   "rows": 104,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_ms_qc_p_split.jsonl",
+   "rows": 104,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_smoke.jsonl",
+   "rows": 45,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_smoke_ds4f.jsonl",
+   "rows": 24,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_vshift_main.jsonl",
+   "rows": 1100,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_vshift_smoke.jsonl",
+   "rows": 72,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_xm_ds4f.jsonl",
+   "rows": 1100,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms.jsonl",
+   "rows": 99,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_f0.jsonl",
+   "rows": 96,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_f1.jsonl",
+   "rows": 96,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_f2.jsonl",
+   "rows": 92,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_f3.jsonl",
+   "rows": 92,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_f4.jsonl",
+   "rows": 92,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_f5.jsonl",
+   "rows": 92,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_f6.jsonl",
+   "rows": 4,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_g1.jsonl",
+   "rows": 64,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_g2.jsonl",
+   "rows": 111,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_g3.jsonl",
+   "rows": 13,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_merged.jsonl",
+   "rows": 920,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_p0.jsonl",
+   "rows": 496,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_p1.jsonl",
+   "rows": 496,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_ms_p2.jsonl",
+   "rows": 496,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_ds4f_one.jsonl",
+   "rows": 4,
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_glm.jsonl",
+   "rows": 316,
+   "model": "zai-org/GLM-5.3",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_xm_glmf.jsonl",
+   "rows": 164,
+   "model": "zai-org/GLM-5.3-Flash",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_xm_glmf_mh.jsonl",
+   "rows": 64,
+   "model": "zai-org/GLM-5.3-Flash",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_xm_q38.jsonl",
+   "rows": 4,
+   "model": "Qwen/Qwen3.8-27B",
+   "mtime": "2026-11-08"
+  },
+  {
+   "file": "e1_xm_qc.jsonl",
+   "rows": 1100,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_qc_c3f.jsonl",
+   "rows": 275,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_qc_dp.jsonl",
+   "rows": 405,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_qc_one.jsonl",
+   "rows": 4,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_qc_vs.jsonl",
+   "rows": 1100,
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_qg.jsonl",
+   "rows": 1100,
+   "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_qg_dp.jsonl",
+   "rows": 405,
+   "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e1_xm_qg_one.jsonl",
+   "rows": 4,
+   "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e3_rw_main.jsonl",
+   "rows": 670,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  },
+  {
+   "file": "e3_rw_smoke.jsonl",
+   "rows": 12,
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "mtime": "2026-11-09"
+  }
+ ]
+}

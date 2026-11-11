@@ -1,17 +1,23 @@
 # -*- coding: utf-8 -*-
-"""正文瘦身：把第 7 章 49 张表拆成「主文 15 表 + 补充材料 34 表」。
+"""正文瘦身：把第 7 章完整版拆成「主文 15 表 + 补充材料其余表」。
 
 回应 Weakness 第 7 条「结构过于复杂、主要科学发现需要进一步突出」。
 做法不是删数据，而是搬移：
   - 主文（文件名保持 投稿版_第7章_实验结果_v11.docx，章外 _T() 继续从它反查表号）
     只保留协议、主结果、M1/基线、留出/跨模型、事件统计、失败机制、RQ 汇总共 15 表；
-  - 补充材料（补充材料_第7章_v11.docx）收纳其余 34 表，编号 S-1..S-34，
+  - 补充材料（补充材料_第7章_v11.docx）收纳其余表，编号 S-1..S-M，
     带原属节标题、与主文表号对照表；
-  - 原 49 表完整版另存 第7章_v11_完整版_49表.docx 作为素材库，不丢任何数字；
+  - 完整版另存 第7章_v11_完整版_49表.docx 作为素材库（文件名沿用历史约定，
+    内容随入稿增长：第 17 轮后为 52 表），不丢任何数字；
   - 所有交叉引用自动重定向：主文中对被移走表的「表 7-N」改为「补充材料表 S-M」，
     补充材料中对保留表的引用改为「主文表 7-K」；两份文档各自表号连续。
 
-不重跑任何实验、不改动任何数值，只做文档结构重组。
+表数是动态的：第 17 轮把 A 层三项复核表加在正文末尾后，完整版由 49 增至 52，
+新增 3 表自动落到 S-35..S-37，主文仍严格 15 表。KEEP 按「原最终表号」书写，
+只要新表追加在末尾、不插入中间，KEEP 就无需改动。
+
+输入刷新规则：每次运行都以 make_chapter7_v11.py 刚生成的完整版为唯一真源，
+按表题数判断是否需要刷新素材库备份，避免备份文件残留旧表数。
 """
 import os
 import re
@@ -33,17 +39,55 @@ MAIN_OUT = SRC                     # 覆盖，保持章外脚本的文件名约�
 SUPP_OUT = "补充材料_第7章_v11.docx"
 
 # 主文保留的表（按原最终表号，1–49）。15 张。
-KEEP = [1, 3, 4, 16, 18, 19, 20, 22, 25, 28, 33, 34, 39, 42, 48]
+# 第 20 轮在正文末尾追加三张表（55 数据集流转、56 扩充事件集构成、57 端到端），
+# 因此主文由 15 表增至 18 表。追加在末尾是刻意的：KEEP 按最终表号书写，
+# 只要不插入中间，前 54 张表的表号就不会漂移。
+# 第 22 轮：新增 58（按库配对）、59（注入缺陷）、61（SQL 覆盖）、62（同源与重复判定）。
+# 60（分层对比）留在补充材料——注入缺陷修正后它已属旁证，不再是回答的核心。
+# 第 22 轮（续）：在 7.7.5 中间插入两张可逆性表（十类边界 250 格、准入检测器回退代价），
+# 因此其后所有表号 +2。主文保留新的第 42 张（十类边界），第 43 张（回退代价）落到补充材料，
+# 因为正文已给出 369 / 269 / 72.9% / 100 / 33 这五个数，表只是其排布。
+# 教训：KEEP 按最终表号书写，插入中间必须整体平移——本轮即按 +2 重算。
+KEEP = [1, 3, 4, 16, 18, 19, 20, 22, 25, 28, 33, 34, 39, 42, 44, 50, 57, 58,
+        59, 60, 61, 63, 64]
 
 CAP_RE = re.compile(r"^表\s*7-(\d+)\s\s(.+)$")
 REF_RE = re.compile(r"表\s*7-(\d+)")
 HEAD_RE = re.compile(r"^7(?:\.\d+)*\s")
 
-if not os.path.exists(BAK):
-    if not os.path.exists(SRC):
-        raise SystemExit("先运行 make_chapter7_v11.py 生成完整第 7 章")
-    shutil.copy2(SRC, BAK)
-INPUT = BAK          # 可重复运行：始终以 49 表完整版为输入
+def _n_caps(path):
+    """数一份 docx 里的表题数，用来判断素材库备份是否需要刷新。"""
+    if not os.path.exists(path):
+        return -1
+    _d = Document(path)
+    return sum(1 for p_ in _d.paragraphs if CAP_RE.match(p_.text.strip()))
+
+# 完整版是唯一真源。若备份缺失，或备份表数少于当前完整版，则刷新备份。
+# 这样第 17 轮把 49 表增至 52 表后不会继续读旧备份；重复运行也保持幂等。
+if not os.path.exists(SRC):
+    raise SystemExit("先运行 make_chapter7_v11.py 生成完整第 7 章")
+_n_src, _n_bak = _n_caps(SRC), _n_caps(BAK)
+# 两条历史教训必须同时满足：
+#   ① 只改文字、表数不变时也必须刷新，否则主文继续从旧备份生成（第 19 轮踩过）；
+#   ② 本脚本的主文输出与完整版输入是同一个文件（MAIN_OUT = SRC），
+#      所以第二次运行会把 SRC 读成「18 表的主文」。此时绝不能用它刷新备份，
+#      否则完整版就自毁了（第 20 轮踩过，靠重新生成才恢复）。
+import hashlib
+_h_src = hashlib.sha1(open(SRC, "rb").read()).hexdigest()
+_h_bak = (hashlib.sha1(open(BAK, "rb").read()).hexdigest()
+          if os.path.exists(BAK) else "")
+if _n_src < _n_bak:
+    # SRC 已是被上一次运行覆盖的主文：从备份读完整版，且不刷新备份。
+    print(f"[warn] {SRC} 只有 {_n_src} 表，少于备份的 {_n_bak} 表，"
+          f"判定它已被主文覆盖；本次从备份读取完整版。")
+    INPUT = BAK
+else:
+    if _h_src != _h_bak:
+        shutil.copy2(SRC, BAK)
+        print(f"素材库备份已刷新：{BAK}（表数 {_n_bak} → {_n_src}，内容有变）")
+    else:
+        print(f"素材库备份已是最新：{BAK}（表数 {_n_src}，内容未变）")
+    INPUT = SRC   # 直接读本次刚生成的完整版
 src = Document(INPUT)
 body = src.element.body
 
@@ -68,13 +112,17 @@ for i, (kind, el, txt) in enumerate(blocks):
             assert n not in caps, f"重复表号 {n}"
             caps[n] = (i, m.group(2))
 ALL = sorted(caps)
-assert len(ALL) == 49, f"预期 49 表，实测 {len(ALL)}"
-assert all(1 <= n <= 49 for n in ALL), "存在占位号残留（7-1xx），需先跑 _renumber_tables"
+N_ALL = len(ALL)                      # 第 17 轮后为 52
+assert N_ALL >= 49, f"表数异常偏少：{N_ALL}"
+assert ALL == list(range(1, N_ALL + 1)), "表号不连续或存在占位号残留（7-1xx），需先跑 _renumber_tables"
 assert set(KEEP).issubset(set(ALL)), "KEEP 中有不存在的表号"
+assert len(KEEP) == 23, "主文保留表数必须是 22（第 22 轮由 18 增至 22）"
 
 MOVED = [n for n in ALL if n not in KEEP]
+N_MOVED = len(MOVED)                  # 第 17 轮后为 37
 MAIN_NEW = {n: i + 1 for i, n in enumerate([n for n in ALL if n in KEEP])}
 SUPP_NEW = {n: i + 1 for i, n in enumerate(MOVED)}
+print(f"完整版 {N_ALL} 表 → 主文 {len(KEEP)} 表 + 补充材料 {N_MOVED} 表（S-1..S-{N_MOVED}）")
 
 # ---------------------------------------------------------------- 3. 表单元
 def is_heading(txt):
@@ -213,18 +261,19 @@ add_para(supp, "补充材料：第 7 章 表格与实现细节", bold=True, size
 add_para(supp, "Supplementary Materials for Chapter 7", bold=True, size=11,
          align=WD_ALIGN_PARAGRAPH.CENTER, after=12)
 add_para(supp,
-         "本文件收纳第 7 章主文之外的全部 34 张表，编号 S-1 至 S-34，顺序与主文原表号一致。"
-         "主文为控制篇幅只保留 15 张表（协议、主结果、M1 与基线、复现与事件统计、"
-         "失败机制、研究问题汇总）；逐题输出、统计方法与覆盖率网格、判定器敏感性、"
-         "实现自检、筛选漏斗、外部对照分层等细节全部在此给出，数值与主文完全相同，"
-         "未删除或改写任何结果。交叉引用中「主文表 7-K」指主文第 K 张表。",
+         f"本文件收纳第 7 章主文之外的全部 {N_MOVED} 张表，编号 S-1 至 S-{N_MOVED}，"
+         "顺序与主文原表号一致。主文为控制篇幅只保留 15 张表（协议、主结果、M1 与基线、"
+         "复现与事件统计、失败机制、研究问题汇总）；逐题输出、统计方法与覆盖率网格、"
+         "判定器敏感性、实现自检、筛选漏斗、外部对照分层，以及第 17 轮补入的三项独立复核明细"
+         "全部在此给出，数值与主文完全相同，未删除或改写任何结果。"
+         "交叉引用中「主文表 7-K」指主文第 K 张表。",
          size=10, after=10)
 
 intro = ("为控制篇幅并突出主要科学发现，本章正文只保留 15 张表："
          "评测协议与判定口径、谱系抽取与四条基线、端到端主结果与增益归因、"
          "跨基座与留出库复现、事件级统计、静默错误分布以及研究问题汇总。"
          "统计方法与覆盖率网格、判定规则敏感性、实现自检、边界与漏斗明细等 "
-         "34 张表移入《补充材料_第7章_v11.docx》，编号 S-1 至 S-34；"
+         f"{N_MOVED} 张表移入《补充材料_第7章_v11.docx》，编号 S-1 至 S-{N_MOVED}；"
          "正文以「补充材料表 S-M」指向它们，所有数值与完整版一致。")
 
 # 按块顺序复制；在第一个 7.1 标题前插入瘦身说明
@@ -245,12 +294,16 @@ if not inserted_intro:
     add_para(main, intro, size=10.2, after=8)
 
 add_para(main,
-         "补充材料索引：S-1 至 S-34 覆盖统计方法与四格计数、配对区间覆盖率、等价检验、"
+         f"补充材料索引：S-1 至 S-{N_MOVED} 覆盖统计方法与四格计数、配对区间覆盖率、等价检验、"
          "基座与提示长度、判定规则敏感性、保序子集、事件数对账、oracle 一致性、"
          "Wilson 区间、逐库稳健性、规则基线与星号自检、改名档跨基座、聚类检验、"
          "留出库漏斗与样本构成、边界探针与真实数据扫描、事件级池化、近邻工作对照、"
-         "EvoSchema 分层与映射单元重算，以及统一表述清单。详见《补充材料_第7章_v11.docx》"
-         "末尾的表号对照表。",
+         "EvoSchema 分层与映射单元重算，以及统一表述清单；"
+         f"S-{SUPP_NEW.get(50, 35)} 至 S-{SUPP_NEW.get(52, 37)} 为第 17 轮补入的三项独立复核明细"
+         "（全严判定规则、留出库 M1 直接表达式、段位编码压力测试 v2）；"
+         f"S-{SUPP_NEW.get(53, 38)} 至 S-{N_MOVED} 为第 18 轮补入的执行器稳定性与编码复核明细"
+         "（核心 LLM 条件 5 次重复运行、单作者编码下的等效独立复核清单）。"
+         "详见《补充材料_第7章_v11.docx》末尾的表号对照表。",
          size=9.5, after=6)
 
 # --- 补充材料：按原属节分组 ---
@@ -319,17 +372,34 @@ def audit(path, prefix, expect):
           f"表题 {len(titles)} 连续 {ok_seq} | 超范围引用 {len(dangling)}")
     assert len(titles) == expect, f"{path} 表题数 != {expect}"
     assert ok_seq, f"{path} 表号不连续: {nums[:20]}"
+    if dangling:
+        _ctx = []
+        for p_ in d.paragraphs:
+            for m_ in re.finditer(r"表\s*%s-(\d+)" % prefix, p_.text):
+                if int(m_.group(1)) > expect:
+                    _ctx.append(p_.text[max(0, m_.start()-40):m_.start()+40])
+        for tb in d.tables:
+            for row in tb.rows:
+                for c in row.cells:
+                    for m_ in re.finditer(r"表\s*%s-(\d+)" % prefix, c.text):
+                        if int(m_.group(1)) > expect:
+                            _ctx.append("[表]" + c.text[:80])
+        print("  悬空引用上下文:", _ctx[:8])
     assert not dangling, f"{path} 存在悬空表号: {sorted(set(dangling))}"
     return titles
 
-mt = audit(MAIN_OUT, "7", 15)
-st_ = audit(SUPP_OUT, "S", 34)
-assert len(mt) + len(st_) == 49, "拆分后表数不等于 49"
+mt = audit(MAIN_OUT, "7", len(KEEP))
+st_ = audit(SUPP_OUT, "S", N_MOVED)
+assert len(mt) + len(st_) == N_ALL, f"拆分后表数 {len(mt)}+{len(st_)} != {N_ALL}"
 
-# 主文中「补充材料表 S-M」必须都落在 1..34
+# 主文中「补充材料表 S-M」必须都落在 1..N_MOVED
 mtxt = "\n".join(p.text for p in Document(MAIN_OUT).paragraphs)
+for tb in Document(MAIN_OUT).tables:
+    for row in tb.rows:
+        for c in row.cells:
+            mtxt += "\n" + c.text
 sm = [int(x) for x in re.findall(r"补充材料表 S-(\d+)", mtxt)]
-assert sm and max(sm) <= 34 and min(sm) >= 1, f"补充材料引用越界: {sorted(set(sm))}"
+assert sm and max(sm) <= N_MOVED and min(sm) >= 1, f"补充材料引用越界: {sorted(set(sm))}"
 print("主文补充材料引用:", len(sm), "处，范围", min(sm), "-", max(sm))
 print("完整版备份:", BAK)
 print("主文保留表号(原→新):", {n: MAIN_NEW[n] for n in KEEP})

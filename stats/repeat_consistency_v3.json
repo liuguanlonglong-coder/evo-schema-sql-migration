@@ -1,0 +1,1003 @@
+{
+ "version": "repeat-consistency-v3",
+ "scope": {
+  "rows_with_model_cond_id": 18773,
+  "keys": 15959,
+  "keys_evaluated_more_than_once": 1398,
+  "keys_identical_outcome": 1225,
+  "keys_flipped": 173,
+  "item_agreement_pct": 87.6
+ },
+ "note": "同一 (模型, 条件, 题号) 在不同批次文件里各判一次。这一致率度量的是判定稳定性，不是五轮重复实验的逐题输出。",
+ "file_pairs": [
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 125,
+   "agree_pct": 85.6,
+   "rate_a": 6.4,
+   "rate_b": 7.2,
+   "delta_pt": -0.8
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 125,
+   "agree_pct": 92.0,
+   "rate_a": 4.8,
+   "rate_b": 5.6,
+   "delta_pt": -0.8
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 124,
+   "agree_pct": 88.7,
+   "rate_a": 7.3,
+   "rate_b": 4.8,
+   "delta_pt": 2.4
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 124,
+   "agree_pct": 91.9,
+   "rate_a": 12.1,
+   "rate_b": 12.1,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 124,
+   "agree_pct": 86.3,
+   "rate_a": 12.9,
+   "rate_b": 12.1,
+   "delta_pt": 0.8
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 124,
+   "agree_pct": 91.9,
+   "rate_a": 11.3,
+   "rate_b": 10.5,
+   "delta_pt": 0.8
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 124,
+   "agree_pct": 98.4,
+   "rate_a": 8.9,
+   "rate_b": 8.1,
+   "delta_pt": 0.8
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 124,
+   "agree_pct": 96.8,
+   "rate_a": 9.7,
+   "rate_b": 9.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 124,
+   "agree_pct": 94.4,
+   "rate_a": 9.7,
+   "rate_b": 10.5,
+   "delta_pt": -0.8
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 124,
+   "agree_pct": 95.2,
+   "rate_a": 87.1,
+   "rate_b": 87.1,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 123,
+   "agree_pct": 95.1,
+   "rate_a": 89.4,
+   "rate_b": 86.2,
+   "delta_pt": 3.3
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_merged.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 123,
+   "agree_pct": 95.1,
+   "rate_a": 89.4,
+   "rate_b": 89.4,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_ms_qc_p_oldsep_split.jsonl",
+   "file_b": "e1_ms_qc_p_split.jsonl",
+   "n": 104,
+   "agree_pct": 44.2,
+   "rate_a": 29.8,
+   "rate_b": 83.7,
+   "delta_pt": -53.8
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_vshift_main.jsonl",
+   "file_b": "e1_vshift_smoke.jsonl",
+   "n": 72,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 72,
+   "agree_pct": 100.0,
+   "rate_a": 8.3,
+   "rate_b": 8.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 72,
+   "agree_pct": 100.0,
+   "rate_a": 8.3,
+   "rate_b": 8.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_p1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 72,
+   "agree_pct": 100.0,
+   "rate_a": 8.3,
+   "rate_b": 8.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 71,
+   "agree_pct": 100.0,
+   "rate_a": 18.3,
+   "rate_b": 18.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 71,
+   "agree_pct": 100.0,
+   "rate_a": 18.3,
+   "rate_b": 18.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_p1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 71,
+   "agree_pct": 100.0,
+   "rate_a": 18.3,
+   "rate_b": 18.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 71,
+   "agree_pct": 100.0,
+   "rate_a": 11.3,
+   "rate_b": 11.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 71,
+   "agree_pct": 100.0,
+   "rate_a": 11.3,
+   "rate_b": 11.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_p1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 71,
+   "agree_pct": 100.0,
+   "rate_a": 11.3,
+   "rate_b": 11.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 70,
+   "agree_pct": 100.0,
+   "rate_a": 90.0,
+   "rate_b": 90.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_p0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 70,
+   "agree_pct": 100.0,
+   "rate_a": 90.0,
+   "rate_b": 90.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_p1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 70,
+   "agree_pct": 100.0,
+   "rate_a": 90.0,
+   "rate_b": 90.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_ab_nat_0.jsonl",
+   "file_b": "e1_ms_ds_p.jsonl",
+   "n": 39,
+   "agree_pct": 100.0,
+   "rate_a": 69.2,
+   "rate_b": 69.2,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_ab_nat_1.jsonl",
+   "file_b": "e1_ms_ds_p.jsonl",
+   "n": 39,
+   "agree_pct": 97.4,
+   "rate_a": 84.6,
+   "rate_b": 82.1,
+   "delta_pt": 2.6
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_ab_nat_2.jsonl",
+   "file_b": "e1_ms_ds_p.jsonl",
+   "n": 38,
+   "agree_pct": 100.0,
+   "rate_a": 84.2,
+   "rate_b": 84.2,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_ab_nat_3.jsonl",
+   "file_b": "e1_ms_ds_p.jsonl",
+   "n": 38,
+   "agree_pct": 97.4,
+   "rate_a": 76.3,
+   "rate_b": 78.9,
+   "delta_pt": -2.6
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_ab_nat_4.jsonl",
+   "file_b": "e1_ms_ds_p.jsonl",
+   "n": 38,
+   "agree_pct": 97.4,
+   "rate_a": 78.9,
+   "rate_b": 81.6,
+   "delta_pt": -2.6
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_ab_nat_5.jsonl",
+   "file_b": "e1_ms_ds_p.jsonl",
+   "n": 38,
+   "agree_pct": 97.4,
+   "rate_a": 84.2,
+   "rate_b": 81.6,
+   "delta_pt": 2.6
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 17.9,
+   "rate_b": 17.9,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 17.9,
+   "rate_b": 17.9,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 17.9,
+   "rate_b": 17.9,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 17.9,
+   "rate_b": 17.9,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 28,
+   "agree_pct": 100.0,
+   "rate_a": 10.7,
+   "rate_b": 10.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 27,
+   "agree_pct": 100.0,
+   "rate_a": 81.5,
+   "rate_b": 81.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 27,
+   "agree_pct": 100.0,
+   "rate_a": 81.5,
+   "rate_b": 81.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 27,
+   "agree_pct": 100.0,
+   "rate_a": 81.5,
+   "rate_b": 81.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_g2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 27,
+   "agree_pct": 100.0,
+   "rate_a": 81.5,
+   "rate_b": 81.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 33.3,
+   "rate_b": 33.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 33.3,
+   "rate_b": 33.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 33.3,
+   "rate_b": 33.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 33.3,
+   "rate_b": 33.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 91.7,
+   "rate_b": 91.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p0.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 91.7,
+   "rate_b": 91.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 91.7,
+   "rate_b": 91.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 91.7,
+   "rate_b": 91.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 4.2,
+   "rate_b": 4.2,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 0.0,
+   "rate_b": 0.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 4.2,
+   "rate_b": 4.2,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f0.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 79.2,
+   "rate_b": 79.2,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 4.2,
+   "rate_b": 4.2,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 12.5,
+   "rate_b": 12.5,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 8.3,
+   "rate_b": 8.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 24,
+   "agree_pct": 100.0,
+   "rate_a": 83.3,
+   "rate_b": 83.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 4.3,
+   "rate_b": 4.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 0.0,
+   "rate_b": 0.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 8.7,
+   "rate_b": 8.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 91.3,
+   "rate_b": 91.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f3.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 0.0,
+   "rate_b": 0.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f3.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 4.3,
+   "rate_b": 4.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f3.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 8.7,
+   "rate_b": 8.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f3.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 87.0,
+   "rate_b": 87.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f4.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 0.0,
+   "rate_b": 0.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f4.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 8.7,
+   "rate_b": 8.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f4.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 8.7,
+   "rate_b": 8.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f4.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 87.0,
+   "rate_b": 87.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f5.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 4.3,
+   "rate_b": 4.3,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f5.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 0.0,
+   "rate_b": 0.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f5.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 8.7,
+   "rate_b": 8.7,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f5.jsonl",
+   "file_b": "e1_xm_ds4f_ms_merged.jsonl",
+   "n": 23,
+   "agree_pct": 100.0,
+   "rate_a": 87.0,
+   "rate_b": 87.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 20,
+   "agree_pct": 75.0,
+   "rate_a": 0.0,
+   "rate_b": 0.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 20,
+   "agree_pct": 65.0,
+   "rate_a": 10.0,
+   "rate_b": 0.0,
+   "delta_pt": 10.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 20,
+   "agree_pct": 90.0,
+   "rate_a": 10.0,
+   "rate_b": 10.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f1.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p1.jsonl",
+   "n": 20,
+   "agree_pct": 95.0,
+   "rate_a": 85.0,
+   "rate_b": 90.0,
+   "delta_pt": -5.0
+  },
+  {
+   "cond": "c1",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 20,
+   "agree_pct": 80.0,
+   "rate_a": 5.0,
+   "rate_b": 0.0,
+   "delta_pt": 5.0
+  },
+  {
+   "cond": "c2",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 20,
+   "agree_pct": 85.0,
+   "rate_a": 0.0,
+   "rate_b": 0.0,
+   "delta_pt": 0.0
+  },
+  {
+   "cond": "c3m",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 20,
+   "agree_pct": 80.0,
+   "rate_a": 10.0,
+   "rate_b": 20.0,
+   "delta_pt": -10.0
+  },
+  {
+   "cond": "c3mp",
+   "file_a": "e1_xm_ds4f_ms_f2.jsonl",
+   "file_b": "e1_xm_ds4f_ms_p2.jsonl",
+   "n": 20,
+   "agree_pct": 95.0,
+   "rate_a": 90.0,
+   "rate_b": 85.0,
+   "delta_pt": 5.0
+  }
+ ],
+ "strict": {
+  "n_pairs": 95,
+  "n_judgements": 4190,
+  "item_agreement_pct": 96.6,
+  "max_abs_delta_pt": 10.0,
+  "median_abs_delta_pt": 0.0,
+  "note": "剔除 oldsep 构造差异后，同条件跨批次重复判定的汇总。这是「五轮逐题输出未归档」下能给出的最强替代证据。"
+ },
+ "focus_ablation_vs_main": {
+  "n": 230,
+  "item_agreement_pct": 98.3,
+  "per_fold_delta_pt": [
+   0.0,
+   2.6,
+   0.0,
+   -2.6,
+   -2.6,
+   2.6
+  ],
+  "max_abs_delta_pt": 2.6,
+  "note": "消融实验的 c3mp 对照臂与主实验 c3mp 是同一提示、同一模型、同一批题的两个批次，差异只能来自服务端不确定性。"
+ },
+ "pair_delta_pt": {
+  "n_pairs": 96,
+  "median": 0.0,
+  "max": 53.8,
+  "pairs_within_0_2pt": 78,
+  "pairs_over_5pt": 3
+ }
+}

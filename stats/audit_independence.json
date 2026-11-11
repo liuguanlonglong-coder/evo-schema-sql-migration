@@ -1,7 +1,7 @@
 {
- "version": "audit-independence-v1",
+ "version": "audit-independence-v2",
  "manifest": "data/manifest_v3.jsonl",
- "note": "三层口径并列：条目数(items) / 唯一 op 数(ops) / 独立演化事件数(events)。段位档事件 = (db, table, 新列)；改名档事件 = (db, table, 演化档)。事件级成功 = 该事件全部 op 都对（最严）。paper_set 取 ids_xm_full.txt(276) + ids_ms.txt(334) = 610 条。D 节独立于 evaluate()，直接比段位表达式字符串。",
+ "note": "三层口径并列：条目数(items) / 唯一 op 数(ops) / 独立演化事件数(events)。段位档事件 = (演化档, db, table, 新列)；改名档事件 = (db, table, 演化档)。v2 修正：段位档事件键补入 evo，此前缺 evo 会把合并与拆分的同名新列并为一事件。事件级成功 = 该事件全部 op 都对（最严）。paper_set 取 ids_xm_full.txt(276) + ids_ms.txt(334) = 610 条。D 节独立于 evaluate()，直接比段位表达式字符串。",
  "A_units": {
   "by_evo": [
    {
@@ -71,7 +71,8 @@
   "paper_set": {
    "items": 610,
    "ops": 90,
-   "events": 58,
+   "events": 61,
+   "events_v13_triplet": 58,
    "dbs": 11,
    "by_evo": {
     "rename": 96,
@@ -84,67 +85,62 @@
   "segment_set": {
    "items": 334,
    "ops": 15,
-   "events": 7,
+   "events": 10,
    "dbs": 5
   }
  },
  "B_segment": {
   "n_ops": 15,
-  "n_events": 7,
+  "n_events": 10,
   "methods": {
    "B1 列名相似": {
     "op_ok": 0,
     "op_n": 15,
     "event_ok": 0,
-    "event_n": 7,
+    "event_n": 10,
     "ops_per_event": [
      1,
-     2,
-     3
+     2
     ]
    },
    "B2 值域重叠": {
     "op_ok": 0,
     "op_n": 15,
     "event_ok": 0,
-    "event_n": 7,
+    "event_n": 10,
     "ops_per_event": [
      1,
-     2,
-     3
+     2
     ]
    },
    "B3 嵌入语义": {
     "op_ok": 0,
     "op_n": 15,
     "event_ok": 0,
-    "event_n": 7,
+    "event_n": 10,
     "ops_per_event": [
      1,
-     2,
-     3
+     2
     ]
    },
    "M1 值域指纹": {
     "op_ok": 15,
     "op_n": 15,
-    "event_ok": 7,
-    "event_n": 7,
+    "event_ok": 10,
+    "event_n": 10,
     "ops_per_event": [
      1,
-     2,
-     3
+     2
     ]
    },
    "M1+形态指纹": {
     "op_ok": 15,
     "op_n": 15,
-    "event_ok": 7,
-    "event_n": 7,
+    "event_ok": 10,
+    "event_n": 10,
     "ops_per_event": [
      1,
-     2,
-     3
+     2
     ]
    }
   },
@@ -184,10 +180,10 @@
      "p": 6.103515625e-05
     },
     "event_level": {
-     "ours_only": 7,
+     "ours_only": 10,
      "base_only": 0,
-     "n": 7,
-     "p": 0.015625
+     "n": 10,
+     "p": 0.001953125
     }
    },
    "B2 值域重叠": {
@@ -198,10 +194,10 @@
      "p": 6.103515625e-05
     },
     "event_level": {
-     "ours_only": 7,
+     "ours_only": 10,
      "base_only": 0,
-     "n": 7,
-     "p": 0.015625
+     "n": 10,
+     "p": 0.001953125
     }
    },
    "B3 嵌入语义": {
@@ -212,10 +208,10 @@
      "p": 6.103515625e-05
     },
     "event_level": {
-     "ours_only": 7,
+     "ours_only": 10,
      "base_only": 0,
-     "n": 7,
-     "p": 0.015625
+     "n": 10,
+     "p": 0.001953125
     }
    }
   }
@@ -466,7 +462,7 @@
  },
  "D_segment_expr": {
   "gold_segment_ops": 15,
-  "gold_segment_events": 7,
+  "gold_segment_events": 10,
   "part_covered_ops": 10,
   "part_expr_match": 10,
   "part_expr_pct": 100.0,
@@ -502,10 +498,10 @@
     "birthday"
    ]
   ],
-  "events_covered": 2,
-  "events_ok": 2,
-  "event_level_p": 0.5,
-  "event_level_n": 2,
+  "events_covered": 5,
+  "events_ok": 5,
+  "event_level_p": 0.0625,
+  "event_level_n": 5,
   "output_spaces": {
    "name": {
     "types": {

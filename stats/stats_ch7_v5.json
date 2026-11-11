@@ -1,0 +1,1942 @@
+{
+ "main": {
+  "easy": {
+   "n": 96,
+   "c1": {
+    "k": 38,
+    "n": 96,
+    "rate": 39.6,
+    "ci": [
+     30.4,
+     49.6
+    ]
+   },
+   "c2": {
+    "k": 78,
+    "n": 96,
+    "rate": 81.2,
+    "ci": [
+     72.3,
+     87.8
+    ]
+   },
+   "c3m": {
+    "k": 87,
+    "n": 96,
+    "rate": 90.6,
+    "ci": [
+     83.1,
+     95.0
+    ]
+   },
+   "c_rw": {
+    "k": 91,
+    "n": 96,
+    "rate": 94.8,
+    "ci": [
+     88.4,
+     97.8
+    ]
+   }
+  },
+  "medium": {
+   "n": 90,
+   "c1": {
+    "k": 20,
+    "n": 90,
+    "rate": 22.2,
+    "ci": [
+     14.9,
+     31.8
+    ]
+   },
+   "c2": {
+    "k": 67,
+    "n": 90,
+    "rate": 74.4,
+    "ci": [
+     64.6,
+     82.3
+    ]
+   },
+   "c3m": {
+    "k": 83,
+    "n": 90,
+    "rate": 92.2,
+    "ci": [
+     84.8,
+     96.2
+    ]
+   },
+   "c_rw": {
+    "k": 84,
+    "n": 90,
+    "rate": 93.3,
+    "ci": [
+     86.2,
+     96.9
+    ]
+   }
+  },
+  "hard": {
+   "n": 90,
+   "c1": {
+    "k": 12,
+    "n": 90,
+    "rate": 13.3,
+    "ci": [
+     7.8,
+     21.9
+    ]
+   },
+   "c2": {
+    "k": 44,
+    "n": 90,
+    "rate": 48.9,
+    "ci": [
+     38.8,
+     59.0
+    ]
+   },
+   "c3m": {
+    "k": 81,
+    "n": 90,
+    "rate": 90.0,
+    "ci": [
+     82.1,
+     94.6
+    ]
+   },
+   "c_rw": {
+    "k": 71,
+    "n": 90,
+    "rate": 78.9,
+    "ci": [
+     69.4,
+     86.0
+    ]
+   }
+  },
+  "rename_all": {
+   "n": 276,
+   "c1": {
+    "k": 70,
+    "n": 276,
+    "rate": 25.4,
+    "ci": [
+     20.6,
+     30.8
+    ]
+   },
+   "c2": {
+    "k": 189,
+    "n": 276,
+    "rate": 68.5,
+    "ci": [
+     62.8,
+     73.7
+    ]
+   },
+   "c3m": {
+    "k": 251,
+    "n": 276,
+    "rate": 90.9,
+    "ci": [
+     87.0,
+     93.8
+    ]
+   },
+   "c_rw": {
+    "k": 246,
+    "n": 276,
+    "rate": 89.1,
+    "ci": [
+     84.9,
+     92.3
+    ]
+   }
+  },
+  "merge": {
+   "n": 230,
+   "c1": {
+    "k": 13,
+    "n": 230,
+    "rate": 5.7,
+    "ci": [
+     3.3,
+     9.4
+    ]
+   },
+   "c2": {
+    "k": 23,
+    "n": 230,
+    "rate": 10.0,
+    "ci": [
+     6.8,
+     14.6
+    ]
+   },
+   "c3m": {
+    "k": 6,
+    "n": 230,
+    "rate": 2.6,
+    "ci": [
+     1.2,
+     5.6
+    ]
+   },
+   "c3mp": {
+    "k": 183,
+    "n": 230,
+    "rate": 79.6,
+    "ci": [
+     73.9,
+     84.3
+    ]
+   },
+   "c_rw": {
+    "k": 28,
+    "n": 230,
+    "rate": 12.2,
+    "ci": [
+     8.6,
+     17.0
+    ]
+   }
+  },
+  "split": {
+   "n": 104,
+   "c1": {
+    "k": 2,
+    "n": 104,
+    "rate": 1.9,
+    "ci": [
+     0.5,
+     6.7
+    ]
+   },
+   "c2": {
+    "k": 18,
+    "n": 104,
+    "rate": 17.3,
+    "ci": [
+     11.2,
+     25.7
+    ]
+   },
+   "c3m": {
+    "k": 81,
+    "n": 104,
+    "rate": 77.9,
+    "ci": [
+     69.0,
+     84.8
+    ]
+   },
+   "c3mp": {
+    "k": 81,
+    "n": 104,
+    "rate": 77.9,
+    "ci": [
+     69.0,
+     84.8
+    ]
+   },
+   "c_rw": {
+    "k": 10,
+    "n": 104,
+    "rate": 9.6,
+    "ci": [
+     5.3,
+     16.8
+    ]
+   }
+  }
+ },
+ "pairs": [
+  {
+   "group": "easy",
+   "a": "c3m",
+   "b": "c_rw",
+   "n_pair": 96,
+   "k_a": 87,
+   "k_b": 91,
+   "rate_a": 90.6,
+   "rate_b": 94.8,
+   "a_only": 0,
+   "b_only": 4,
+   "both_right": 87,
+   "both_wrong": 5,
+   "delta": -4.2,
+   "p": 0.125,
+   "ci": [
+    -10.18,
+    0.72
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    -8.96,
+    -0.24
+   ],
+   "phi": 0.6484,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.8313,
+     0.9499
+    ],
+    "p_B": [
+     0.8838,
+     0.9776
+    ]
+   },
+   "ci_v4_retired": [
+    -10.23,
+    0.44
+   ],
+   "ci_dev_v4_pt": 0.28,
+   "ci_conditional_v3": [
+    -4.2,
+    0.9
+   ],
+   "ci_wald_sensitivity": [
+    -8.2,
+    -0.2
+   ],
+   "n_discordant": 4,
+   "theta_ci": [
+    0.0,
+    0.6024
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.71635,
+     "p_upper": 0.00022,
+     "p_tost": 0.71635,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 0.34142,
+     "p_upper": 0.0,
+     "p_tost": 0.34142,
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.00212,
+     "p_upper": 0.0,
+     "p_tost": 0.00212,
+     "pass": true
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      -4.2,
+      0.2
+     ],
+     "pass": false,
+     "max_attainable_pt": 4.17,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      -4.2,
+      0.2
+     ],
+     "pass": true,
+     "max_attainable_pt": 4.17,
+     "degenerate": true
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      -4.2,
+      0.2
+     ],
+     "pass": true,
+     "max_attainable_pt": 4.17,
+     "degenerate": true
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      -8.96,
+      -0.24
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      -8.96,
+      -0.24
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      -8.96,
+      -0.24
+     ],
+     "pass": true
+    }
+   ],
+   "in_holm_family": true,
+   "p_holm": 0.25,
+   "holm_rank": 4
+  },
+  {
+   "group": "medium",
+   "a": "c3m",
+   "b": "c_rw",
+   "n_pair": 90,
+   "k_a": 83,
+   "k_b": 84,
+   "rate_a": 92.2,
+   "rate_b": 93.3,
+   "a_only": 1,
+   "b_only": 2,
+   "both_right": 82,
+   "both_wrong": 5,
+   "delta": -1.1,
+   "p": 1.0,
+   "ci": [
+    -6.79,
+    4.23
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    -5.62,
+    3.14
+   ],
+   "phi": 0.6708,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.8481,
+     0.9618
+    ],
+    "p_B": [
+     0.8621,
+     0.9691
+    ]
+   },
+   "ci_v4_retired": [
+    -6.71,
+    4.06
+   ],
+   "ci_dev_v4_pt": 0.17,
+   "ci_conditional_v3": [
+    -3.3,
+    2.7
+   ],
+   "ci_wald_sensitivity": [
+    -4.9,
+    2.7
+   ],
+   "n_discordant": 3,
+   "theta_ci": [
+    0.0084,
+    0.9057
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.16273,
+     "p_upper": 0.01617,
+     "p_tost": 0.16273,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 0.02146,
+     "p_upper": 0.00073,
+     "p_tost": 0.02146,
+     "pass": true
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 0.0,
+     "p_tost": 0.0,
+     "pass": true
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      -3.2,
+      2.4
+     ],
+     "pass": false,
+     "max_attainable_pt": 3.33,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      -3.2,
+      2.4
+     ],
+     "pass": true,
+     "max_attainable_pt": 3.33,
+     "degenerate": true
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      -3.2,
+      2.4
+     ],
+     "pass": true,
+     "max_attainable_pt": 3.33,
+     "degenerate": true
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      -5.62,
+      3.14
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      -5.62,
+      3.14
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      -5.62,
+      3.14
+     ],
+     "pass": true
+    }
+   ],
+   "in_holm_family": true,
+   "p_holm": 1.0,
+   "holm_rank": 5
+  },
+  {
+   "group": "hard",
+   "a": "c3m",
+   "b": "c_rw",
+   "n_pair": 90,
+   "k_a": 81,
+   "k_b": 71,
+   "rate_a": 90.0,
+   "rate_b": 78.9,
+   "a_only": 13,
+   "b_only": 3,
+   "both_right": 68,
+   "both_wrong": 6,
+   "delta": 11.1,
+   "p": 0.021270751953125,
+   "ci": [
+    2.34,
+    20.24
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    3.8,
+    18.7
+   ],
+   "phi": 0.3267,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.8208,
+     0.9465
+    ],
+    "p_B": [
+     0.6937,
+     0.8605
+    ]
+   },
+   "ci_v4_retired": [
+    2.75,
+    20.1
+   ],
+   "ci_dev_v4_pt": 0.41,
+   "ci_conditional_v3": [
+    1.5,
+    16.3
+   ],
+   "ci_wald_sensitivity": [
+    2.7,
+    19.5
+   ],
+   "n_discordant": 16,
+   "theta_ci": [
+    0.5435,
+    0.9595
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.0005,
+     "p_upper": 0.97075,
+     "p_tost": 0.97075,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 9e-05,
+     "p_upper": 0.92298,
+     "p_tost": 0.92298,
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 0.60224,
+     "p_tost": 0.60224,
+     "pass": false
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      3.0,
+      15.9
+     ],
+     "pass": false,
+     "max_attainable_pt": 17.78,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      3.0,
+      15.9
+     ],
+     "pass": false,
+     "max_attainable_pt": 17.78,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      3.0,
+      15.9
+     ],
+     "pass": false,
+     "max_attainable_pt": 17.78,
+     "degenerate": false
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      3.8,
+      18.7
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      3.8,
+      18.7
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      3.8,
+      18.7
+     ],
+     "pass": false
+    }
+   ],
+   "in_holm_family": true,
+   "p_holm": 0.063812255859375,
+   "holm_rank": 3
+  },
+  {
+   "group": "merge",
+   "a": "c3mp",
+   "b": "c_rw",
+   "n_pair": 230,
+   "k_a": 183,
+   "k_b": 28,
+   "rate_a": 79.6,
+   "rate_b": 12.2,
+   "a_only": 158,
+   "b_only": 3,
+   "both_right": 25,
+   "both_wrong": 44,
+   "delta": 67.4,
+   "p": 4.760049405558679e-43,
+   "ci": [
+    60.2,
+    73.11
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    61.45,
+    72.29
+   ],
+   "phi": 0.0733,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.7389,
+     0.8427
+    ],
+    "p_B": [
+     0.0856,
+     0.1703
+    ]
+   },
+   "ci_v4_retired": [
+    60.67,
+    73.1
+   ],
+   "ci_dev_v4_pt": 0.47,
+   "ci_conditional_v3": [
+    62.5,
+    69.5
+   ],
+   "ci_wald_sensitivity": [
+    61.0,
+    73.8
+   ],
+   "n_discordant": 161,
+   "theta_ci": [
+    0.9465,
+    0.9961
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      63.4,
+      69.3
+     ],
+     "pass": false,
+     "max_attainable_pt": 70.0,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      63.4,
+      69.3
+     ],
+     "pass": false,
+     "max_attainable_pt": 70.0,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      63.4,
+      69.3
+     ],
+     "pass": false,
+     "max_attainable_pt": 70.0,
+     "degenerate": false
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      61.45,
+      72.29
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      61.45,
+      72.29
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      61.45,
+      72.29
+     ],
+     "pass": false
+    }
+   ],
+   "in_holm_family": true,
+   "p_holm": 2.3800247027793393e-42,
+   "holm_rank": 1
+  },
+  {
+   "group": "split",
+   "a": "c3mp",
+   "b": "c_rw",
+   "n_pair": 104,
+   "k_a": 81,
+   "k_b": 10,
+   "rate_a": 77.9,
+   "rate_b": 9.6,
+   "a_only": 71,
+   "b_only": 0,
+   "both_right": 10,
+   "both_wrong": 23,
+   "delta": 68.3,
+   "p": 8.470329472543003e-22,
+   "ci": [
+    57.62,
+    75.9
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    59.52,
+    74.87
+   ],
+   "phi": 0.1345,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.69,
+     0.8479
+    ],
+    "p_B": [
+     0.0531,
+     0.168
+    ]
+   },
+   "ci_v4_retired": [
+    58.16,
+    76.43
+   ],
+   "ci_dev_v4_pt": 0.54,
+   "ci_conditional_v3": [
+    61.4,
+    68.3
+   ],
+   "ci_wald_sensitivity": [
+    59.3,
+    77.2
+   ],
+   "n_discordant": 71,
+   "theta_ci": [
+    0.9494,
+    1.0
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      62.6,
+      68.3
+     ],
+     "pass": false,
+     "max_attainable_pt": 68.27,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      62.6,
+      68.3
+     ],
+     "pass": false,
+     "max_attainable_pt": 68.27,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      62.6,
+      68.3
+     ],
+     "pass": false,
+     "max_attainable_pt": 68.27,
+     "degenerate": false
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      59.52,
+      74.87
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      59.52,
+      74.87
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      59.52,
+      74.87
+     ],
+     "pass": false
+    }
+   ],
+   "in_holm_family": true,
+   "p_holm": 3.3881317890172014e-21,
+   "holm_rank": 2
+  },
+  {
+   "group": "rename_all",
+   "a": "c3m",
+   "b": "c_rw",
+   "n_pair": 276,
+   "k_a": 251,
+   "k_b": 246,
+   "rate_a": 90.9,
+   "rate_b": 89.1,
+   "a_only": 14,
+   "b_only": 9,
+   "both_right": 237,
+   "both_wrong": 16,
+   "delta": 1.8,
+   "p": 0.4048728942871094,
+   "ci": [
+    -1.76,
+    5.48
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    -1.15,
+    4.85
+   ],
+   "phi": 0.5184,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.8697,
+     0.9379
+    ],
+    "p_B": [
+     0.8491,
+     0.9228
+    ]
+   },
+   "ci_v4_retired": [
+    -1.66,
+    5.42
+   ],
+   "ci_dev_v4_pt": 0.1,
+   "ci_conditional_v3": [
+    -1.9,
+    5.0
+   ],
+   "ci_wald_sensitivity": [
+    -1.6,
+    5.2
+   ],
+   "n_discordant": 23,
+   "theta_ci": [
+    0.3854,
+    0.8029
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.00276,
+     "p_upper": 0.24658,
+     "p_tost": 0.24658,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 4e-05,
+     "p_upper": 0.03299,
+     "p_tost": 0.03299,
+     "pass": true
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 0.0,
+     "p_tost": 0.0,
+     "pass": true
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      -1.4,
+      4.6
+     ],
+     "pass": false,
+     "max_attainable_pt": 8.33,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      -1.4,
+      4.6
+     ],
+     "pass": true,
+     "max_attainable_pt": 8.33,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      -1.4,
+      4.6
+     ],
+     "pass": true,
+     "max_attainable_pt": 8.33,
+     "degenerate": true
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      -1.15,
+      4.85
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      -1.15,
+      4.85
+     ],
+     "pass": true
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      -1.15,
+      4.85
+     ],
+     "pass": true
+    }
+   ],
+   "in_holm_family": false
+  },
+  {
+   "group": "rename_all",
+   "a": "c3m",
+   "b": "c2",
+   "n_pair": 276,
+   "k_a": 251,
+   "k_b": 189,
+   "rate_a": 90.9,
+   "rate_b": 68.5,
+   "a_only": 63,
+   "b_only": 1,
+   "both_right": 188,
+   "both_wrong": 24,
+   "delta": 22.5,
+   "p": 7.047314121155779e-18,
+   "ci": [
+    17.44,
+    27.65
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    18.24,
+    26.8
+   ],
+   "phi": 0.4244,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.8697,
+     0.9379
+    ],
+    "p_B": [
+     0.6278,
+     0.7367
+    ]
+   },
+   "ci_v4_retired": [
+    17.61,
+    27.78
+   ],
+   "ci_dev_v4_pt": 0.17,
+   "ci_conditional_v3": [
+    19.3,
+    23.2
+   ],
+   "ci_wald_sensitivity": [
+    17.4,
+    27.5
+   ],
+   "n_discordant": 64,
+   "theta_ci": [
+    0.916,
+    0.9996
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      19.8,
+      23.2
+     ],
+     "pass": false,
+     "max_attainable_pt": 23.19,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      19.8,
+      23.2
+     ],
+     "pass": false,
+     "max_attainable_pt": 23.19,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      19.8,
+      23.2
+     ],
+     "pass": false,
+     "max_attainable_pt": 23.19,
+     "degenerate": false
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      18.24,
+      26.8
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      18.24,
+      26.8
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      18.24,
+      26.8
+     ],
+     "pass": false
+    }
+   ],
+   "in_holm_family": false
+  },
+  {
+   "group": "merge",
+   "a": "c3mp",
+   "b": "c2",
+   "n_pair": 230,
+   "k_a": 183,
+   "k_b": 23,
+   "rate_a": 79.6,
+   "rate_b": 10.0,
+   "a_only": 161,
+   "b_only": 1,
+   "both_right": 22,
+   "both_wrong": 46,
+   "delta": 69.6,
+   "p": 5.576456291136357e-47,
+   "ci": [
+    62.71,
+    74.96
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    63.91,
+    74.19
+   ],
+   "phi": 0.115,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.7389,
+     0.8427
+    ],
+    "p_B": [
+     0.0676,
+     0.1456
+    ]
+   },
+   "ci_v4_retired": [
+    63.04,
+    75.13
+   ],
+   "ci_dev_v4_pt": 0.33,
+   "ci_conditional_v3": [
+    65.7,
+    70.4
+   ],
+   "ci_wald_sensitivity": [
+    63.5,
+    75.6
+   ],
+   "n_discordant": 162,
+   "theta_ci": [
+    0.9661,
+    0.9998
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      66.4,
+      70.4
+     ],
+     "pass": false,
+     "max_attainable_pt": 70.43,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      66.4,
+      70.4
+     ],
+     "pass": false,
+     "max_attainable_pt": 70.43,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      66.4,
+      70.4
+     ],
+     "pass": false,
+     "max_attainable_pt": 70.43,
+     "degenerate": false
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      63.91,
+      74.19
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      63.91,
+      74.19
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      63.91,
+      74.19
+     ],
+     "pass": false
+    }
+   ],
+   "in_holm_family": false
+  },
+  {
+   "group": "split",
+   "a": "c3m",
+   "b": "c2",
+   "n_pair": 104,
+   "k_a": 81,
+   "k_b": 18,
+   "rate_a": 77.9,
+   "rate_b": 17.3,
+   "a_only": 63,
+   "b_only": 0,
+   "both_right": 18,
+   "both_wrong": 23,
+   "delta": 60.6,
+   "p": 2.168404344971009e-19,
+   "ci": [
+    49.73,
+    68.74
+   ],
+   "ci_method": "newcombe-1998-method10-four-cells",
+   "ci90_newcombe": [
+    51.62,
+    67.62
+   ],
+   "phi": 0.2132,
+   "phi_tag": "corrected",
+   "wilson_marginals": {
+    "p_A": [
+     0.69,
+     0.8479
+    ],
+    "p_B": [
+     0.1124,
+     0.2571
+    ]
+   },
+   "ci_v4_retired": [
+    50.33,
+    69.43
+   ],
+   "ci_dev_v4_pt": 0.69,
+   "ci_conditional_v3": [
+    53.7,
+    60.6
+   ],
+   "ci_wald_sensitivity": [
+    51.2,
+    70.0
+   ],
+   "n_discordant": 63,
+   "theta_ci": [
+    0.9431,
+    1.0
+   ],
+   "tost": [
+    {
+     "margin_pt": 3,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "p_lower": 0.0,
+     "p_upper": 1.0,
+     "p_tost": 1.0,
+     "pass": false
+    }
+   ],
+   "tost_exact": [
+    {
+     "margin_pt": 3,
+     "ci90_exact": [
+      55.0,
+      60.6
+     ],
+     "pass": false,
+     "max_attainable_pt": 60.58,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90_exact": [
+      55.0,
+      60.6
+     ],
+     "pass": false,
+     "max_attainable_pt": 60.58,
+     "degenerate": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90_exact": [
+      55.0,
+      60.6
+     ],
+     "pass": false,
+     "max_attainable_pt": 60.58,
+     "degenerate": false
+    }
+   ],
+   "tost_newcombe": [
+    {
+     "margin_pt": 3,
+     "ci90": [
+      51.62,
+      67.62
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 5,
+     "ci90": [
+      51.62,
+      67.62
+     ],
+     "pass": false
+    },
+    {
+     "margin_pt": 10,
+     "ci90": [
+      51.62,
+      67.62
+     ],
+     "pass": false
+    }
+   ],
+   "in_holm_family": false
+  }
+ ],
+ "scope": {
+  "e2e": {
+   "items": 610,
+   "base": 437,
+   "dbs": 11
+  },
+  "lineage": {
+   "items": 992,
+   "base": 527,
+   "dbs": 11
+  },
+  "tiers": [
+   {
+    "name": "改名 easy",
+    "items": 96,
+    "base": 96,
+    "dbs": 11,
+    "layer": "两"
+   },
+   {
+    "name": "改名 medium",
+    "items": 90,
+    "base": 90,
+    "dbs": 7,
+    "layer": "两"
+   },
+   {
+    "name": "改名 hard",
+    "items": 90,
+    "base": 90,
+    "dbs": 8,
+    "layer": "两"
+   },
+   {
+    "name": "合并",
+    "items": 230,
+    "base": 230,
+    "dbs": 5,
+    "layer": "两"
+   },
+   {
+    "name": "拆分",
+    "items": 104,
+    "base": 104,
+    "dbs": 5,
+    "layer": "两"
+   },
+   {
+    "name": "值改写",
+    "items": 110,
+    "base": 110,
+    "dbs": 6,
+    "layer": "抽取"
+   },
+   {
+    "name": "值改写（语义名）",
+    "items": 110,
+    "base": 110,
+    "dbs": 6,
+    "layer": "抽取"
+   },
+   {
+    "name": "依赖后继",
+    "items": 81,
+    "base": 81,
+    "dbs": 8,
+    "layer": "抽取"
+   },
+   {
+    "name": "依赖弃答",
+    "items": 81,
+    "base": 81,
+    "dbs": 8,
+    "layer": "抽取"
+   }
+  ]
+ },
+ "units": {
+  "merge": {
+   "items": 230,
+   "db": 5,
+   "op_facts": 10,
+   "items_per_op": 23.0
+  },
+  "split": {
+   "items": 104,
+   "db": 5,
+   "op_facts": 5,
+   "items_per_op": 20.8
+  },
+  "rename_all": {
+   "items": 276,
+   "db": 11,
+   "op_facts": 75,
+   "items_per_op": 3.7
+  }
+ },
+ "meta": {
+  "version": "ch7-stats-v5",
+  "supersedes": "stats_ch7_v4.py / results/stats_ch7_v4.json",
+  "ci_single": "Wilson score, z=1.96",
+  "estimate_paired": "delta = p_A - p_B = (a+b)/n - (a+c)/n（边际准确率差，百分点）",
+  "ci_paired_primary": "Newcombe (1998) 方法 10，完整四格输入：边际比例 p_A=(a+b)/n 与 p_B=(a+c)/n 各取 Wilson 区间，再用修正 phi 系数做相关性修正；a=两条件都对、b=仅 A 对、c=仅 B 对、d=都错",
+  "ci_paired_reference": "Newcombe RG. Improved confidence intervals for the difference between binomial proportions based on paired data. Stat Med 1998;17(22):2635-2650（方法 10 见 p.2639）",
+  "ci_paired_validation": "实现与 statsmodels.stats.proportion.confint_proportions_paired(method='newcomb') 的文档算例对齐到 1e-10（table=[[10,5],[2,20]] → (-0.0643926050711, 0.2211160178958)）",
+  "ci_paired_v4_defect": "v4 的 ci_newcombe(b,c,n) 只对两个不一致格各取 Wilson 后平方合成，把 b、c 当作独立二项，未使用 a、d，也没有 phi 修正，故不是方法 10；点估计恰好等于 delta 使错误未暴露。旧值保留为 ci_v4_retired。",
+  "ci_paired_a_d_invariance": "方法 10 在 a<->d 交换下严格不变（f2 与 g3 互换、phi 不变）：区间只通过 phi 与边际 Wilson 宽度使用 a、d，故本方法对「两条件都强/都弱」不区分，属方法的已知限制",
+  "ci_paired_deprecated": "exact-conditional（v3 做法）：条件于 n_d，未覆盖 n_d 的抽样变异，不是 delta 的置信区间；保留为 ci_conditional_v3 仅供对照",
+  "ci_paired_sensitivity": "Wald with McNemar variance（仅敏感性，不用于判方向）",
+  "ci_paired_unconditional_note": "亦实现无条件精确反演（对不一致率取上确界），宽度约为方法 10 的 1.5-4 倍，过度保守，未采用",
+  "coverage_sim_file": "results/paired_ci_coverage.json",
+  "coverage_scope_note": "覆盖率证据分两段：五个与实际档位对应的情景 + 一个参数网格；结论只对网格覆盖的 (p_A, p_B, phi, n) 区域成立，不外推到全参数空间",
+  "bootstrap_removed": "仅指配对差值的条目级百分位 bootstrap 已弃用；聚类 bootstrap 仍在使用（5,000 次重采样），见表 7-19",
+  "holm_family": [
+   "easy:c3m-c_rw",
+   "medium:c3m-c_rw",
+   "hard:c3m-c_rw",
+   "merge:c3mp-c_rw",
+   "split:c3mp-c_rw"
+  ],
+  "holm_family_size": 5,
+  "holm_scope_note": "仅 c_rw 相关的 5 项对照进入 Holm 族；与 C2 的对照不校正，亦不携带 p_holm 字段",
+  "tost_margins_pt": [
+   3,
+   5,
+   10
+  ],
+  "tost_note": "margin 非预注册，为结果可见后设定；故同时报 ±3/±5/±10 三档",
+  "tost_degenerate_note": "条件于不一致对数，差值上限为 n_d/n；当该上限不超过 margin 时，精确判据必然通过，属退化情形，不能作为等价证据",
+  "tost_ci_basis": "等价判据用 90% 方法 10 区间（完整四格），不用 v4 的旧区间",
+  "inputs": [
+   "e1_dev_full.jsonl",
+   "e1_diff_3lvl.jsonl",
+   "e1_c3m_paired.jsonl",
+   "e1_expand_med.jsonl",
+   "e1_expand_hard.jsonl",
+   "e1_ds_c3f.jsonl",
+   "e1_ms_ds.jsonl",
+   "e1_ms_ds_p.jsonl",
+   "e1_ms_ds_p_split.jsonl",
+   "e1_ds_one.jsonl",
+   "e1_ds_one_b1.jsonl",
+   "e1_ds_one_b2.jsonl",
+   "e3_rw_main.jsonl"
+  ],
+  "input_sha1": {
+   "results/e1_dev_full.jsonl": "28f240706e61c89d2093d944e4d41320a8e96c53",
+   "results/e1_diff_3lvl.jsonl": "d7a12538cf2ebb61e5f56b65c42b500c4c7c7754",
+   "results/e1_c3m_paired.jsonl": "93781607d1846cd3dc1efd2d275549502db51dab",
+   "results/e1_expand_med.jsonl": "e5431bd3b9c05817503001cf568951056cd5beb4",
+   "results/e1_expand_hard.jsonl": "d78187a444c63ecc6d8b7799f880601eb176e9e6",
+   "results/e1_ds_c3f.jsonl": "378fc2bc40cfaefe107ff7cf83565fc3869aea7c",
+   "results/e1_ms_ds.jsonl": "c0d8a49e29a3349d71be31a06039685a35958de3",
+   "results/e1_ms_ds_p.jsonl": "8c567eb953d4ea45bb3641143ca49231bf2484e2",
+   "results/e1_ms_ds_p_split.jsonl": "34a9e54336c70585a2b8dee88fbfb8b2a2d817bd",
+   "results/e1_ds_one.jsonl": "8d5c41740862ab88ce20893c418fd174810fb2d2",
+   "results/e1_ds_one_b1.jsonl": "b88e4aaa7b987aaeb8bb0dc89f25494095b17380",
+   "results/e1_ds_one_b2.jsonl": "0fb895bcd7b9d289bfdad7be88b2a1429a8eb113",
+   "results/e3_rw_main.jsonl": "5287da56f59c4ec93a62cab785cd549e16216c5f"
+  },
+  "generation_chain": [
+   "stats_ch7_v5.py 从 results/*.jsonl（冻结的逐题判定）重算全部计数与检验",
+   "配对区间实现来自 paired_ci.py（v5 四格方法 10，含 selftest）",
+   "覆盖率来自 paired_coverage.py → results/paired_ci_coverage.json",
+   "make_chapter7_v5.py 只读 stats_ch7_v5.json / paired_ci.json / paired_ci_coverage.json，正文数值不自带常量"
+  ],
+  "derived_inputs": {
+   "results/stats_cluster.json": {
+    "script": "stats_cluster.py",
+    "bootstrap_resamples": 5000,
+    "bootstrap_seed": 7,
+    "used_by": "表 7-19（基础题级聚类检验）",
+    "note": "该文件由 stats_cluster.py 从同一批 jsonl 生成；其 bootstrap 为簇级重采样，与已弃用的条目级 bootstrap 不同"
+   },
+   "results/paired_ci_coverage.json": {
+    "script": "paired_coverage.py",
+    "content": "方法 10（四格）/ v4 旧实现 / v3 条件区间 / Wald 的覆盖率：五个情景 + 参数网格",
+    "used_by": "表 7-6、7.1.5 节覆盖率段"
+   }
+  },
+  "cluster_stats": {
+   "tests": 5,
+   "bootstrap": 5000,
+   "seed": 7
+  },
+  "coverage_headline": {
+   "scenario_m10_min": 0.95,
+   "scenario_m10_max": 0.9956,
+   "scenario_v4_min": 0.9397,
+   "scenario_conditional_min": 0.4925,
+   "scenario_conditional_max": 0.9706,
+   "grid_m10_min": 0.942,
+   "grid_v4_min": 0.8693,
+   "grid_m10_frac_below_nominal": 0.1653,
+   "grid_v4_frac_below_nominal": 0.4758
+  }
+ },
+ "xmodel": {
+  "deepseek-ai/DeepSeek-V3.2": {
+   "model": "deepseek-ai/DeepSeek-V3.2",
+   "n": 276,
+   "c1": {
+    "k": 70,
+    "n": 276,
+    "rate": 25.4
+   },
+   "c2": {
+    "k": 189,
+    "n": 276,
+    "rate": 68.5
+   },
+   "c3f": {
+    "k": 251,
+    "n": 276,
+    "rate": 90.9
+   },
+   "c3m": {
+    "k": 251,
+    "n": 276,
+    "rate": 90.9
+   },
+   "delta": 22.4
+  },
+  "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+   "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "n": 276,
+   "c1": {
+    "k": 77,
+    "n": 276,
+    "rate": 27.9
+   },
+   "c2": {
+    "k": 162,
+    "n": 276,
+    "rate": 58.7
+   },
+   "c3f": {
+    "k": 254,
+    "n": 276,
+    "rate": 92.0
+   },
+   "c3m": {
+    "k": 254,
+    "n": 276,
+    "rate": 92.0
+   },
+   "delta": 33.3
+  },
+  "Qwen/Qwen3-30B-A3B-Instruct-2507": {
+   "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+   "n": 276,
+   "c1": {
+    "k": 60,
+    "n": 276,
+    "rate": 21.7
+   },
+   "c2": {
+    "k": 140,
+    "n": 276,
+    "rate": 50.7
+   },
+   "c3f": {
+    "k": 215,
+    "n": 276,
+    "rate": 77.9
+   },
+   "c3m": {
+    "k": 217,
+    "n": 276,
+    "rate": 78.6
+   },
+   "delta": 27.9
+  },
+  "deepseek-ai/DeepSeek-V4.1-Flash": {
+   "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "n": 276,
+   "c1": {
+    "k": 118,
+    "n": 276,
+    "rate": 42.8
+   },
+   "c2": {
+    "k": 222,
+    "n": 276,
+    "rate": 80.4
+   },
+   "c3f": {
+    "k": 263,
+    "n": 276,
+    "rate": 95.3
+   },
+   "c3m": {
+    "k": 262,
+    "n": 276,
+    "rate": 94.9
+   },
+   "delta": 14.5
+  },
+  "zai-org/GLM-5.3": {
+   "model": "zai-org/GLM-5.3",
+   "n": 79,
+   "c1": {
+    "k": 41,
+    "n": 79,
+    "rate": 51.9
+   },
+   "c2": {
+    "k": 73,
+    "n": 79,
+    "rate": 92.4
+   },
+   "c3m": {
+    "k": 75,
+    "n": 79,
+    "rate": 94.9
+   },
+   "delta": 2.5
+  },
+  "zai-org/GLM-5.3-Flash": {
+   "model": "zai-org/GLM-5.3-Flash",
+   "n": 57,
+   "c1": {
+    "k": 27,
+    "n": 57,
+    "rate": 47.4
+   },
+   "c2": {
+    "k": 46,
+    "n": 57,
+    "rate": 80.7
+   },
+   "c3m": {
+    "k": 53,
+    "n": 57,
+    "rate": 93.0
+   },
+   "delta": 12.3
+  },
+  "Qwen/Qwen3.8-27B": {
+   "model": "Qwen/Qwen3.8-27B",
+   "n": 1,
+   "c1": {
+    "k": 1,
+    "n": 1,
+    "rate": 100.0
+   },
+   "c2": {
+    "k": 1,
+    "n": 1,
+    "rate": 100.0
+   },
+   "c3m": {
+    "k": 1,
+    "n": 1,
+    "rate": 100.0
+   },
+   "delta": 0.0
+  }
+ },
+ "outcomes": [
+  {
+   "n": 230,
+   "EX": 23,
+   "SILENT": 179,
+   "ERROR": 9,
+   "OVER_ABSTAIN": 19,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "合并 · C2 旧 SQL"
+  },
+  {
+   "n": 230,
+   "EX": 6,
+   "SILENT": 223,
+   "ERROR": 0,
+   "OVER_ABSTAIN": 1,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "合并 · C3m 列级"
+  },
+  {
+   "n": 230,
+   "EX": 183,
+   "SILENT": 47,
+   "ERROR": 0,
+   "OVER_ABSTAIN": 0,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "合并 · C3mp 段位"
+  },
+  {
+   "n": 230,
+   "EX": 28,
+   "SILENT": 140,
+   "ERROR": 62,
+   "OVER_ABSTAIN": 0,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "合并 · c_rw 改写"
+  },
+  {
+   "n": 104,
+   "EX": 18,
+   "SILENT": 72,
+   "ERROR": 7,
+   "OVER_ABSTAIN": 7,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "拆分 · C2 旧 SQL"
+  },
+  {
+   "n": 104,
+   "EX": 81,
+   "SILENT": 23,
+   "ERROR": 0,
+   "OVER_ABSTAIN": 0,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "拆分 · C3m 列级"
+  },
+  {
+   "n": 96,
+   "EX": 87,
+   "SILENT": 9,
+   "ERROR": 0,
+   "OVER_ABSTAIN": 0,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "改名 easy · C3m"
+  },
+  {
+   "n": 96,
+   "EX": 91,
+   "SILENT": 5,
+   "ERROR": 0,
+   "OVER_ABSTAIN": 0,
+   "ABSTAIN_OK": 0,
+   "HALLUCINATE": 0,
+   "label": "改名 easy · c_rw"
+  }
+ ]
+}

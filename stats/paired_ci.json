@@ -1,0 +1,558 @@
+{
+ "version": "paired-ci-v5",
+ "estimate": "delta = p1 - p2 = (a+b)/n - (a+c)/n（百分点）",
+ "primary_method": "Newcombe (1998) 方法 10：两个边际比例的 Wilson 区间 + 修正 phi 相关性修正（四格 a,b,c,d 全部进入）",
+ "reference": "Newcombe RG. Improved confidence intervals for the difference between binomial proportions based on paired data. Stat Med 1998;17(22):2635-2650（方法 10 见 p.2639）",
+ "validation": {
+  "n_checks": 9,
+  "n_fail": 0,
+  "detail": [
+   {
+    "name": "官方算例 [[10,5],[2,20]] 95% CI",
+    "pass": true,
+    "detail": "(-0.0643926050712, 0.2211160178958) vs (-0.0643926050711, 0.2211160178958)"
+   },
+   {
+    "name": "无 phi 修正的对照值不同",
+    "pass": true,
+    "detail": "phi=0 时下界 -0.133583，官方为 -0.064393"
+   },
+   {
+    "name": "官方 Wald 算例",
+    "pass": true,
+    "detail": "[-5.66, 21.88] vs (-5.6613, 21.8775) pt"
+   },
+   {
+    "name": "区间含点估计 / 顺序 / 值域",
+    "pass": true,
+    "detail": "8 张边界表全部满足"
+   },
+   {
+    "name": "b=c=0 仍有正宽度",
+    "pass": true,
+    "detail": "[-2.06, 2.06] pt"
+   },
+   {
+    "name": "a<->d 交换区间不变（方法 10 的已知性质）",
+    "pass": true,
+    "detail": "9.27/26.97 vs 9.27/26.97"
+   },
+   {
+    "name": "v4 旧实现只依赖 (b,c,n)：信息少于方法 10",
+    "pass": true,
+    "detail": "M10 9.27 vs v4 9.67"
+   },
+   {
+    "name": "easy 型表：M10 与 v4 数值不同（差 0.28pt）",
+    "pass": true,
+    "detail": "M10 [-10.18, 0.72] vs v4 [-10.23, 0.44]"
+   },
+   {
+    "name": "90% 窄于 95%",
+    "pass": true,
+    "detail": "10.90 / 8.72 pt"
+   }
+  ],
+  "anchor": "statsmodels.stats.proportion.confint_proportions_paired([[10,5],[2,20]], method='newcomb') 文档算例"
+ },
+ "v4_defect": "v4 的 ci_newcombe(b,c,n) 对 b/n 与 c/n 各取 Wilson 后平方和合成：把 b、c 当独立二项，未用 a、d，也没有 phi 修正，故不是方法 10；点估计恰好等于 delta，掩盖了错误。",
+ "methods": {
+  "newcombe_m10": "本版主区间（95% 报告 / 90% 用于等价判据）",
+  "discordant_v4": "v4 的错误实现，仅并列展示",
+  "conditional_v3": "条件于 n_d，不是 delta 的置信区间，仅并列展示",
+  "wald": "McNemar 方差版，敏感性参考"
+ },
+ "pairs": [
+  {
+   "group": "easy",
+   "a": "c3m",
+   "b": "c_rw",
+   "n": 96,
+   "cells": {
+    "a": 87,
+    "b": 0,
+    "c": 4,
+    "d": 5
+   },
+   "rate_a": 90.6,
+   "rate_b": 94.8,
+   "delta": -4.2,
+   "phi": 0.6484,
+   "phi_tag": "corrected",
+   "ci95": [
+    -10.18,
+    0.72
+   ],
+   "ci90": [
+    -8.96,
+    -0.24
+   ],
+   "ci95_v4": [
+    -10.23,
+    0.44
+   ],
+   "ci90_v4": [
+    -8.96,
+    -0.6
+   ],
+   "ci95_conditional_v3": [
+    -4.17,
+    0.85
+   ],
+   "ci95_wald": [
+    -8.16,
+    -0.17
+   ],
+   "p_mcnemar": 0.125,
+   "ci95_contains_zero": true,
+   "ci90_contains_zero": false,
+   "ci95_v4_contains_zero": true,
+   "ci95_conditional_v3_contains_zero": true,
+   "ci95_wald_contains_zero": false,
+   "width95": 10.9,
+   "width95_v4": 10.67,
+   "width95_conditional": 5.02
+  },
+  {
+   "group": "medium",
+   "a": "c3m",
+   "b": "c_rw",
+   "n": 90,
+   "cells": {
+    "a": 82,
+    "b": 1,
+    "c": 2,
+    "d": 5
+   },
+   "rate_a": 92.2,
+   "rate_b": 93.3,
+   "delta": -1.1,
+   "phi": 0.6708,
+   "phi_tag": "corrected",
+   "ci95": [
+    -6.79,
+    4.23
+   ],
+   "ci90": [
+    -5.62,
+    3.14
+   ],
+   "ci95_v4": [
+    -6.71,
+    4.06
+   ],
+   "ci90_v4": [
+    -5.47,
+    2.89
+   ],
+   "ci95_conditional_v3": [
+    -3.28,
+    2.7
+   ],
+   "ci95_wald": [
+    -4.88,
+    2.65
+   ],
+   "p_mcnemar": 1.0,
+   "ci95_contains_zero": true,
+   "ci90_contains_zero": true,
+   "ci95_v4_contains_zero": true,
+   "ci95_conditional_v3_contains_zero": true,
+   "ci95_wald_contains_zero": true,
+   "width95": 11.02,
+   "width95_v4": 10.77,
+   "width95_conditional": 5.98
+  },
+  {
+   "group": "hard",
+   "a": "c3m",
+   "b": "c_rw",
+   "n": 90,
+   "cells": {
+    "a": 68,
+    "b": 13,
+    "c": 3,
+    "d": 6
+   },
+   "rate_a": 90.0,
+   "rate_b": 78.9,
+   "delta": 11.1,
+   "phi": 0.3267,
+   "phi_tag": "corrected",
+   "ci95": [
+    2.34,
+    20.24
+   ],
+   "ci90": [
+    3.8,
+    18.7
+   ],
+   "ci95_v4": [
+    2.75,
+    20.1
+   ],
+   "ci90_v4": [
+    4.2,
+    18.52
+   ],
+   "ci95_conditional_v3": [
+    1.55,
+    16.34
+   ],
+   "ci95_wald": [
+    2.71,
+    19.51
+   ],
+   "p_mcnemar": 0.021270751953125,
+   "ci95_contains_zero": false,
+   "ci90_contains_zero": false,
+   "ci95_v4_contains_zero": false,
+   "ci95_conditional_v3_contains_zero": false,
+   "ci95_wald_contains_zero": false,
+   "width95": 17.9,
+   "width95_v4": 17.35,
+   "width95_conditional": 14.79
+  },
+  {
+   "group": "merge",
+   "a": "c3mp",
+   "b": "c_rw",
+   "n": 230,
+   "cells": {
+    "a": 25,
+    "b": 158,
+    "c": 3,
+    "d": 44
+   },
+   "rate_a": 79.6,
+   "rate_b": 12.2,
+   "delta": 67.4,
+   "phi": 0.0733,
+   "phi_tag": "corrected",
+   "ci95": [
+    60.2,
+    73.11
+   ],
+   "ci90": [
+    61.45,
+    72.29
+   ],
+   "ci95_v4": [
+    60.67,
+    73.1
+   ],
+   "ci90_v4": [
+    61.83,
+    72.24
+   ],
+   "ci95_conditional_v3": [
+    62.51,
+    69.46
+   ],
+   "ci95_wald": [
+    60.98,
+    73.8
+   ],
+   "p_mcnemar": 4.760049405558679e-43,
+   "ci95_contains_zero": false,
+   "ci90_contains_zero": false,
+   "ci95_v4_contains_zero": false,
+   "ci95_conditional_v3_contains_zero": false,
+   "ci95_wald_contains_zero": false,
+   "width95": 12.91,
+   "width95_v4": 12.43,
+   "width95_conditional": 6.95
+  },
+  {
+   "group": "split",
+   "a": "c3mp",
+   "b": "c_rw",
+   "n": 104,
+   "cells": {
+    "a": 10,
+    "b": 71,
+    "c": 0,
+    "d": 23
+   },
+   "rate_a": 77.9,
+   "rate_b": 9.6,
+   "delta": 68.3,
+   "phi": 0.1345,
+   "phi_tag": "corrected",
+   "ci95": [
+    57.62,
+    75.9
+   ],
+   "ci90": [
+    59.52,
+    74.87
+   ],
+   "ci95_v4": [
+    58.16,
+    76.43
+   ],
+   "ci90_v4": [
+    59.98,
+    75.23
+   ],
+   "ci95_conditional_v3": [
+    61.36,
+    68.27
+   ],
+   "ci95_wald": [
+    59.32,
+    77.21
+   ],
+   "p_mcnemar": 8.470329472543003e-22,
+   "ci95_contains_zero": false,
+   "ci90_contains_zero": false,
+   "ci95_v4_contains_zero": false,
+   "ci95_conditional_v3_contains_zero": false,
+   "ci95_wald_contains_zero": false,
+   "width95": 18.28,
+   "width95_v4": 18.27,
+   "width95_conditional": 6.91
+  },
+  {
+   "group": "rename_all",
+   "a": "c3m",
+   "b": "c_rw",
+   "n": 276,
+   "cells": {
+    "a": 237,
+    "b": 14,
+    "c": 9,
+    "d": 16
+   },
+   "rate_a": 90.9,
+   "rate_b": 89.1,
+   "delta": 1.8,
+   "phi": 0.5184,
+   "phi_tag": "corrected",
+   "ci95": [
+    -1.76,
+    5.48
+   ],
+   "ci90": [
+    -1.15,
+    4.85
+   ],
+   "ci95_v4": [
+    -1.66,
+    5.42
+   ],
+   "ci90_v4": [
+    -1.06,
+    4.78
+   ],
+   "ci95_conditional_v3": [
+    -1.91,
+    5.05
+   ],
+   "ci95_wald": [
+    -1.59,
+    5.21
+   ],
+   "p_mcnemar": 0.4048728942871094,
+   "ci95_contains_zero": true,
+   "ci90_contains_zero": true,
+   "ci95_v4_contains_zero": true,
+   "ci95_conditional_v3_contains_zero": true,
+   "ci95_wald_contains_zero": true,
+   "width95": 7.24,
+   "width95_v4": 7.08,
+   "width95_conditional": 6.96
+  },
+  {
+   "group": "rename_all",
+   "a": "c3m",
+   "b": "c2",
+   "n": 276,
+   "cells": {
+    "a": 188,
+    "b": 63,
+    "c": 1,
+    "d": 24
+   },
+   "rate_a": 90.9,
+   "rate_b": 68.5,
+   "delta": 22.5,
+   "phi": 0.4244,
+   "phi_tag": "corrected",
+   "ci95": [
+    17.44,
+    27.65
+   ],
+   "ci90": [
+    18.24,
+    26.8
+   ],
+   "ci95_v4": [
+    17.61,
+    27.78
+   ],
+   "ci90_v4": [
+    18.39,
+    26.88
+   ],
+   "ci95_conditional_v3": [
+    19.29,
+    23.17
+   ],
+   "ci95_wald": [
+    17.44,
+    27.49
+   ],
+   "p_mcnemar": 7.047314121155779e-18,
+   "ci95_contains_zero": false,
+   "ci90_contains_zero": false,
+   "ci95_v4_contains_zero": false,
+   "ci95_conditional_v3_contains_zero": false,
+   "ci95_wald_contains_zero": false,
+   "width95": 10.21,
+   "width95_v4": 10.17,
+   "width95_conditional": 3.88
+  },
+  {
+   "group": "merge",
+   "a": "c3mp",
+   "b": "c2",
+   "n": 230,
+   "cells": {
+    "a": 22,
+    "b": 161,
+    "c": 1,
+    "d": 46
+   },
+   "rate_a": 79.6,
+   "rate_b": 10.0,
+   "delta": 69.6,
+   "phi": 0.115,
+   "phi_tag": "corrected",
+   "ci95": [
+    62.71,
+    74.96
+   ],
+   "ci90": [
+    63.91,
+    74.19
+   ],
+   "ci95_v4": [
+    63.04,
+    75.13
+   ],
+   "ci90_v4": [
+    64.18,
+    74.29
+   ],
+   "ci95_conditional_v3": [
+    65.66,
+    70.41
+   ],
+   "ci95_wald": [
+    63.5,
+    75.63
+   ],
+   "p_mcnemar": 5.576456291136357e-47,
+   "ci95_contains_zero": false,
+   "ci90_contains_zero": false,
+   "ci95_v4_contains_zero": false,
+   "ci95_conditional_v3_contains_zero": false,
+   "ci95_wald_contains_zero": false,
+   "width95": 12.25,
+   "width95_v4": 12.09,
+   "width95_conditional": 4.75
+  },
+  {
+   "group": "split",
+   "a": "c3m",
+   "b": "c2",
+   "n": 104,
+   "cells": {
+    "a": 18,
+    "b": 63,
+    "c": 0,
+    "d": 23
+   },
+   "rate_a": 77.9,
+   "rate_b": 17.3,
+   "delta": 60.6,
+   "phi": 0.2132,
+   "phi_tag": "corrected",
+   "ci95": [
+    49.73,
+    68.74
+   ],
+   "ci90": [
+    51.62,
+    67.62
+   ],
+   "ci95_v4": [
+    50.33,
+    69.43
+   ],
+   "ci90_v4": [
+    52.13,
+    68.09
+   ],
+   "ci95_conditional_v3": [
+    53.69,
+    60.58
+   ],
+   "ci95_wald": [
+    51.18,
+    69.97
+   ],
+   "p_mcnemar": 2.168404344971009e-19,
+   "ci95_contains_zero": false,
+   "ci90_contains_zero": false,
+   "ci95_v4_contains_zero": false,
+   "ci95_conditional_v3_contains_zero": false,
+   "ci95_wald_contains_zero": false,
+   "width95": 19.01,
+   "width95_v4": 19.1,
+   "width95_conditional": 6.89
+  }
+ ],
+ "unconditional_demo": [
+  {
+   "group": "easy",
+   "n": 96,
+   "b": 0,
+   "c": 4,
+   "ci_unconditional": [
+    -23.91,
+    15.72
+   ],
+   "width_unconditional": 39.63,
+   "width_newcombe": 10.9,
+   "ratio": 3.64
+  },
+  {
+   "group": "split",
+   "n": 104,
+   "b": 71,
+   "c": 0,
+   "ci_unconditional": [
+    51.51,
+    79.8
+   ],
+   "width_unconditional": 28.29,
+   "width_newcombe": 18.28,
+   "ratio": 1.55
+  },
+  {
+   "group": "merge",
+   "n": 230,
+   "b": 158,
+   "c": 3,
+   "ci_unconditional": [
+    56.77,
+    75.86
+   ],
+   "width_unconditional": 19.09,
+   "width_newcombe": 12.91,
+   "ratio": 1.48
+  }
+ ]
+}

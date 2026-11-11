@@ -1,0 +1,263 @@
+{
+ "version": "star-probe-v1",
+ "old_schema": {
+  "patient": [
+   "pid",
+   "name",
+   "sex",
+   "admit"
+  ],
+  "dept": [
+   "did",
+   "dname",
+   "pid"
+  ]
+ },
+ "cases": {
+  "P1_bare_star": {
+   "sql": "SELECT * FROM Patient WHERE pid = 1",
+   "old_result": [
+    [
+     "1",
+     "ann",
+     "F",
+     "2020-01-02"
+    ]
+   ],
+   "expand": {
+    "sql": "SELECT patient.pid, (SUBSTRING(attr_001, 1, INSTR(attr_001, CHAR(31)) - 1)), (SUBSTRING(attr_001, INSTR(attr_001, CHAR(31)) + 1)), (admission_date) FROM Patient WHERE pid = 1",
+    "status": null,
+    "detail": "hit=3 amb=0 star=1",
+    "result": [
+     [
+      "1",
+      "ann",
+      "F",
+      "2020-01-02"
+     ]
+    ],
+    "matches_old": true
+   },
+   "keep": {
+    "sql": "SELECT * FROM Patient WHERE pid = 1",
+    "status": "NO_HIT",
+    "detail": "旧 SQL 未引用被演化列（恒等）",
+    "result": [
+     [
+      "1",
+      "ann\u001fF",
+      "2020-01-02"
+     ]
+    ],
+    "matches_old": false
+   },
+   "construct_gold": {
+    "sql": "SELECT * FROM Patient WHERE pid = 1",
+    "result": [
+     [
+      "1",
+      "ann\u001fF",
+      "2020-01-02"
+     ]
+    ]
+   },
+   "expand_matches_gold": false
+  },
+  "P2_qualified_star": {
+   "sql": "SELECT T1.* FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+   "old_result": [
+    [
+     "1",
+     "ann",
+     "F",
+     "2020-01-02"
+    ]
+   ],
+   "expand": {
+    "sql": "SELECT t1.pid, (SUBSTRING(attr_001, 1, INSTR(attr_001, CHAR(31)) - 1)), (SUBSTRING(attr_001, INSTR(attr_001, CHAR(31)) + 1)), (admission_date) FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+    "status": null,
+    "detail": "hit=3 amb=0 star=1",
+    "result": [
+     [
+      "1",
+      "ann",
+      "F",
+      "2020-01-02"
+     ]
+    ],
+    "matches_old": true
+   },
+   "keep": {
+    "sql": "SELECT T1.* FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+    "status": "NO_HIT",
+    "detail": "旧 SQL 未引用被演化列（恒等）",
+    "result": [
+     [
+      "1",
+      "ann\u001fF",
+      "2020-01-02"
+     ]
+    ],
+    "matches_old": false
+   },
+   "construct_gold": {
+    "sql": "SELECT T1.* FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+    "result": [
+     [
+      "1",
+      "ann\u001fF",
+      "2020-01-02"
+     ]
+    ]
+   },
+   "expand_matches_gold": false
+  },
+  "P2_bare_star_join": {
+   "sql": "SELECT * FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+   "old_result": [
+    [
+     "1",
+     "ann",
+     "F",
+     "2020-01-02",
+     "10",
+     "cardio",
+     "1"
+    ]
+   ],
+   "expand": {
+    "sql": "SELECT t1.pid, (SUBSTRING(attr_001, 1, INSTR(attr_001, CHAR(31)) - 1)), (SUBSTRING(attr_001, INSTR(attr_001, CHAR(31)) + 1)), (admission_date), t2.did, t2.dname, t2.pid FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+    "status": null,
+    "detail": "hit=3 amb=0 star=1",
+    "result": [
+     [
+      "1",
+      "ann",
+      "F",
+      "2020-01-02",
+      "10",
+      "cardio",
+      "1"
+     ]
+    ],
+    "matches_old": true
+   },
+   "keep": {
+    "sql": "SELECT * FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+    "status": "NO_HIT",
+    "detail": "旧 SQL 未引用被演化列（恒等）",
+    "result": [
+     [
+      "1",
+      "ann\u001fF",
+      "2020-01-02",
+      "10",
+      "cardio",
+      "1"
+     ]
+    ],
+    "matches_old": false
+   },
+   "construct_gold": {
+    "sql": "SELECT * FROM Patient AS T1 INNER JOIN Dept AS T2 ON T1.pid = T2.pid WHERE T1.pid = 1",
+    "result": [
+     [
+      "1",
+      "ann\u001fF",
+      "2020-01-02",
+      "10",
+      "cardio",
+      "1"
+     ]
+    ]
+   },
+   "expand_matches_gold": false
+  },
+  "P3_count_star": {
+   "sql": "SELECT COUNT(*) FROM Patient",
+   "old_result": [
+    [
+     "2"
+    ]
+   ],
+   "expand": {
+    "sql": "SELECT COUNT(*) FROM Patient",
+    "status": "NO_HIT",
+    "detail": "旧 SQL 未引用被演化列（恒等）",
+    "result": [
+     [
+      "2"
+     ]
+    ],
+    "matches_old": true
+   },
+   "keep": {
+    "sql": "SELECT COUNT(*) FROM Patient",
+    "status": "NO_HIT",
+    "detail": "旧 SQL 未引用被演化列（恒等）",
+    "result": [
+     [
+      "2"
+     ]
+    ],
+    "matches_old": true
+   },
+   "construct_gold": {
+    "sql": "SELECT COUNT(*) FROM Patient",
+    "result": [
+     [
+      "2"
+     ]
+    ]
+   },
+   "expand_matches_gold": true
+  },
+  "P3_count_star_where": {
+   "sql": "SELECT COUNT(*) FROM Patient WHERE sex = 'F'",
+   "old_result": [
+    [
+     "1"
+    ]
+   ],
+   "expand": {
+    "sql": "SELECT COUNT(*) FROM Patient WHERE (SUBSTRING(attr_001, INSTR(attr_001, CHAR(31)) + 1)) = 'F'",
+    "status": null,
+    "detail": "hit=1 amb=0 star=0",
+    "result": [
+     [
+      "1"
+     ]
+    ],
+    "matches_old": true
+   },
+   "keep": {
+    "sql": "SELECT COUNT(*) FROM Patient WHERE (SUBSTRING(attr_001, INSTR(attr_001, CHAR(31)) + 1)) = 'F'",
+    "status": null,
+    "detail": "hit=1 amb=0 star=0",
+    "result": [
+     [
+      "1"
+     ]
+    ],
+    "matches_old": true
+   },
+   "construct_gold": {
+    "sql": "SELECT COUNT(*) FROM Patient WHERE (SUBSTRING(attr_001, INSTR(attr_001, CHAR(31)) + 1)) = 'F'",
+    "result": [
+     [
+      "1"
+     ]
+    ]
+   },
+   "expand_matches_gold": true
+  }
+ },
+ "verdict": {
+  "P1_expand_reconstructs_old": true,
+  "P1_keep_fails": true,
+  "P2_qualified_ok": true,
+  "P2_join_ok": true,
+  "P3_count_star_unaffected": true,
+  "P4_star_item_not_faithfully_evaluable": true
+ }
+}

@@ -1,0 +1,412 @@
+{
+ "profile": {
+  "rename": {
+   "n_gold": 33,
+   "tp": 33,
+   "n_pred": 33,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_medium": {
+   "n_gold": 18,
+   "tp": 18,
+   "n_pred": 18,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_hard": {
+   "n_gold": 24,
+   "tp": 24,
+   "n_pred": 24,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "merge_col": {
+   "n_gold": 10,
+   "tp": 10,
+   "n_pred": 10,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "split_col": {
+   "n_gold": 5,
+   "tp": 5,
+   "n_pred": 5,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "value_shift": {
+   "n_gold": 13,
+   "tp": 0,
+   "n_pred": 13,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "value_shift_named": {
+   "n_gold": 13,
+   "tp": 3,
+   "n_pred": 13,
+   "recall": 23.1,
+   "precision": 23.1,
+   "f1": 23.1
+  },
+  "dep_abstain": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_successor": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "TOTAL": {
+   "n_gold": 162,
+   "tp": 139,
+   "n_pred": 162,
+   "recall": 85.8,
+   "precision": 85.8,
+   "f1": 85.8
+  }
+ },
+ "shape": {
+  "rename": {
+   "n_gold": 33,
+   "tp": 33,
+   "n_pred": 33,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_medium": {
+   "n_gold": 18,
+   "tp": 18,
+   "n_pred": 18,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_hard": {
+   "n_gold": 24,
+   "tp": 24,
+   "n_pred": 24,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "merge_col": {
+   "n_gold": 10,
+   "tp": 10,
+   "n_pred": 10,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "split_col": {
+   "n_gold": 5,
+   "tp": 5,
+   "n_pred": 5,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "value_shift": {
+   "n_gold": 13,
+   "tp": 7,
+   "n_pred": 13,
+   "recall": 53.8,
+   "precision": 53.8,
+   "f1": 53.8
+  },
+  "value_shift_named": {
+   "n_gold": 13,
+   "tp": 7,
+   "n_pred": 13,
+   "recall": 53.8,
+   "precision": 53.8,
+   "f1": 53.8
+  },
+  "dep_abstain": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_successor": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "TOTAL": {
+   "n_gold": 162,
+   "tp": 150,
+   "n_pred": 162,
+   "recall": 92.6,
+   "precision": 92.6,
+   "f1": 92.6
+  }
+ },
+ "name": {
+  "rename": {
+   "n_gold": 33,
+   "tp": 33,
+   "n_pred": 33,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_medium": {
+   "n_gold": 18,
+   "tp": 3,
+   "n_pred": 18,
+   "recall": 16.7,
+   "precision": 16.7,
+   "f1": 16.7
+  },
+  "rename_hard": {
+   "n_gold": 24,
+   "tp": 0,
+   "n_pred": 24,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "merge_col": {
+   "n_gold": 10,
+   "tp": 0,
+   "n_pred": 10,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "split_col": {
+   "n_gold": 5,
+   "tp": 0,
+   "n_pred": 5,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "value_shift": {
+   "n_gold": 13,
+   "tp": 0,
+   "n_pred": 13,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "value_shift_named": {
+   "n_gold": 13,
+   "tp": 13,
+   "n_pred": 13,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_abstain": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_successor": {
+   "n_gold": 23,
+   "tp": 0,
+   "n_pred": 23,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "TOTAL": {
+   "n_gold": 162,
+   "tp": 72,
+   "n_pred": 162,
+   "recall": 44.4,
+   "precision": 44.4,
+   "f1": 44.4
+  }
+ },
+ "vover": {
+  "rename": {
+   "n_gold": 33,
+   "tp": 33,
+   "n_pred": 33,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_medium": {
+   "n_gold": 18,
+   "tp": 18,
+   "n_pred": 18,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_hard": {
+   "n_gold": 24,
+   "tp": 22,
+   "n_pred": 24,
+   "recall": 91.7,
+   "precision": 91.7,
+   "f1": 91.7
+  },
+  "merge_col": {
+   "n_gold": 10,
+   "tp": 5,
+   "n_pred": 10,
+   "recall": 50.0,
+   "precision": 50.0,
+   "f1": 50.0
+  },
+  "split_col": {
+   "n_gold": 5,
+   "tp": 0,
+   "n_pred": 5,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "value_shift": {
+   "n_gold": 13,
+   "tp": 13,
+   "n_pred": 13,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "value_shift_named": {
+   "n_gold": 13,
+   "tp": 13,
+   "n_pred": 13,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_abstain": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_successor": {
+   "n_gold": 23,
+   "tp": 21,
+   "n_pred": 23,
+   "recall": 91.3,
+   "precision": 91.3,
+   "f1": 91.3
+  },
+  "TOTAL": {
+   "n_gold": 162,
+   "tp": 148,
+   "n_pred": 162,
+   "recall": 91.4,
+   "precision": 91.4,
+   "f1": 91.4
+  }
+ },
+ "emb": {
+  "rename": {
+   "n_gold": 33,
+   "tp": 33,
+   "n_pred": 33,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_medium": {
+   "n_gold": 18,
+   "tp": 18,
+   "n_pred": 18,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "rename_hard": {
+   "n_gold": 24,
+   "tp": 24,
+   "n_pred": 24,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "merge_col": {
+   "n_gold": 10,
+   "tp": 5,
+   "n_pred": 10,
+   "recall": 50.0,
+   "precision": 50.0,
+   "f1": 50.0
+  },
+  "split_col": {
+   "n_gold": 5,
+   "tp": 0,
+   "n_pred": 5,
+   "recall": 0.0,
+   "precision": 0.0,
+   "f1": 0
+  },
+  "value_shift": {
+   "n_gold": 13,
+   "tp": 13,
+   "n_pred": 13,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "value_shift_named": {
+   "n_gold": 13,
+   "tp": 13,
+   "n_pred": 13,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_abstain": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "dep_successor": {
+   "n_gold": 23,
+   "tp": 23,
+   "n_pred": 23,
+   "recall": 100.0,
+   "precision": 100.0,
+   "f1": 100.0
+  },
+  "TOTAL": {
+   "n_gold": 162,
+   "tp": 152,
+   "n_pred": 162,
+   "recall": 93.8,
+   "precision": 93.8,
+   "f1": 93.8
+  }
+ }
+}

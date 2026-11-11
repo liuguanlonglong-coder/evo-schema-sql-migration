@@ -1,0 +1,1011 @@
+{
+ "version": "evoschema-struct-v1",
+ "source": "data/evoschema/bird_split_or_merge_columns.json",
+ "n_raw": 84,
+ "n_uniq": 81,
+ "by_kind": {
+  "merge": 44,
+  "split": 37
+ },
+ "by_kind_db": {
+  "merge": {
+   "california_schools": 3,
+   "student_club": 41
+  },
+  "split": {
+   "california_schools": 7,
+   "financial": 6,
+   "card_games": 4,
+   "codebase_community": 6,
+   "formula_1": 5,
+   "thrombosis_prediction": 6,
+   "student_club": 2,
+   "debit_card_specializing": 1
+  }
+ },
+ "column_changes_empty": {
+  "merge": 38,
+  "split": 0
+ },
+ "seg_on_target": {
+  "merge": 0,
+  "split": 0
+ },
+ "seg_any_in_new_sql": {
+  "merge": 2,
+  "split": 0
+ },
+ "merge_targets": {
+  "Address": 2,
+  "AdmEmail": 1,
+  "full_name": 38
+ },
+ "rows": [
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 60,
+   "n_removed": 1,
+   "targets": [
+    "MailStreet"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "merge",
+   "has_cc": true,
+   "n_added": 55,
+   "n_removed": 5,
+   "targets": [
+    "Address"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 60,
+   "n_removed": 1,
+   "targets": [
+    "Website"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 60,
+   "n_removed": 1,
+   "targets": [
+    "AdmEmail1"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "merge",
+   "has_cc": true,
+   "n_added": 50,
+   "n_removed": 5,
+   "targets": [
+    "Address"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 55,
+   "n_removed": 2,
+   "targets": [
+    "MailStreet"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 55,
+   "n_removed": 2,
+   "targets": [
+    "MailStreet"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 60,
+   "n_removed": 1,
+   "targets": [
+    "MailStreet"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "merge",
+   "has_cc": true,
+   "n_added": 53,
+   "n_removed": 9,
+   "targets": [
+    "AdmEmail"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 55,
+   "n_removed": 1,
+   "targets": [
+    "AdmEmail1"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 3,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 3,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 3,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 3,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 18,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 3,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 53,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 17,
+   "n_removed": 1,
+   "targets": [
+    "releaseDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 65,
+   "n_removed": 1,
+   "targets": [
+    "releaseDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 17,
+   "n_removed": 1,
+   "targets": [
+    "releaseDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 6,
+   "n_removed": 1,
+   "targets": [
+    "CreationDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 19,
+   "n_removed": 1,
+   "targets": [
+    "LastEditDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 25,
+   "n_removed": 1,
+   "targets": [
+    "LastEditDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 17,
+   "n_removed": 1,
+   "targets": [
+    "LastAccessDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 33,
+   "n_removed": 1,
+   "targets": [
+    "CreationDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 20,
+   "n_removed": 1,
+   "targets": [
+    "CreationDate"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 3,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 5,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 6,
+   "n_removed": 1,
+   "targets": [
+    "date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 5,
+   "n_removed": 1,
+   "targets": [
+    "dob"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 5,
+   "n_removed": 1,
+   "targets": [
+    "dob"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 52,
+   "n_removed": 1,
+   "targets": [
+    "Date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 52,
+   "n_removed": 1,
+   "targets": [
+    "Date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 52,
+   "n_removed": 1,
+   "targets": [
+    "Birthday"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 52,
+   "n_removed": 1,
+   "targets": [
+    "Birthday"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 52,
+   "n_removed": 1,
+   "targets": [
+    "Birthday"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 45,
+   "n_removed": 1,
+   "targets": [
+    "Date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 3,
+   "n_removed": 1,
+   "targets": [
+    "date_received"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": true,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 2,
+   "n_removed": 0,
+   "targets": [
+    "event_date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": true,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "debit_card_specializing",
+   "kind": "split",
+   "has_cc": true,
+   "n_added": 12,
+   "n_removed": 1,
+   "targets": [
+    "Date"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": true,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": true,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": true,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 0,
+   "n_removed": 7,
+   "targets": [],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 0,
+   "n_removed": 12,
+   "targets": [],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 0,
+   "n_removed": 12,
+   "targets": [],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "has_cc": false,
+   "n_added": 1,
+   "n_removed": 2,
+   "targets": [
+    "full_name"
+   ],
+   "new_sql_seg_any": false,
+   "seg_on_target": 0
+  }
+ ]
+}

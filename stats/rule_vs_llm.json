@@ -1,0 +1,687 @@
+{
+ "version": "rule-vs-llm-v2",
+ "groups": {
+  "merge": {
+   "n": 230,
+   "rates": {
+    "c3r_gt": {
+     "n": 230,
+     "ex": 230,
+     "rate": 100.0
+    },
+    "c3r_infer": {
+     "n": 230,
+     "ex": 230,
+     "rate": 100.0
+    },
+    "c3r_name": {
+     "n": 230,
+     "ex": 2,
+     "rate": 0.9
+    },
+    "c2": {
+     "n": 230,
+     "ex": 23,
+     "rate": 10.0
+    },
+    "c3m": {
+     "n": 230,
+     "ex": 6,
+     "rate": 2.6
+    },
+    "c3mp": {
+     "n": 230,
+     "ex": 183,
+     "rate": 79.6
+    }
+   },
+   "paired": {
+    "c3r_gt-c3mp": {
+     "n": 230,
+     "a_ex": 230,
+     "b_ex": 183,
+     "a_rate": 100.0,
+     "b_rate": 79.6,
+     "a_only": 47,
+     "b_only": 0,
+     "delta_pt": 20.4,
+     "p": 0.0
+    },
+    "c3r_infer-c3mp": {
+     "n": 230,
+     "a_ex": 230,
+     "b_ex": 183,
+     "a_rate": 100.0,
+     "b_rate": 79.6,
+     "a_only": 47,
+     "b_only": 0,
+     "delta_pt": 20.4,
+     "p": 0.0
+    },
+    "c3r_infer-c3m": {
+     "n": 230,
+     "a_ex": 230,
+     "b_ex": 6,
+     "a_rate": 100.0,
+     "b_rate": 2.6,
+     "a_only": 224,
+     "b_only": 0,
+     "delta_pt": 97.4,
+     "p": 0.0
+    },
+    "c3r_name-c3m": {
+     "n": 230,
+     "a_ex": 2,
+     "b_ex": 6,
+     "a_rate": 0.9,
+     "b_rate": 2.6,
+     "a_only": 1,
+     "b_only": 5,
+     "delta_pt": -1.7,
+     "p": 0.21875
+    },
+    "c3r_infer-c2": {
+     "n": 230,
+     "a_ex": 230,
+     "b_ex": 23,
+     "a_rate": 100.0,
+     "b_rate": 10.0,
+     "a_only": 207,
+     "b_only": 0,
+     "delta_pt": 90.0,
+     "p": 0.0
+    },
+    "c3r_gt-c3r_infer": {
+     "n": 230,
+     "a_ex": 230,
+     "b_ex": 230,
+     "a_rate": 100.0,
+     "b_rate": 100.0,
+     "a_only": 0,
+     "b_only": 0,
+     "delta_pt": 0.0,
+     "p": 1.0
+    },
+    "c3r_name-c3r_infer": {
+     "n": 230,
+     "a_ex": 2,
+     "b_ex": 230,
+     "a_rate": 0.9,
+     "b_rate": 100.0,
+     "a_only": 0,
+     "b_only": 228,
+     "delta_pt": -99.1,
+     "p": 0.0
+    },
+    "c3mp-c3m": {
+     "n": 230,
+     "a_ex": 183,
+     "b_ex": 6,
+     "a_rate": 79.6,
+     "b_rate": 2.6,
+     "a_only": 177,
+     "b_only": 0,
+     "delta_pt": 77.0,
+     "p": 0.0
+    }
+   }
+  },
+  "split": {
+   "n": 104,
+   "rates": {
+    "c3r_gt": {
+     "n": 104,
+     "ex": 104,
+     "rate": 100.0
+    },
+    "c3r_infer": {
+     "n": 104,
+     "ex": 104,
+     "rate": 100.0
+    },
+    "c3r_name": {
+     "n": 104,
+     "ex": 104,
+     "rate": 100.0
+    },
+    "c2": {
+     "n": 104,
+     "ex": 18,
+     "rate": 17.3
+    },
+    "c3m": {
+     "n": 104,
+     "ex": 81,
+     "rate": 77.9
+    },
+    "c3mp": {
+     "n": 104,
+     "ex": 81,
+     "rate": 77.9
+    }
+   },
+   "paired": {
+    "c3r_gt-c3mp": {
+     "n": 104,
+     "a_ex": 104,
+     "b_ex": 81,
+     "a_rate": 100.0,
+     "b_rate": 77.9,
+     "a_only": 23,
+     "b_only": 0,
+     "delta_pt": 22.1,
+     "p": 0.0
+    },
+    "c3r_infer-c3mp": {
+     "n": 104,
+     "a_ex": 104,
+     "b_ex": 81,
+     "a_rate": 100.0,
+     "b_rate": 77.9,
+     "a_only": 23,
+     "b_only": 0,
+     "delta_pt": 22.1,
+     "p": 0.0
+    },
+    "c3r_infer-c3m": {
+     "n": 104,
+     "a_ex": 104,
+     "b_ex": 81,
+     "a_rate": 100.0,
+     "b_rate": 77.9,
+     "a_only": 23,
+     "b_only": 0,
+     "delta_pt": 22.1,
+     "p": 0.0
+    },
+    "c3r_name-c3m": {
+     "n": 104,
+     "a_ex": 104,
+     "b_ex": 81,
+     "a_rate": 100.0,
+     "b_rate": 77.9,
+     "a_only": 23,
+     "b_only": 0,
+     "delta_pt": 22.1,
+     "p": 0.0
+    },
+    "c3r_infer-c2": {
+     "n": 104,
+     "a_ex": 104,
+     "b_ex": 18,
+     "a_rate": 100.0,
+     "b_rate": 17.3,
+     "a_only": 86,
+     "b_only": 0,
+     "delta_pt": 82.7,
+     "p": 0.0
+    },
+    "c3r_gt-c3r_infer": {
+     "n": 104,
+     "a_ex": 104,
+     "b_ex": 104,
+     "a_rate": 100.0,
+     "b_rate": 100.0,
+     "a_only": 0,
+     "b_only": 0,
+     "delta_pt": 0.0,
+     "p": 1.0
+    },
+    "c3r_name-c3r_infer": {
+     "n": 104,
+     "a_ex": 104,
+     "b_ex": 104,
+     "a_rate": 100.0,
+     "b_rate": 100.0,
+     "a_only": 0,
+     "b_only": 0,
+     "delta_pt": 0.0,
+     "p": 1.0
+    },
+    "c3mp-c3m": {
+     "n": 104,
+     "a_ex": 81,
+     "b_ex": 81,
+     "a_rate": 77.9,
+     "b_rate": 77.9,
+     "a_only": 0,
+     "b_only": 0,
+     "delta_pt": 0.0,
+     "p": 1.0
+    }
+   }
+  },
+  "merge_holdout": {
+   "n": 101,
+   "rates": {
+    "c3r_gt": {
+     "n": 101,
+     "ex": 101,
+     "rate": 100.0
+    },
+    "c3r_infer": {
+     "n": 101,
+     "ex": 81,
+     "rate": 80.2
+    },
+    "c3r_name": {
+     "n": 101,
+     "ex": 16,
+     "rate": 15.8
+    },
+    "c2": {
+     "n": 101,
+     "ex": 8,
+     "rate": 7.9
+    },
+    "c3m": {
+     "n": 101,
+     "ex": 13,
+     "rate": 12.9
+    },
+    "c3mp": {
+     "n": 101,
+     "ex": 70,
+     "rate": 69.3
+    }
+   },
+   "paired": {
+    "c3r_gt-c3mp": {
+     "n": 101,
+     "a_ex": 101,
+     "b_ex": 70,
+     "a_rate": 100.0,
+     "b_rate": 69.3,
+     "a_only": 31,
+     "b_only": 0,
+     "delta_pt": 30.7,
+     "p": 0.0
+    },
+    "c3r_infer-c3mp": {
+     "n": 101,
+     "a_ex": 81,
+     "b_ex": 70,
+     "a_rate": 80.2,
+     "b_rate": 69.3,
+     "a_only": 15,
+     "b_only": 4,
+     "delta_pt": 10.9,
+     "p": 0.019211
+    },
+    "c3r_infer-c3m": {
+     "n": 101,
+     "a_ex": 81,
+     "b_ex": 13,
+     "a_rate": 80.2,
+     "b_rate": 12.9,
+     "a_only": 77,
+     "b_only": 9,
+     "delta_pt": 67.3,
+     "p": 0.0
+    },
+    "c3r_name-c3m": {
+     "n": 101,
+     "a_ex": 16,
+     "b_ex": 13,
+     "a_rate": 15.8,
+     "b_rate": 12.9,
+     "a_only": 3,
+     "b_only": 0,
+     "delta_pt": 3.0,
+     "p": 0.25
+    },
+    "c3r_infer-c2": {
+     "n": 101,
+     "a_ex": 81,
+     "b_ex": 8,
+     "a_rate": 80.2,
+     "b_rate": 7.9,
+     "a_only": 77,
+     "b_only": 4,
+     "delta_pt": 72.3,
+     "p": 0.0
+    },
+    "c3r_gt-c3r_infer": {
+     "n": 101,
+     "a_ex": 101,
+     "b_ex": 81,
+     "a_rate": 100.0,
+     "b_rate": 80.2,
+     "a_only": 20,
+     "b_only": 0,
+     "delta_pt": 19.8,
+     "p": 2e-06
+    },
+    "c3r_name-c3r_infer": {
+     "n": 101,
+     "a_ex": 16,
+     "b_ex": 81,
+     "a_rate": 15.8,
+     "b_rate": 80.2,
+     "a_only": 11,
+     "b_only": 76,
+     "delta_pt": -64.4,
+     "p": 0.0
+    },
+    "c3mp-c3m": {
+     "n": 101,
+     "a_ex": 70,
+     "b_ex": 13,
+     "a_rate": 69.3,
+     "b_rate": 12.9,
+     "a_only": 64,
+     "b_only": 7,
+     "delta_pt": 56.4,
+     "p": 0.0
+    }
+   }
+  },
+  "split_holdout": {
+   "n": 64,
+   "rates": {
+    "c3r_gt": {
+     "n": 64,
+     "ex": 64,
+     "rate": 100.0
+    },
+    "c3r_infer": {
+     "n": 64,
+     "ex": 64,
+     "rate": 100.0
+    },
+    "c3r_name": {
+     "n": 64,
+     "ex": 64,
+     "rate": 100.0
+    },
+    "c2": {
+     "n": 64,
+     "ex": 27,
+     "rate": 42.2
+    },
+    "c3m": {
+     "n": 64,
+     "ex": 51,
+     "rate": 79.7
+    },
+    "c3mp": {
+     "n": 64,
+     "ex": 51,
+     "rate": 79.7
+    }
+   },
+   "paired": {
+    "c3r_gt-c3mp": {
+     "n": 64,
+     "a_ex": 64,
+     "b_ex": 51,
+     "a_rate": 100.0,
+     "b_rate": 79.7,
+     "a_only": 13,
+     "b_only": 0,
+     "delta_pt": 20.3,
+     "p": 0.000244
+    },
+    "c3r_infer-c3mp": {
+     "n": 64,
+     "a_ex": 64,
+     "b_ex": 51,
+     "a_rate": 100.0,
+     "b_rate": 79.7,
+     "a_only": 13,
+     "b_only": 0,
+     "delta_pt": 20.3,
+     "p": 0.000244
+    },
+    "c3r_infer-c3m": {
+     "n": 64,
+     "a_ex": 64,
+     "b_ex": 51,
+     "a_rate": 100.0,
+     "b_rate": 79.7,
+     "a_only": 13,
+     "b_only": 0,
+     "delta_pt": 20.3,
+     "p": 0.000244
+    },
+    "c3r_name-c3m": {
+     "n": 64,
+     "a_ex": 64,
+     "b_ex": 51,
+     "a_rate": 100.0,
+     "b_rate": 79.7,
+     "a_only": 13,
+     "b_only": 0,
+     "delta_pt": 20.3,
+     "p": 0.000244
+    },
+    "c3r_infer-c2": {
+     "n": 64,
+     "a_ex": 64,
+     "b_ex": 27,
+     "a_rate": 100.0,
+     "b_rate": 42.2,
+     "a_only": 37,
+     "b_only": 0,
+     "delta_pt": 57.8,
+     "p": 0.0
+    },
+    "c3r_gt-c3r_infer": {
+     "n": 64,
+     "a_ex": 64,
+     "b_ex": 64,
+     "a_rate": 100.0,
+     "b_rate": 100.0,
+     "a_only": 0,
+     "b_only": 0,
+     "delta_pt": 0.0,
+     "p": 1.0
+    },
+    "c3r_name-c3r_infer": {
+     "n": 64,
+     "a_ex": 64,
+     "b_ex": 64,
+     "a_rate": 100.0,
+     "b_rate": 100.0,
+     "a_only": 0,
+     "b_only": 0,
+     "delta_pt": 0.0,
+     "p": 1.0
+    },
+    "c3mp-c3m": {
+     "n": 64,
+     "a_ex": 51,
+     "b_ex": 51,
+     "a_rate": 79.7,
+     "b_rate": 79.7,
+     "a_only": 0,
+     "b_only": 0,
+     "delta_pt": 0.0,
+     "p": 1.0
+    }
+   }
+  }
+ },
+ "failure_profile": {
+  "merge_col": {
+   "c3r_gt": {
+    "EX": 230
+   },
+   "c3r_infer": {
+    "EX": 230
+   },
+   "c3r_name": {
+    "SILENT": 228,
+    "EX": 2
+   }
+  },
+  "split_col": {
+   "c3r_gt": {
+    "EX": 104
+   },
+   "c3r_infer": {
+    "EX": 104
+   },
+   "c3r_name": {
+    "EX": 104
+   }
+  },
+  "merge_col_holdout": {
+   "c3r_gt": {
+    "EX": 101
+   },
+   "c3r_infer": {
+    "EX": 81,
+    "DB_ERROR": 20
+   },
+   "c3r_name": {
+    "SILENT": 85,
+    "EX": 16
+   }
+  },
+  "split_col_holdout": {
+   "c3r_gt": {
+    "EX": 64
+   },
+   "c3r_infer": {
+    "EX": 64
+   },
+   "c3r_name": {
+    "EX": 64
+   }
+  }
+ },
+ "decomposition": {
+  "merge": {
+   "evidence_effect_pt": 99.1,
+   "executor_effect_pt": 20.4,
+   "total_pt": 99.1,
+   "note": "证据效应=同一确定性执行器下 列级->段位；执行器效应=同一段位谱系下 确定性替换->LLM 生成",
+   "scope_note": "两值均为当前构造与当前实现下的配对差值，不是普遍因果效应：gold new_sql 由同一替换规则机械生成，规则执行器的上界被构造抬高；LLM 侧只测了一个模型、一套提示模板。"
+  },
+  "split": {
+   "evidence_effect_pt": 0.0,
+   "executor_effect_pt": 22.1,
+   "total_pt": 0.0,
+   "note": "证据效应=同一确定性执行器下 列级->段位；执行器效应=同一段位谱系下 确定性替换->LLM 生成",
+   "scope_note": "两值均为当前构造与当前实现下的配对差值，不是普遍因果效应：gold new_sql 由同一替换规则机械生成，规则执行器的上界被构造抬高；LLM 侧只测了一个模型、一套提示模板。"
+  },
+  "merge_holdout": {
+   "evidence_effect_pt": 64.4,
+   "executor_effect_pt": 10.9,
+   "total_pt": 64.4,
+   "note": "证据效应=同一确定性执行器下 列级->段位；执行器效应=同一段位谱系下 确定性替换->LLM 生成",
+   "scope_note": "两值均为当前构造与当前实现下的配对差值，不是普遍因果效应：gold new_sql 由同一替换规则机械生成，规则执行器的上界被构造抬高；LLM 侧只测了一个模型、一套提示模板。"
+  },
+  "split_holdout": {
+   "evidence_effect_pt": 0.0,
+   "executor_effect_pt": 20.3,
+   "total_pt": 0.0,
+   "note": "证据效应=同一确定性执行器下 列级->段位；执行器效应=同一段位谱系下 确定性替换->LLM 生成",
+   "scope_note": "两值均为当前构造与当前实现下的配对差值，不是普遍因果效应：gold new_sql 由同一替换规则机械生成，规则执行器的上界被构造抬高；LLM 侧只测了一个模型、一套提示模板。"
+  }
+ },
+ "star_audit": {
+  "version": "rule-rewrite-v2",
+  "star_mode": "expand",
+  "projection_star_items": 0,
+  "count_star_items": 21,
+  "star_expanded": 0,
+  "per_evo": {
+   "merge_col": {
+    "n": 230,
+    "projection_star": 0,
+    "count_star": 6,
+    "expanded": 0
+   },
+   "split_col": {
+    "n": 104,
+    "projection_star": 0,
+    "count_star": 5,
+    "expanded": 0
+   },
+   "merge_col_holdout": {
+    "n": 101,
+    "projection_star": 0,
+    "count_star": 5,
+    "expanded": 0
+   },
+   "split_col_holdout": {
+    "n": 64,
+    "projection_star": 0,
+    "count_star": 5,
+    "expanded": 0
+   }
+  }
+ },
+ "v1_vs_v2": {
+  "merge": {
+   "c3r_gt": {
+    "v1": 97.4,
+    "v2": 100.0,
+    "gain_pt": 2.6
+   },
+   "c3r_infer": {
+    "v1": 97.4,
+    "v2": 100.0,
+    "gain_pt": 2.6
+   },
+   "c3r_name": {
+    "v1": 0.9,
+    "v2": 0.9,
+    "gain_pt": 0.0
+   }
+  },
+  "split": {
+   "c3r_gt": {
+    "v1": 95.2,
+    "v2": 100.0,
+    "gain_pt": 4.8
+   },
+   "c3r_infer": {
+    "v1": 95.2,
+    "v2": 100.0,
+    "gain_pt": 4.8
+   },
+   "c3r_name": {
+    "v1": 95.2,
+    "v2": 100.0,
+    "gain_pt": 4.8
+   }
+  },
+  "merge_holdout": {
+   "c3r_gt": {
+    "v1": 95.0,
+    "v2": 100.0,
+    "gain_pt": 5.0
+   },
+   "c3r_infer": {
+    "v1": 79.2,
+    "v2": 80.2,
+    "gain_pt": 1.0
+   },
+   "c3r_name": {
+    "v1": 15.8,
+    "v2": 15.8,
+    "gain_pt": 0.0
+   }
+  },
+  "split_holdout": {
+   "c3r_gt": {
+    "v1": 92.2,
+    "v2": 100.0,
+    "gain_pt": 7.8
+   },
+   "c3r_infer": {
+    "v1": 92.2,
+    "v2": 100.0,
+    "gain_pt": 7.8
+   },
+   "c3r_name": {
+    "v1": 92.2,
+    "v2": 100.0,
+    "gain_pt": 7.8
+   }
+  }
+ }
+}

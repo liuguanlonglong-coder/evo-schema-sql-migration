@@ -1,0 +1,269 @@
+{
+ "version": "segment-aware-baseline-v1",
+ "note": "B4 与 M1 共用 detect_sep/jac/to_expr，输出空间同为 SUBSTR 段位表达式；差别仅在 M1 的阈值门控、低基数守卫与采样门限。评估与 D_segment_expr 同口径：归一化后逐字符比对 gold，不经 evaluate()。拆分档 gold 为拼接表达式(attr_001||sep||attr_002)，非段位 SUBSTR，不计入本基线的分母，单独说明。",
+ "B4_naive": {
+  "n_ops": 10,
+  "expr_match": 10,
+  "pct": 100.0,
+  "n_events": 5,
+  "events_ok": 5,
+  "detail": [
+   {
+    "db": "california_schools",
+    "table": "schools",
+    "old": "county",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "california_schools",
+    "table": "schools",
+    "old": "statustype",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "financial",
+    "table": "district",
+    "old": "a2",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "financial",
+    "table": "district",
+    "old": "a3",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "formula_1",
+    "table": "drivers",
+    "old": "surname",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "formula_1",
+    "table": "drivers",
+    "old": "forename",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "student_club",
+    "table": "member",
+    "old": "last_name",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "student_club",
+    "table": "member",
+    "old": "first_name",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "thrombosis_prediction",
+    "table": "patient",
+    "old": "sex",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "thrombosis_prediction",
+    "table": "patient",
+    "old": "admission",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   }
+  ]
+ },
+ "B4_greedy": {
+  "n_ops": 10,
+  "expr_match": 10,
+  "pct": 100.0,
+  "n_events": 5,
+  "events_ok": 5,
+  "detail": [
+   {
+    "db": "california_schools",
+    "table": "schools",
+    "old": "county",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "california_schools",
+    "table": "schools",
+    "old": "statustype",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "financial",
+    "table": "district",
+    "old": "a2",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "financial",
+    "table": "district",
+    "old": "a3",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "formula_1",
+    "table": "drivers",
+    "old": "surname",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "formula_1",
+    "table": "drivers",
+    "old": "forename",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "student_club",
+    "table": "member",
+    "old": "last_name",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "student_club",
+    "table": "member",
+    "old": "first_name",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "thrombosis_prediction",
+    "table": "patient",
+    "old": "sex",
+    "pred": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "gold": "SUBSTR(ATTR_001,1,INSTR(ATTR_001,CHAR(31))-1)",
+    "match": true,
+    "score": 1.0
+   },
+   {
+    "db": "thrombosis_prediction",
+    "table": "patient",
+    "old": "admission",
+    "pred": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "gold": "SUBSTR(ATTR_001,INSTR(ATTR_001,CHAR(31))+1)",
+    "match": true,
+    "score": 1.0
+   }
+  ]
+ },
+ "M1_part": {
+  "n_ops": 10,
+  "expr_match": 10,
+  "pct": 100.0,
+  "n_events": 2,
+  "events_ok": 2
+ },
+ "B1_B3_type_ok_segment": {
+  "B1 列名相似": {
+   "op_ok": 0,
+   "op_n": 15,
+   "event_ok": 0,
+   "event_n": 7
+  },
+  "B2 值域重叠": {
+   "op_ok": 0,
+   "op_n": 15,
+   "event_ok": 0,
+   "event_n": 7
+  },
+  "B3 嵌入语义": {
+   "op_ok": 0,
+   "op_n": 15,
+   "event_ok": 0,
+   "event_n": 7
+  }
+ },
+ "split_ops_excluded": [
+  {
+   "db": "california_schools",
+   "table": "schools",
+   "old": "phone",
+   "gold": "ATTR_001||''||ATTR_002"
+  },
+  {
+   "db": "financial",
+   "table": "client",
+   "old": "birth_date",
+   "gold": "ATTR_001||'-'||ATTR_002"
+  },
+  {
+   "db": "formula_1",
+   "table": "drivers",
+   "old": "dob",
+   "gold": "ATTR_001||'-'||ATTR_002"
+  },
+  {
+   "db": "student_club",
+   "table": "event",
+   "old": "event_date",
+   "gold": "ATTR_001||'-'||ATTR_002"
+  },
+  {
+   "db": "thrombosis_prediction",
+   "table": "patient",
+   "old": "birthday",
+   "gold": "ATTR_001||'-'||ATTR_002"
+  }
+ ],
+ "dbs": [
+  "california_schools",
+  "financial",
+  "formula_1",
+  "student_club",
+  "thrombosis_prediction"
+ ],
+ "errors": []
+}

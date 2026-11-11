@@ -1,0 +1,27 @@
+License for the reproduction materials (v11)
+
+Unless stated otherwise, all items in this archive -- including items.csv,
+outputs.jsonl, prompts.md, evolution_rules.md, stats/*.json, the chapter
+documents, DAS.md and UPLOAD_CHECKLIST.md -- are made available under the
+Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+You may share and adapt them provided you give appropriate credit.
+
+The scripts under code/ are additionally available under the MIT licence
+(at the author's option); see below.
+
+    MIT License (code/ only)
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of the scripts to deal in them without restriction, including the rights to
+    use, copy, modify and distribute, subject to inclusion of this notice.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+CC BY 4.0 full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+IMPORTANT -- third-party data are NOT included:
+  * BIRD dev/train SQLite databases are not redistributed in this archive.
+    Obtain them from the official BIRD release (CC BY-SA 4.0) and cite it.
+  * EvoSchema public column-level samples are likewise not redistributed.
+
+CONFIRM BEFORE PUBLICATION: the author must confirm the licence choice (the
+Zenodo upload form requires a single licence; if a single one is preferred,
+select CC BY 4.0 for the whole record and remove the MIT paragraph above).

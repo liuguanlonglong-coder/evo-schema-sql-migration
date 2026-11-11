@@ -1,0 +1,614 @@
+{
+ "version": "data-bounds-v1",
+ "cases": {
+  "merge_col": {
+   "side": "merge",
+   "n_items": 230,
+   "n_events": 5,
+   "n_events_measured": 5,
+   "n_rows": 19874,
+   "lossy_rows": 0,
+   "lossy_row_pct": 0.0,
+   "n_events_with_loss": 0,
+   "events": [
+    {
+     "table": "Patient",
+     "old_cols": [
+      "SEX",
+      "Admission"
+     ],
+     "n_rows": 1238,
+     "per_col": {
+      "SEX": {
+       "null": 0,
+       "empty": 13,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "Admission": {
+       "null": 0,
+       "empty": 34,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "thrombosis_prediction",
+     "n_items": 66,
+     "status": "OK"
+    },
+    {
+     "table": "drivers",
+     "old_cols": [
+      "surname",
+      "forename"
+     ],
+     "n_rows": 840,
+     "per_col": {
+      "surname": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "forename": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "formula_1",
+     "n_items": 54,
+     "status": "OK"
+    },
+    {
+     "table": "member",
+     "old_cols": [
+      "last_name",
+      "first_name"
+     ],
+     "n_rows": 33,
+     "per_col": {
+      "last_name": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "first_name": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "student_club",
+     "n_items": 49,
+     "status": "OK"
+    },
+    {
+     "table": "district",
+     "old_cols": [
+      "A2",
+      "A3"
+     ],
+     "n_rows": 77,
+     "per_col": {
+      "A2": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "A3": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "financial",
+     "n_items": 37,
+     "status": "OK"
+    },
+    {
+     "table": "schools",
+     "old_cols": [
+      "County",
+      "StatusType"
+     ],
+     "n_rows": 17686,
+     "per_col": {
+      "County": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "StatusType": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "california_schools",
+     "n_items": 24,
+     "status": "OK"
+    }
+   ]
+  },
+  "split_col": {
+   "side": "split",
+   "n_items": 104,
+   "n_events": 5,
+   "n_events_measured": 5,
+   "n_rows": 25175,
+   "lossy_rows": 0,
+   "lossy_row_pct": 0.0,
+   "n_events_with_loss": 0,
+   "events": [
+    {
+     "table": "Patient",
+     "old_col": "Birthday",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "'-'"
+     ],
+     "n_rows": 1238,
+     "null_any": 1,
+     "all_null": 1,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "thrombosis_prediction",
+     "n_items": 51,
+     "status": "OK"
+    },
+    {
+     "table": "drivers",
+     "old_col": "dob",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "'-'"
+     ],
+     "n_rows": 840,
+     "null_any": 1,
+     "all_null": 1,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "formula_1",
+     "n_items": 20,
+     "status": "OK"
+    },
+    {
+     "table": "event",
+     "old_col": "event_date",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "'-'"
+     ],
+     "n_rows": 42,
+     "null_any": 0,
+     "all_null": 0,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "student_club",
+     "n_items": 13,
+     "status": "OK"
+    },
+    {
+     "table": "client",
+     "old_col": "birth_date",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "'-'"
+     ],
+     "n_rows": 5369,
+     "null_any": 0,
+     "all_null": 0,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "financial",
+     "n_items": 12,
+     "status": "OK"
+    },
+    {
+     "table": "schools",
+     "old_col": "Phone",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "' '"
+     ],
+     "n_rows": 17686,
+     "null_any": 5969,
+     "all_null": 5969,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "california_schools",
+     "n_items": 8,
+     "status": "OK"
+    }
+   ]
+  },
+  "merge_col_holdout": {
+   "side": "merge",
+   "n_items": 481,
+   "n_events": 8,
+   "n_events_measured": 8,
+   "n_rows": 154153,
+   "lossy_rows": 0,
+   "lossy_row_pct": 0.0,
+   "n_events_with_loss": 0,
+   "events": [
+    {
+     "table": "Player",
+     "old_cols": [
+      "Player_Name",
+      "DOB"
+     ],
+     "n_rows": 469,
+     "per_col": {
+      "Player_Name": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "DOB": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "soccer_2016",
+     "n_items": 91,
+     "status": "OK"
+    },
+    {
+     "table": "movie",
+     "old_cols": [
+      "title",
+      "release_date"
+     ],
+     "n_rows": 4627,
+     "per_col": {
+      "title": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "release_date": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "movies_4",
+     "n_items": 90,
+     "status": "OK"
+    },
+    {
+     "table": "book",
+     "old_cols": [
+      "title",
+      "publication_date"
+     ],
+     "n_rows": 11127,
+     "per_col": {
+      "title": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "publication_date": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "books",
+     "n_items": 70,
+     "status": "OK"
+    },
+    {
+     "table": "person",
+     "old_cols": [
+      "full_name",
+      "gender"
+     ],
+     "n_rows": 128854,
+     "per_col": {
+      "full_name": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "gender": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "olympics",
+     "n_items": 64,
+     "status": "OK"
+    },
+    {
+     "table": "Sales Orders",
+     "old_cols": [
+      "Unit Price",
+      "OrderDate"
+     ],
+     "n_rows": 7991,
+     "per_col": {
+      "Unit Price": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "OrderDate": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "regional_sales",
+     "n_items": 64,
+     "status": "OK"
+    },
+    {
+     "table": "Award",
+     "old_cols": [
+      "result",
+      "award"
+     ],
+     "n_rows": 75,
+     "per_col": {
+      "result": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "award": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "simpson_episodes",
+     "n_items": 61,
+     "status": "OK"
+    },
+    {
+     "table": "film",
+     "old_cols": [
+      "rating",
+      "special_features"
+     ],
+     "n_rows": 1000,
+     "per_col": {
+      "rating": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "special_features": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "movie_3",
+     "n_items": 30,
+     "status": "OK"
+    },
+    {
+     "table": "Employees",
+     "old_cols": [
+      "FirstName",
+      "LastName"
+     ],
+     "n_rows": 10,
+     "per_col": {
+      "FirstName": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      },
+      "LastName": {
+       "null": 0,
+       "empty": 0,
+       "ws_trim_diff": 0,
+       "has_sep_char": 0
+      }
+     },
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "retail_world",
+     "n_items": 11,
+     "status": "OK"
+    }
+   ]
+  },
+  "split_col_holdout": {
+   "side": "split",
+   "n_items": 144,
+   "n_events": 5,
+   "n_events_measured": 5,
+   "n_rows": 16014,
+   "lossy_rows": 0,
+   "lossy_row_pct": 0.0,
+   "n_events_with_loss": 0,
+   "events": [
+    {
+     "table": "Team",
+     "old_col": "Team_Name",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "' '"
+     ],
+     "n_rows": 13,
+     "null_any": 0,
+     "all_null": 0,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "soccer_2016",
+     "n_items": 47,
+     "status": "OK"
+    },
+    {
+     "table": "games",
+     "old_col": "games_name",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "' '"
+     ],
+     "n_rows": 51,
+     "null_any": 0,
+     "all_null": 0,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "olympics",
+     "n_items": 46,
+     "status": "OK"
+    },
+    {
+     "table": "book",
+     "old_col": "publication_date",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "'-'"
+     ],
+     "n_rows": 11127,
+     "null_any": 0,
+     "all_null": 0,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "books",
+     "n_items": 24,
+     "status": "OK"
+    },
+    {
+     "table": "movie",
+     "old_col": "release_date",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "'-'"
+     ],
+     "n_rows": 4627,
+     "null_any": 0,
+     "all_null": 0,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "movies_4",
+     "n_items": 23,
+     "status": "OK"
+    },
+    {
+     "table": "Orders",
+     "old_col": "OrderDate",
+     "components": [
+      "attr_001",
+      "attr_002"
+     ],
+     "separator": [
+      "'-'"
+     ],
+     "n_rows": 196,
+     "null_any": 0,
+     "all_null": 0,
+     "sep_in_component": 0,
+     "empty_component": 0,
+     "lossy_rows": 0,
+     "lossy_pct": 0.0,
+     "db": "retail_world",
+     "n_items": 4,
+     "status": "OK"
+    }
+   ]
+  }
+ }
+}

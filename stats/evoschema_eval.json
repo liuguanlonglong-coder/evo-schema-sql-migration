@@ -1,0 +1,6186 @@
+{
+ "version": "evoschema-eval-v1",
+ "source": "data/evoschema/bird_split_or_merge_columns.json",
+ "model": "glm-5.3-flash",
+ "n_raw": 84,
+ "n_unique": 81,
+ "shards": 6,
+ "note": "EvoSchema 只提供 DDL 与 gold SQL，未提供演化后的库文件，故不评执行等价（EX），只评列引用 F1；gold 仅作列集合参照。",
+ "summary": {
+  "c1": {
+   "n": 81,
+   "mean_f1": 0.797,
+   "exact_cols_rate": 0.5679,
+   "uses_deleted_old_col_rate": 0.0,
+   "n_cached": 9,
+   "n_error": 0
+  },
+  "c2": {
+   "n": 81,
+   "mean_f1": 0.8715,
+   "exact_cols_rate": 0.679,
+   "uses_deleted_old_col_rate": 0.0123,
+   "n_cached": 9,
+   "n_error": 0
+  },
+  "c3m": {
+   "n": 81,
+   "mean_f1": 0.9303,
+   "exact_cols_rate": 0.8272,
+   "uses_deleted_old_col_rate": 0.0,
+   "n_cached": 12,
+   "n_error": 0
+  }
+ },
+ "by_kind": {
+  "c1": {
+   "split": {
+    "n": 37,
+    "mean_f1": 0.7602,
+    "uses_deleted_old_col_rate": 0.0
+   },
+   "merge": {
+    "n": 41,
+    "mean_f1": 0.8886,
+    "uses_deleted_old_col_rate": 0.0
+   },
+   "unknown": {
+    "n": 3,
+    "mean_f1": 0.0,
+    "uses_deleted_old_col_rate": 0.0
+   }
+  },
+  "c2": {
+   "split": {
+    "n": 37,
+    "mean_f1": 0.841,
+    "uses_deleted_old_col_rate": 0.027
+   },
+   "merge": {
+    "n": 41,
+    "mean_f1": 0.9139,
+    "uses_deleted_old_col_rate": 0.0
+   },
+   "unknown": {
+    "n": 3,
+    "mean_f1": 0.6667,
+    "uses_deleted_old_col_rate": 0.0
+   }
+  },
+  "c3m": {
+   "split": {
+    "n": 37,
+    "mean_f1": 0.9104,
+    "uses_deleted_old_col_rate": 0.0
+   },
+   "merge": {
+    "n": 41,
+    "mean_f1": 0.9675,
+    "uses_deleted_old_col_rate": 0.0
+   },
+   "unknown": {
+    "n": 3,
+    "mean_f1": 0.6667,
+    "uses_deleted_old_col_rate": 0.0
+   }
+  }
+ },
+ "paired_c2_vs_c3m": {
+  "n": 81,
+  "c3m_better": 13,
+  "c2_better": 2,
+  "tie": 66,
+  "delta_pt": 5.9
+ },
+ "rows": [
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "MailStreet"
+     ],
+     "new": [
+      "MailStreetName",
+      "MailStreetNumber"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "cdscode",
+    "frpm count (k-12)",
+    "mailstreetname",
+    "mailstreetnumber"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT T2.MailStreetNumber || ' ' || T2.MailStreetName FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode ORDER BY T1.`FRPM Count (K-12)` DESC LIMIT 1",
+     "cols": [
+      "cdscode",
+      "frpm count (k-12)",
+      "mailstreetname",
+      "mailstreetnumber"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "MailStreet"
+     ],
+     "new": [
+      "MailStreetName",
+      "MailStreetNumber"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "avgscrread",
+    "cds",
+    "cdscode",
+    "mailstreetname",
+    "mailstreetnumber",
+    "school"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "SELECT T2.MailStreetName, T2.School FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode WHERE T1.AvgScrRead IS NOT NULL ORDER BY T1.AvgScrRead ASC LIMIT 1",
+     "cols": [
+      "avgscrread",
+      "cds",
+      "cdscode",
+      "mailstreetname",
+      "school"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9091,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT T2.MailStreetNumber, T2.MailStreetName, T2.School\nFROM satscores AS T1\nINNER JOIN schools AS T2 ON T1.cds = T2.CDSCode\nWHERE T1.AvgScrRead IS NOT NULL\nORDER BY T1.AvgScrRead ASC\nLIMIT 1",
+     "cols": [
+      "avgscrread",
+      "cds",
+      "cdscode",
+      "mailstreetname",
+      "mailstreetnumber",
+      "school"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "year",
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "account_id",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT account_id FROM trans GROUP BY account_id HAVING MIN(year) = 1995;",
+     "cols": [
+      "account_id",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT account_id FROM trans WHERE year = 1995 ORDER BY year, month, day ASC LIMIT 1",
+     "cols": [
+      "account_id",
+      "day",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT account_id FROM trans WHERE year = 1995 ORDER BY month ASC, day ASC LIMIT 1",
+     "cols": [
+      "account_id",
+      "day",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "releaseDate"
+     ],
+     "new": [
+      "releaseYear",
+      "releaseMonth",
+      "releaseDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "code",
+    "name",
+    "releaseday",
+    "releasemonth",
+    "releaseyear",
+    "setcode"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT printf('%04d-%02d-%02d', s.releaseYear, s.releaseMonth, s.releaseDay) AS releaseDate\nFROM cards c\nJOIN sets s ON c.setCode = s.code\nWHERE c.name = 'Evacuation';",
+     "cols": [
+      "code",
+      "name",
+      "releaseday",
+      "releasemonth",
+      "releaseyear",
+      "setcode"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT printf('%04d-%02d-%02d', T2.releaseYear, T2.releaseMonth, T2.releaseDay) FROM cards AS T1 INNER JOIN sets AS T2 ON T2.code = T1.setCode WHERE T1.name = 'Evacuation'",
+     "cols": [
+      "code",
+      "name",
+      "releaseday",
+      "releasemonth",
+      "releaseyear",
+      "setcode"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT printf('%04d-%02d-%02d', T2.releaseYear, T2.releaseMonth, T2.releaseDay) FROM cards AS T1 INNER JOIN sets AS T2 ON T2.code = T1.setCode WHERE T1.name = 'Evacuation'",
+     "cols": [
+      "code",
+      "name",
+      "releaseday",
+      "releasemonth",
+      "releaseyear",
+      "setcode"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "CreationDate"
+     ],
+     "new": [
+      "CreationYear",
+      "CreationMonth",
+      "CreationDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "age",
+    "creaiondate",
+    "creaionday",
+    "creaionmonth",
+    "creaionyear",
+    "id",
+    "owneruserid"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT MIN(p.CreaionDate)\nFROM posts p\nJOIN users u ON p.OwnerUserId = u.Id\nWHERE u.Age = (SELECT MIN(Age) FROM users);",
+     "cols": [
+      "age",
+      "creaiondate",
+      "id",
+      "owneruserid"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7273,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.CreaionDate FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T1.Age IS NOT NULL ORDER BY T1.Age, T2.CreaionDate LIMIT 1",
+     "cols": [
+      "age",
+      "creaiondate",
+      "id",
+      "owneruserid"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7273,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.CreaionDate FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T1.Age IS NOT NULL ORDER BY T1.Age, T2.CreaionDate LIMIT 1",
+     "cols": [
+      "age",
+      "creaiondate",
+      "id",
+      "owneruserid"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7273,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "dob"
+     ],
+     "new": [
+      "dobYear",
+      "dobMonth",
+      "dobDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "dob",
+    "dobday",
+    "dobmonth",
+    "dobyear",
+    "forename",
+    "nationality",
+    "surname",
+    "url"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT forename || ' ' || surname AS full_name, url, dobYear || '-' || printf('%02d', dobMonth) || '-' || printf('%02d', dobDay) AS date_of_birth FROM drivers WHERE nationality = 'German' AND dobYear BETWEEN 1971 AND 1985 ORDER BY dobYear DESC, dobMonth DESC, dobDay DESC;",
+     "cols": [
+      "dobday",
+      "dobmonth",
+      "dobyear",
+      "forename",
+      "nationality",
+      "surname",
+      "url"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT forename || ' ' || surname AS fullName, url, printf('%04d-%02d-%02d', dobYear, dobMonth, dobDay) AS dob FROM drivers WHERE nationality = 'German' AND CAST(dobYear AS INTEGER) BETWEEN 1971 AND 1985 ORDER BY CAST(dobYear AS INTEGER) DESC, CAST(dobMonth AS INTEGER) DESC, CAST(dobDay AS INTEGER) DESC;",
+     "cols": [
+      "dobday",
+      "dobmonth",
+      "dobyear",
+      "forename",
+      "nationality",
+      "surname",
+      "url"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT forename, surname, url, printf('%04d-%02d-%02d', dobYear, dobMonth, dobDay) AS dob\nFROM drivers\nWHERE nationality = 'German'\n  AND CAST(dobYear AS INTEGER) BETWEEN 1971 AND 1985\nORDER BY dobYear DESC, dobMonth DESC, dobDay DESC;",
+     "cols": [
+      "dobday",
+      "dobmonth",
+      "dobyear",
+      "forename",
+      "nationality",
+      "surname",
+      "url"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Date"
+     ],
+     "new": [
+      "Year",
+      "Month",
+      "Day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "alb",
+    "day",
+    "month",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT Year, Month, Day FROM laboratory WHERE ALB BETWEEN 3.5 AND 5.2 ORDER BY ALB DESC LIMIT 1",
+     "cols": [
+      "alb",
+      "day",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT Year, Month, Day FROM Laboratory WHERE ALB > 3.5 AND ALB < 5.5 ORDER BY ALB DESC LIMIT 1",
+     "cols": [
+      "alb",
+      "day",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT Year, Month, Day FROM Laboratory WHERE ALB > 3.5 AND ALB < 5.5 ORDER BY ALB DESC LIMIT 1",
+     "cols": [
+      "alb",
+      "day",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "link_to_major",
+    "major_id",
+    "major_name"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT major.major_name\nFROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.full_name = 'Angela Sanders';",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.full_name = 'Angela Sanders'",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.full_name = 'Angela Sanders'",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "college",
+    "full_name",
+    "link_to_major",
+    "major_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.college\nFROM member mem\nJOIN major m ON mem.link_to_major = m.major_id\nWHERE mem.full_name = 'Tyler Hewitt';",
+     "cols": [
+      "college",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.college FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.full_name = 'Tyler Hewitt'",
+     "cols": [
+      "college",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.college FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.full_name = 'Tyler Hewitt'",
+     "cols": [
+      "college",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "type",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT z.type\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE m.full_name = 'Christof Nielson';",
+     "cols": [
+      "full_name",
+      "type",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.type FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Christof Nielson'",
+     "cols": [
+      "full_name",
+      "type",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.type FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Christof Nielson'",
+     "cols": [
+      "full_name",
+      "type",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "unknown",
+   "n_changes": 0,
+   "changes": [],
+   "gold_cols": [
+    "full_name",
+    "link_to_event",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT s.name\nFROM students s\nJOIN attendance a ON s.student_id = a.student_id\nGROUP BY s.student_id, s.name\nHAVING COUNT(DISTINCT a.event_id) > 7;",
+     "cols": [
+      "event_id",
+      "name",
+      "student_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.first_name, T1.last_name FROM member AS T1 INNER JOIN attendance AS T2 ON T1.member_id = T2.link_to_member GROUP BY T1.member_id HAVING COUNT(T2.link_to_event) > 7",
+     "cols": [
+      "first_name",
+      "last_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.first_name, T1.last_name FROM member AS T1 INNER JOIN attendance AS T2 ON T1.member_id = T2.link_to_member GROUP BY T1.member_id HAVING COUNT(T2.link_to_event) > 7",
+     "cols": [
+      "first_name",
+      "last_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "amount",
+    "full_name",
+    "link_to_member",
+    "member_id",
+    "source"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, i.source\nFROM member m\nJOIN income i ON m.member_id = i.link_to_member\nWHERE m.position = 'Student'\nORDER BY i.amount DESC\nLIMIT 1;",
+     "cols": [
+      "amount",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "position",
+      "source"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9091,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name, T2.source FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member GROUP BY T1.full_name, T2.source ORDER BY SUM(T2.amount) DESC LIMIT 1",
+     "cols": [
+      "amount",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "source"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name, T2.source FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member GROUP BY T1.full_name, T2.source ORDER BY SUM(T2.amount) DESC LIMIT 1",
+     "cols": [
+      "amount",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "source"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "t_shirt_size"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT full_name FROM member WHERE t_shirt_size = 'X-Large';",
+     "cols": [
+      "full_name",
+      "t_shirt_size"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT full_name FROM member WHERE t_shirt_size = 'X-Large'",
+     "cols": [
+      "full_name",
+      "t_shirt_size"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT full_name FROM member WHERE t_shirt_size = 'X-Large'",
+     "cols": [
+      "full_name",
+      "t_shirt_size"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "college",
+    "full_name",
+    "link_to_major",
+    "major_id",
+    "position"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, mj.college\nFROM member m\nJOIN major mj ON m.link_to_major = mj.major_id\nWHERE m.position = 'Secretary';",
+     "cols": [
+      "college",
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "position"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name, T2.college FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Secretary'",
+     "cols": [
+      "college",
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "position"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name, T2.college FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.position = 'Secretary'",
+     "cols": [
+      "college",
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "position"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "Street",
+      "City",
+      "State",
+      "Zip"
+     ],
+     "new": [
+      "Address"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "address",
+    "cdscode",
+    "county",
+    "free meal count (ages 5-17)",
+    "school name",
+    "school type"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT T2.School, T2.MailStreet, T2.MailCity, T2.MailState, T2.MailZip\nFROM frpm AS T1\nJOIN schools AS T2 ON T1.CDSCode = T2.CDSCode\nWHERE T2.County = 'Monterey' AND T1.\"FRPM Count (Ages 5-17)\" > 800 AND T2.EILName = 'High School'",
+     "cols": [
+      "cdscode",
+      "county",
+      "eilname",
+      "frpm count (ages 5-17)",
+      "mailcity",
+      "mailstate",
+      "mailstreet",
+      "mailzip",
+      "school"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.2667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT T1.`School Name`, T2.Address FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Monterey' AND T1.`Free Meal Count (Ages 5-17)` > 800 AND T1.`School Type` = 'High Schools (Public)'",
+     "cols": [
+      "address",
+      "cdscode",
+      "county",
+      "free meal count (ages 5-17)",
+      "school name",
+      "school type"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "MailStreet"
+     ],
+     "new": [
+      "MailStreetName",
+      "MailStreetNumber"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "cdscode",
+    "frpm count (ages 5-17)",
+    "mailstreetname",
+    "mailstreetnumber",
+    "soctype"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT f.\"FRPM Count (Ages 5-17)\"\nFROM frpm AS f\nJOIN schools AS s ON f.CDSCode",
+     "cols": [
+      "cdscode",
+      "frpm count (ages 5-17)"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.5714,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT T1.`FRPM Count (Ages 5-17)`\nFROM frpm AS T1\nINNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode\nWHERE T2.MailStreetName = 'PO Box' AND T2.MailStreetNumber = '1040'\n  AND T2.SOCType = 'Youth Authority Facilities'",
+     "cols": [
+      "cdscode",
+      "frpm count (ages 5-17)",
+      "mailstreetname",
+      "mailstreetnumber",
+      "soctype"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "year",
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "account_id",
+    "amount",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT DISTINCT t.account_id\nFROM trans t\nJOIN account a ON t.account_id = a.account_id\nWHERE a.year < 1997\n  AND t.balance > 3000;",
+     "cols": [
+      "account_id",
+      "balance",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT T2.account_id FROM trans AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE T2.year < '1997' AND T1.amount > 3000",
+     "cols": [
+      "account_id",
+      "amount",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T2.account_id FROM trans AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE CAST(T2.year AS INTEGER) < 1997 AND T1.amount > 3000",
+     "cols": [
+      "account_id",
+      "amount",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "releaseDate"
+     ],
+     "new": [
+      "releaseYear",
+      "releaseMonth",
+      "releaseDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "code",
+    "releaseday",
+    "releasemonth",
+    "releaseyear",
+    "setcode",
+    "translation"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT releaseYear, releaseMonth, releaseDay\nFROM sets\nWHERE name = 'Ola de frío'\n   OR code IN (SELECT setCode FROM set_translations WHERE translation = 'Ola de frío');",
+     "cols": [
+      "code",
+      "name",
+      "releaseday",
+      "releasemonth",
+      "releaseyear",
+      "setcode",
+      "translation"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9231,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.releaseYear || '-' || T1.releaseMonth || '-' || T1.releaseDay AS releaseDate\nFROM sets AS T1\nINNER JOIN set_translations AS T2 ON T2.setCode = T1.code\nWHERE T2.translation = 'Ola de frío'",
+     "cols": [
+      "code",
+      "releaseday",
+      "releasemonth",
+      "releaseyear",
+      "setcode",
+      "translation"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT printf('%04d-%02d-%02d', T1.releaseYear, T1.releaseMonth, T1.releaseDay) AS releaseDate\nFROM sets AS T1\nINNER JOIN set_translations AS T2 ON T2.setCode = T1.code\nWHERE T2.translation = 'Ola de frío'",
+     "cols": [
+      "code",
+      "releaseday",
+      "releasemonth",
+      "releaseyear",
+      "setcode",
+      "translation"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "CreationDate"
+     ],
+     "new": [
+      "CreationYear",
+      "CreationMonth",
+      "CreationDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "age",
+    "creationday",
+    "creationmonth",
+    "creationyear",
+    "id",
+    "userid"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT DISTINCT u.CreationYear, u.CreationMonth, u.CreationDay, u.Age\nFROM users u\nJOIN comments c ON c.UserId = u.Id\nWHERE u.WebsiteUrl IS NOT NULL;",
+     "cols": [
+      "age",
+      "creationday",
+      "creationmonth",
+      "creationyear",
+      "id",
+      "userid",
+      "websiteurl"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9231,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.CreationYear, T2.CreationMonth, T2.CreationDay, T2.Age FROM comments AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.Text LIKE '%http://%'",
+     "cols": [
+      "age",
+      "creationday",
+      "creationmonth",
+      "creationyear",
+      "id",
+      "userid"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT u.CreationYear || '-' || u.CreationMonth || '-' || u.CreationDay AS CreationDate, u.Age\nFROM comments c\nINNER JOIN users u ON c.UserId = u.Id\nWHERE c.Text LIKE '%http://%'",
+     "cols": [
+      "age",
+      "creationday",
+      "creationmonth",
+      "creationyear",
+      "id",
+      "userid"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Date"
+     ],
+     "new": [
+      "Year",
+      "Month",
+      "Day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "day",
+    "diagnosis",
+    "id",
+    "month",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT p.Diagnosis, l.Year, l.Month, l.Day\nFROM patient p\nJOIN laboratory l ON l.ID = p.ID\nWHERE p.ID = '30609';",
+     "cols": [
+      "day",
+      "diagnosis",
+      "id",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.Diagnosis, T2.Year, T2.Month, T2.Day FROM patient AS T1 INNER JOIN laboratory AS T2 ON T1.ID = T2.ID WHERE T1.ID = 30609",
+     "cols": [
+      "day",
+      "diagnosis",
+      "id",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.Diagnosis, T2.Year, T2.Month, T2.Day FROM patient AS T1 INNER JOIN laboratory AS T2 ON T1.ID = T2.ID WHERE T1.ID = 30609",
+     "cols": [
+      "day",
+      "diagnosis",
+      "id",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date_received"
+     ],
+     "new": [
+      "year_received",
+      "month_received",
+      "day_received"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "day_received",
+    "first_name",
+    "last_name",
+    "link_to_member",
+    "member_id",
+    "month_received",
+    "source",
+    "year_received"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT income.month_received || '/' || income.day_received || '/' || income.year_received\nFROM member\nJOIN income ON member.member_id = income.link_to_member\nWHERE member.first_name = 'Connor' AND member.last_name = 'Hilton' AND income.source = 'Dues';",
+     "cols": [
+      "day_received",
+      "first_name",
+      "last_name",
+      "link_to_member",
+      "member_id",
+      "month_received",
+      "source",
+      "year_received"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.year_received || '-' || T2.month_received || '-' || T2.day_received FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.first_name = 'Connor' AND T1.last_name = 'Hilton' AND T2.source = 'Dues'",
+     "cols": [
+      "day_received",
+      "first_name",
+      "last_name",
+      "link_to_member",
+      "member_id",
+      "month_received",
+      "source",
+      "year_received"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.month_received || '-' || T2.day_received || '-' || T2.year_received FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.first_name = 'Connor' AND T1.last_name = 'Hilton' AND T2.source = 'Dues'",
+     "cols": [
+      "day_received",
+      "first_name",
+      "last_name",
+      "link_to_member",
+      "member_id",
+      "month_received",
+      "source",
+      "year_received"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "department",
+    "full_name",
+    "link_to_major",
+    "major_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name\nFROM member m\nJOIN major mj ON m.link_to_major = mj.major_id\nWHERE mj.department = 'Art and Design';",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.department = 'Art and Design Department'",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.department = 'Art and Design Department'",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "state",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE z.state = 'Illinois';",
+     "cols": [
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T2.state = 'Illinois'",
+     "cols": [
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T2.state = 'Illinois'",
+     "cols": [
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "state",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT z.state\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE m.full_name = 'Sacha Harrison';",
+     "cols": [
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Sacha Harrison'",
+     "cols": [
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Sacha Harrison'",
+     "cols": [
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "event_id",
+    "event_name",
+    "full_name",
+    "link_to_event",
+    "link_to_major",
+    "link_to_member",
+    "major_id",
+    "major_name",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name\nFROM member m\nJOIN major ma ON m.link_to_major = ma.major_id\nJOIN attendance a ON a.link_to_member = m.member_id\nJOIN event e ON e.event_id = a.link_to_event\nWHERE ma.major_name = 'Interior Design'\n  AND e.event_name = 'Community Theater';",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.full_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major INNER JOIN attendance AS T3 ON T2.member_id = T3.link_to_member INNER JOIN event AS T4 ON T3.link_to_event = T4.event_id WHERE T4.event_name = 'Community Theater' AND T1.major_name = 'Interior Design'",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.full_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major INNER JOIN attendance AS T3 ON T2.member_id = T3.link_to_member INNER JOIN event AS T4 ON T3.link_to_event = T4.event_id WHERE T4.event_name = 'Community Theater' AND T1.major_name = 'Interior Design'",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "link_to_event",
+    "link_to_major",
+    "link_to_member",
+    "major_id",
+    "major_name",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT COUNT(a.link_to_event) AS num_events, mj.major_name\nFROM member m\nJOIN attendance a ON a.link_to_member = m.member_id\nJOIN major mj ON mj.major_id = m.link_to_major\nWHERE m.full_name = 'Luisa Guidi'\nGROUP BY mj.major_name;",
+     "cols": [
+      "full_name",
+      "link_to_event",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT COUNT(T3.link_to_event), T1.major_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major INNER JOIN attendance AS T3 ON T2.member_id = T3.link_to_member WHERE T2.full_name = 'Luisa Guidi'",
+     "cols": [
+      "full_name",
+      "link_to_event",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT COUNT(T3.link_to_event), T1.major_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major INNER JOIN attendance AS T3 ON T2.member_id = T3.link_to_member WHERE T2.full_name = 'Luisa Guidi'",
+     "cols": [
+      "full_name",
+      "link_to_event",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "cost",
+    "full_name",
+    "link_to_major",
+    "link_to_member",
+    "major_id",
+    "major_name",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, mj.major_name\nFROM member m\nJOIN expense e ON e.link_to_member = m.member_id\nJOIN major mj ON m.link_to_major = mj.major_id\nWHERE e.cost > 100;",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT T1.full_name, T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major INNER JOIN expense AS T3 ON T1.member_id = T3.link_to_member WHERE T3.cost > 100",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T1.full_name, T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major INNER JOIN expense AS T3 ON T1.member_id = T3.link_to_member WHERE T3.cost > 100",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_major",
+      "link_to_member",
+      "major_id",
+      "major_name",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "city",
+    "full_name",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT z.city, z.state\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE m.full_name = 'Garrett Gerke';",
+     "cols": [
+      "city",
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8889,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.city FROM member AS T1 INNER JOIN zip_code AS T2 ON T2.zip_code = T1.zip WHERE T1.full_name = 'Garrett Gerke'",
+     "cols": [
+      "city",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.city FROM member AS T1 INNER JOIN zip_code AS T2 ON T2.zip_code = T1.zip WHERE T1.full_name = 'Garrett Gerke'",
+     "cols": [
+      "city",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Website"
+     ],
+     "new": [
+      "WebsiteProtocol, WebsiteDomain"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "cdscode",
+    "free meal count (ages 5-17)",
+    "school name",
+    "website",
+    "websitedomain",
+    "websiteprotocol"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT s.School, s.WebsiteProtocol || s.WebsiteDomain AS Website\nFROM schools s\nJOIN frpm f ON s.CDSCode = f.CDSCode\nWHERE f.\"Free Meal Count (Ages 5-17)\" BETWEEN 1900 AND 2000;",
+     "cols": [
+      "cdscode",
+      "free meal count (ages 5-17)",
+      "school",
+      "websitedomain",
+      "websiteprotocol"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7273,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "SELECT s.WebsiteProtocol || s.WebsiteDomain AS \"Website\", f.\"School Name\" AS \"School Name\" FROM frpm AS f INNER JOIN schools AS s ON f.CDSCode = s.CDSCode WHERE f.\"Free Meal Count (Ages 5-17)\" BETWEEN 1900 AND 2000 AND s.WebsiteDomain IS NOT NULL",
+     "cols": [
+      "cdscode",
+      "free meal count (ages 5-17)",
+      "school name",
+      "websitedomain",
+      "websiteprotocol"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9091,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT COALESCE(T2.WebsiteProtocol, '') || COALESCE(T2.WebsiteDomain, ''), T1.\"School Name\" FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T1.\"Free Meal Count (Ages 5-17)\" BETWEEN 1900 AND 2000 AND T2.WebsiteDomain IS NOT NULL",
+     "cols": [
+      "cdscode",
+      "free meal count (ages 5-17)",
+      "school name",
+      "websitedomain",
+      "websiteprotocol"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9091,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "AdmEmail1",
+      "AdmEmail2"
+     ],
+     "new": [
+      "AdmEmail"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "admemail",
+    "cdscode",
+    "city",
+    "county",
+    "doc",
+    "opendate",
+    "soc"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "year",
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "a2",
+    "account_id",
+    "day",
+    "district_id",
+    "month",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT account_id, year || '-' || month || '-' || day AS opening_date\nFROM account\nJOIN district ON account.district_id = district.district_id\nWHERE district.A2 = 'Prachatice';",
+     "cols": [
+      "a2",
+      "account_id",
+      "day",
+      "district_id",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.account_id, T1.year, T1.month, T1.day FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A2 = 'Prachatice'",
+     "cols": [
+      "a2",
+      "account_id",
+      "day",
+      "district_id",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.account_id, T1.year, T1.month, T1.day FROM account AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T2.A2 = 'Prachatice'",
+     "cols": [
+      "a2",
+      "account_id",
+      "day",
+      "district_id",
+      "month",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "CreationDate"
+     ],
+     "new": [
+      "CreationYear",
+      "CreationMonth",
+      "CreationDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "creationday",
+    "creationmonth",
+    "creationyear",
+    "id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT CreationYear, CreationMonth, CreationDay\nFROM votes\nGROUP BY CreationYear, CreationMonth, CreationDay\nORDER BY COUNT(*) DESC\nLIMIT 1;",
+     "cols": [
+      "*",
+      "creationday",
+      "creationmonth",
+      "creationyear"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.75,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT CreationYear, CreationMonth, CreationDay FROM votes GROUP BY CreationYear, CreationMonth, CreationDay ORDER BY COUNT(Id) DESC LIMIT 1",
+     "cols": [
+      "creationday",
+      "creationmonth",
+      "creationyear",
+      "id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT CreationYear, CreationMonth, CreationDay\nFROM votes\nGROUP BY CreationYear, CreationMonth, CreationDay\nORDER BY COUNT(Id) DESC\nLIMIT 1",
+     "cols": [
+      "creationday",
+      "creationmonth",
+      "creationyear",
+      "id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "day",
+    "month",
+    "name",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT name, month, day FROM races WHERE year = 1999 ORDER BY round DESC LIMIT 1",
+     "cols": [
+      "day",
+      "month",
+      "name",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT name, month || ' ' || day AS date FROM races WHERE year = 1999 ORDER BY round DESC LIMIT 1",
+     "cols": [
+      "day",
+      "month",
+      "name",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT name, month, day FROM races WHERE year = 1999 ORDER BY round DESC LIMIT 1",
+     "cols": [
+      "day",
+      "month",
+      "name",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Date"
+     ],
+     "new": [
+      "Year",
+      "Month",
+      "Day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "birthday",
+    "got",
+    "id",
+    "sex",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT DISTINCT T1.SEX, T1.Birthday FROM patient AS T1 JOIN laboratory AS T2 ON T1.ID = T2.ID WHERE T2.Year = 1994 AND T2.GOT BETWEEN 8 AND 40;",
+     "cols": [
+      "birthday",
+      "got",
+      "id",
+      "sex",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT T1.SEX, T1.Birthday FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.GOT < 60 AND T2.Year = '1994'",
+     "cols": [
+      "birthday",
+      "got",
+      "id",
+      "sex",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T1.SEX, T1.Birthday FROM patient AS T1 INNER JOIN laboratory AS T2 ON T1.ID = T2.ID WHERE T2.GOT < 60 AND T2.Year = 1994;",
+     "cols": [
+      "birthday",
+      "got",
+      "id",
+      "sex",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "email",
+    "full_name",
+    "position"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT full_name, email FROM member WHERE position = 'Secretary';",
+     "cols": [
+      "email",
+      "full_name",
+      "position"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT full_name, email FROM member WHERE position = 'Secretary'",
+     "cols": [
+      "email",
+      "full_name",
+      "position"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT full_name, email FROM member WHERE position = 'Secretary'",
+     "cols": [
+      "email",
+      "full_name",
+      "position"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "event_id",
+    "event_name",
+    "full_name",
+    "link_to_event",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT e.event_name\nFROM event e\nJOIN attendance a ON e.event_id = a.link_to_event\nJOIN member m ON m.member_id = a.link_to_member\nWHERE m.full_name = 'Maya Mclean';",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.event_name FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T3.full_name = 'Maya Mclean'",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.event_name\nFROM event AS T1\nINNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event\nINNER JOIN member AS T3 ON T2.link_to_member = T3.member_id\nWHERE LOWER(T3.full_name) = 'maya mclean'",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "cost",
+    "expense_date",
+    "full_name",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT SUM(cost) / COUNT(cost) AS total\nFROM expense\nWHERE link_to_member = (SELECT member_id FROM member WHERE full_name = 'Elijah Allen')\n  AND strftime('%m', expense_date) BETWEEN '09' AND '10';",
+     "cols": [
+      "cost",
+      "expense_date",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT AVG(T2.cost) FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.full_name = 'Elijah Allen' AND (SUBSTR(T2.expense_date, 6, 2) = '09' OR SUBSTR(T2.expense_date, 6, 2) = '10')",
+     "cols": [
+      "cost",
+      "expense_date",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT AVG(T2.cost) FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.full_name = 'Elijah Allen' AND (SUBSTR(T2.expense_date, 6, 2) = '09' OR SUBSTR(T2.expense_date, 6, 2) = '10')",
+     "cols": [
+      "cost",
+      "expense_date",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "date_received",
+    "full_name",
+    "link_to_member",
+    "member_id",
+    "source"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT full_name\nFROM member\nJOIN income ON member.member_id = income.link_to_member\nWHERE income.source = 'Dues'\nORDER BY income.date_received\nLIMIT 1;",
+     "cols": [
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "source"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T2.source = 'Dues' ORDER BY T2.date_received LIMIT 1",
+     "cols": [
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "source"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T2.source = 'Dues' ORDER BY T2.date_received LIMIT 1",
+     "cols": [
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "source"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "city",
+    "full_name",
+    "state",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name FROM member m JOIN zip_code z ON m.zip = z.zip_code WHERE z.city = 'Georgetown' AND z.state = 'South Carolina' AND m.position = 'Student'",
+     "cols": [
+      "city",
+      "full_name",
+      "position",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9091,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T2.city = 'Georgetown' AND T2.state = 'South Carolina'",
+     "cols": [
+      "city",
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T2.city = 'Georgetown' AND T2.state = 'South Carolina'",
+     "cols": [
+      "city",
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "event_id",
+    "event_name",
+    "full_name",
+    "link_to_event",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT EXISTS (\n  SELECT 1\n  FROM member m\n  JOIN attendance a ON a.link_to_member = m.member_id\n  JOIN event e ON e.event_id = a.link_to_event\n  WHERE lower(m.full_name) = 'maya mclean'\n    AND e.event_name = 'Women''s Soccer'\n) AS attended;",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT CASE WHEN COUNT(*) > 0 THEN 'YES' ELSE 'NO' END AS result FROM member AS T1 INNER JOIN attendance AS T2 ON T1.member_id = T2.link_to_member INNER JOIN event AS T3 ON T2.link_to_event = T3.event_id WHERE T1.full_name = 'Maya Mclean' AND T3.event_name = 'Women''s Soccer'",
+     "cols": [
+      "*",
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9231,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT CASE WHEN EXISTS (\n    SELECT 1\n    FROM member AS T1\n    INNER JOIN attendance AS T2 ON T1.member_id = T2.link_to_member\n    INNER JOIN event AS T3 ON T2.link_to_event = T3.event_id\n    WHERE T1.full_name = 'Maya Mclean' AND T3.event_name = 'Women''s Soccer'\n) THEN 'YES' END AS result",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "budget_id",
+    "full_name",
+    "link_to_budget",
+    "link_to_member",
+    "member_id",
+    "spent"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name\nFROM expense e\nJOIN member m ON e.link_to_member = m.member_id\nGROUP BY m.member_id, m.full_name\nORDER BY SUM(e.cost) DESC\nLIMIT 5;",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.full_name FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id GROUP BY T2.member_id ORDER BY SUM(T1.cost) DESC LIMIT 5",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T3.full_name FROM expense AS T1 INNER JOIN budget AS T2 ON T1.link_to_budget = T2.budget_id INNER JOIN member AS T3 ON T1.link_to_member = T3.member_id ORDER BY T2.spent DESC LIMIT 5",
+     "cols": [
+      "budget_id",
+      "full_name",
+      "link_to_budget",
+      "link_to_member",
+      "member_id",
+      "spent"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "city",
+    "full_name",
+    "position",
+    "state",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, m.position\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE z.city = 'Lincolnton'\n  AND z.state = 'North Carolina'\n  AND z.zip_code = 28092;",
+     "cols": [
+      "city",
+      "full_name",
+      "position",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name, T1.position FROM member AS T1 INNER JOIN zip_code AS T2 ON T2.zip_code = T1.zip WHERE T2.city = 'Lincolnton' AND T2.state = 'North Carolina' AND T2.zip_code = 28092",
+     "cols": [
+      "city",
+      "full_name",
+      "position",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name, T1.position FROM member AS T1 INNER JOIN zip_code AS T2 ON T2.zip_code = T1.zip WHERE T2.city = 'Lincolnton' AND T2.state = 'North Carolina' AND T2.zip_code = 28092",
+     "cols": [
+      "city",
+      "full_name",
+      "position",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "AdmEmail1"
+     ],
+     "new": [
+      "AdmEmail1Local",
+      "AdmEmail1Domain"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "admemail1domain",
+    "admemail1local",
+    "cdscode",
+    "charter school (y/n)",
+    "enrollment (k-12)"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT s.AdmEmail1Local || '@' || s.AdmEmail1Domain\nFROM frpm AS f\nJOIN schools AS s ON f.CDSCode = s.CDSCode\nWHERE f.\"Charter School (Y/N)\" = 1\nORDER BY f.\"Enrollment (K-12)\" ASC\nLIMIT 1;",
+     "cols": [
+      "admemail1domain",
+      "admemail1local",
+      "cdscode",
+      "charter school (y/n)",
+      "enrollment (k-12)"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "SELECT T2.AdmEmail1Local || '@' || T2.AdmEmail1Domain FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T1.`Charter School (Y/N)` = 1 ORDER BY T1.`Enrollment (K-12)` ASC LIMIT 1",
+     "cols": [
+      "admemail1domain",
+      "admemail1local",
+      "cdscode",
+      "charter school (y/n)",
+      "enrollment (k-12)"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT s.AdmEmail1Local || '@' || s.AdmEmail1Domain\nFROM frpm AS f\nINNER JOIN schools AS s ON f.CDSCode = s.CDSCode\nWHERE f.\"Charter School (Y/N)\" = 1\nORDER BY f.\"Enrollment (K-12)\" ASC\nLIMIT 1",
+     "cols": [
+      "admemail1domain",
+      "admemail1local",
+      "cdscode",
+      "charter school (y/n)",
+      "enrollment (k-12)"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "AdmEmail1"
+     ],
+     "new": [
+      "AdmEmail1Local",
+      "AdmEmail1Domain"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "admemail1domain",
+    "admemail1local",
+    "cds",
+    "cdscode",
+    "numge1500",
+    "school"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT COALESCE(sc.AdmEmail1Local || '@' || sc.AdmEmail1Domain, sc.AdmEmail2, sc.AdmEmail3) AS administrator_email, s.sname AS school_name\nFROM satscores s\nJOIN schools sc ON s.cds = sc.CDSCode\nORDER BY s.NumGE1500 DESC\nLIMIT 1;",
+     "cols": [
+      "admemail1domain",
+      "admemail1local",
+      "admemail2",
+      "admemail3",
+      "cds",
+      "cdscode",
+      "numge1500",
+      "sname"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7143,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.AdmEmail1Local || '@' || T2.AdmEmail1Domain, T2.School FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode ORDER BY T1.NumGE1500 DESC LIMIT 1",
+     "cols": [
+      "admemail1domain",
+      "admemail1local",
+      "cds",
+      "cdscode",
+      "numge1500",
+      "school"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT s.AdmEmail1Local || '@' || s.AdmEmail1Domain AS AdmEmail1, s.School\nFROM satscores AS t\nINNER JOIN schools AS s ON t.cds = s.CDSCode\nORDER BY t.NumGE1500 DESC\nLIMIT 1",
+     "cols": [
+      "admemail1domain",
+      "admemail1local",
+      "cds",
+      "cdscode",
+      "numge1500",
+      "school"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "year",
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "account_id",
+    "amount",
+    "duration",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT l.account_id\nFROM loan l\nJOIN account a ON a.account_id = l.account_id\nWHERE l.duration > 24\n  AND l.amount = (SELECT MIN(amount) FROM loan WHERE duration > 24)\n  AND a.year < 1997;",
+     "cols": [
+      "account_id",
+      "amount",
+      "duration",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.account_id FROM loan AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE T1.duration > 24 AND CAST(T2.year AS INTEGER) < 1997 ORDER BY T1.amount ASC LIMIT 1",
+     "cols": [
+      "account_id",
+      "amount",
+      "duration",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.account_id FROM loan AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE T1.duration > 24 AND CAST(T2.year AS INTEGER) < 1997 ORDER BY T1.amount ASC LIMIT 1",
+     "cols": [
+      "account_id",
+      "amount",
+      "duration",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "LastEditDate"
+     ],
+     "new": [
+      "LastEditDay",
+      "LastEditTime"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "lasteditday",
+    "lasteditoruserid",
+    "lastedittime",
+    "title"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT LastEditDay, LastEditTime, LastEditorUserId\nFROM posts\nWHERE Title = 'Detecting a given face in a database of facial images';",
+     "cols": [
+      "lasteditday",
+      "lasteditoruserid",
+      "lastedittime",
+      "title"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT LastEditDay, LastEditorUserId FROM posts WHERE Title = 'Detecting a given face in a database of facial images'",
+     "cols": [
+      "lasteditday",
+      "lasteditoruserid",
+      "title"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8571,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT LastEditDay, LastEditTime, LastEditorUserId FROM posts WHERE Title = 'Detecting a given face in a database of facial images'",
+     "cols": [
+      "lasteditday",
+      "lasteditoruserid",
+      "lastedittime",
+      "title"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "circuitid",
+    "country",
+    "day",
+    "month",
+    "name",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT r.name, c.country\nFROM races r\nJOIN circuits c ON r.circuitId = c.circuitId\nWHERE r.year = 2017\nORDER BY r.month, r.day;",
+     "cols": [
+      "circuitid",
+      "country",
+      "day",
+      "month",
+      "name",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT r.name, c.country FROM races AS r INNER JOIN circuits AS c ON r.circuitId = c.circuitId WHERE r.year = 2017 ORDER BY r.month ASC, r.day ASC;",
+     "cols": [
+      "circuitid",
+      "country",
+      "day",
+      "month",
+      "name",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T2.name, T1.country\nFROM circuits AS T1\nINNER JOIN races AS T2 ON T2.circuitId = T1.circuitId\nWHERE T2.year = 2017\nORDER BY T2.month ASC, T2.day ASC",
+     "cols": [
+      "circuitid",
+      "country",
+      "day",
+      "month",
+      "name",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Birthday"
+     ],
+     "new": [
+      "BirthdayYear",
+      "BirthdayMonth",
+      "BirthdayDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "birthdayday",
+    "birthdaymonth",
+    "birthdayyear",
+    "diagnosis",
+    "gpt",
+    "id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT DISTINCT T1.Diagnosis\nFROM patient AS T1\nJOIN laboratory AS T2 ON T1.ID = T2.ID\nWHERE T2.GPT NOT BETWEEN 5 AND 45\nORDER BY T1.BirthdayYear ASC, T1.BirthdayMonth ASC, T1.BirthdayDay ASC",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "diagnosis",
+      "gpt",
+      "id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT T1.Diagnosis FROM patient AS T1 INNER JOIN laboratory AS T2 ON T1.ID = T2.ID WHERE T2.GPT > 60 ORDER BY T1.BirthdayYear ASC, T1.BirthdayMonth ASC, T1.BirthdayDay ASC",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "diagnosis",
+      "gpt",
+      "id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T1.Diagnosis FROM patient AS T1 INNER JOIN laboratory AS T2 ON T1.ID = T2.ID WHERE T2.GPT > 60 ORDER BY T1.BirthdayYear ASC, T1.BirthdayMonth ASC, T1.BirthdayDay ASC",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "diagnosis",
+      "gpt",
+      "id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "event_date"
+     ],
+     "new": [
+      "event_year",
+      "event_month",
+      "event_day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "budget_id",
+    "cost",
+    "event_day",
+    "event_id",
+    "event_month",
+    "event_name",
+    "event_year",
+    "expense_description",
+    "link_to_budget",
+    "link_to_event"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.event_name, T1.event_date FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event INNER JOIN expense AS T3 ON T2.budget_id = T3.link_to_budget WHERE T3.expense_description = 'Pizza' AND T3.cost > 50 AND T3.cost < 100",
+     "cols": [
+      "budget_id",
+      "cost",
+      "event_date",
+      "event_id",
+      "event_name",
+      "expense_description",
+      "link_to_budget",
+      "link_to_event"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7778,
+     "exact_cols": false,
+     "n_old_deleted_used": 1,
+     "uses_deleted_old_col": true,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "event_date",
+    "event_id",
+    "full_name",
+    "link_to_event",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT COUNT(DISTINCT e.event_id) AS num_events\nFROM attendance a\nJOIN member m ON a.link_to_member = m.member_id\nJOIN event e ON a.link_to_event = e.event_id\nWHERE m.full_name = 'Sacha Harrison'\n  AND e.event_date LIKE '2019%';",
+     "cols": [
+      "event_date",
+      "event_id",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT COUNT(T1.event_id) FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T3.full_name = 'Sacha Harrison' AND SUBSTR(T1.event_date, 1, 4) = '2019'",
+     "cols": [
+      "event_date",
+      "event_id",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT COUNT(T1.event_id) FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T3.full_name = 'Sacha Harrison' AND SUBSTR(T1.event_date, 1, 4) = '2019'",
+     "cols": [
+      "event_date",
+      "event_id",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "phone"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT phone FROM member WHERE full_name = 'Carlo Jacobs';",
+     "cols": [
+      "full_name",
+      "phone"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT phone FROM member WHERE full_name = 'Carlo Jacobs'",
+     "cols": [
+      "full_name",
+      "phone"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT phone FROM member WHERE full_name = 'Carlo Jacobs'",
+     "cols": [
+      "full_name",
+      "phone"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "city",
+    "county",
+    "full_name",
+    "state",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT z.city, z.state\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE m.full_name = 'Amy Firth';",
+     "cols": [
+      "city",
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9091,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.city, T2.county, T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Amy Firth'",
+     "cols": [
+      "city",
+      "county",
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.city, T2.county, T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Amy Firth'",
+     "cols": [
+      "city",
+      "county",
+      "full_name",
+      "state",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "unknown",
+   "n_changes": 0,
+   "changes": [],
+   "gold_cols": [
+    "amount",
+    "full_name",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.amount FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.first_name = 'Grant' AND T1.last_name = 'Gilmour'",
+     "cols": [
+      "amount",
+      "first_name",
+      "last_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.amount FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.first_name = 'Grant' AND T1.last_name = 'Gilmour'",
+     "cols": [
+      "amount",
+      "first_name",
+      "last_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "cost",
+    "full_name",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, SUM(e.cost) AS total_cost\nFROM member m\nJOIN expense e ON m.member_id = e.link_to_member\nWHERE m.member_id = 'rec4BLdZHS2Blfp4v'\nGROUP BY m.member_id, m.full_name;",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name, SUM(T2.cost) FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.member_id = 'rec4BLdZHS2Blfp4v' GROUP BY T1.full_name;",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name, SUM(T2.cost) FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.member_id = 'rec4BLdZHS2Blfp4v'",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "budget_id",
+    "cost",
+    "full_name",
+    "link_to_budget",
+    "link_to_member",
+    "member_id",
+    "phone"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, m.phone\nFROM member m\nJOIN expense e ON m.member_id = e.link_to_member\nWHERE e.cost > (SELECT AVG(cost) FROM expense);",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "phone"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT M.full_name, M.phone FROM member AS M INNER JOIN expense AS E ON M.member_id = E.link_to_member WHERE E.cost > ( SELECT AVG(cost) FROM expense )",
+     "cols": [
+      "cost",
+      "full_name",
+      "link_to_member",
+      "member_id",
+      "phone"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T3.full_name, T3.phone FROM expense AS T1 INNER JOIN budget AS T2 ON T1.link_to_budget = T2.budget_id INNER JOIN member AS T3 ON T3.member_id = T1.link_to_member WHERE T1.cost > ( SELECT AVG(T1.cost) FROM expense AS T1 INNER JOIN budget AS T2 ON T1.link_to_budget = T2.budget_id INNER JOIN member AS T3 ON T3.member_id = T1.link_to_member )",
+     "cols": [
+      "budget_id",
+      "cost",
+      "full_name",
+      "link_to_budget",
+      "link_to_member",
+      "member_id",
+      "phone"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "Street",
+      "City",
+      "State",
+      "Zip"
+     ],
+     "new": [
+      "Address"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "address",
+    "cds",
+    "cdscode",
+    "numge1500",
+    "numtsttakr"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT s.MailStreet, s.MailCity, s.MailZip, s.MailState\nFROM schools AS s\nJOIN satscores AS sa ON s.CDSCode = sa.cds\nWHERE sa.NumTstTakr > 0\nORDER BY CAST(sa.NumGE1500 AS REAL) / sa.NumTstTakr ASC\nLIMIT 1",
+     "cols": [
+      "cds",
+      "cdscode",
+      "mailcity",
+      "mailstate",
+      "mailstreet",
+      "mailzip",
+      "numge1500",
+      "numtsttakr"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6154,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "SELECT T2.MailStreet, T2.MailCity, T2.MailZip, T2.MailState FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode ORDER BY CAST(T1.NumGE1500 AS REAL) / T1.NumTstTakr ASC LIMIT 1",
+     "cols": [
+      "cds",
+      "cdscode",
+      "mailcity",
+      "mailstate",
+      "mailstreet",
+      "mailzip",
+      "numge1500",
+      "numtsttakr"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6154,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT T2.Address FROM satscores AS T1 INNER JOIN schools AS T2 ON T1.cds = T2.CDSCode ORDER BY CAST(T1.NumGE1500 AS REAL) / T1.NumTstTakr ASC LIMIT 1",
+     "cols": [
+      "address",
+      "cds",
+      "cdscode",
+      "numge1500",
+      "numtsttakr"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "year",
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "account_id",
+    "amount",
+    "frequency",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.account_id FROM loan AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE STRFTIME('%Y', T1.year) = '1997' AND T2.frequency = 'weekly issuance' ORDER BY T1.amount LIMIT 1",
+     "cols": [
+      "account_id",
+      "amount",
+      "frequency",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.account_id FROM loan AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE T1.year = '1997' AND T2.frequency = 'POPLATEK TYDNE' ORDER BY T1.amount LIMIT 1",
+     "cols": [
+      "account_id",
+      "amount",
+      "frequency",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "year",
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "day",
+    "id",
+    "month",
+    "originaltype",
+    "uuid",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT c.name, r.year, r.month, r.day\nFROM cards c\nJOIN rulings r ON c.uuid = r.uuid\nWHERE c.originalType = 'Creature - Elf';",
+     "cols": [
+      "day",
+      "month",
+      "name",
+      "originaltype",
+      "uuid",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.name, T2.year || '-' || T2.month || '-' || T2.day AS date FROM cards AS T1 INNER JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE T1.originalType = 'Creature - Elf'",
+     "cols": [
+      "day",
+      "month",
+      "name",
+      "originaltype",
+      "uuid",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.name, T2.year, T2.month, T2.day FROM cards AS T1 INNER JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE T1.originalType = 'Creature - Elf'",
+     "cols": [
+      "day",
+      "month",
+      "name",
+      "originaltype",
+      "uuid",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "LastEditDate"
+     ],
+     "new": [
+      "LastEditDay",
+      "LastEditTime"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "id",
+    "lasteditday",
+    "lastedittime",
+    "postid",
+    "title"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT ph.PostHistoryTypeId,\n       COUNT(*) AS HistoryCount,\n       p.LastEditDay,\n       p.LastEditTime\nFROM posts p\nJOIN posthistory ph ON ph.PostId = p.Id\nWHERE p.Title = 'What is the best introductory Bayesian statistics textbook?'\nGROUP BY ph.PostHistoryTypeId, p.LastEditDay, p.LastEditTime;",
+     "cols": [
+      "*",
+      "id",
+      "lasteditday",
+      "lastedittime",
+      "posthistorytypeid",
+      "postid",
+      "title"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT COUNT(T1.Id), T2.LastEditDay FROM postHistory AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T2.Title = 'What is the best introductory Bayesian statistics textbook?'",
+     "cols": [
+      "id",
+      "lasteditday",
+      "postid",
+      "title"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8889,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT COUNT(T1.Id), T2.LastEditDay, T2.LastEditTime FROM posthistory AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T2.Title = 'What is the best introductory Bayesian statistics textbook?'",
+     "cols": [
+      "id",
+      "lasteditday",
+      "lastedittime",
+      "postid",
+      "title"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "day",
+    "dob",
+    "driverid",
+    "month",
+    "name",
+    "raceid",
+    "time",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT r.year, r.name, r.month, r.day, r.time\nFROM races r\nJOIN qualifying q ON q.raceId = r.raceId\nWHERE q.driverId = (SELECT driverId FROM drivers ORDER BY dob DESC LIMIT 1)\nORDER BY r.year, r.round\nLIMIT 1;",
+     "cols": [
+      "day",
+      "dob",
+      "driverid",
+      "month",
+      "name",
+      "raceid",
+      "time",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T3.year, T3.name, T3.month, T3.day, T3.time FROM qualifying AS T1 INNER JOIN drivers AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T1.raceId = T3.raceId WHERE T1.driverId = ( SELECT driverId FROM drivers ORDER BY dob DESC LIMIT 1 ) ORDER BY T3.year ASC, T3.round ASC LIMIT 1",
+     "cols": [
+      "day",
+      "dob",
+      "driverid",
+      "month",
+      "name",
+      "raceid",
+      "time",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T3.year, T3.name, T3.month, T3.day, T3.time FROM qualifying AS T1 INNER JOIN drivers AS T2 ON T1.driverId = T2.driverId INNER JOIN races AS T3 ON T1.raceId = T3.raceId WHERE T1.driverId = ( SELECT driverId FROM drivers ORDER BY dob DESC LIMIT 1 ) ORDER BY T3.year ASC, CAST(T3.month AS INTEGER) ASC, CAST(T3.day AS INTEGER) ASC LIMIT 1",
+     "cols": [
+      "day",
+      "dob",
+      "driverid",
+      "month",
+      "name",
+      "raceid",
+      "time",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Birthday"
+     ],
+     "new": [
+      "BirthdayYear",
+      "BirthdayMonth",
+      "BirthdayDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "birthdayday",
+    "birthdaymonth",
+    "birthdayyear",
+    "id",
+    "sex",
+    "tp"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT DISTINCT p.ID, p.SEX, p.BirthdayYear, p.BirthdayMonth, p.BirthdayDay\nFROM patient p\nJOIN laboratory l ON p.ID = l.ID\nWHERE l.TP < 6.0;",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "id",
+      "sex",
+      "tp"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT T1.ID, T1.SEX, T1.BirthdayYear, T1.BirthdayMonth, T1.BirthdayDay FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.TP < 6.0",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "id",
+      "sex",
+      "tp"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T1.ID, T1.SEX, T1.BirthdayYear, T1.BirthdayMonth, T1.BirthdayDay FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.TP < 6.0",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "id",
+      "sex",
+      "tp"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "amount",
+    "date_received",
+    "event_id",
+    "full_name",
+    "link_to_event",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, i.amount\nFROM income i\nJOIN member m ON i.link_to_member = m.member_id\nWHERE i.date_received = '2019-09-09';",
+     "cols": [
+      "amount",
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT DISTINCT T1.full_name, T2.amount\nFROM member AS T1\nINNER JOIN income AS T2 ON T1.member_id = T2.link_to_member\nWHERE T2.date_received = '2019-09-09'",
+     "cols": [
+      "amount",
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8333,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT DISTINCT T3.full_name, T4.amount FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T3.member_id = T2.link_to_member INNER JOIN income AS T4 ON T4.link_to_member = T3.member_id WHERE T4.date_received = '2019-09-09'",
+     "cols": [
+      "amount",
+      "date_received",
+      "event_id",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "event_id",
+    "event_name",
+    "full_name",
+    "link_to_event",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT T1.full_name\nFROM member AS T1\nJOIN attendance AS T2 ON T1.member_id = T2.link_to_member\nJOIN event AS T3 ON T2.link_to_event = T3.event_id\nWHERE T3.event_name = 'Laugh Out Loud';",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN attendance AS T2 ON T1.member_id = T2.link_to_member INNER JOIN event AS T3 ON T2.link_to_event = T3.event_id WHERE T3.event_name = 'Laugh Out Loud'",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN attendance AS T2 ON T1.member_id = T2.link_to_member INNER JOIN event AS T3 ON T2.link_to_event = T3.event_id WHERE T3.event_name = 'Laugh Out Loud'",
+     "cols": [
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "county",
+    "full_name",
+    "gallagher",
+    "member",
+    "t1",
+    "t2",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "regex",
+   "conds": {
+    "c1": {
+     "sql": "SELECT z.county\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE m.full_name = 'Adela O''Gallagher';",
+     "cols": [
+      "county",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.county FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Adela O''Gallagher'",
+     "cols": [
+      "county",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.county FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Adela O''Gallagher'",
+     "cols": [
+      "county",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "date_received",
+    "full_name",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT income.date_received\nFROM income\nJOIN member ON income.link_to_member = member.member_id\nWHERE member.full_name = 'Casey Mason';",
+     "cols": [
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.date_received FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.full_name = 'Casey Mason'",
+     "cols": [
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.date_received FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.full_name = 'Casey Mason'",
+     "cols": [
+      "date_received",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "unknown",
+   "n_changes": 0,
+   "changes": [],
+   "gold_cols": [
+    "amount",
+    "full_name",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.first_name, T1.last_name FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T2.amount > 40",
+     "cols": [
+      "amount",
+      "first_name",
+      "last_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.first_name, T1.last_name FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T2.amount > 40",
+     "cols": [
+      "amount",
+      "first_name",
+      "last_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.6667,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "expense_description",
+    "full_name",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT e.expense_description\nFROM expense e\nJOIN member m ON e.link_to_member = m.member_id\nWHERE m.full_name = 'Sacha Harrison';",
+     "cols": [
+      "expense_description",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.expense_description FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.full_name = 'Sacha Harrison'",
+     "cols": [
+      "expense_description",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.expense_description FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.full_name = 'Sacha Harrison'",
+     "cols": [
+      "expense_description",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "department",
+    "full_name",
+    "link_to_major",
+    "major_id",
+    "major_name"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT mj.major_name, mj.department\nFROM member me\nJOIN major mj ON me.link_to_major = mj.major_id\nWHERE me.full_name = 'Garrett Gerke';",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.major_name, T2.department FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.full_name = 'Garrett Gerke'",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.major_name, T2.department FROM member AS T1 INNER JOIN major AS T2 ON T2.major_id = T1.link_to_major WHERE T1.full_name = 'Garrett Gerke'",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "california_schools",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "MailStreet"
+     ],
+     "new": [
+      "MailStreetName",
+      "MailStreetNumber"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "avgscrmath",
+    "cds",
+    "cdscode",
+    "mailstreetname",
+    "mailstreetnumber",
+    "school"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c2": {
+     "sql": "SELECT T2.MailStreetNumber || ' ' || T2.MailStreetName, T2.School\nFROM satscores AS T1\nINNER JOIN schools AS T2 ON T1.cds = T2.CDSCode\nORDER BY T1.AvgScrMath DESC\nLIMIT 6, 1",
+     "cols": [
+      "avgscrmath",
+      "cds",
+      "cdscode",
+      "mailstreetname",
+      "mailstreetnumber",
+      "school"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    },
+    "c3m": {
+     "sql": "SELECT T2.MailStreetNumber || ' ' || T2.MailStreetName AS MailStreet, T2.School\nFROM satscores AS T1\nINNER JOIN schools AS T2 ON T1.cds = T2.CDSCode\nORDER BY T1.AvgScrMath DESC\nLIMIT 6, 1",
+     "cols": [
+      "avgscrmath",
+      "cds",
+      "cdscode",
+      "mailstreetname",
+      "mailstreetnumber",
+      "school"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": true
+    }
+   }
+  },
+  {
+   "db": "financial",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "date"
+     ],
+     "new": [
+      "year",
+      "month",
+      "day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "account_id",
+    "amount",
+    "duration",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT l.account_id\nFROM loan l\nJOIN account a ON l.account_id = a.account_id\nWHERE l.duration > 12\n  AND a.year = 1993\n  AND l.amount = (\n      SELECT MAX(l2.amount)\n      FROM loan l2\n      JOIN account a2 ON l2.account_id = a2.account_id\n      WHERE l2.duration > 12\n        AND a2.year = 1993\n  );",
+     "cols": [
+      "account_id",
+      "amount",
+      "duration",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.account_id FROM loan AS T1 INNER JOIN account AS T2 ON T1.account_id = T2.account_id WHERE CAST(T2.year AS INTEGER) = 1993 AND T1.duration > 12 ORDER BY T1.amount DESC LIMIT 1",
+     "cols": [
+      "account_id",
+      "amount",
+      "duration",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "card_games",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "releaseDate"
+     ],
+     "new": [
+      "releaseYear",
+      "releaseMonth",
+      "releaseDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "code",
+    "releaseday",
+    "releasemonth",
+    "releaseyear",
+    "setcode"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT code FROM sets WHERE releaseYear = 2007 AND releaseMonth = 7 AND releaseDay = 13;",
+     "cols": [
+      "code",
+      "releaseday",
+      "releasemonth",
+      "releaseyear"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8889,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT code FROM sets WHERE releaseYear = 2007 AND releaseMonth = 7 AND releaseDay = 13",
+     "cols": [
+      "code",
+      "releaseday",
+      "releasemonth",
+      "releaseyear"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8889,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT code FROM sets WHERE releaseYear = 2007 AND releaseMonth = 7 AND releaseDay = 13",
+     "cols": [
+      "code",
+      "releaseday",
+      "releasemonth",
+      "releaseyear"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.8889,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "codebase_community",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "LastAccessDate"
+     ],
+     "new": [
+      "LastAccessDay",
+      "LastAccessTime"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "id",
+    "lastaccessday",
+    "lastaccesstime",
+    "location",
+    "name",
+    "userid"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT u.LastAccessDay AS LastAccessDate, u.Location\nFROM users u\nJOIN badges b ON b.UserId = u.Id\nWHERE b.Name = 'Outliers';",
+     "cols": [
+      "id",
+      "lastaccessday",
+      "location",
+      "name",
+      "userid"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.9091,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.LastAccessDay, T1.LastAccessTime, T1.Location FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'outliers'",
+     "cols": [
+      "id",
+      "lastaccessday",
+      "lastaccesstime",
+      "location",
+      "name",
+      "userid"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.LastAccessDay, T1.LastAccessTime, T1.Location FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'outliers'",
+     "cols": [
+      "id",
+      "lastaccessday",
+      "lastaccesstime",
+      "location",
+      "name",
+      "userid"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "formula_1",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "dob"
+     ],
+     "new": [
+      "dobYear",
+      "dobMonth",
+      "dobDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "dob",
+    "dobyear",
+    "forename",
+    "nationality",
+    "surname"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT forename || ' ' || surname AS full_name,\n       printf('%04d-%02d-%02d', dobYear, dobMonth, dobDay) AS date_of_birth\nFROM drivers\nWHERE nationality = 'Austrian'\n  AND dobYear BETWEEN 1981 AND 1991;",
+     "cols": [
+      "dobday",
+      "dobmonth",
+      "dobyear",
+      "forename",
+      "nationality",
+      "surname"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7273,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT forename || ' ' || surname AS fullName, printf('%04d-%02d-%02d', dobYear, dobMonth, dobDay) AS dob FROM drivers WHERE nationality = 'Austrian' AND CAST(dobYear AS INTEGER) BETWEEN 1981 AND 1991",
+     "cols": [
+      "dobday",
+      "dobmonth",
+      "dobyear",
+      "forename",
+      "nationality",
+      "surname"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7273,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT forename || ' ' || surname AS fullName,\n       dobYear || '-' || printf('%02d', dobMonth) || '-' || printf('%02d', dobDay) AS dob\nFROM drivers\nWHERE nationality = 'Austrian'\n  AND CAST(dobYear AS INTEGER) BETWEEN 1981 AND 1991",
+     "cols": [
+      "dobday",
+      "dobmonth",
+      "dobyear",
+      "forename",
+      "nationality",
+      "surname"
+     ],
+     "parse": "sqlglot",
+     "f1": 0.7273,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "thrombosis_prediction",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Birthday"
+     ],
+     "new": [
+      "BirthdayYear",
+      "BirthdayMonth",
+      "BirthdayDay"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "birthdayday",
+    "birthdaymonth",
+    "birthdayyear",
+    "id",
+    "rnp"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT p.BirthdayYear, p.BirthdayMonth, p.BirthdayDay\nFROM patient p\nJOIN laboratory l ON l.ID = p.ID\nWHERE l.RNP IS NOT NULL AND l.RNP != '-'\nORDER BY p.BirthdayYear DESC, p.BirthdayMonth DESC, p.BirthdayDay DESC\nLIMIT 1;",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "id",
+      "rnp"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.BirthdayYear || '-' || T1.BirthdayMonth || '-' || T1.BirthdayDay\nFROM patient AS T1\nINNER JOIN laboratory AS T2 ON T1.ID = T2.ID\nWHERE T2.RNP != '-'\nORDER BY T1.BirthdayYear DESC, T1.BirthdayMonth DESC, T1.BirthdayDay DESC\nLIMIT 1",
+     "cols": [
+      "birthdayday",
+      "birthdaymonth",
+      "birthdayyear",
+      "id",
+      "rnp"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "debit_card_specializing",
+   "kind": "split",
+   "recovered_kind": "split",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "split",
+     "old": [
+      "Date"
+     ],
+     "new": [
+      "Year",
+      "Month",
+      "Day"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "consumption",
+    "customerid",
+    "day",
+    "month",
+    "price",
+    "year"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.CustomerID, T2.Year, T2.Month, T2.Consumption\nFROM transactions_1k AS T1\nINNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID\nWHERE T1.Price = 124.05\n  AND CAST(T1.Year AS INTEGER) = 2012\n  AND CAST(T1.Month AS INTEGER) = 8\n  AND CAST(T1.Day AS INTEGER) = 24\n  AND CAST(T2.Year AS INTEGER) = 2012\n  AND CAST(T2.Month AS INTEGER) = 1",
+     "cols": [
+      "consumption",
+      "customerid",
+      "day",
+      "month",
+      "price",
+      "year"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "county",
+    "full_name",
+    "zip",
+    "zip_code"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT z.county\nFROM member m\nJOIN zip_code z ON m.zip = z.zip_code\nWHERE m.full_name = 'Sherri Ramsey';",
+     "cols": [
+      "county",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.county FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Sherri Ramsey'",
+     "cols": [
+      "county",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.county FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.full_name = 'Sherri Ramsey'",
+     "cols": [
+      "county",
+      "full_name",
+      "zip",
+      "zip_code"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "link_to_major",
+    "major_id",
+    "major_name"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT major.major_name FROM member JOIN major ON member.link_to_major = major.major_id WHERE member.full_name = 'Brent Thomason';",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.full_name = 'Brent Thomason'",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.full_name = 'Brent Thomason'",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "department",
+    "full_name",
+    "link_to_major",
+    "major_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name\nFROM member m\nJOIN major mj ON m.link_to_major = mj.major_id\nWHERE mj.department = 'School of Applied Sciences, Technology and Education';",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.department = 'School of Applied Sciences, Technology and Education'",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.full_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.department = 'School of Applied Sciences, Technology and Education'",
+     "cols": [
+      "department",
+      "full_name",
+      "link_to_major",
+      "major_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "budget_id",
+    "event_id",
+    "event_name",
+    "full_name",
+    "link_to_budget",
+    "link_to_event",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "",
+     "cols": [],
+     "parse": "regex",
+     "f1": 0.0,
+     "exact_cols": false,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T4.full_name FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event INNER JOIN expense AS T3 ON T2.budget_id = T3.link_to_budget INNER JOIN member AS T4 ON T3.link_to_member = T4.member_id WHERE T1.event_name = 'Yearly Kickoff'",
+     "cols": [
+      "budget_id",
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_budget",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T4.full_name FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event INNER JOIN expense AS T3 ON T2.budget_id = T3.link_to_budget INNER JOIN member AS T4 ON T3.link_to_member = T4.member_id WHERE T1.event_name = 'Yearly Kickoff'",
+     "cols": [
+      "budget_id",
+      "event_id",
+      "event_name",
+      "full_name",
+      "link_to_budget",
+      "link_to_event",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "full_name",
+    "link_to_major",
+    "major_id",
+    "major_name"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT major.major_name\nFROM member\nJOIN major ON member.link_to_major = major.major_id\nWHERE member.full_name = 'Phillip Cullen';",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T1.major_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.full_name = 'Phillip Cullen'",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T1.major_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.full_name = 'Phillip Cullen'",
+     "cols": [
+      "full_name",
+      "link_to_major",
+      "major_id",
+      "major_name"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  },
+  {
+   "db": "student_club",
+   "kind": "merge",
+   "recovered_kind": "merge",
+   "n_changes": 1,
+   "changes": [
+    {
+     "kind": "merge",
+     "old": [
+      "first_name",
+      "last_name"
+     ],
+     "new": [
+      "full_name"
+     ]
+    }
+   ],
+   "gold_cols": [
+    "cost",
+    "expense_description",
+    "full_name",
+    "link_to_member",
+    "member_id"
+   ],
+   "gold_parse": "sqlglot",
+   "conds": {
+    "c1": {
+     "sql": "SELECT m.full_name, e.cost\nFROM expense e\nJOIN member m ON e.link_to_member = m.member_id\nWHERE e.expense_description = 'Water, Veggie Tray, Supplies';",
+     "cols": [
+      "cost",
+      "expense_description",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c2": {
+     "sql": "SELECT T2.full_name, T1.cost FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T1.expense_description = 'Water, Veggie tray, supplies'",
+     "cols": [
+      "cost",
+      "expense_description",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    },
+    "c3m": {
+     "sql": "SELECT T2.full_name, T1.cost FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T1.expense_description = 'Water, Veggie tray, supplies'",
+     "cols": [
+      "cost",
+      "expense_description",
+      "full_name",
+      "link_to_member",
+      "member_id"
+     ],
+     "parse": "sqlglot",
+     "f1": 1.0,
+     "exact_cols": true,
+     "n_old_deleted_used": 0,
+     "uses_deleted_old_col": false,
+     "cached": false
+    }
+   }
+  }
+ ],
+ "tests": {
+  "sign_c2_vs_c3m": {
+   "better": 13,
+   "worse": 2,
+   "p": 0.00739
+  },
+  "exact_cols_paired": {
+   "c3m_only": 13,
+   "c2_only": 1,
+   "p": 0.00183
+  }
+ }
+}

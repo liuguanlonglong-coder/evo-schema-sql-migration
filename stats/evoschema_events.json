@@ -1,0 +1,768 @@
+{
+ "version": "evoschema-events-v1",
+ "n_items": 81,
+ "unknown_kind": 3,
+ "by_recovered_kind": {
+  "split": 37,
+  "merge": 41,
+  "unknown": 3
+ },
+ "units": {
+  "event": 21,
+  "db": 8
+ },
+ "event_table": [
+  {
+   "db": "student_club",
+   "n_items": 38,
+   "kind": "merge",
+   "c1": {
+    "n": 38,
+    "exact": 29,
+    "rate": 76.3,
+    "f1": 0.9355
+   },
+   "c2": {
+    "n": 38,
+    "exact": 33,
+    "rate": 86.8,
+    "f1": 0.9699
+   },
+   "c3m": {
+    "n": 38,
+    "exact": 37,
+    "rate": 97.4,
+    "f1": 0.9912
+   },
+   "c3m_minus_c2_pt": 10.6
+  },
+  {
+   "db": "financial",
+   "n_items": 6,
+   "kind": "split",
+   "c1": {
+    "n": 6,
+    "exact": 4,
+    "rate": 66.7,
+    "f1": 0.7778
+   },
+   "c2": {
+    "n": 6,
+    "exact": 4,
+    "rate": 66.7,
+    "f1": 0.7778
+   },
+   "c3m": {
+    "n": 6,
+    "exact": 5,
+    "rate": 83.3,
+    "f1": 0.9444
+   },
+   "c3m_minus_c2_pt": 16.6
+  },
+  {
+   "db": "california_schools",
+   "n_items": 4,
+   "kind": "split",
+   "c1": {
+    "n": 4,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.1429
+   },
+   "c2": {
+    "n": 4,
+    "exact": 1,
+    "rate": 25.0,
+    "f1": 0.4773
+   },
+   "c3m": {
+    "n": 4,
+    "exact": 4,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 75.0
+  },
+  {
+   "db": "card_games",
+   "n_items": 3,
+   "kind": "split",
+   "c1": {
+    "n": 3,
+    "exact": 1,
+    "rate": 33.3,
+    "f1": 0.9373
+   },
+   "c2": {
+    "n": 3,
+    "exact": 2,
+    "rate": 66.7,
+    "f1": 0.963
+   },
+   "c3m": {
+    "n": 3,
+    "exact": 2,
+    "rate": 66.7,
+    "f1": 0.963
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "codebase_community",
+   "n_items": 3,
+   "kind": "split",
+   "c1": {
+    "n": 3,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.8001
+   },
+   "c2": {
+    "n": 3,
+    "exact": 2,
+    "rate": 66.7,
+    "f1": 0.9091
+   },
+   "c3m": {
+    "n": 3,
+    "exact": 2,
+    "rate": 66.7,
+    "f1": 0.9091
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "n_items": 3,
+   "kind": "split",
+   "c1": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c2": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "formula_1",
+   "n_items": 3,
+   "kind": "split",
+   "c1": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c2": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "thrombosis_prediction",
+   "n_items": 3,
+   "kind": "split",
+   "c1": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c2": {
+    "n": 3,
+    "exact": 3,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m": {
+    "n": 3,
+    "exact": 2,
+    "rate": 66.7,
+    "f1": 0.6667
+   },
+   "c3m_minus_c2_pt": -33.3
+  },
+  {
+   "db": "formula_1",
+   "n_items": 2,
+   "kind": "split",
+   "c1": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.8303
+   },
+   "c2": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.8303
+   },
+   "c3m": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.8303
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "california_schools",
+   "n_items": 2,
+   "kind": "merge",
+   "c1": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.441
+   },
+   "c2": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.3077
+   },
+   "c3m": {
+    "n": 2,
+    "exact": 2,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 100.0
+  },
+  {
+   "db": "california_schools",
+   "n_items": 2,
+   "kind": "split",
+   "c1": {
+    "n": 2,
+    "exact": 1,
+    "rate": 50.0,
+    "f1": 0.8572
+   },
+   "c2": {
+    "n": 2,
+    "exact": 2,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m": {
+    "n": 2,
+    "exact": 2,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "codebase_community",
+   "n_items": 2,
+   "kind": "split",
+   "c1": {
+    "n": 2,
+    "exact": 1,
+    "rate": 50.0,
+    "f1": 0.9166
+   },
+   "c2": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.873
+   },
+   "c3m": {
+    "n": 2,
+    "exact": 2,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 100.0
+  },
+  {
+   "db": "student_club",
+   "n_items": 2,
+   "kind": "merge",
+   "c1": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c2": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.6667
+   },
+   "c3m": {
+    "n": 2,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.6667
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "student_club",
+   "n_items": 1,
+   "kind": "merge",
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c2": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.6667
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.6667
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "student_club",
+   "n_items": 1,
+   "kind": "split",
+   "c1": {
+    "n": 1,
+    "exact": 1,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c2": {
+    "n": 1,
+    "exact": 1,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 1,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "california_schools",
+   "n_items": 1,
+   "kind": "split",
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.7273
+   },
+   "c2": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.9091
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.9091
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "california_schools",
+   "n_items": 1,
+   "kind": "merge",
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c2": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "student_club",
+   "n_items": 1,
+   "kind": "split",
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c2": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.7778
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "card_games",
+   "n_items": 1,
+   "kind": "split",
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.8333
+   },
+   "c2": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.8333
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.8333
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "codebase_community",
+   "n_items": 1,
+   "kind": "split",
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.9091
+   },
+   "c2": {
+    "n": 1,
+    "exact": 1,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 1,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "debit_card_specializing",
+   "n_items": 1,
+   "kind": "split",
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c2": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 1,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 100.0
+  }
+ ],
+ "db_table": [
+  {
+   "db": "student_club",
+   "n_items": 43,
+   "c1": {
+    "n": 43,
+    "exact": 30,
+    "rate": 69.8,
+    "f1": 0.85
+   },
+   "c2": {
+    "n": 43,
+    "exact": 34,
+    "rate": 79.1,
+    "f1": 0.945
+   },
+   "c3m": {
+    "n": 43,
+    "exact": 38,
+    "rate": 88.4,
+    "f1": 0.9457
+   },
+   "c3m_minus_c2_pt": 9.3
+  },
+  {
+   "db": "california_schools",
+   "n_items": 10,
+   "c1": {
+    "n": 10,
+    "exact": 1,
+    "rate": 10.0,
+    "f1": 0.3895
+   },
+   "c2": {
+    "n": 10,
+    "exact": 3,
+    "rate": 30.0,
+    "f1": 0.5434
+   },
+   "c3m": {
+    "n": 10,
+    "exact": 8,
+    "rate": 80.0,
+    "f1": 0.8909
+   },
+   "c3m_minus_c2_pt": 50.0
+  },
+  {
+   "db": "financial",
+   "n_items": 6,
+   "c1": {
+    "n": 6,
+    "exact": 4,
+    "rate": 66.7,
+    "f1": 0.7778
+   },
+   "c2": {
+    "n": 6,
+    "exact": 4,
+    "rate": 66.7,
+    "f1": 0.7778
+   },
+   "c3m": {
+    "n": 6,
+    "exact": 5,
+    "rate": 83.3,
+    "f1": 0.9444
+   },
+   "c3m_minus_c2_pt": 16.6
+  },
+  {
+   "db": "codebase_community",
+   "n_items": 6,
+   "c1": {
+    "n": 6,
+    "exact": 1,
+    "rate": 16.7,
+    "f1": 0.8571
+   },
+   "c2": {
+    "n": 6,
+    "exact": 3,
+    "rate": 50.0,
+    "f1": 0.9122
+   },
+   "c3m": {
+    "n": 6,
+    "exact": 5,
+    "rate": 83.3,
+    "f1": 0.9545
+   },
+   "c3m_minus_c2_pt": 33.3
+  },
+  {
+   "db": "thrombosis_prediction",
+   "n_items": 6,
+   "c1": {
+    "n": 6,
+    "exact": 6,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c2": {
+    "n": 6,
+    "exact": 6,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m": {
+    "n": 6,
+    "exact": 5,
+    "rate": 83.3,
+    "f1": 0.8333
+   },
+   "c3m_minus_c2_pt": -16.7
+  },
+  {
+   "db": "formula_1",
+   "n_items": 5,
+   "c1": {
+    "n": 5,
+    "exact": 3,
+    "rate": 60.0,
+    "f1": 0.9321
+   },
+   "c2": {
+    "n": 5,
+    "exact": 3,
+    "rate": 60.0,
+    "f1": 0.9321
+   },
+   "c3m": {
+    "n": 5,
+    "exact": 3,
+    "rate": 60.0,
+    "f1": 0.9321
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "card_games",
+   "n_items": 4,
+   "c1": {
+    "n": 4,
+    "exact": 1,
+    "rate": 25.0,
+    "f1": 0.9113
+   },
+   "c2": {
+    "n": 4,
+    "exact": 2,
+    "rate": 50.0,
+    "f1": 0.9305
+   },
+   "c3m": {
+    "n": 4,
+    "exact": 2,
+    "rate": 50.0,
+    "f1": 0.9305
+   },
+   "c3m_minus_c2_pt": 0.0
+  },
+  {
+   "db": "debit_card_specializing",
+   "n_items": 1,
+   "c1": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c2": {
+    "n": 1,
+    "exact": 0,
+    "rate": 0.0,
+    "f1": 0.0
+   },
+   "c3m": {
+    "n": 1,
+    "exact": 1,
+    "rate": 100.0,
+    "f1": 1.0
+   },
+   "c3m_minus_c2_pt": 100.0
+  }
+ ],
+ "paired_by_unit": {
+  "event": {
+   "pos": 6,
+   "neg": 1,
+   "tie": 14,
+   "n": 21,
+   "p": 0.125
+  },
+  "db": {
+   "pos": 5,
+   "neg": 1,
+   "tie": 2,
+   "n": 8,
+   "p": 0.21875
+  },
+  "item|c3m-c2": {
+   "pos": 13,
+   "neg": 1,
+   "tie": 67,
+   "n": 81,
+   "p": 0.001831
+  },
+  "item|c1-c2": {
+   "pos": 4,
+   "neg": 13,
+   "tie": 64,
+   "n": 81,
+   "p": 0.049042
+  }
+ },
+ "by_kind_unit": {
+  "split": {
+   "events": 16,
+   "items": 37,
+   "max_event_items": 6,
+   "pos": 4,
+   "neg": 1,
+   "tie": 11,
+   "p": 0.375,
+   "max_event_share_pct": 16.2
+  },
+  "merge": {
+   "events": 3,
+   "items": 41,
+   "max_event_items": 38,
+   "pos": 2,
+   "neg": 0,
+   "tie": 1,
+   "p": 0.5,
+   "max_event_share_pct": 92.7
+  },
+  "unknown": {
+   "events": 2,
+   "items": 3,
+   "max_event_items": 2,
+   "pos": 0,
+   "neg": 0,
+   "tie": 2,
+   "p": 1.0,
+   "max_event_share_pct": 66.7
+  }
+ }
+}

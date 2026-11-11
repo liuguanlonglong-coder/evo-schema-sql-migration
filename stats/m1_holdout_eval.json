@@ -1,0 +1,171 @@
+{
+ "version": "m1-holdout-eval-v1",
+ "source": {
+  "old_dbdir": "data/bird_train/train/train_databases",
+  "evo_dir": "data/evolved_merge_holdout",
+  "note": "BIRD train split; main experiments use dev split. M1 thresholds were calibrated on dev, so split and calibration are independent."
+ },
+ "units": {
+  "items": 481,
+  "unique_ops": 16,
+  "events": 8,
+  "dbs": 8
+ },
+ "op_level": {
+  "unit": "atomic_op",
+  "n_units": 16,
+  "matched": 14,
+  "rate_pct": 87.5,
+  "wilson95_pct": [
+   64.0,
+   96.5
+  ],
+  "by_status": {
+   "no_infer": 2,
+   "matched": 14
+  }
+ },
+ "event_level": {
+  "unit": "change_event",
+  "n_units": 8,
+  "fully_recovered": 6,
+  "rate_pct": 75.0,
+  "wilson95_pct": [
+   40.9,
+   92.9
+  ],
+  "detail": [
+   {
+    "key": "books|book|attr_001",
+    "n": 2,
+    "matched": 1,
+    "rate_pct": 50.0
+   },
+   {
+    "key": "movie_3|film|attr_001",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "movies_4|movie|attr_001",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "olympics|person|attr_001",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "regional_sales|sales orders|attr_001",
+    "n": 2,
+    "matched": 1,
+    "rate_pct": 50.0
+   },
+   {
+    "key": "retail_world|employees|attr_001",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "simpson_episodes|award|attr_001",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "soccer_2016|player|attr_001",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   }
+  ]
+ },
+ "db_level": {
+  "unit": "database",
+  "n_units": 8,
+  "fully_recovered": 6,
+  "rate_pct": 75.0,
+  "wilson95_pct": [
+   40.9,
+   92.9
+  ],
+  "detail": [
+   {
+    "key": "books",
+    "n": 2,
+    "matched": 1,
+    "rate_pct": 50.0
+   },
+   {
+    "key": "movie_3",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "movies_4",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "olympics",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "regional_sales",
+    "n": 2,
+    "matched": 1,
+    "rate_pct": 50.0
+   },
+   {
+    "key": "retail_world",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "simpson_episodes",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   },
+   {
+    "key": "soccer_2016",
+    "n": 2,
+    "matched": 2,
+    "rate_pct": 100.0
+   }
+  ]
+ },
+ "failures": [
+  {
+   "db": "books",
+   "table": "book",
+   "old": "publication_date",
+   "gold_expr": "SUBSTR(attr_001,INSTR(attr_001,CHAR(31))+1)",
+   "items": 70,
+   "event": "books|book|attr_001",
+   "status": "no_infer",
+   "inferred": null
+  },
+  {
+   "db": "regional_sales",
+   "table": "Sales Orders",
+   "old": "OrderDate",
+   "gold_expr": "SUBSTR(attr_001,INSTR(attr_001,CHAR(31))+1)",
+   "items": 64,
+   "event": "regional_sales|sales orders|attr_001",
+   "status": "no_infer",
+   "inferred": null
+  }
+ ],
+ "method_note": "M1 part branch only; no shape fingerprint, no B4. Expression comparison is character-level after whitespace/case normalization. Only unique ops are independent; per-item counts are not used as denominators."
+}

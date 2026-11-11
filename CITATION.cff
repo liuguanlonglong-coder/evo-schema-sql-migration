@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use these materials, please cite both this archive and the associated article."
+title: "Reproduction materials: segment-level schema lineage for historical SQL migration"
+abstract: >-
+  Per-item outputs, evolution manifests, prompts, statistical routines, boundary probes
+  and the full 49-table chapter together with its 15-table main text and 34-table
+  supplementary material, supporting a controlled study of schema-lineage granularity
+  in historical SQL migration on BIRD dev/train databases.
+type: dataset
+authors:
+  - family-names: "[AUTHOR_FAMILY_NAME]"
+    given-names: "[AUTHOR_GIVEN_NAME]"
+    email: "liuguanlonglong@gmail.com"
+version: "v11-slim"
+date-released: "[YYYY-MM-DD]"
+doi: "[REPOSITORY_DOI]"
+license: "CC-BY-4.0"
+repository-code: "[GITHUB_REPOSITORY_URL]"
+url: "[ZENODO_RECORD_URL]"
+keywords:
+  - schema evolution
+  - schema lineage
+  - text-to-SQL
+  - SQL migration
+  - SQLite
+  - reproducibility
+notes: >-
+  Square-bracketed fields are placeholders and MUST be replaced before the record is made public. BIRD database files are not redistributed here; obtain them from the official BIRD release under its original licence.

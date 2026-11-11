@@ -1,0 +1,47 @@
+{
+ "dep_abstain": {
+  "recovered": 23,
+  "total": 23,
+  "type_ok": 23
+ },
+ "dep_successor": {
+  "recovered": 0,
+  "total": 23,
+  "type_ok": 0
+ },
+ "merge_col": {
+  "recovered": 0,
+  "total": 10,
+  "type_ok": 0
+ },
+ "rename": {
+  "recovered": 33,
+  "total": 33,
+  "type_ok": 33
+ },
+ "rename_hard": {
+  "recovered": 0,
+  "total": 24,
+  "type_ok": 0
+ },
+ "rename_medium": {
+  "recovered": 3,
+  "total": 18,
+  "type_ok": 3
+ },
+ "split_col": {
+  "recovered": 0,
+  "total": 5,
+  "type_ok": 0
+ },
+ "value_shift": {
+  "recovered": 0,
+  "total": 13,
+  "type_ok": 0
+ },
+ "value_shift_named": {
+  "recovered": 13,
+  "total": 13,
+  "type_ok": 13
+ }
+}

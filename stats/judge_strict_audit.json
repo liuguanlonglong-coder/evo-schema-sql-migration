@@ -1,0 +1,108 @@
+{
+ "version": "judge-strict-audit-v1",
+ "source": "results/judge_sensitivity.json",
+ "rules": {
+  "r0_current": "排序多重集 + 全转字符串 + NULL≡空串（现行判定器）",
+  "r1_order": "行序敏感（其余同 r0）",
+  "r2_numeric": "数值容差 1e-6（其余同 r0）",
+  "r3_null": "NULL 与空串区分（其余同 r0）",
+  "r_all_strict": "行序敏感 + 数值容差 + NULL 区分（三者同时）"
+ },
+ "note": "No new SQL execution. All numbers are recomputed from the frozen judge_sensitivity.json contrasts; r0 remains the paper's primary judge.",
+ "n_contrasts": 8,
+ "sign_stable_all": true,
+ "sign_stable_count": "8/8",
+ "max_abs_delta_pt": 1.9,
+ "max_abs_change_any_rule_pt": 1.9,
+ "reexecution": {
+  "n": 2164,
+  "ex_current_pct": 51.6,
+  "ex_strict_pct": 51.2,
+  "n_order_sensitive": 9,
+  "share_order_sensitive_pct": 0.42,
+  "mcnemar_order_p": 0.003906
+ },
+ "contrasts": [
+  {
+   "group": "merge",
+   "contrast": "c3mp - c3m",
+   "n": 230,
+   "r0_current_pt": 77.0,
+   "r_all_strict_pt": 77.0,
+   "delta_pt": 0.0,
+   "max_abs_change_pt": 0.0,
+   "sign_stable": true
+  },
+  {
+   "group": "merge",
+   "contrast": "c3mp - c_rw",
+   "n": 230,
+   "r0_current_pt": 67.4,
+   "r_all_strict_pt": 67.0,
+   "delta_pt": -0.4,
+   "max_abs_change_pt": 0.4,
+   "sign_stable": true
+  },
+  {
+   "group": "merge",
+   "contrast": "c3m - c2",
+   "n": 230,
+   "r0_current_pt": -7.4,
+   "r_all_strict_pt": -7.8,
+   "delta_pt": -0.4,
+   "max_abs_change_pt": 0.4,
+   "sign_stable": true
+  },
+  {
+   "group": "split",
+   "contrast": "c3mp - c_rw",
+   "n": 104,
+   "r0_current_pt": 68.3,
+   "r_all_strict_pt": 69.2,
+   "delta_pt": 0.9,
+   "max_abs_change_pt": 0.9,
+   "sign_stable": true
+  },
+  {
+   "group": "split",
+   "contrast": "c3m - c2",
+   "n": 104,
+   "r0_current_pt": 60.6,
+   "r_all_strict_pt": 62.5,
+   "delta_pt": 1.9,
+   "max_abs_change_pt": 1.9,
+   "sign_stable": true
+  },
+  {
+   "group": "easy",
+   "contrast": "c3m - c_rw",
+   "n": 96,
+   "r0_current_pt": -4.2,
+   "r_all_strict_pt": -4.2,
+   "delta_pt": 0.0,
+   "max_abs_change_pt": 0.0,
+   "sign_stable": true
+  },
+  {
+   "group": "medium",
+   "contrast": "c3m - c_rw",
+   "n": 90,
+   "r0_current_pt": -1.1,
+   "r_all_strict_pt": -1.1,
+   "delta_pt": 0.0,
+   "max_abs_change_pt": 0.0,
+   "sign_stable": true
+  },
+  {
+   "group": "hard",
+   "contrast": "c3m - c_rw",
+   "n": 90,
+   "r0_current_pt": 11.1,
+   "r_all_strict_pt": 11.1,
+   "delta_pt": 0.0,
+   "max_abs_change_pt": 0.0,
+   "sign_stable": true
+  }
+ ],
+ "reading": "Under the all-strict rule (order-sensitive + numeric tolerance + NULL/empty-string distinction) every one of the eight primary contrasts keeps its sign; the largest absolute shift is 1.9 pt. Therefore the judge's leniency does not drive the paper's conclusions. Absolute EX values remain r0-based and must still be reported as execution-result agreement on the evaluated SQLite instances, not SQL equivalence."
+}

@@ -1,0 +1,383 @@
+{
+ "version": "holdout-stats-v1",
+ "model": "deepseek-ai/DeepSeek-V3.2",
+ "n_records": 495,
+ "evos": {
+  "merge_col_holdout": {
+   "c2": {
+    "n": 101,
+    "ex": 8,
+    "rate": 7.9
+   },
+   "c3m": {
+    "n": 101,
+    "ex": 13,
+    "rate": 12.9
+   },
+   "c3mp": {
+    "n": 101,
+    "ex": 70,
+    "rate": 69.3
+   }
+  },
+  "split_col_holdout": {
+   "c2": {
+    "n": 64,
+    "ex": 27,
+    "rate": 42.2
+   },
+   "c3m": {
+    "n": 64,
+    "ex": 51,
+    "rate": 79.7
+   },
+   "c3mp": {
+    "n": 64,
+    "ex": 51,
+    "rate": 79.7
+   }
+  }
+ },
+ "paired": {
+  "merge_col_holdout|c3mp-c2": {
+   "n": 101,
+   "a_only": 62,
+   "b_only": 0,
+   "both": 8,
+   "neither": 31,
+   "delta_pt": 61.4,
+   "p": 0.0
+  },
+  "merge_col_holdout|c3mp-c3m": {
+   "n": 101,
+   "a_only": 64,
+   "b_only": 7,
+   "both": 6,
+   "neither": 24,
+   "delta_pt": 56.4,
+   "p": 0.0
+  },
+  "merge_col_holdout|c3m-c2": {
+   "n": 101,
+   "a_only": 7,
+   "b_only": 2,
+   "both": 6,
+   "neither": 86,
+   "delta_pt": 5.0,
+   "p": 0.179688
+  },
+  "split_col_holdout|c3mp-c2": {
+   "n": 64,
+   "a_only": 24,
+   "b_only": 0,
+   "both": 27,
+   "neither": 13,
+   "delta_pt": 37.5,
+   "p": 0.0
+  },
+  "split_col_holdout|c3mp-c3m": {
+   "n": 64,
+   "a_only": 0,
+   "b_only": 0,
+   "both": 51,
+   "neither": 13,
+   "delta_pt": 0.0,
+   "p": 1.0
+  },
+  "split_col_holdout|c3m-c2": {
+   "n": 64,
+   "a_only": 24,
+   "b_only": 0,
+   "both": 27,
+   "neither": 13,
+   "delta_pt": 37.5,
+   "p": 0.0
+  }
+ },
+ "per_db": {
+  "merge_col_holdout|books": {
+   "c2": {
+    "n": 15,
+    "rate": 13.3
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 66.7
+   },
+   "c3mp_minus_c3m_pt": 66.7
+  },
+  "merge_col_holdout|movie_3": {
+   "c2": {
+    "n": 15,
+    "rate": 13.3
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 13.3
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 66.7
+   },
+   "c3mp_minus_c3m_pt": 53.3
+  },
+  "merge_col_holdout|movies_4": {
+   "c2": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 93.3
+   },
+   "c3mp_minus_c3m_pt": 93.3
+  },
+  "merge_col_holdout|olympics": {
+   "c2": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 100.0
+   },
+   "c3mp_minus_c3m_pt": 100.0
+  },
+  "merge_col_holdout|regional_sales": {
+   "c2": {
+    "n": 15,
+    "rate": 13.3
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 60.0
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 26.7
+   },
+   "c3mp_minus_c3m_pt": -33.3
+  },
+  "merge_col_holdout|retail_world": {
+   "c2": {
+    "n": 11,
+    "rate": 18.2
+   },
+   "c3m": {
+    "n": 11,
+    "rate": 18.2
+   },
+   "c3mp": {
+    "n": 11,
+    "rate": 36.4
+   },
+   "c3mp_minus_c3m_pt": 18.2
+  },
+  "merge_col_holdout|soccer_2016": {
+   "c2": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 86.7
+   },
+   "c3mp_minus_c3m_pt": 86.7
+  },
+  "split_col_holdout|books": {
+   "c2": {
+    "n": 15,
+    "rate": 53.3
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 80.0
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 80.0
+   },
+   "c3mp_minus_c3m_pt": 0.0
+  },
+  "split_col_holdout|movies_4": {
+   "c2": {
+    "n": 15,
+    "rate": 33.3
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 93.3
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 93.3
+   },
+   "c3mp_minus_c3m_pt": 0.0
+  },
+  "split_col_holdout|olympics": {
+   "c2": {
+    "n": 15,
+    "rate": 86.7
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 100.0
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 100.0
+   },
+   "c3mp_minus_c3m_pt": 0.0
+  },
+  "split_col_holdout|retail_world": {
+   "c2": {
+    "n": 4,
+    "rate": 25.0
+   },
+   "c3m": {
+    "n": 4,
+    "rate": 50.0
+   },
+   "c3mp": {
+    "n": 4,
+    "rate": 50.0
+   },
+   "c3mp_minus_c3m_pt": 0.0
+  },
+  "split_col_holdout|soccer_2016": {
+   "c2": {
+    "n": 15,
+    "rate": 0.0
+   },
+   "c3m": {
+    "n": 15,
+    "rate": 53.3
+   },
+   "c3mp": {
+    "n": 15,
+    "rate": 53.3
+   },
+   "c3mp_minus_c3m_pt": 0.0
+  }
+ },
+ "event_level": {
+  "merge_col_holdout": {
+   "n_cells": 7,
+   "positive": 6,
+   "negative": 1,
+   "tie": 0,
+   "p": 0.125,
+   "cells": [
+    {
+     "db": "books",
+     "table": "book",
+     "n": 30,
+     "c3mp_rate": 66.7,
+     "c3m_rate": 0.0
+    },
+    {
+     "db": "movie_3",
+     "table": "film",
+     "n": 30,
+     "c3mp_rate": 66.7,
+     "c3m_rate": 13.3
+    },
+    {
+     "db": "movies_4",
+     "table": "movie",
+     "n": 30,
+     "c3mp_rate": 93.3,
+     "c3m_rate": 0.0
+    },
+    {
+     "db": "olympics",
+     "table": "person",
+     "n": 30,
+     "c3mp_rate": 100.0,
+     "c3m_rate": 0.0
+    },
+    {
+     "db": "regional_sales",
+     "table": "Sales Orders",
+     "n": 30,
+     "c3mp_rate": 26.7,
+     "c3m_rate": 60.0
+    },
+    {
+     "db": "retail_world",
+     "table": "Employees",
+     "n": 22,
+     "c3mp_rate": 36.4,
+     "c3m_rate": 18.2
+    },
+    {
+     "db": "soccer_2016",
+     "table": "Player",
+     "n": 30,
+     "c3mp_rate": 86.7,
+     "c3m_rate": 0.0
+    }
+   ]
+  },
+  "split_col_holdout": {
+   "n_cells": 5,
+   "positive": 0,
+   "negative": 0,
+   "tie": 5,
+   "p": 1.0,
+   "cells": [
+    {
+     "db": "books",
+     "table": "book",
+     "n": 15,
+     "c3mp_rate": 80.0,
+     "c3m_rate": 80.0
+    },
+    {
+     "db": "movies_4",
+     "table": "movie",
+     "n": 15,
+     "c3mp_rate": 93.3,
+     "c3m_rate": 93.3
+    },
+    {
+     "db": "olympics",
+     "table": "games",
+     "n": 15,
+     "c3mp_rate": 100.0,
+     "c3m_rate": 100.0
+    },
+    {
+     "db": "retail_world",
+     "table": "Orders",
+     "n": 4,
+     "c3mp_rate": 50.0,
+     "c3m_rate": 50.0
+    },
+    {
+     "db": "soccer_2016",
+     "table": "Team",
+     "n": 15,
+     "c3mp_rate": 53.3,
+     "c3m_rate": 53.3
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,773 @@
+{
+ "version": "probe-counterfactual-v1",
+ "merge": {
+  "cases": [
+   {
+    "kind": "merge",
+    "class": "CLEAN",
+    "a": "Alameda",
+    "b": "Active",
+    "stored": "Alameda\u001fActive",
+    "seg1": "Alameda",
+    "seg2": "Active",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "CLEAN",
+    "a": "Los Angeles",
+    "b": "Merged",
+    "stored": "Los Angeles\u001fMerged",
+    "seg1": "Los Angeles",
+    "seg2": "Merged",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "NULL_SIB",
+    "a": "Alameda",
+    "b": null,
+    "stored": null,
+    "seg1": null,
+    "seg2": null,
+    "roundtrip_a": false,
+    "roundtrip_b": true,
+    "roundtrip": false,
+    "pred_ok": false,
+    "pred": {
+     "a_eq": [
+      1,
+      null
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      1
+     ],
+     "b_null": [
+      1,
+      1
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "NULL_SIB",
+    "a": null,
+    "b": "Active",
+    "stored": null,
+    "seg1": null,
+    "seg2": null,
+    "roundtrip_a": true,
+    "roundtrip_b": false,
+    "roundtrip": false,
+    "pred_ok": false,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      null
+     ],
+     "a_null": [
+      1,
+      1
+     ],
+     "b_null": [
+      0,
+      1
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "BOTH_NULL",
+    "a": null,
+    "b": null,
+    "stored": null,
+    "seg1": null,
+    "seg2": null,
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      1,
+      1
+     ],
+     "b_null": [
+      1,
+      1
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "EMPTY",
+    "a": "",
+    "b": "Active",
+    "stored": "\u001fActive",
+    "seg1": "",
+    "seg2": "Active",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "EMPTY",
+    "a": "Alameda",
+    "b": "",
+    "stored": "Alameda\u001f",
+    "seg1": "Alameda",
+    "seg2": "",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "EMPTY",
+    "a": "",
+    "b": "",
+    "stored": "\u001f",
+    "seg1": "",
+    "seg2": "",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "SEP_IN_A",
+    "a": "Ala\u001fmeda",
+    "b": "Active",
+    "stored": "Ala\u001fmeda\u001fActive",
+    "seg1": "Ala",
+    "seg2": "meda\u001fActive",
+    "roundtrip_a": false,
+    "roundtrip_b": false,
+    "roundtrip": false,
+    "pred_ok": false,
+    "pred": {
+     "a_eq": [
+      1,
+      0
+     ],
+     "b_eq": [
+      1,
+      0
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "SEP_IN_B",
+    "a": "Alameda",
+    "b": "Act\u001five",
+    "stored": "Alameda\u001fAct\u001five",
+    "seg1": "Alameda",
+    "seg2": "Act\u001five",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "SEP_IN_A",
+    "a": "\u001f",
+    "b": "Active",
+    "stored": "\u001f\u001fActive",
+    "seg1": "",
+    "seg2": "\u001fActive",
+    "roundtrip_a": false,
+    "roundtrip_b": false,
+    "roundtrip": false,
+    "pred_ok": false,
+    "pred": {
+     "a_eq": [
+      1,
+      0
+     ],
+     "b_eq": [
+      1,
+      0
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "WS",
+    "a": "  Alameda  ",
+    "b": " Active ",
+    "stored": "  Alameda  \u001f Active ",
+    "seg1": "  Alameda  ",
+    "seg2": " Active ",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "DUP",
+    "a": "Alameda",
+    "b": "Active",
+    "stored": "Alameda\u001fActive",
+    "seg1": "Alameda",
+    "seg2": "Active",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "UNICODE",
+    "a": "阿拉米达",
+    "b": "启用",
+    "stored": "阿拉米达\u001f启用",
+    "seg1": "阿拉米达",
+    "seg2": "启用",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "merge",
+    "class": "UNICODE",
+    "a": "Åland",
+    "b": "Ø",
+    "stored": "Åland\u001fØ",
+    "seg1": "Åland",
+    "seg2": "Ø",
+    "roundtrip_a": true,
+    "roundtrip_b": true,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "a_eq": [
+      1,
+      1
+     ],
+     "b_eq": [
+      1,
+      1
+     ],
+     "a_null": [
+      0,
+      0
+     ],
+     "b_null": [
+      0,
+      0
+     ]
+    }
+   }
+  ],
+  "by_class": {
+   "CLEAN": {
+    "n": 2,
+    "roundtrip": 2,
+    "pred_ok": 2,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "NULL_SIB": {
+    "n": 2,
+    "roundtrip": 0,
+    "pred_ok": 0,
+    "roundtrip_rate": 0.0,
+    "pred_rate": 0.0
+   },
+   "BOTH_NULL": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "EMPTY": {
+    "n": 3,
+    "roundtrip": 3,
+    "pred_ok": 3,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "SEP_IN_A": {
+    "n": 2,
+    "roundtrip": 0,
+    "pred_ok": 0,
+    "roundtrip_rate": 0.0,
+    "pred_rate": 0.0
+   },
+   "SEP_IN_B": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "WS": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "DUP": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "UNICODE": {
+    "n": 2,
+    "roundtrip": 2,
+    "pred_ok": 2,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   }
+  },
+  "total": {
+   "n": 15,
+   "roundtrip": 11,
+   "pred_ok": 11,
+   "roundtrip_rate": 73.3,
+   "pred_rate": 73.3
+  }
+ },
+ "split": {
+  "cases": [
+   {
+    "kind": "split",
+    "class": "CLEAN",
+    "c": "555 1234",
+    "attrA": "555",
+    "attrB": "1234",
+    "recon": "555 1234",
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "c_eq": [
+      1,
+      1
+     ],
+     "c_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "split",
+    "class": "NULL_SIB",
+    "c": null,
+    "attrA": null,
+    "attrB": null,
+    "recon": null,
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "c_eq": [
+      1,
+      1
+     ],
+     "c_null": [
+      1,
+      1
+     ]
+    }
+   },
+   {
+    "kind": "split",
+    "class": "EMPTY",
+    "c": "",
+    "attrA": "",
+    "attrB": "",
+    "recon": " ",
+    "roundtrip": false,
+    "pred_ok": false,
+    "pred": {
+     "c_eq": [
+      1,
+      0
+     ],
+     "c_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "split",
+    "class": "SEP_REPEAT",
+    "c": "555 1234 5678",
+    "attrA": "555",
+    "attrB": "1234 5678",
+    "recon": "555 1234 5678",
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "c_eq": [
+      1,
+      1
+     ],
+     "c_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "split",
+    "class": "NO_SEP",
+    "c": "5551234",
+    "attrA": "",
+    "attrB": "5551234",
+    "recon": " 5551234",
+    "roundtrip": false,
+    "pred_ok": false,
+    "pred": {
+     "c_eq": [
+      1,
+      0
+     ],
+     "c_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "split",
+    "class": "WS",
+    "c": " 555 1234 ",
+    "attrA": "",
+    "attrB": "555 1234 ",
+    "recon": " 555 1234 ",
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "c_eq": [
+      1,
+      1
+     ],
+     "c_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "split",
+    "class": "DUP",
+    "c": "555 1234",
+    "attrA": "555",
+    "attrB": "1234",
+    "recon": "555 1234",
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "c_eq": [
+      1,
+      1
+     ],
+     "c_null": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "kind": "split",
+    "class": "UNICODE",
+    "c": "五五五 一二三四",
+    "attrA": "五五五",
+    "attrB": "一二三四",
+    "recon": "五五五 一二三四",
+    "roundtrip": true,
+    "pred_ok": true,
+    "pred": {
+     "c_eq": [
+      1,
+      1
+     ],
+     "c_null": [
+      0,
+      0
+     ]
+    }
+   }
+  ],
+  "by_class": {
+   "CLEAN": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "NULL_SIB": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "EMPTY": {
+    "n": 1,
+    "roundtrip": 0,
+    "pred_ok": 0,
+    "roundtrip_rate": 0.0,
+    "pred_rate": 0.0
+   },
+   "SEP_REPEAT": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "NO_SEP": {
+    "n": 1,
+    "roundtrip": 0,
+    "pred_ok": 0,
+    "roundtrip_rate": 0.0,
+    "pred_rate": 0.0
+   },
+   "WS": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "DUP": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   },
+   "UNICODE": {
+    "n": 1,
+    "roundtrip": 1,
+    "pred_ok": 1,
+    "roundtrip_rate": 100.0,
+    "pred_rate": 100.0
+   }
+  },
+  "total": {
+   "n": 8,
+   "roundtrip": 6,
+   "pred_ok": 6,
+   "roundtrip_rate": 75.0,
+   "pred_rate": 75.0
+  }
+ }
+}

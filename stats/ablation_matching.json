@@ -1,0 +1,475 @@
+{
+ "version": "ablation-matching-v1",
+ "manifest": "data/manifest_v3.jsonl",
+ "note": "同一 evaluate() 口径；段位档 = merge_col + split_col（15 op），非段位档 = 其余 147 op",
+ "groups": {
+  "B1 列名相似": {
+   "段位档": {
+    "n": 15,
+    "recovered": 0,
+    "type_ok": 0,
+    "recall_pct": 0.0,
+    "type_pct": 0.0
+   },
+   "非段位档": {
+    "n": 147,
+    "recovered": 72,
+    "type_ok": 72,
+    "recall_pct": 49.0,
+    "type_pct": 49.0
+   },
+   "全部": {
+    "n": 162,
+    "recovered": 72,
+    "type_ok": 72,
+    "recall_pct": 44.4,
+    "type_pct": 44.4
+   }
+  },
+  "B2 值域重叠": {
+   "段位档": {
+    "n": 15,
+    "recovered": 5,
+    "type_ok": 0,
+    "recall_pct": 33.3,
+    "type_pct": 0.0
+   },
+   "非段位档": {
+    "n": 147,
+    "recovered": 143,
+    "type_ok": 145,
+    "recall_pct": 97.3,
+    "type_pct": 98.6
+   },
+   "全部": {
+    "n": 162,
+    "recovered": 148,
+    "type_ok": 145,
+    "recall_pct": 91.4,
+    "type_pct": 89.5
+   }
+  },
+  "B3 嵌入语义": {
+   "段位档": {
+    "n": 15,
+    "recovered": 5,
+    "type_ok": 0,
+    "recall_pct": 33.3,
+    "type_pct": 0.0
+   },
+   "非段位档": {
+    "n": 147,
+    "recovered": 147,
+    "type_ok": 147,
+    "recall_pct": 100.0,
+    "type_pct": 100.0
+   },
+   "全部": {
+    "n": 162,
+    "recovered": 152,
+    "type_ok": 147,
+    "recall_pct": 93.8,
+    "type_pct": 90.7
+   }
+  },
+  "M1 值域指纹": {
+   "段位档": {
+    "n": 15,
+    "recovered": 15,
+    "type_ok": 15,
+    "recall_pct": 100.0,
+    "type_pct": 100.0
+   },
+   "非段位档": {
+    "n": 147,
+    "recovered": 124,
+    "type_ok": 124,
+    "recall_pct": 84.4,
+    "type_pct": 84.4
+   },
+   "全部": {
+    "n": 162,
+    "recovered": 139,
+    "type_ok": 139,
+    "recall_pct": 85.8,
+    "type_pct": 85.8
+   }
+  },
+  "M1+形态指纹": {
+   "段位档": {
+    "n": 15,
+    "recovered": 15,
+    "type_ok": 15,
+    "recall_pct": 100.0,
+    "type_pct": 100.0
+   },
+   "非段位档": {
+    "n": 147,
+    "recovered": 135,
+    "type_ok": 135,
+    "recall_pct": 91.8,
+    "type_pct": 91.8
+   },
+   "全部": {
+    "n": 162,
+    "recovered": 150,
+    "type_ok": 150,
+    "recall_pct": 92.6,
+    "type_pct": 92.6
+   }
+  },
+  "P0 位置先验（消融）": {
+   "段位档": {
+    "n": 15,
+    "recovered": 14,
+    "type_ok": 13,
+    "recall_pct": 93.3,
+    "type_pct": 86.7
+   },
+   "非段位档": {
+    "n": 121,
+    "recovered": 105,
+    "type_ok": 106,
+    "recall_pct": 86.8,
+    "type_pct": 87.6
+   },
+   "全部": {
+    "n": 136,
+    "recovered": 119,
+    "type_ok": 119,
+    "recall_pct": 87.5,
+    "type_pct": 87.5
+   }
+  }
+ },
+ "by_evo": {
+  "B1 列名相似": {
+   "cat": "baseline",
+   "suffix": "name",
+   "missing": 0,
+   "by_evo": {
+    "rename": {
+     "recovered": 33,
+     "total": 33,
+     "type_ok": 33
+    },
+    "rename_medium": {
+     "recovered": 3,
+     "total": 18,
+     "type_ok": 3
+    },
+    "rename_hard": {
+     "recovered": 0,
+     "total": 24,
+     "type_ok": 0
+    },
+    "merge_col": {
+     "recovered": 0,
+     "total": 10,
+     "type_ok": 0
+    },
+    "split_col": {
+     "recovered": 0,
+     "total": 5,
+     "type_ok": 0
+    },
+    "value_shift": {
+     "recovered": 0,
+     "total": 13,
+     "type_ok": 0
+    },
+    "value_shift_named": {
+     "recovered": 13,
+     "total": 13,
+     "type_ok": 13
+    },
+    "dep_abstain": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    },
+    "dep_successor": {
+     "recovered": 0,
+     "total": 23,
+     "type_ok": 0
+    }
+   }
+  },
+  "B2 值域重叠": {
+   "cat": "baseline",
+   "suffix": "vover",
+   "missing": 0,
+   "by_evo": {
+    "rename": {
+     "recovered": 33,
+     "total": 33,
+     "type_ok": 33
+    },
+    "rename_medium": {
+     "recovered": 18,
+     "total": 18,
+     "type_ok": 18
+    },
+    "rename_hard": {
+     "recovered": 22,
+     "total": 24,
+     "type_ok": 23
+    },
+    "merge_col": {
+     "recovered": 5,
+     "total": 10,
+     "type_ok": 0
+    },
+    "split_col": {
+     "recovered": 0,
+     "total": 5,
+     "type_ok": 0
+    },
+    "value_shift": {
+     "recovered": 13,
+     "total": 13,
+     "type_ok": 13
+    },
+    "value_shift_named": {
+     "recovered": 13,
+     "total": 13,
+     "type_ok": 13
+    },
+    "dep_abstain": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    },
+    "dep_successor": {
+     "recovered": 21,
+     "total": 23,
+     "type_ok": 22
+    }
+   }
+  },
+  "B3 嵌入语义": {
+   "cat": "baseline",
+   "suffix": "emb",
+   "missing": 0,
+   "by_evo": {
+    "rename": {
+     "recovered": 33,
+     "total": 33,
+     "type_ok": 33
+    },
+    "rename_medium": {
+     "recovered": 18,
+     "total": 18,
+     "type_ok": 18
+    },
+    "rename_hard": {
+     "recovered": 24,
+     "total": 24,
+     "type_ok": 24
+    },
+    "merge_col": {
+     "recovered": 5,
+     "total": 10,
+     "type_ok": 0
+    },
+    "split_col": {
+     "recovered": 0,
+     "total": 5,
+     "type_ok": 0
+    },
+    "value_shift": {
+     "recovered": 13,
+     "total": 13,
+     "type_ok": 13
+    },
+    "value_shift_named": {
+     "recovered": 13,
+     "total": 13,
+     "type_ok": 13
+    },
+    "dep_abstain": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    },
+    "dep_successor": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    }
+   }
+  },
+  "M1 值域指纹": {
+   "cat": "ours",
+   "suffix": "profile",
+   "missing": 0,
+   "by_evo": {
+    "rename": {
+     "recovered": 33,
+     "total": 33,
+     "type_ok": 33
+    },
+    "rename_medium": {
+     "recovered": 18,
+     "total": 18,
+     "type_ok": 18
+    },
+    "rename_hard": {
+     "recovered": 24,
+     "total": 24,
+     "type_ok": 24
+    },
+    "merge_col": {
+     "recovered": 10,
+     "total": 10,
+     "type_ok": 10
+    },
+    "split_col": {
+     "recovered": 5,
+     "total": 5,
+     "type_ok": 5
+    },
+    "value_shift": {
+     "recovered": 0,
+     "total": 13,
+     "type_ok": 0
+    },
+    "value_shift_named": {
+     "recovered": 3,
+     "total": 13,
+     "type_ok": 3
+    },
+    "dep_abstain": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    },
+    "dep_successor": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    }
+   }
+  },
+  "M1+形态指纹": {
+   "cat": "ours",
+   "suffix": "shape",
+   "missing": 0,
+   "by_evo": {
+    "rename": {
+     "recovered": 33,
+     "total": 33,
+     "type_ok": 33
+    },
+    "rename_medium": {
+     "recovered": 18,
+     "total": 18,
+     "type_ok": 18
+    },
+    "rename_hard": {
+     "recovered": 24,
+     "total": 24,
+     "type_ok": 24
+    },
+    "merge_col": {
+     "recovered": 10,
+     "total": 10,
+     "type_ok": 10
+    },
+    "split_col": {
+     "recovered": 5,
+     "total": 5,
+     "type_ok": 5
+    },
+    "value_shift": {
+     "recovered": 7,
+     "total": 13,
+     "type_ok": 7
+    },
+    "value_shift_named": {
+     "recovered": 7,
+     "total": 13,
+     "type_ok": 7
+    },
+    "dep_abstain": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    },
+    "dep_successor": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    }
+   }
+  },
+  "P0 位置先验（消融）": {
+   "cat": "ablation",
+   "suffix": "pos",
+   "missing": 64,
+   "by_evo": {
+    "rename": {
+     "recovered": 33,
+     "total": 33,
+     "type_ok": 33
+    },
+    "rename_medium": {
+     "recovered": 18,
+     "total": 18,
+     "type_ok": 18
+    },
+    "rename_hard": {
+     "recovered": 24,
+     "total": 24,
+     "type_ok": 24
+    },
+    "merge_col": {
+     "recovered": 9,
+     "total": 10,
+     "type_ok": 8
+    },
+    "split_col": {
+     "recovered": 5,
+     "total": 5,
+     "type_ok": 5
+    },
+    "dep_abstain": {
+     "recovered": 23,
+     "total": 23,
+     "type_ok": 23
+    },
+    "dep_successor": {
+     "recovered": 7,
+     "total": 23,
+     "type_ok": 8
+    }
+   }
+  }
+ },
+ "paired": {
+  "M1+形态指纹 vs B1 列名相似": {
+   "scope": "段位档 op-type 一致",
+   "ours_only": 15,
+   "base_only": 0,
+   "discordant": 15,
+   "p": 6.1e-05,
+   "n_ops": 15
+  },
+  "M1+形态指纹 vs B2 值域重叠": {
+   "scope": "段位档 op-type 一致",
+   "ours_only": 15,
+   "base_only": 0,
+   "discordant": 15,
+   "p": 6.1e-05,
+   "n_ops": 15
+  },
+  "M1+形态指纹 vs B3 嵌入语义": {
+   "scope": "段位档 op-type 一致",
+   "ours_only": 15,
+   "base_only": 0,
+   "discordant": 15,
+   "p": 6.1e-05,
+   "n_ops": 15
+  }
+ }
+}

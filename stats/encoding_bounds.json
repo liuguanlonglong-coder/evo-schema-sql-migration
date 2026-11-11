@@ -1,0 +1,292 @@
+{
+ "version": "encoding-bounds-v1",
+ "sep": "CHAR(31)",
+ "note": "判据为整行全部分量同时恢复，非单列恢复",
+ "two_seg": {
+  "B0": {
+   "n": 3,
+   "ok": 3,
+   "fail_null": 0,
+   "fail_value": 0,
+   "merged_null": 0,
+   "detail": [
+    {
+     "a": "x",
+     "b": "y",
+     "merged": "x\u001fy",
+     "rec_a": "x",
+     "rec_b": "y",
+     "col_a": "ok",
+     "col_b": "ok",
+     "row": "ok"
+    },
+    {
+     "a": "Acme",
+     "b": "Smith",
+     "merged": "Acme\u001fSmith",
+     "rec_a": "Acme",
+     "rec_b": "Smith",
+     "col_a": "ok",
+     "col_b": "ok",
+     "row": "ok"
+    },
+    {
+     "a": "2020-01-01",
+     "b": "M",
+     "merged": "2020-01-01\u001fM",
+     "rec_a": "2020-01-01",
+     "rec_b": "M",
+     "col_a": "ok",
+     "col_b": "ok",
+     "row": "ok"
+    }
+   ],
+   "rate_pct": 100.0,
+   "desc": "对照：普通取值（左, 右）"
+  },
+  "B1a": {
+   "n": 1,
+   "ok": 0,
+   "fail_null": 1,
+   "fail_value": 0,
+   "merged_null": 1,
+   "detail": [
+    {
+     "a": "x",
+     "b": null,
+     "merged": null,
+     "rec_a": null,
+     "rec_b": null,
+     "col_a": "fail_null",
+     "col_b": "ok",
+     "row": "fail_null"
+    }
+   ],
+   "rate_pct": 0.0,
+   "desc": "左分量为 NULL"
+  },
+  "B1b": {
+   "n": 1,
+   "ok": 0,
+   "fail_null": 1,
+   "fail_value": 0,
+   "merged_null": 1,
+   "detail": [
+    {
+     "a": null,
+     "b": "q",
+     "merged": null,
+     "rec_a": null,
+     "rec_b": null,
+     "col_a": "ok",
+     "col_b": "fail_null",
+     "row": "fail_null"
+    }
+   ],
+   "rate_pct": 0.0,
+   "desc": "右分量为 NULL"
+  },
+  "B2a": {
+   "n": 1,
+   "ok": 1,
+   "fail_null": 0,
+   "fail_value": 0,
+   "merged_null": 0,
+   "detail": [
+    {
+     "a": "",
+     "b": "q",
+     "merged": "\u001fq",
+     "rec_a": "",
+     "rec_b": "q",
+     "col_a": "ok",
+     "col_b": "ok",
+     "row": "ok"
+    }
+   ],
+   "rate_pct": 100.0,
+   "desc": "左分量为空串"
+  },
+  "B2b": {
+   "n": 1,
+   "ok": 1,
+   "fail_null": 0,
+   "fail_value": 0,
+   "merged_null": 0,
+   "detail": [
+    {
+     "a": "x",
+     "b": "",
+     "merged": "x\u001f",
+     "rec_a": "x",
+     "rec_b": "",
+     "col_a": "ok",
+     "col_b": "ok",
+     "row": "ok"
+    }
+   ],
+   "rate_pct": 100.0,
+   "desc": "右分量为空串"
+  },
+  "B3a": {
+   "n": 1,
+   "ok": 0,
+   "fail_null": 0,
+   "fail_value": 1,
+   "merged_null": 0,
+   "detail": [
+    {
+     "a": "a\u001fb",
+     "b": "c",
+     "merged": "a\u001fb\u001fc",
+     "rec_a": "a",
+     "rec_b": "b\u001fc",
+     "col_a": "fail_value",
+     "col_b": "fail_value",
+     "row": "fail_value"
+    }
+   ],
+   "rate_pct": 0.0,
+   "desc": "左分量内含分隔符"
+  },
+  "B3b": {
+   "n": 1,
+   "ok": 1,
+   "fail_null": 0,
+   "fail_value": 0,
+   "merged_null": 0,
+   "detail": [
+    {
+     "a": "a",
+     "b": "b\u001fc",
+     "merged": "a\u001fb\u001fc",
+     "rec_a": "a",
+     "rec_b": "b\u001fc",
+     "col_a": "ok",
+     "col_b": "ok",
+     "row": "ok"
+    }
+   ],
+   "rate_pct": 100.0,
+   "desc": "右分量内含分隔符"
+  }
+ },
+ "three_seg": {
+  "S3a": {
+   "n": 2,
+   "ok": 2,
+   "fail_null": 0,
+   "fail_value": 0,
+   "merged_null": 0,
+   "exprs": [
+    "SUBSTR(merged,1,INSTR(merged,CHAR(31))-1)",
+    "SUBSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),1,INSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),CHAR(31))-1)",
+    "SUBSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),INSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),CHAR(31))+1)"
+   ],
+   "detail": [
+    {
+     "want": [
+      "x",
+      "y",
+      "z"
+     ],
+     "rec": [
+      "x",
+      "y",
+      "z"
+     ],
+     "row": "ok"
+    },
+    {
+     "want": [
+      "Acme",
+      "Co",
+      "Ltd"
+     ],
+     "rec": [
+      "Acme",
+      "Co",
+      "Ltd"
+     ],
+     "row": "ok"
+    }
+   ],
+   "rate_pct": 100.0,
+   "desc": "三段全部普通值"
+  },
+  "S3b": {
+   "n": 1,
+   "ok": 0,
+   "fail_null": 0,
+   "fail_value": 1,
+   "merged_null": 0,
+   "exprs": [
+    "SUBSTR(merged,1,INSTR(merged,CHAR(31))-1)",
+    "SUBSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),1,INSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),CHAR(31))-1)",
+    "SUBSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),INSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),CHAR(31))+1)"
+   ],
+   "detail": [
+    {
+     "want": [
+      "x",
+      "y\u001fw",
+      "z"
+     ],
+     "rec": [
+      "x",
+      "y",
+      "w\u001fz"
+     ],
+     "row": "fail_value"
+    }
+   ],
+   "rate_pct": 0.0,
+   "desc": "三段中段含分隔符"
+  },
+  "S3c": {
+   "n": 1,
+   "ok": 0,
+   "fail_null": 1,
+   "fail_value": 0,
+   "merged_null": 0,
+   "exprs": [
+    "SUBSTR(merged,1,INSTR(merged,CHAR(31))-1)",
+    "SUBSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),1,INSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),CHAR(31))-1)",
+    "SUBSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),INSTR(SUBSTR(merged,INSTR(merged,CHAR(31))+1),CHAR(31))+1)"
+   ],
+   "detail": [
+    {
+     "want": [
+      null,
+      "y",
+      "z"
+     ],
+     "rec": [
+      null,
+      null,
+      null
+     ],
+     "row": "fail_null"
+    }
+   ],
+   "rate_pct": 0.0,
+   "desc": "三段首段为 NULL"
+  }
+ },
+ "real_data": {
+  "merge_side": {
+   "events": 13,
+   "rows": 174027,
+   "lossy_rows": 0,
+   "null": 0,
+   "empty": 47,
+   "ws_trim_diff": 0,
+   "has_sep_char": 0
+  },
+  "all_sides": {
+   "events": 23,
+   "rows": 215216
+  },
+  "source": "results/data_bounds.json"
+ }
+}

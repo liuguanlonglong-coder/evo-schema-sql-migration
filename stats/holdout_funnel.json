@@ -1,0 +1,192 @@
+{
+ "version": "holdout-funnel-v1",
+ "big_mb": 110,
+ "min_q": 20,
+ "stages": [
+  {
+   "stage": "S0",
+   "label": "BIRD train 全部库",
+   "n_db": 69,
+   "n_items": 9428,
+   "removed": [],
+   "reason": "起点"
+  },
+  {
+   "stage": "S1",
+   "label": "单库文件 < 110 MB",
+   "n_db": 51,
+   "removed": [
+    "airline",
+    "authors",
+    "bike_share_1",
+    "codebase_comments",
+    "coinmarketcap",
+    "donor",
+    "food_inspection_2",
+    "image_and_language",
+    "language_corpus",
+    "menu",
+    "movie_platform",
+    "music_platform_2",
+    "retails",
+    "sales",
+    "sales_in_weather",
+    "software_company",
+    "talkingdata",
+    "world_development_indicators"
+   ],
+   "reason": "DROP COLUMN 会重写整表，超大库在构造阶段被跳过"
+  },
+  {
+   "stage": "S2",
+   "label": "该库题数 >= 20",
+   "n_db": 49,
+   "removed": [
+    "citeseer",
+    "craftbeer"
+   ],
+   "reason": "题数过少，配对检验没有意义"
+  },
+  {
+   "stage": "S3",
+   "label": "与 dev 11 库不重叠",
+   "n_db": 49,
+   "removed": [],
+   "reason": "「留出」的定义；train 与 dev 本无交集"
+  },
+  {
+   "stage": "S4",
+   "label": "演化可施加（有可用列对 / 统一分隔符）",
+   "n_db": 8,
+   "n_items": 625,
+   "removed": [
+    "address",
+    "app_store",
+    "beer_factory",
+    "book_publishing_company",
+    "car_retails",
+    "cars",
+    "chicago_crime",
+    "college_completion",
+    "computer_student",
+    "cookbook",
+    "cs_semester",
+    "disney",
+    "european_football_1",
+    "food_inspection",
+    "genes",
+    "hockey",
+    "human_resources",
+    "ice_hockey_draft",
+    "law_episode",
+    "legislator",
+    "mental_health_survey",
+    "mondial_geo",
+    "movie",
+    "movielens",
+    "music_tracker",
+    "professional_basketball",
+    "public_review_platform",
+    "restaurant",
+    "retail_complains",
+    "shakespeare",
+    "shipping",
+    "shooting",
+    "social_media",
+    "student_loan",
+    "superstore",
+    "synthea",
+    "trains",
+    "university",
+    "video_games",
+    "works_cycles",
+    "world"
+   ],
+   "reason": "合并需同表两列均为文本且各 >= 5 个不同值；拆分需某文本列的**全部**非空值都含同一分隔符"
+  },
+  {
+   "stage": "S5",
+   "label": "自检通过（旧结果 == 迁移后结果）",
+   "n_db": 7,
+   "n_items": 533,
+   "removed": [
+    "simpson_episodes"
+   ],
+   "partial": [
+    "regional_sales",
+    "soccer_2016"
+   ],
+   "per_db": {
+    "books": {
+     "pass": 94,
+     "fail": 0
+    },
+    "movie_3": {
+     "pass": 30,
+     "fail": 0
+    },
+    "movies_4": {
+     "pass": 113,
+     "fail": 0
+    },
+    "olympics": {
+     "pass": 110,
+     "fail": 0
+    },
+    "regional_sales": {
+     "pass": 36,
+     "fail": 28
+    },
+    "retail_world": {
+     "pass": 15,
+     "fail": 0
+    },
+    "simpson_episodes": {
+     "pass": 0,
+     "fail": 61
+    },
+    "soccer_2016": {
+     "pass": 135,
+     "fail": 3
+    }
+   },
+   "reason": "整库 0 条通过者出局；部分失败者保留，只抽通过的条目"
+  },
+  {
+   "stage": "S6",
+   "label": "每（档, 库）按 id md5 取前 15",
+   "n_db": 7,
+   "n_items": 165,
+   "removed": [],
+   "reason": "分层等量抽样，避免依赖文件顺序"
+  }
+ ],
+ "final_dbs": [
+  "books",
+  "movie_3",
+  "movies_4",
+  "olympics",
+  "regional_sales",
+  "retail_world",
+  "soccer_2016"
+ ],
+ "final_cells": {
+  "merge_col_holdout|books": 15,
+  "merge_col_holdout|movie_3": 15,
+  "merge_col_holdout|movies_4": 15,
+  "merge_col_holdout|olympics": 15,
+  "merge_col_holdout|regional_sales": 15,
+  "merge_col_holdout|retail_world": 11,
+  "merge_col_holdout|soccer_2016": 15,
+  "split_col_holdout|books": 15,
+  "split_col_holdout|movies_4": 15,
+  "split_col_holdout|olympics": 15,
+  "split_col_holdout|retail_world": 4,
+  "split_col_holdout|soccer_2016": 15
+ },
+ "n_final": 165,
+ "by_evo": {
+  "merge_col_holdout": 101,
+  "split_col_holdout": 64
+ }
+}

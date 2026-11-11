@@ -1,0 +1,82 @@
+﻿db_id,kind,recovered_kind,n_changes,changes,c1_f1,c2_f1,c3m_f1,c1_exact,c2_exact,c3m_exact
+california_schools,split,split,1,"[{""kind"": ""split"", ""new"": [""MailStreetName"", ""MailStreetNumber""], ""old"": [""MailStreet""]}]",0.0000,0.0000,1.0000,0,0,1
+california_schools,split,split,1,"[{""kind"": ""split"", ""new"": [""MailStreetName"", ""MailStreetNumber""], ""old"": [""MailStreet""]}]",0.0000,0.9091,1.0000,0,0,1
+financial,split,split,1,"[{""kind"": ""split"", ""new"": [""year"", ""month"", ""day""], ""old"": [""date""]}]",1.0000,0.6667,0.6667,1,0,0
+card_games,split,split,1,"[{""kind"": ""split"", ""new"": [""releaseYear"", ""releaseMonth"", ""releaseDay""], ""old"": [""releaseDate""]}]",1.0000,1.0000,1.0000,1,1,1
+codebase_community,split,split,1,"[{""kind"": ""split"", ""new"": [""CreationYear"", ""CreationMonth"", ""CreationDay""], ""old"": [""CreationDate""]}]",0.7273,0.7273,0.7273,0,0,0
+formula_1,split,split,1,"[{""kind"": ""split"", ""new"": [""dobYear"", ""dobMonth"", ""dobDay""], ""old"": [""dob""]}]",0.9333,0.9333,0.9333,0,0,0
+thrombosis_prediction,split,split,1,"[{""kind"": ""split"", ""new"": [""Year"", ""Month"", ""Day""], ""old"": [""Date""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,unknown,0,[],0.0000,0.6667,0.6667,0,0,0
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.9091,1.0000,1.0000,0,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+california_schools,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""Address""], ""old"": [""Street"", ""City"", ""State"", ""Zip""]}]",0.2667,0.0000,1.0000,0,0,1
+california_schools,split,split,1,"[{""kind"": ""split"", ""new"": [""MailStreetName"", ""MailStreetNumber""], ""old"": [""MailStreet""]}]",0.5714,0.0000,1.0000,0,0,1
+financial,split,split,1,"[{""kind"": ""split"", ""new"": [""year"", ""month"", ""day""], ""old"": [""date""]}]",0.6667,1.0000,1.0000,0,1,1
+card_games,split,split,1,"[{""kind"": ""split"", ""new"": [""releaseYear"", ""releaseMonth"", ""releaseDay""], ""old"": [""releaseDate""]}]",0.9231,1.0000,1.0000,0,1,1
+codebase_community,split,split,1,"[{""kind"": ""split"", ""new"": [""CreationYear"", ""CreationMonth"", ""CreationDay""], ""old"": [""CreationDate""]}]",0.9231,1.0000,1.0000,0,1,1
+thrombosis_prediction,split,split,1,"[{""kind"": ""split"", ""new"": [""Year"", ""Month"", ""Day""], ""old"": [""Date""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,split,split,1,"[{""kind"": ""split"", ""new"": [""year_received"", ""month_received"", ""day_received""], ""old"": [""date_received""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.8889,1.0000,1.0000,0,1,1
+california_schools,split,split,1,"[{""kind"": ""split"", ""new"": [""WebsiteProtocol, WebsiteDomain""], ""old"": [""Website""]}]",0.7273,0.9091,0.9091,0,0,0
+california_schools,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""AdmEmail""], ""old"": [""AdmEmail1"", ""AdmEmail2""]}]",0.0000,0.0000,0.0000,0,0,0
+financial,split,split,1,"[{""kind"": ""split"", ""new"": [""year"", ""month"", ""day""], ""old"": [""date""]}]",1.0000,1.0000,1.0000,1,1,1
+codebase_community,split,split,1,"[{""kind"": ""split"", ""new"": [""CreationYear"", ""CreationMonth"", ""CreationDay""], ""old"": [""CreationDate""]}]",0.7500,1.0000,1.0000,0,1,1
+formula_1,split,split,1,"[{""kind"": ""split"", ""new"": [""month"", ""day""], ""old"": [""date""]}]",1.0000,1.0000,1.0000,1,1,1
+thrombosis_prediction,split,split,1,"[{""kind"": ""split"", ""new"": [""Year"", ""Month"", ""Day""], ""old"": [""Date""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.9091,1.0000,1.0000,0,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,0.9231,1.0000,1,0,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.6000,0.6000,1.0000,0,0,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+california_schools,split,split,1,"[{""kind"": ""split"", ""new"": [""AdmEmail1Local"", ""AdmEmail1Domain""], ""old"": [""AdmEmail1""]}]",1.0000,1.0000,1.0000,1,1,1
+california_schools,split,split,1,"[{""kind"": ""split"", ""new"": [""AdmEmail1Local"", ""AdmEmail1Domain""], ""old"": [""AdmEmail1""]}]",0.7143,1.0000,1.0000,0,1,1
+financial,split,split,1,"[{""kind"": ""split"", ""new"": [""year"", ""month"", ""day""], ""old"": [""date""]}]",1.0000,1.0000,1.0000,1,1,1
+codebase_community,split,split,1,"[{""kind"": ""split"", ""new"": [""LastEditDay"", ""LastEditTime""], ""old"": [""LastEditDate""]}]",1.0000,0.8571,1.0000,1,0,1
+formula_1,split,split,1,"[{""kind"": ""split"", ""new"": [""month"", ""day""], ""old"": [""date""]}]",1.0000,1.0000,1.0000,1,1,1
+thrombosis_prediction,split,split,1,"[{""kind"": ""split"", ""new"": [""BirthdayYear"", ""BirthdayMonth"", ""BirthdayDay""], ""old"": [""Birthday""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,split,split,1,"[{""kind"": ""split"", ""new"": [""event_year"", ""event_month"", ""event_day""], ""old"": [""event_date""]}]",0.0000,0.7778,0.0000,0,0,0
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.9091,1.0000,1.0000,0,1,1
+student_club,merge,unknown,0,[],0.0000,0.6667,0.6667,0,0,0
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.8333,0.8333,1.0000,0,0,1
+california_schools,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""Address""], ""old"": [""Street"", ""City"", ""State"", ""Zip""]}]",0.6154,0.6154,1.0000,0,0,1
+financial,split,split,1,"[{""kind"": ""split"", ""new"": [""year"", ""month"", ""day""], ""old"": [""date""]}]",0.0000,1.0000,1.0000,0,1,1
+card_games,split,split,1,"[{""kind"": ""split"", ""new"": [""year"", ""month"", ""day""], ""old"": [""date""]}]",0.8333,0.8333,0.8333,0,0,0
+codebase_community,split,split,1,"[{""kind"": ""split"", ""new"": [""LastEditDay"", ""LastEditTime""], ""old"": [""LastEditDate""]}]",0.8333,0.8889,1.0000,0,0,1
+formula_1,split,split,1,"[{""kind"": ""split"", ""new"": [""month"", ""day""], ""old"": [""date""]}]",1.0000,1.0000,1.0000,1,1,1
+thrombosis_prediction,split,split,1,"[{""kind"": ""split"", ""new"": [""BirthdayYear"", ""BirthdayMonth"", ""BirthdayDay""], ""old"": [""Birthday""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.8333,0.8333,1.0000,0,0,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.6667,0.6667,0.6667,0,0,0
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,unknown,0,[],0.0000,0.6667,0.6667,0,0,0
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+california_schools,split,split,1,"[{""kind"": ""split"", ""new"": [""MailStreetName"", ""MailStreetNumber""], ""old"": [""MailStreet""]}]",0.0000,1.0000,1.0000,0,1,1
+financial,split,split,1,"[{""kind"": ""split"", ""new"": [""year"", ""month"", ""day""], ""old"": [""date""]}]",1.0000,0.0000,1.0000,1,0,1
+card_games,split,split,1,"[{""kind"": ""split"", ""new"": [""releaseYear"", ""releaseMonth"", ""releaseDay""], ""old"": [""releaseDate""]}]",0.8889,0.8889,0.8889,0,0,0
+codebase_community,split,split,1,"[{""kind"": ""split"", ""new"": [""LastAccessDay"", ""LastAccessTime""], ""old"": [""LastAccessDate""]}]",0.9091,1.0000,1.0000,0,1,1
+formula_1,split,split,1,"[{""kind"": ""split"", ""new"": [""dobYear"", ""dobMonth"", ""dobDay""], ""old"": [""dob""]}]",0.7273,0.7273,0.7273,0,0,0
+thrombosis_prediction,split,split,1,"[{""kind"": ""split"", ""new"": [""BirthdayYear"", ""BirthdayMonth"", ""BirthdayDay""], ""old"": [""Birthday""]}]",1.0000,1.0000,0.0000,1,1,0
+debit_card_specializing,split,split,1,"[{""kind"": ""split"", ""new"": [""Year"", ""Month"", ""Day""], ""old"": [""Date""]}]",0.0000,0.0000,1.0000,0,0,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",0.0000,1.0000,1.0000,0,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1
+student_club,merge,merge,1,"[{""kind"": ""merge"", ""new"": [""full_name""], ""old"": [""first_name"", ""last_name""]}]",1.0000,1.0000,1.0000,1,1,1

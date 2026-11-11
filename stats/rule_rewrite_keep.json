@@ -1,0 +1,79 @@
+{
+ "version": "rule-rewrite-v2",
+ "summary": {
+  "merge_col": {
+   "n_items": 230,
+   "projection_star_items": 0,
+   "count_star_items": 6,
+   "star_expanded_hits": 0,
+   "conds": {
+    "c3r_gt": {
+     "counts": {
+      "EX": 230
+     },
+     "ex_rate": 100.0
+    },
+    "c3r_infer": {
+     "counts": {
+      "EX": 230
+     },
+     "ex_rate": 100.0
+    },
+    "c3r_name": {
+     "counts": {
+      "SILENT": 228,
+      "EX": 2
+     },
+     "ex_rate": 0.9
+    }
+   }
+  },
+  "split_col": {
+   "n_items": 104,
+   "projection_star_items": 0,
+   "count_star_items": 5,
+   "star_expanded_hits": 0,
+   "conds": {
+    "c3r_gt": {
+     "counts": {
+      "EX": 104
+     },
+     "ex_rate": 100.0
+    },
+    "c3r_infer": {
+     "counts": {
+      "EX": 104
+     },
+     "ex_rate": 100.0
+    },
+    "c3r_name": {
+     "counts": {
+      "EX": 104
+     },
+     "ex_rate": 100.0
+    }
+   }
+  }
+ },
+ "audit": {
+  "version": "rule-rewrite-v2",
+  "star_mode": "keep",
+  "projection_star_items": 0,
+  "count_star_items": 11,
+  "star_expanded": 0,
+  "per_evo": {
+   "merge_col": {
+    "n": 230,
+    "projection_star": 0,
+    "count_star": 6,
+    "expanded": 0
+   },
+   "split_col": {
+    "n": 104,
+    "projection_star": 0,
+    "count_star": 5,
+    "expanded": 0
+   }
+  }
+ }
+}

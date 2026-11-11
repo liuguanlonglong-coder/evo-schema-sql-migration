@@ -1,0 +1,558 @@
+{
+ "version": "audit-independence-v1",
+ "manifest": "data/manifest_v3.jsonl",
+ "note": "三层口径并列：条目数(items) / 唯一 op 数(ops) / 独立演化事件数(events)。段位档事件 = (db, table, 新列)；改名档事件 = (db, table, 演化档)。事件级成功 = 该事件全部 op 都对（最严）。paper_set 取 ids_xm_full.txt(276) + ids_ms.txt(334) = 610 条。D 节独立于 evaluate()，直接比段位表达式字符串。",
+ "A_units": {
+  "by_evo": [
+   {
+    "evo": "rename",
+    "items": 865,
+    "ops": 33,
+    "events": 23,
+    "dbs": 11
+   },
+   {
+    "evo": "rename_medium",
+    "items": 339,
+    "ops": 18,
+    "events": 12,
+    "dbs": 7
+   },
+   {
+    "evo": "rename_hard",
+    "items": 591,
+    "ops": 24,
+    "events": 16,
+    "dbs": 8
+   },
+   {
+    "evo": "merge_col",
+    "items": 230,
+    "ops": 10,
+    "events": 5,
+    "dbs": 5
+   },
+   {
+    "evo": "split_col",
+    "items": 104,
+    "ops": 5,
+    "events": 5,
+    "dbs": 5
+   },
+   {
+    "evo": "value_shift",
+    "items": 350,
+    "ops": 13,
+    "events": 11,
+    "dbs": 6
+   },
+   {
+    "evo": "value_shift_named",
+    "items": 350,
+    "ops": 13,
+    "events": 11,
+    "dbs": 6
+   },
+   {
+    "evo": "dep_abstain",
+    "items": 601,
+    "ops": 23,
+    "events": 23,
+    "dbs": 8
+   },
+   {
+    "evo": "dep_successor",
+    "items": 601,
+    "ops": 23,
+    "events": 23,
+    "dbs": 8
+   }
+  ],
+  "paper_set": {
+   "items": 610,
+   "ops": 90,
+   "events": 58,
+   "dbs": 11,
+   "by_evo": {
+    "rename": 96,
+    "rename_hard": 90,
+    "rename_medium": 90,
+    "merge_col": 230,
+    "split_col": 104
+   }
+  },
+  "segment_set": {
+   "items": 334,
+   "ops": 15,
+   "events": 7,
+   "dbs": 5
+  }
+ },
+ "B_segment": {
+  "n_ops": 15,
+  "n_events": 7,
+  "methods": {
+   "B1 列名相似": {
+    "op_ok": 0,
+    "op_n": 15,
+    "event_ok": 0,
+    "event_n": 7,
+    "ops_per_event": [
+     1,
+     2,
+     3
+    ]
+   },
+   "B2 值域重叠": {
+    "op_ok": 0,
+    "op_n": 15,
+    "event_ok": 0,
+    "event_n": 7,
+    "ops_per_event": [
+     1,
+     2,
+     3
+    ]
+   },
+   "B3 嵌入语义": {
+    "op_ok": 0,
+    "op_n": 15,
+    "event_ok": 0,
+    "event_n": 7,
+    "ops_per_event": [
+     1,
+     2,
+     3
+    ]
+   },
+   "M1 值域指纹": {
+    "op_ok": 15,
+    "op_n": 15,
+    "event_ok": 7,
+    "event_n": 7,
+    "ops_per_event": [
+     1,
+     2,
+     3
+    ]
+   },
+   "M1+形态指纹": {
+    "op_ok": 15,
+    "op_n": 15,
+    "event_ok": 7,
+    "event_n": 7,
+    "ops_per_event": [
+     1,
+     2,
+     3
+    ]
+   }
+  },
+  "output_space": {
+   "B1 列名相似": {
+    "expr_outputs": 0,
+    "plain_outputs": 15,
+    "can_express_segment": false
+   },
+   "B2 值域重叠": {
+    "expr_outputs": 0,
+    "plain_outputs": 15,
+    "can_express_segment": false
+   },
+   "B3 嵌入语义": {
+    "expr_outputs": 0,
+    "plain_outputs": 15,
+    "can_express_segment": false
+   },
+   "M1 值域指纹": {
+    "expr_outputs": 0,
+    "plain_outputs": 15,
+    "can_express_segment": false
+   },
+   "M1+形态指纹": {
+    "expr_outputs": 0,
+    "plain_outputs": 15,
+    "can_express_segment": false
+   }
+  },
+  "paired": {
+   "B1 列名相似": {
+    "op_level": {
+     "ours_only": 15,
+     "base_only": 0,
+     "n": 15,
+     "p": 6.103515625e-05
+    },
+    "event_level": {
+     "ours_only": 7,
+     "base_only": 0,
+     "n": 7,
+     "p": 0.015625
+    }
+   },
+   "B2 值域重叠": {
+    "op_level": {
+     "ours_only": 15,
+     "base_only": 0,
+     "n": 15,
+     "p": 6.103515625e-05
+    },
+    "event_level": {
+     "ours_only": 7,
+     "base_only": 0,
+     "n": 7,
+     "p": 0.015625
+    }
+   },
+   "B3 嵌入语义": {
+    "op_level": {
+     "ours_only": 15,
+     "base_only": 0,
+     "n": 15,
+     "p": 6.103515625e-05
+    },
+    "event_level": {
+     "ours_only": 7,
+     "base_only": 0,
+     "n": 7,
+     "p": 0.015625
+    }
+   }
+  }
+ },
+ "C_nonsegment": {
+  "mixed_147": {
+   "title": "混合口径（上一版正文所用，会误导归因）",
+   "evos": [
+    "rename",
+    "rename_medium",
+    "rename_hard",
+    "dep_abstain",
+    "dep_successor",
+    "value_shift",
+    "value_shift_named"
+   ],
+   "n_ops": 147,
+   "n_events": 119,
+   "ours_ok": 135,
+   "base_ok": 147,
+   "op_level": {
+    "ours_only": 0,
+    "base_only": 12,
+    "n": 12,
+    "p": 0.00048828125
+   },
+   "event_level": {
+    "ours_only": 0,
+    "base_only": 10,
+    "n": 10,
+    "p": 0.001953125
+   },
+   "base_only_events": [
+    {
+     "event": [
+      "student_club",
+      "member",
+      "value_shift"
+     ],
+     "n_ops": 2
+    },
+    {
+     "event": [
+      "student_club",
+      "member",
+      "value_shift_named"
+     ],
+     "n_ops": 2
+    },
+    {
+     "event": [
+      "financial",
+      "district",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "student_club",
+      "event",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "publisher",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "superpower",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "financial",
+      "district",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "student_club",
+      "event",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "publisher",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "superpower",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    }
+   ]
+  },
+  "no_shift_121": {
+   "title": "不含值改写的非段位档",
+   "evos": [
+    "rename",
+    "rename_medium",
+    "rename_hard",
+    "dep_abstain",
+    "dep_successor"
+   ],
+   "n_ops": 121,
+   "n_events": 97,
+   "ours_ok": 121,
+   "base_ok": 121,
+   "op_level": {
+    "ours_only": 0,
+    "base_only": 0,
+    "n": 0,
+    "p": 1.0
+   },
+   "event_level": {
+    "ours_only": 0,
+    "base_only": 0,
+    "n": 0,
+    "p": 1.0
+   },
+   "base_only_events": []
+  },
+  "shift_26": {
+   "title": "值改写两档（610 条之外）",
+   "evos": [
+    "value_shift",
+    "value_shift_named"
+   ],
+   "n_ops": 26,
+   "n_events": 22,
+   "ours_ok": 14,
+   "base_ok": 26,
+   "op_level": {
+    "ours_only": 0,
+    "base_only": 12,
+    "n": 12,
+    "p": 0.00048828125
+   },
+   "event_level": {
+    "ours_only": 0,
+    "base_only": 10,
+    "n": 10,
+    "p": 0.001953125
+   },
+   "base_only_events": [
+    {
+     "event": [
+      "student_club",
+      "member",
+      "value_shift"
+     ],
+     "n_ops": 2
+    },
+    {
+     "event": [
+      "student_club",
+      "member",
+      "value_shift_named"
+     ],
+     "n_ops": 2
+    },
+    {
+     "event": [
+      "financial",
+      "district",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "student_club",
+      "event",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "publisher",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "superpower",
+      "value_shift"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "financial",
+      "district",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "student_club",
+      "event",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "publisher",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    },
+    {
+     "event": [
+      "superhero",
+      "superpower",
+      "value_shift_named"
+     ],
+     "n_ops": 1
+    }
+   ]
+  }
+ },
+ "D_segment_expr": {
+  "gold_segment_ops": 15,
+  "gold_segment_events": 7,
+  "part_covered_ops": 10,
+  "part_expr_match": 10,
+  "part_expr_pct": 100.0,
+  "uncovered_ops": [
+   [
+    "split_col",
+    "california_schools",
+    "schools",
+    "phone"
+   ],
+   [
+    "split_col",
+    "financial",
+    "client",
+    "birth_date"
+   ],
+   [
+    "split_col",
+    "formula_1",
+    "drivers",
+    "dob"
+   ],
+   [
+    "split_col",
+    "student_club",
+    "event",
+    "event_date"
+   ],
+   [
+    "split_col",
+    "thrombosis_prediction",
+    "patient",
+    "birthday"
+   ]
+  ],
+  "events_covered": 2,
+  "events_ok": 2,
+  "event_level_p": 0.5,
+  "event_level_n": 2,
+  "output_spaces": {
+   "name": {
+    "types": {
+     "deprecate_column": 15
+    },
+    "expr_outputs": 0,
+    "n_files": 10
+   },
+   "vover": {
+    "types": {
+     "rename_column": 8,
+     "deprecate_column": 7
+    },
+    "expr_outputs": 0,
+    "n_files": 10
+   },
+   "emb": {
+    "types": {
+     "rename_column": 10,
+     "deprecate_column": 5
+    },
+    "expr_outputs": 0,
+    "n_files": 10
+   },
+   "profile": {
+    "types": {
+     "merge_columns": 10,
+     "split_column": 5
+    },
+    "expr_outputs": 0,
+    "n_files": 10
+   },
+   "shape": {
+    "types": {
+     "merge_columns": 10,
+     "split_column": 5
+    },
+    "expr_outputs": 0,
+    "n_files": 10
+   },
+   "part": {
+    "types": {
+     "merge_columns": 10
+    },
+    "expr_outputs": 10,
+    "n_files": 5
+   }
+  }
+ }
+}

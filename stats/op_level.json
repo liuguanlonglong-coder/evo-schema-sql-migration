@@ -1,0 +1,772 @@
+{
+ "version": "op-level-v1",
+ "bootstrap": 5000,
+ "seed": 7,
+ "levels": {
+  "item": "条目级：一条演化样本记一次（正文配对检验用这一层）",
+  "question": "基础题级：同一基础题在多档重复时聚为一簇",
+  "op_atom": "原子 op 级：一个列级变更动作为一簇（合并档 10 个、拆分档 5 个）",
+  "op_event": "变更事件级：同库同表的一次列重整（合并档 5 个，因其 10 个原子 op 两两属同一次合并）",
+  "db": "数据库级：一个库为一簇（外部效度的单元）"
+ },
+ "unit_note": "合并档的 10 个原子 op 两两来自同一次列合并（一个合并列的两个来源），因此独立变更事件只有 5 个；把它当作 10 个独立事实会高估功效。",
+ "contrasts": [
+  {
+   "group": "merge",
+   "a": "c3mp",
+   "b": "c3m",
+   "label": "合并：段位 vs 列级",
+   "n_items": 230,
+   "levels": {
+    "item": {
+     "n_units": 230,
+     "a_only": 177,
+     "b_only": 0,
+     "diff_pt": 77.0,
+     "p": 1.044048714879764e-53,
+     "p_min": 0.0,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 230,
+     "n_positive": 177,
+     "n_negative": 0,
+     "n_tie": 53,
+     "mean_cluster_diff_pt": 77.0,
+     "p_sign": 0.0,
+     "p_min": 0.0,
+     "ci_boot": [
+      71.3,
+      82.2
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 10,
+     "n_positive": 10,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 77.0,
+     "p_sign": 0.001953,
+     "p_min": 0.001953,
+     "ci_boot": [
+      70.8,
+      84.6
+     ]
+    },
+    "op_event": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 77.0,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      69.1,
+      88.4
+     ],
+     "items_per_event_min": 24,
+     "items_per_event_max": 66
+    },
+    "db": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 77.0,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      69.1,
+      88.4
+     ],
+     "per_db": {
+      "california_schools": 70.8,
+      "financial": 75.7,
+      "formula_1": 75.9,
+      "student_club": 95.9,
+      "thrombosis_prediction": 66.7
+     }
+    }
+   }
+  },
+  {
+   "group": "merge",
+   "a": "c3mp",
+   "b": "c_rw",
+   "label": "合并：段位 vs 直接改写",
+   "n_items": 230,
+   "levels": {
+    "item": {
+     "n_units": 230,
+     "a_only": 158,
+     "b_only": 3,
+     "diff_pt": 67.4,
+     "p": 4.760049405558679e-43,
+     "p_min": 0.0,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 230,
+     "n_positive": 158,
+     "n_negative": 3,
+     "n_tie": 69,
+     "mean_cluster_diff_pt": 67.4,
+     "p_sign": 0.0,
+     "p_min": 0.0,
+     "ci_boot": [
+      60.9,
+      73.9
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 10,
+     "n_positive": 10,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 68.9,
+     "p_sign": 0.001953,
+     "p_min": 0.001953,
+     "ci_boot": [
+      53.8,
+      81.0
+     ]
+    },
+    "op_event": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 68.9,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      47.9,
+      85.2
+     ],
+     "items_per_event_min": 24,
+     "items_per_event_max": 66
+    },
+    "db": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 68.9,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      47.9,
+      85.2
+     ],
+     "per_db": {
+      "california_schools": 70.8,
+      "financial": 75.7,
+      "formula_1": 35.2,
+      "student_club": 95.9,
+      "thrombosis_prediction": 66.7
+     }
+    }
+   }
+  },
+  {
+   "group": "merge",
+   "a": "c3m",
+   "b": "c2",
+   "label": "合并：列级 vs 无谱系",
+   "n_items": 230,
+   "levels": {
+    "item": {
+     "n_units": 230,
+     "a_only": 5,
+     "b_only": 22,
+     "diff_pt": -7.4,
+     "p": 0.0015137195587158203,
+     "p_min": 1e-08,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 230,
+     "n_positive": 5,
+     "n_negative": 22,
+     "n_tie": 203,
+     "mean_cluster_diff_pt": -7.4,
+     "p_sign": 0.001514,
+     "p_min": 0.0,
+     "ci_boot": [
+      -11.7,
+      -3.0
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 10,
+     "n_positive": 2,
+     "n_negative": 4,
+     "n_tie": 4,
+     "mean_cluster_diff_pt": -7.9,
+     "p_sign": 0.6875,
+     "p_min": 0.001953,
+     "ci_boot": [
+      -17.6,
+      1.2
+     ]
+    },
+    "op_event": {
+     "n_units": 5,
+     "n_positive": 1,
+     "n_negative": 2,
+     "n_tie": 2,
+     "mean_cluster_diff_pt": -7.9,
+     "p_sign": 1.0,
+     "p_min": 0.0625,
+     "ci_boot": [
+      -23.0,
+      2.4
+     ],
+     "items_per_event_min": 24,
+     "items_per_event_max": 66
+    },
+    "db": {
+     "n_units": 5,
+     "n_positive": 1,
+     "n_negative": 2,
+     "n_tie": 2,
+     "mean_cluster_diff_pt": -7.9,
+     "p_sign": 1.0,
+     "p_min": 0.0625,
+     "ci_boot": [
+      -23.0,
+      2.4
+     ],
+     "per_db": {
+      "california_schools": -12.5,
+      "financial": 0.0,
+      "formula_1": -31.5,
+      "student_club": 0.0,
+      "thrombosis_prediction": 4.5
+     }
+    }
+   }
+  },
+  {
+   "group": "split",
+   "a": "c3mp",
+   "b": "c_rw",
+   "label": "拆分：段位 vs 直接改写",
+   "n_items": 104,
+   "levels": {
+    "item": {
+     "n_units": 104,
+     "a_only": 71,
+     "b_only": 0,
+     "diff_pt": 68.3,
+     "p": 8.470329472543003e-22,
+     "p_min": 0.0,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 104,
+     "n_positive": 71,
+     "n_negative": 0,
+     "n_tie": 33,
+     "mean_cluster_diff_pt": 68.3,
+     "p_sign": 0.0,
+     "p_min": 0.0,
+     "ci_boot": [
+      59.6,
+      77.9
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 71.6,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      59.3,
+      80.0
+     ]
+    },
+    "op_event": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 71.6,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      59.3,
+      80.0
+     ],
+     "items_per_event_min": 8,
+     "items_per_event_max": 51
+    },
+    "db": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 71.6,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      59.3,
+      80.0
+     ],
+     "per_db": {
+      "california_schools": 100.0,
+      "financial": 75.0,
+      "formula_1": 70.0,
+      "student_club": 46.2,
+      "thrombosis_prediction": 66.7
+     }
+    }
+   }
+  },
+  {
+   "group": "split",
+   "a": "c3m",
+   "b": "c2",
+   "label": "拆分：列级 vs 无谱系",
+   "n_items": 104,
+   "levels": {
+    "item": {
+     "n_units": 104,
+     "a_only": 63,
+     "b_only": 0,
+     "diff_pt": 60.6,
+     "p": 2.168404344971009e-19,
+     "p_min": 0.0,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 104,
+     "n_positive": 63,
+     "n_negative": 0,
+     "n_tie": 41,
+     "mean_cluster_diff_pt": 60.6,
+     "p_sign": 0.0,
+     "p_min": 0.0,
+     "ci_boot": [
+      51.0,
+      70.2
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 62.4,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      43.6,
+      75.5
+     ]
+    },
+    "op_event": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 62.4,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      43.6,
+      75.5
+     ],
+     "items_per_event_min": 8,
+     "items_per_event_max": 51
+    },
+    "db": {
+     "n_units": 5,
+     "n_positive": 5,
+     "n_negative": 0,
+     "n_tie": 0,
+     "mean_cluster_diff_pt": 62.4,
+     "p_sign": 0.0625,
+     "p_min": 0.0625,
+     "ci_boot": [
+      43.6,
+      75.5
+     ],
+     "per_db": {
+      "california_schools": 100.0,
+      "financial": 66.7,
+      "formula_1": 40.0,
+      "student_club": 38.5,
+      "thrombosis_prediction": 66.7
+     }
+    }
+   }
+  },
+  {
+   "group": "easy",
+   "a": "c3m",
+   "b": "c_rw",
+   "label": "改名 easy",
+   "n_items": 96,
+   "levels": {
+    "item": {
+     "n_units": 96,
+     "a_only": 0,
+     "b_only": 4,
+     "diff_pt": -4.2,
+     "p": 0.125,
+     "p_min": 0.125,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 96,
+     "n_positive": 0,
+     "n_negative": 4,
+     "n_tie": 92,
+     "mean_cluster_diff_pt": -4.2,
+     "p_sign": 0.125,
+     "p_min": 0.0,
+     "ci_boot": [
+      -8.3,
+      -1.0
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 33,
+     "n_positive": 0,
+     "n_negative": 12,
+     "n_tie": 21,
+     "mean_cluster_diff_pt": -5.1,
+     "p_sign": 0.000488,
+     "p_min": 0.0,
+     "ci_boot": [
+      -5.9,
+      -2.5
+     ]
+    },
+    "op_event": {
+     "n_units": 23,
+     "n_positive": 0,
+     "n_negative": 9,
+     "n_tie": 14,
+     "mean_cluster_diff_pt": -6.3,
+     "p_sign": 0.003906,
+     "p_min": 0.0,
+     "ci_boot": [
+      -6.8,
+      -2.3
+     ],
+     "items_per_event_min": 3,
+     "items_per_event_max": 16
+    },
+    "db": {
+     "n_units": 11,
+     "n_positive": 0,
+     "n_negative": 4,
+     "n_tie": 7,
+     "mean_cluster_diff_pt": -5.1,
+     "p_sign": 0.125,
+     "p_min": 0.000977,
+     "ci_boot": [
+      -7.4,
+      -1.2
+     ],
+     "per_db": {
+      "california_schools": 0.0,
+      "card_games": -6.2,
+      "codebase_community": 0.0,
+      "debit_card_specializing": 0.0,
+      "european_football_2": 0.0,
+      "financial": 0.0,
+      "formula_1": 0.0,
+      "student_club": -10.0,
+      "superhero": 0.0,
+      "thrombosis_prediction": -6.2,
+      "toxicology": -33.3
+     }
+    }
+   }
+  },
+  {
+   "group": "medium",
+   "a": "c3m",
+   "b": "c_rw",
+   "label": "改名 medium",
+   "n_items": 90,
+   "levels": {
+    "item": {
+     "n_units": 90,
+     "a_only": 1,
+     "b_only": 2,
+     "diff_pt": -1.1,
+     "p": 1.0,
+     "p_min": 0.25,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 90,
+     "n_positive": 1,
+     "n_negative": 2,
+     "n_tie": 87,
+     "mean_cluster_diff_pt": -1.1,
+     "p_sign": 1.0,
+     "p_min": 0.0,
+     "ci_boot": [
+      -4.4,
+      2.2
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 18,
+     "n_positive": 3,
+     "n_negative": 6,
+     "n_tie": 9,
+     "mean_cluster_diff_pt": -2.9,
+     "p_sign": 0.507812,
+     "p_min": 8e-06,
+     "ci_boot": [
+      -4.4,
+      1.1
+     ]
+    },
+    "op_event": {
+     "n_units": 12,
+     "n_positive": 2,
+     "n_negative": 4,
+     "n_tie": 6,
+     "mean_cluster_diff_pt": -2.9,
+     "p_sign": 0.6875,
+     "p_min": 0.000488,
+     "ci_boot": [
+      -6.3,
+      2.2
+     ],
+     "items_per_event_min": 2,
+     "items_per_event_max": 37
+    },
+    "db": {
+     "n_units": 7,
+     "n_positive": 1,
+     "n_negative": 2,
+     "n_tie": 4,
+     "mean_cluster_diff_pt": -2.4,
+     "p_sign": 1.0,
+     "p_min": 0.015625,
+     "ci_boot": [
+      -6.9,
+      2.7
+     ],
+     "per_db": {
+      "california_schools": 0.0,
+      "debit_card_specializing": 0.0,
+      "financial": -16.7,
+      "formula_1": 0.0,
+      "student_club": 6.7,
+      "superhero": -7.1,
+      "toxicology": 0.0
+     }
+    }
+   }
+  },
+  {
+   "group": "hard",
+   "a": "c3m",
+   "b": "c_rw",
+   "label": "改名 hard",
+   "n_items": 90,
+   "levels": {
+    "item": {
+     "n_units": 90,
+     "a_only": 13,
+     "b_only": 3,
+     "diff_pt": 11.1,
+     "p": 0.021270751953125,
+     "p_min": 3.052e-05,
+     "note": "p_min 为当前不一致对数下的最小可达双侧 p"
+    },
+    "question": {
+     "n_units": 90,
+     "n_positive": 13,
+     "n_negative": 3,
+     "n_tie": 74,
+     "mean_cluster_diff_pt": 11.1,
+     "p_sign": 0.021271,
+     "p_min": 0.0,
+     "ci_boot": [
+      3.3,
+      20.0
+     ],
+     "n_multi_item_clusters": 0
+    },
+    "op_atom": {
+     "n_units": 24,
+     "n_positive": 12,
+     "n_negative": 9,
+     "n_tie": 3,
+     "mean_cluster_diff_pt": 7.7,
+     "p_sign": 0.663624,
+     "p_min": 0.0,
+     "ci_boot": [
+      1.7,
+      22.2
+     ]
+    },
+    "op_event": {
+     "n_units": 16,
+     "n_positive": 7,
+     "n_negative": 6,
+     "n_tie": 3,
+     "mean_cluster_diff_pt": 5.0,
+     "p_sign": 1.0,
+     "p_min": 3.1e-05,
+     "ci_boot": [
+      -2.1,
+      26.0
+     ],
+     "items_per_event_min": 4,
+     "items_per_event_max": 31
+    },
+    "db": {
+     "n_units": 8,
+     "n_positive": 4,
+     "n_negative": 3,
+     "n_tie": 1,
+     "mean_cluster_diff_pt": 7.7,
+     "p_sign": 1.0,
+     "p_min": 0.007812,
+     "ci_boot": [
+      -5.5,
+      32.0
+     ],
+     "per_db": {
+      "california_schools": 3.2,
+      "debit_card_specializing": 0.0,
+      "financial": -16.7,
+      "formula_1": 37.5,
+      "student_club": 61.5,
+      "superhero": -20.0,
+      "thrombosis_prediction": -11.1,
+      "toxicology": 7.1
+     }
+    }
+   }
+  }
+ ],
+ "pooled": [
+  {
+   "label": "段位 vs 直接改写（两类编码改变池化）",
+   "spec": [
+    "merge:c3mp-c_rw",
+    "split:c3mp-c_rw"
+   ],
+   "n_events": 10,
+   "n_db": 5,
+   "event_level": {
+    "n_positive": 10,
+    "n_negative": 0,
+    "n_tie": 0,
+    "mean_diff_pt": 70.2,
+    "p_sign": 0.001953,
+    "p_min": 0.001953,
+    "events": [
+     {
+      "db": "california_schools",
+      "table": "schools",
+      "group": "merge",
+      "n": 24,
+      "diff_pt": 70.8
+     },
+     {
+      "db": "financial",
+      "table": "district",
+      "group": "merge",
+      "n": 37,
+      "diff_pt": 75.7
+     },
+     {
+      "db": "formula_1",
+      "table": "drivers",
+      "group": "merge",
+      "n": 54,
+      "diff_pt": 35.2
+     },
+     {
+      "db": "student_club",
+      "table": "member",
+      "group": "merge",
+      "n": 49,
+      "diff_pt": 95.9
+     },
+     {
+      "db": "thrombosis_prediction",
+      "table": "Patient",
+      "group": "merge",
+      "n": 66,
+      "diff_pt": 66.7
+     },
+     {
+      "db": "california_schools",
+      "table": "schools",
+      "group": "split",
+      "n": 8,
+      "diff_pt": 100.0
+     },
+     {
+      "db": "financial",
+      "table": "client",
+      "group": "split",
+      "n": 12,
+      "diff_pt": 75.0
+     },
+     {
+      "db": "formula_1",
+      "table": "drivers",
+      "group": "split",
+      "n": 20,
+      "diff_pt": 70.0
+     },
+     {
+      "db": "student_club",
+      "table": "event",
+      "group": "split",
+      "n": 13,
+      "diff_pt": 46.2
+     },
+     {
+      "db": "thrombosis_prediction",
+      "table": "Patient",
+      "group": "split",
+      "n": 51,
+      "diff_pt": 66.7
+     }
+    ]
+   },
+   "db_level": {
+    "n_positive": 5,
+    "n_negative": 0,
+    "n_tie": 0,
+    "p_sign": 0.0625,
+    "p_min": 0.0625,
+    "per_db_pt": {
+     "california_schools": 85.4,
+     "financial": 75.3,
+     "formula_1": 52.6,
+     "student_club": 71.0,
+     "thrombosis_prediction": 66.7
+    }
+   },
+   "reading": "事件级 n=10、库级 n=5；两类编码改变在同批 5 个库上的 10 次不同列重整，因此事件级显著不等于跨库泛化，外部效度仍受 5 个库限制。"
+  }
+ ]
+}

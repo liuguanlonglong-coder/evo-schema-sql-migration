@@ -1,0 +1,587 @@
+{
+ "version": "event-map-audit-v1",
+ "definitions": {
+  "atomic_op": "一条「某旧列 → 某目标列 + 决定性表达式」的最小映射动作；键 = (evo, db, table, old_col)。段位档共 15 个。",
+  "mapping_fact": "一个原子 op 连同其表达式映射 ID（M01…），是抽取质量的判定对象。",
+  "change_event": "一次独立的列重整；键 = (evo, db, table, 目标列集合)。必须含 evo，否则合并与拆分的同名 attr_001 会被误并。",
+  "db_cluster": "同一数据库上的全部变更；统计独立性的最粗单位（5 个库）。"
+ },
+ "containment": "op ⊂ mapping_fact（1:1）⊂ change_event（合并档每事件 2 op、拆分档每事件 1 op）⊂ db_cluster（每库 1–2 事件）。",
+ "counts": {
+  "atomic_ops": 15,
+  "by_evo_ops": {
+   "merge_col": 10,
+   "split_col": 5
+  },
+  "events_correct": 10,
+  "events_correct_by_evo": {
+   "merge_col": 5,
+   "split_col": 5
+  },
+  "events_v13_triplet": 7,
+  "db_clusters": 5,
+  "ops_with_segment_expr": 10,
+  "ops_concat_expr": 5
+ },
+ "three_numbers": {
+  "7": "第 13 轮按 (db, table, 表达式首个 attr_ 列) 三元组聚类的事件数。它既忽略 evo 档，又只取表达式里的第一个 attr_ 列，于是合并档的 SUBSTR(attr_001,…) 与拆分档的 attr_001||sep||attr_002 被归到同一键：5 个库中 3 个库（california_schools/formula_1/thrombosis_prediction）的合并与拆分共用同一表，各被并成 1 个事件，10 个正确事件因此塌缩为 7。此为口径缺陷，本版作废。",
+  "10": "端到端池化 C3mp − c_rw 的「列重整事件」数 = 合并 5 + 拆分 5；也等于把 evo 纳入事件键后的正确聚类数。两者此刻一致。",
+  "2": "第 13 轮 D_segment_expr 的「覆盖事件」数：事件内须全部 op 有 part 产物，叠加 7 口径的聚类混淆后只剩 2 个合格事件，属低估。按正确口径，段位表达式恢复只在合并档 10 op / 5 事件上有定义。"
+ },
+ "sign_correct": {
+  "ours_only": 10,
+  "base_only": 0,
+  "n": 10,
+  "p_exact": 0.001953125
+ },
+ "sign_v13": {
+  "ours_only": 7,
+  "base_only": 0,
+  "n": 7,
+  "p_exact": 0.015625
+ },
+ "B4_fair_baseline": {
+  "B4_naive": {
+   "expr_match": 10,
+   "n_ops": 10,
+   "events_ok": 5,
+   "n_events": 5
+  },
+  "B4_greedy": {
+   "expr_match": 10,
+   "n_ops": 10
+  },
+  "M1_part": {
+   "n_ops": 10,
+   "expr_match": 10,
+   "pct": 100.0,
+   "n_events": 2,
+   "events_ok": 2
+  },
+  "verdict": "同等输出能力下 B4 与 M1 同为 10/10，M1 的阈值门控/低基数守卫/采样门限在段位表达式恢复上未带来增益；可主张的是输出粒度，不是抽取算法优越性。"
+ },
+ "detail": [
+  {
+   "op_id": "O01",
+   "evo": "merge_col",
+   "db": "california_schools",
+   "table": "schools",
+   "old_col": "county",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,1,INSTR(attr_001,CHAR(31))-1)",
+   "map_id": "M01",
+   "event_id_correct": "E01",
+   "event_id_v13": "E01",
+   "db_cluster": "california_schools",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O02",
+   "evo": "merge_col",
+   "db": "california_schools",
+   "table": "schools",
+   "old_col": "statustype",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,INSTR(attr_001,CHAR(31))+1)",
+   "map_id": "M02",
+   "event_id_correct": "E01",
+   "event_id_v13": "E01",
+   "db_cluster": "california_schools",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O03",
+   "evo": "merge_col",
+   "db": "financial",
+   "table": "district",
+   "old_col": "a2",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,1,INSTR(attr_001,CHAR(31))-1)",
+   "map_id": "M03",
+   "event_id_correct": "E02",
+   "event_id_v13": "E02",
+   "db_cluster": "financial",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O04",
+   "evo": "merge_col",
+   "db": "financial",
+   "table": "district",
+   "old_col": "a3",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,INSTR(attr_001,CHAR(31))+1)",
+   "map_id": "M04",
+   "event_id_correct": "E02",
+   "event_id_v13": "E02",
+   "db_cluster": "financial",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O05",
+   "evo": "merge_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "old_col": "forename",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,INSTR(attr_001,CHAR(31))+1)",
+   "map_id": "M05",
+   "event_id_correct": "E03",
+   "event_id_v13": "E03",
+   "db_cluster": "formula_1",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O06",
+   "evo": "merge_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "old_col": "surname",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,1,INSTR(attr_001,CHAR(31))-1)",
+   "map_id": "M06",
+   "event_id_correct": "E03",
+   "event_id_v13": "E03",
+   "db_cluster": "formula_1",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O07",
+   "evo": "merge_col",
+   "db": "student_club",
+   "table": "member",
+   "old_col": "first_name",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,INSTR(attr_001,CHAR(31))+1)",
+   "map_id": "M07",
+   "event_id_correct": "E04",
+   "event_id_v13": "E04",
+   "db_cluster": "student_club",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O08",
+   "evo": "merge_col",
+   "db": "student_club",
+   "table": "member",
+   "old_col": "last_name",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,1,INSTR(attr_001,CHAR(31))-1)",
+   "map_id": "M08",
+   "event_id_correct": "E04",
+   "event_id_v13": "E04",
+   "db_cluster": "student_club",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O09",
+   "evo": "merge_col",
+   "db": "thrombosis_prediction",
+   "table": "patient",
+   "old_col": "admission",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,INSTR(attr_001,CHAR(31))+1)",
+   "map_id": "M09",
+   "event_id_correct": "E05",
+   "event_id_v13": "E05",
+   "db_cluster": "thrombosis_prediction",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O10",
+   "evo": "merge_col",
+   "db": "thrombosis_prediction",
+   "table": "patient",
+   "old_col": "sex",
+   "target_cols": [
+    "attr_001"
+   ],
+   "change_type": "merge_columns",
+   "expr": "SUBSTR(attr_001,1,INSTR(attr_001,CHAR(31))-1)",
+   "map_id": "M10",
+   "event_id_correct": "E05",
+   "event_id_v13": "E05",
+   "db_cluster": "thrombosis_prediction",
+   "has_segment_expr": true
+  },
+  {
+   "op_id": "O11",
+   "evo": "split_col",
+   "db": "california_schools",
+   "table": "schools",
+   "old_col": "phone",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "change_type": "split_column",
+   "expr": "attr_001 || ' ' || attr_002",
+   "map_id": "M11",
+   "event_id_correct": "E06",
+   "event_id_v13": "E01",
+   "db_cluster": "california_schools",
+   "has_segment_expr": false
+  },
+  {
+   "op_id": "O12",
+   "evo": "split_col",
+   "db": "financial",
+   "table": "client",
+   "old_col": "birth_date",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "change_type": "split_column",
+   "expr": "attr_001 || '-' || attr_002",
+   "map_id": "M12",
+   "event_id_correct": "E07",
+   "event_id_v13": "E06",
+   "db_cluster": "financial",
+   "has_segment_expr": false
+  },
+  {
+   "op_id": "O13",
+   "evo": "split_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "old_col": "dob",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "change_type": "split_column",
+   "expr": "attr_001 || '-' || attr_002",
+   "map_id": "M13",
+   "event_id_correct": "E08",
+   "event_id_v13": "E03",
+   "db_cluster": "formula_1",
+   "has_segment_expr": false
+  },
+  {
+   "op_id": "O14",
+   "evo": "split_col",
+   "db": "student_club",
+   "table": "event",
+   "old_col": "event_date",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "change_type": "split_column",
+   "expr": "attr_001 || '-' || attr_002",
+   "map_id": "M14",
+   "event_id_correct": "E09",
+   "event_id_v13": "E07",
+   "db_cluster": "student_club",
+   "has_segment_expr": false
+  },
+  {
+   "op_id": "O15",
+   "evo": "split_col",
+   "db": "thrombosis_prediction",
+   "table": "patient",
+   "old_col": "birthday",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "change_type": "split_column",
+   "expr": "attr_001 || '-' || attr_002",
+   "map_id": "M15",
+   "event_id_correct": "E10",
+   "event_id_v13": "E05",
+   "db_cluster": "thrombosis_prediction",
+   "has_segment_expr": false
+  }
+ ],
+ "events_correct": [
+  {
+   "event_id": "E01",
+   "evo": "merge_col",
+   "db": "california_schools",
+   "table": "schools",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 2,
+   "op_ids": [
+    "O01",
+    "O02"
+   ],
+   "has_segment_expr": true
+  },
+  {
+   "event_id": "E02",
+   "evo": "merge_col",
+   "db": "financial",
+   "table": "district",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 2,
+   "op_ids": [
+    "O03",
+    "O04"
+   ],
+   "has_segment_expr": true
+  },
+  {
+   "event_id": "E03",
+   "evo": "merge_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 2,
+   "op_ids": [
+    "O05",
+    "O06"
+   ],
+   "has_segment_expr": true
+  },
+  {
+   "event_id": "E04",
+   "evo": "merge_col",
+   "db": "student_club",
+   "table": "member",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 2,
+   "op_ids": [
+    "O07",
+    "O08"
+   ],
+   "has_segment_expr": true
+  },
+  {
+   "event_id": "E05",
+   "evo": "merge_col",
+   "db": "thrombosis_prediction",
+   "table": "patient",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 2,
+   "op_ids": [
+    "O09",
+    "O10"
+   ],
+   "has_segment_expr": true
+  },
+  {
+   "event_id": "E06",
+   "evo": "split_col",
+   "db": "california_schools",
+   "table": "schools",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "n_ops": 1,
+   "op_ids": [
+    "O11"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E07",
+   "evo": "split_col",
+   "db": "financial",
+   "table": "client",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "n_ops": 1,
+   "op_ids": [
+    "O12"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E08",
+   "evo": "split_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "n_ops": 1,
+   "op_ids": [
+    "O13"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E09",
+   "evo": "split_col",
+   "db": "student_club",
+   "table": "event",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "n_ops": 1,
+   "op_ids": [
+    "O14"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E10",
+   "evo": "split_col",
+   "db": "thrombosis_prediction",
+   "table": "patient",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "n_ops": 1,
+   "op_ids": [
+    "O15"
+   ],
+   "has_segment_expr": false
+  }
+ ],
+ "events_v13": [
+  {
+   "event_id": "E01",
+   "evo": "merge_col",
+   "db": "california_schools",
+   "table": "schools",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 3,
+   "op_ids": [
+    "O01",
+    "O02",
+    "O11"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E02",
+   "evo": "merge_col",
+   "db": "financial",
+   "table": "district",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 2,
+   "op_ids": [
+    "O03",
+    "O04"
+   ],
+   "has_segment_expr": true
+  },
+  {
+   "event_id": "E03",
+   "evo": "merge_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 3,
+   "op_ids": [
+    "O05",
+    "O06",
+    "O13"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E04",
+   "evo": "merge_col",
+   "db": "student_club",
+   "table": "member",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 2,
+   "op_ids": [
+    "O07",
+    "O08"
+   ],
+   "has_segment_expr": true
+  },
+  {
+   "event_id": "E05",
+   "evo": "merge_col",
+   "db": "thrombosis_prediction",
+   "table": "patient",
+   "target_cols": [
+    "attr_001"
+   ],
+   "n_ops": 3,
+   "op_ids": [
+    "O09",
+    "O10",
+    "O15"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E06",
+   "evo": "split_col",
+   "db": "financial",
+   "table": "client",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "n_ops": 1,
+   "op_ids": [
+    "O12"
+   ],
+   "has_segment_expr": false
+  },
+  {
+   "event_id": "E07",
+   "evo": "split_col",
+   "db": "student_club",
+   "table": "event",
+   "target_cols": [
+    "attr_001",
+    "attr_002"
+   ],
+   "n_ops": 1,
+   "op_ids": [
+    "O14"
+   ],
+   "has_segment_expr": false
+  }
+ ]
+}

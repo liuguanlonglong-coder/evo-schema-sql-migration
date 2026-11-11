@@ -103,4 +103,4 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 
 ---
 
-当前状态（2026-11-11）：DOI 已预留 = 10.5281/zenodo.24123813（status=reserved）；Step 4 回填已完成，尚待 Step 5 上传并 Publish，之后把 status 改为 deposited。
+当前状态（2026-11-11）：归档已发布，DOI = 10.5281/zenodo.24123813；Step 0–6 均已完成，四处口径由 archive_info.json 统一驱动。

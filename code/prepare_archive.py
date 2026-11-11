@@ -415,6 +415,9 @@ with zipfile.ZipFile(ZIP, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
     for root, dirs, fs in os.walk(OUT):
         dirs[:] = [d for d in dirs if d not in ("__pycache__", ".git")]
         for f in fs:
+            # .gitattributes 只对 Git 仓库有意义，归档 zip 内无需携带（也不进 MANIFEST）
+            if f == ".gitattributes":
+                continue
             p = os.path.join(root, f)
             # 条目从 OUT 起算：否则每条都带「公开材料包/」这个非 ASCII 前缀，
             # 解压后多一层中文目录，GitHub / Zenodo 的自动解包也可能乱码

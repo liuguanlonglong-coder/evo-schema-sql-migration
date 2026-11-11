@@ -6,12 +6,12 @@
    "bytes": 1207
   },
   "CITATION.cff": {
-   "sha1": "65edbeb5d5980bb9845b28aedbcd600dde917e1d",
-   "bytes": 1810
+   "sha1": "eb6fb143a88fe0e0b1c792835a3a84f93a2bf044",
+   "bytes": 1746
   },
   "DAS.md": {
-   "sha1": "b1c1d704b7b0acc88e615235ba76a12e144fe7e7",
-   "bytes": 3431
+   "sha1": "ec83526341966b25ce40d67c95f95c579ed69fcf",
+   "bytes": 3036
   },
   "ENVIRONMENT.md": {
    "sha1": "2f9f3b10ce37c70342cc7fc2cec2a47e4b356649",
@@ -26,8 +26,8 @@
    "bytes": 9837
   },
   "UPLOAD_CHECKLIST.md": {
-   "sha1": "a177b6cd2e4fb0ca970553d0533c8dc6b2de01d3",
-   "bytes": 6194
+   "sha1": "3a32f89ef24a0a390bdba9bad000ff0ea1ac6b46",
+   "bytes": 6161
   },
   "evolution_rules.md": {
    "sha1": "00cd0a6bcd20f62c8280aa146d1f46d640c1a3b0",
@@ -306,8 +306,8 @@
    "bytes": 9351
   },
   "code/prepare_archive.py": {
-   "sha1": "6c905ced6aacc0c1161ca7f825d9a3f54c1b987b",
-   "bytes": 23309
+   "sha1": "67e6bc64dcb5e1b442b13c7f076b2ef08f2bc989",
+   "bytes": 23484
   },
   "code/probe_counterfactual.py": {
    "sha1": "3f527cbc9b485808ec98f7e159876405b00d9295",
@@ -589,7 +589,7 @@
   "baseline_segment_aware.py": "768988079fd62838c9cb8114d0e7cba770f6f7c8",
   "make_ch7_response_v14.py": "71d1898fa02a5c6babb239707e4aa9c4b2aa3cc7",
   "slim_chapter7.py": "d2e786a0189b26b2b20e7984b38edb3ae6b833ff",
-  "prepare_archive.py": "6c905ced6aacc0c1161ca7f825d9a3f54c1b987b",
+  "prepare_archive.py": "67e6bc64dcb5e1b442b13c7f076b2ef08f2bc989",
   "m1_holdout_eval.py": "579d08a8c2d6007e398b05f69dd422ca6b0e7f34",
   "judge_strict_audit.py": "e7041a74ccc732b107741a11a836dfbbd3deb7b6",
   "probe_encoding_bounds_v2.py": "4764fe3517db14b1d65dad3127034f0c4fbbc45a",

@@ -1,6 +1,6 @@
 # Data Availability Statement (DAS) -- template
 
-> STATUS: **DOI reserved, record NOT yet published**. The DOI has been written into CITATION.cff as required by Zenodo's reserve-DOI flow, but the record is still a draft. The English statement below keeps its placeholder and MUST NOT be pasted into the manuscript yet. Run fill_doi.py --status deposited after publishing.
+> STATUS: **archive deposited**. The Zenodo record is published and the DOI below is live. This English statement may be pasted into the manuscript.
 
 ## 中文说明（给作者）
 
@@ -10,11 +10,7 @@ Programming and Computer Software（PCS）要求提供 Data Availability Stateme
 生成脚本本体、环境说明与 sha1 清单，**不含 BIRD 数据库文件**（第三方数据，
 须从官方渠道获取并遵守其 CC BY-SA 4.0 许可）。
 
-DOI 已预留（10.5281/zenodo.24123813），但 Zenodo record 尚未 Publish。
-CITATION.cff 已写入真实 DOI（供上传使用），稿件中的 DAS 正文、投稿信、
-标题页与正文声明仍保持「将归档」口径，这是刻意的，不是漏改。
-Publish 之后运行 python fill_doi.py --status deposited 再一次性切换。
-**不要先 Publish 再回填文件**——发布后文件与 DOI 都不可修改。
+归档已完成。下方英文声明可直接写入投稿稿；投稿信、标题页与正文数据可用性声明 由 make_front_matter_v11.py 读取同一份 archive_info.json 自动生成，口径一致。
 
 归档落地需同步修改的六处（建议用 `python fill_doi.py` 一次完成，不要手改）：
 `CITATION.cff`、`DAS.md`、`UPLOAD_CHECKLIST.md`、投稿信，以及投稿标题页与正文的
@@ -25,7 +21,7 @@ Publish 之后运行 python fill_doi.py --status deposited 再一次性切换。
 Data availability statement: The datasets generated and analysed during the
 current study, together with all scripts, per-item outputs, statistical
 routines, prompt specifications and the environment specification, are
-available in the evo-schema-sql-migration repository at [REPOSITORY_DOI].
+available in the evo-schema-sql-migration repository at 10.5281/zenodo.24123813.
 The supplementary tables referenced by the manuscript (Table S-1 to Table S-45)
 are provided as Online Resource 1 accompanying the article. The source SQLite
 databases are drawn from the publicly

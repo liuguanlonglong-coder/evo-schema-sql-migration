@@ -18,7 +18,7 @@ authors:
     affiliation: "Department of Information Engineering, Linyi Vocational University of Science and Technology, Linyi, Shandong 276025, China"
     email: "liuguanlong@lyvust.edu.cn"
 version: "v1.0"
-date-released: "[YYYY-MM-DD]"
+date-released: "2026-11-11"
 doi: "10.5281/zenodo.24123813"
 license: "CC-BY-4.0"
 repository-code: "https://github.com/liuguanlonglong-coder/evo-schema-sql-migration"
@@ -31,4 +31,4 @@ keywords:
   - SQLite
   - reproducibility
 notes: >-
-  DOI reserved; only date-released remains a placeholder and is filled on publication. BIRD database files are not redistributed here; obtain them from the official BIRD release under its original licence.
+  Metadata are complete. BIRD database files are not redistributed here; obtain them from the official BIRD release under its original licence.

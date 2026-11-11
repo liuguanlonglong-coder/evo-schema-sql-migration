@@ -54,7 +54,9 @@ STATS = ["stats_ch7_v5.json", "paired_ci.json", "paired_ci_coverage.json",
          "sql_coverage_v3.json", "reversibility_v3.json",
          "gold_independence_v3.json", "repeat_consistency_v3.json",
          "lineage_injection_audit.json", "ext_eval_merge_col.json",
-         "ext_events_summary.json"]
+         "ext_events_summary.json",
+         # 第 23 轮：扩充集事件配对复核 + 图9/扩充集原始数据复算
+         "audit_ext_paired.json", "audit_recompute.json"]
 SCRIPTS = ["paired_ci.py", "paired_coverage.py", "stats_ch7_v5.py",
            "stats_cluster.py", "judge_sensitivity.py", "op_level.py",
            "holdout_audit.py", "run_c1c2c3.py", "run_rw_baseline.py",
@@ -86,7 +88,9 @@ SCRIPTS = ["paired_ci.py", "paired_coverage.py", "stats_ch7_v5.py",
            "audit_units_v3.py", "audit_cluster_v3.py", "audit_gap_v3.py",
            "audit_sqlcov_v3.py", "audit_reversibility_v3.py",
            "audit_gold_indep_v3.py", "audit_repeat_v3.py",
-           "recompute_ext_summary.py", "make_ch7_response_v22.py"]
+           "recompute_ext_summary.py", "make_ch7_response_v22.py",
+           # 第 23 轮：复核脚本（可在公开材料包内直接重跑）
+           "audit_ext_paired.py", "audit_recompute_fig9_ext.py"]
 
 
 def sha1_of(p):

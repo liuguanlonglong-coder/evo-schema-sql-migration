@@ -81,6 +81,10 @@
    "sha1": "4b7e6cb48eed5dbe22f9d74472047ec99d77644c",
    "bytes": 5878
   },
+  "code/audit_ext_paired.py": {
+   "sha1": "84a9d091621bd11c9dac60cd64b543cafb0ddfc4",
+   "bytes": 6820
+  },
   "code/audit_gap_v3.py": {
    "sha1": "83be5daf4a62d770c7e8328b053fccda119652aa",
    "bytes": 10886
@@ -92,6 +96,10 @@
   "code/audit_independence.py": {
    "sha1": "a40bbecb24277ae0135284bcb01674c74d07e00f",
    "bytes": 20029
+  },
+  "code/audit_recompute_fig9_ext.py": {
+   "sha1": "7103ef1f02d928bb045325f40087cfa838549ce6",
+   "bytes": 8291
   },
   "code/audit_repeat_v3.py": {
    "sha1": "97c727f639b6118b3c68ddac072a8292aaed29a3",
@@ -294,8 +302,8 @@
    "bytes": 13226
   },
   "code/pack_materials.py": {
-   "sha1": "e209a6f8f12dcffa6ade3d81d246473b317f44f6",
-   "bytes": 39624
+   "sha1": "78e31294d3c274d1e146ef23dbd97e1802333e43",
+   "bytes": 39919
   },
   "code/paired_ci.py": {
    "sha1": "1727a6c294abec3f8cfd2f84ff2b8ec7abd9fd8b",
@@ -377,6 +385,10 @@
    "sha1": "69621ce2dd3b693ddbaaa283d49ac48e129b90d2",
    "bytes": 21366
   },
+  "stats/audit_ext_paired.json": {
+   "sha1": "44f034322468daa59df48ae4257952275e622014",
+   "bytes": 25135
+  },
   "stats/audit_gap_v3.json": {
    "sha1": "5420b4acbf476d130569b426a39ae128acfed9df",
    "bytes": 4842
@@ -384,6 +396,10 @@
   "stats/audit_independence.json": {
    "sha1": "349e5b7721ee1b5dca29bf1cc1350e92a5f5645b",
    "bytes": 9712
+  },
+  "stats/audit_recompute.json": {
+   "sha1": "a967a08b5e55af0cb1cd1070ea442504383d210b",
+   "bytes": 3964
   },
   "stats/audit_units_v3.json": {
    "sha1": "1c128e6293def79238b9578821c1c705baa844b5",
@@ -570,7 +586,7 @@
   "probe_star_expand.py": "6f6d10e0bb230a0622775a62e6627a1fb629485c",
   "data_bounds.py": "42d41f54624c5922d977269a1208897acfa7f291",
   "probe_encoding_bounds.py": "b8cc9b0eb6a1ddb97dfa30731bd6f7fd9c2cd0dc",
-  "pack_materials.py": "e209a6f8f12dcffa6ade3d81d246473b317f44f6",
+  "pack_materials.py": "78e31294d3c274d1e146ef23dbd97e1802333e43",
   "make_chapter7_v9.py": "2deb0208323a7538bbb99b03be9ee921a6379a2b",
   "make_ch7_response_v9.py": "a67e4a66e7ea71bd5969c4f24817653af8bade63",
   "make_front_matter_v9.py": "1051cb16093cd349fdac77c39c41f691e1ebc0a2",
@@ -616,7 +632,9 @@
   "audit_gold_indep_v3.py": "8a2ce90f18666b8b1f1c70adda422d4a4c9b8565",
   "audit_repeat_v3.py": "97c727f639b6118b3c68ddac072a8292aaed29a3",
   "recompute_ext_summary.py": "0484955cd4035e7713116047fa32edb6198d6830",
-  "make_ch7_response_v22.py": "6146614bec527311a0d13878b092b2cb29fe4fc9"
+  "make_ch7_response_v22.py": "6146614bec527311a0d13878b092b2cb29fe4fc9",
+  "audit_ext_paired.py": "84a9d091621bd11c9dac60cd64b543cafb0ddfc4",
+  "audit_recompute_fig9_ext.py": "7103ef1f02d928bb045325f40087cfa838549ce6"
  },
  "inputs": {
   "e1_dev_full.jsonl": "28f240706e61c89d2093d944e4d41320a8e96c53",

@@ -1,0 +1,1432 @@
+{
+ "version": "audit-ext-paired-v1",
+ "denominator": {
+  "items": 479,
+  "items_pass": 453,
+  "pass_pct": 94.6
+ },
+ "events": {
+  "constructed": 28,
+  "with_items": 25,
+  "effective": 22,
+  "ge3": 18
+ },
+ "per_event": [
+  {
+   "tag": "thrombosis_prediction__Patient__merge_col",
+   "db": "thrombosis_prediction",
+   "table": "Patient",
+   "cols": [
+    "SEX",
+    "Admission"
+   ],
+   "n": 66,
+   "n_pass": 66,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 5,
+   "ex_c3mp": 59
+  },
+  {
+   "tag": "formula_1__drivers__merge_col",
+   "db": "formula_1",
+   "table": "drivers",
+   "cols": [
+    "surname",
+    "forename"
+   ],
+   "n": 54,
+   "n_pass": 54,
+   "ex_c1": 5,
+   "ex_c2": 8,
+   "ex_c3m": 8,
+   "ex_c3mp": 41
+  },
+  {
+   "tag": "student_club__event__merge_col",
+   "db": "student_club",
+   "table": "event",
+   "cols": [
+    "event_name",
+    "event_date"
+   ],
+   "n": 49,
+   "n_pass": 49,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 4,
+   "ex_c3mp": 46
+  },
+  {
+   "tag": "student_club__member__merge_col",
+   "db": "student_club",
+   "table": "member",
+   "cols": [
+    "last_name",
+    "first_name"
+   ],
+   "n": 39,
+   "n_pass": 39,
+   "ex_c1": 1,
+   "ex_c2": 1,
+   "ex_c3m": 5,
+   "ex_c3mp": 37
+  },
+  {
+   "tag": "financial__district__merge_col",
+   "db": "financial",
+   "table": "district",
+   "cols": [
+    "A2",
+    "A3"
+   ],
+   "n": 36,
+   "n_pass": 36,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 35
+  },
+  {
+   "tag": "student_club__major__merge_col",
+   "db": "student_club",
+   "table": "major",
+   "cols": [
+    "major_name",
+    "college"
+   ],
+   "n": 31,
+   "n_pass": 31,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 31
+  },
+  {
+   "tag": "financial__client__merge_col",
+   "db": "financial",
+   "table": "client",
+   "cols": [
+    "gender",
+    "birth_date"
+   ],
+   "n": 29,
+   "n_pass": 29,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 4,
+   "ex_c3mp": 28
+  },
+  {
+   "tag": "student_club__member__merge_col_p1",
+   "db": "student_club",
+   "table": "member",
+   "cols": [
+    "position",
+    "t_shirt_size"
+   ],
+   "n": 27,
+   "n_pass": 27,
+   "ex_c1": 2,
+   "ex_c2": 3,
+   "ex_c3m": 1,
+   "ex_c3mp": 25
+  },
+  {
+   "tag": "california_schools__schools__merge_col",
+   "db": "california_schools",
+   "table": "schools",
+   "cols": [
+    "County",
+    "StatusType"
+   ],
+   "n": 19,
+   "n_pass": 19,
+   "ex_c1": 3,
+   "ex_c2": 6,
+   "ex_c3m": 2,
+   "ex_c3mp": 17
+  },
+  {
+   "tag": "card_games__cards__merge_col",
+   "db": "card_games",
+   "table": "cards",
+   "cols": [
+    "borderColor",
+    "frameVersion"
+   ],
+   "n": 20,
+   "n_pass": 15,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 19
+  },
+  {
+   "tag": "student_club__budget__merge_col",
+   "db": "student_club",
+   "table": "budget",
+   "cols": [
+    "category",
+    "event_status"
+   ],
+   "n": 22,
+   "n_pass": 22,
+   "ex_c1": 2,
+   "ex_c2": 2,
+   "ex_c3m": 0,
+   "ex_c3mp": 22
+  },
+  {
+   "tag": "formula_1__circuits__merge_col",
+   "db": "formula_1",
+   "table": "circuits",
+   "cols": [
+    "country",
+    "location"
+   ],
+   "n": 18,
+   "n_pass": 18,
+   "ex_c1": 2,
+   "ex_c2": 0,
+   "ex_c3m": 1,
+   "ex_c3mp": 17
+  },
+  {
+   "tag": "student_club__zip_code__merge_col",
+   "db": "student_club",
+   "table": "zip_code",
+   "cols": [
+    "state",
+    "city"
+   ],
+   "n": 13,
+   "n_pass": 13,
+   "ex_c1": 3,
+   "ex_c2": 5,
+   "ex_c3m": 3,
+   "ex_c3mp": 9
+  },
+  {
+   "tag": "california_schools__schools__merge_col_p1",
+   "db": "california_schools",
+   "table": "schools",
+   "cols": [
+    "DOC",
+    "District"
+   ],
+   "n": 10,
+   "n_pass": 5,
+   "ex_c1": 2,
+   "ex_c2": 7,
+   "ex_c3m": 0,
+   "ex_c3mp": 10
+  },
+  {
+   "tag": "card_games__cards__merge_col_p1",
+   "db": "card_games",
+   "table": "cards",
+   "cols": [
+    "rarity",
+    "layout"
+   ],
+   "n": 7,
+   "n_pass": 7,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 7
+  },
+  {
+   "tag": "student_club__member__merge_col_p2",
+   "db": "student_club",
+   "table": "member",
+   "cols": [
+    "phone",
+    "email"
+   ],
+   "n": 9,
+   "n_pass": 9,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 9
+  },
+  {
+   "tag": "california_schools__frpm__merge_col",
+   "db": "california_schools",
+   "table": "frpm",
+   "cols": [
+    "School Name",
+    "Low Grade"
+   ],
+   "n": 6,
+   "n_pass": 0,
+   "ex_c1": 0,
+   "ex_c2": 3,
+   "ex_c3m": 0,
+   "ex_c3mp": 6
+  },
+  {
+   "tag": "student_club__income__merge_col",
+   "db": "student_club",
+   "table": "income",
+   "cols": [
+    "source",
+    "date_received"
+   ],
+   "n": 7,
+   "n_pass": 6,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 1,
+   "ex_c3mp": 7
+  },
+  {
+   "tag": "california_schools__frpm__merge_col_p1",
+   "db": "california_schools",
+   "table": "frpm",
+   "cols": [
+    "County Name",
+    "District Name"
+   ],
+   "n": 5,
+   "n_pass": 2,
+   "ex_c1": 2,
+   "ex_c2": 3,
+   "ex_c3m": 0,
+   "ex_c3mp": 4
+  },
+  {
+   "tag": "card_games__cards__merge_col_p2",
+   "db": "card_games",
+   "table": "cards",
+   "cols": [
+    "number",
+    "types"
+   ],
+   "n": 4,
+   "n_pass": 3,
+   "ex_c1": 0,
+   "ex_c2": 1,
+   "ex_c3m": 0,
+   "ex_c3mp": 2
+  },
+  {
+   "tag": "california_schools__frpm__merge_col_p2",
+   "db": "california_schools",
+   "table": "frpm",
+   "cols": [
+    "High Grade",
+    "Academic Year"
+   ],
+   "n": 3,
+   "n_pass": 0,
+   "ex_c1": 0,
+   "ex_c2": 1,
+   "ex_c3m": 0,
+   "ex_c3mp": 3
+  },
+  {
+   "tag": "california_schools__frpm__merge_col_p3",
+   "db": "california_schools",
+   "table": "frpm",
+   "cols": [
+    "County Code",
+    "School Code"
+   ],
+   "n": 2,
+   "n_pass": 0,
+   "ex_c1": 0,
+   "ex_c2": 1,
+   "ex_c3m": 1,
+   "ex_c3mp": 1
+  },
+  {
+   "tag": "california_schools__satscores__merge_col",
+   "db": "california_schools",
+   "table": "satscores",
+   "cols": [
+    "cname",
+    "dname"
+   ],
+   "n": 1,
+   "n_pass": 1,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 1
+  },
+  {
+   "tag": "california_schools__schools__merge_col_p2",
+   "db": "california_schools",
+   "table": "schools",
+   "cols": [
+    "DOCType",
+    "LastUpdate"
+   ],
+   "n": 1,
+   "n_pass": 1,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 1
+  },
+  {
+   "tag": "financial__district__merge_col_p1",
+   "db": "financial",
+   "table": "district",
+   "cols": [
+    "A4",
+    "A5"
+   ],
+   "n": 1,
+   "n_pass": 1,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 0
+  },
+  {
+   "tag": "card_games__cards__merge_col_p3",
+   "db": "card_games",
+   "table": "cards",
+   "cols": [
+    "mtgjsonV4Id",
+    "printings"
+   ],
+   "n": 0,
+   "n_pass": 0,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 0
+  },
+  {
+   "tag": "card_games__cards__merge_col_p4",
+   "db": "card_games",
+   "table": "cards",
+   "cols": [
+    "scryfallId",
+    "scryfallOracleId"
+   ],
+   "n": 0,
+   "n_pass": 0,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 0
+  },
+  {
+   "tag": "financial__district__merge_col_p2",
+   "db": "financial",
+   "table": "district",
+   "cols": [
+    "A6",
+    "A7"
+   ],
+   "n": 0,
+   "n_pass": 0,
+   "ex_c1": 0,
+   "ex_c2": 0,
+   "ex_c3m": 0,
+   "ex_c3mp": 0
+  }
+ ],
+ "paired": {
+  "c3mp-c3m": {
+   "all_events": {
+    "win": 23,
+    "loss": 0,
+    "tie": 5,
+    "n_events": 28,
+    "n_cmp": 23,
+    "p": 2.4e-07,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "+"
+     ],
+     [
+      "student_club__event__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col",
+      "+"
+     ],
+     [
+      "financial__district__merge_col",
+      "+"
+     ],
+     [
+      "student_club__major__merge_col",
+      "+"
+     ],
+     [
+      "financial__client__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "+"
+     ],
+     [
+      "student_club__budget__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "+"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col",
+      "+"
+     ],
+     [
+      "student_club__income__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p3",
+      "="
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "+"
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p3",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p4",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p2",
+      "="
+     ]
+    ]
+   },
+   "effective_only": {
+    "win": 21,
+    "loss": 0,
+    "tie": 1,
+    "n_events": 22,
+    "n_cmp": 21,
+    "p": 9.5e-07,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "+"
+     ],
+     [
+      "student_club__event__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col",
+      "+"
+     ],
+     [
+      "financial__district__merge_col",
+      "+"
+     ],
+     [
+      "student_club__major__merge_col",
+      "+"
+     ],
+     [
+      "financial__client__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "+"
+     ],
+     [
+      "student_club__budget__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "+"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "+"
+     ],
+     [
+      "student_club__income__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "+"
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ]
+    ]
+   },
+   "ge3_only": {
+    "win": 23,
+    "loss": 0,
+    "tie": 5,
+    "n_events": 28,
+    "n_cmp": 23,
+    "p": 2.4e-07
+   }
+  },
+  "c3m-c2": {
+   "all_events": {
+    "win": 6,
+    "loss": 9,
+    "tie": 13,
+    "n_events": 28,
+    "n_cmp": 15,
+    "p": 0.60723877,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "="
+     ],
+     [
+      "student_club__event__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col",
+      "+"
+     ],
+     [
+      "financial__district__merge_col",
+      "="
+     ],
+     [
+      "student_club__major__merge_col",
+      "="
+     ],
+     [
+      "financial__client__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "-"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "-"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "="
+     ],
+     [
+      "student_club__budget__merge_col",
+      "-"
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "+"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "-"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "-"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "="
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "="
+     ],
+     [
+      "california_schools__frpm__merge_col",
+      "-"
+     ],
+     [
+      "student_club__income__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "-"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "-"
+     ],
+     [
+      "california_schools__frpm__merge_col_p2",
+      "-"
+     ],
+     [
+      "california_schools__frpm__merge_col_p3",
+      "="
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "="
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p3",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p4",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p2",
+      "="
+     ]
+    ]
+   },
+   "effective_only": {
+    "win": 6,
+    "loss": 7,
+    "tie": 9,
+    "n_events": 22,
+    "n_cmp": 13,
+    "p": 1.0,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "="
+     ],
+     [
+      "student_club__event__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col",
+      "+"
+     ],
+     [
+      "financial__district__merge_col",
+      "="
+     ],
+     [
+      "student_club__major__merge_col",
+      "="
+     ],
+     [
+      "financial__client__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "-"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "-"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "="
+     ],
+     [
+      "student_club__budget__merge_col",
+      "-"
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "+"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "-"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "-"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "="
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "="
+     ],
+     [
+      "student_club__income__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "-"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "-"
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "="
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ]
+    ]
+   },
+   "ge3_only": {
+    "win": 6,
+    "loss": 9,
+    "tie": 13,
+    "n_events": 28,
+    "n_cmp": 15,
+    "p": 0.60723877
+   }
+  },
+  "c2-c1": {
+   "all_events": {
+    "win": 10,
+    "loss": 1,
+    "tie": 17,
+    "n_events": 28,
+    "n_cmp": 11,
+    "p": 0.01171875,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "="
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "+"
+     ],
+     [
+      "student_club__event__merge_col",
+      "="
+     ],
+     [
+      "student_club__member__merge_col",
+      "="
+     ],
+     [
+      "financial__district__merge_col",
+      "="
+     ],
+     [
+      "student_club__major__merge_col",
+      "="
+     ],
+     [
+      "financial__client__merge_col",
+      "="
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "="
+     ],
+     [
+      "student_club__budget__merge_col",
+      "="
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "-"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "="
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "="
+     ],
+     [
+      "california_schools__frpm__merge_col",
+      "+"
+     ],
+     [
+      "student_club__income__merge_col",
+      "="
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p3",
+      "+"
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "="
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p3",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p4",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p2",
+      "="
+     ]
+    ]
+   },
+   "effective_only": {
+    "win": 7,
+    "loss": 1,
+    "tie": 14,
+    "n_events": 22,
+    "n_cmp": 8,
+    "p": 0.0703125,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "="
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "+"
+     ],
+     [
+      "student_club__event__merge_col",
+      "="
+     ],
+     [
+      "student_club__member__merge_col",
+      "="
+     ],
+     [
+      "financial__district__merge_col",
+      "="
+     ],
+     [
+      "student_club__major__merge_col",
+      "="
+     ],
+     [
+      "financial__client__merge_col",
+      "="
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "="
+     ],
+     [
+      "student_club__budget__merge_col",
+      "="
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "-"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "="
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "="
+     ],
+     [
+      "student_club__income__merge_col",
+      "="
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "="
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ]
+    ]
+   },
+   "ge3_only": {
+    "win": 10,
+    "loss": 1,
+    "tie": 17,
+    "n_events": 28,
+    "n_cmp": 11,
+    "p": 0.01171875
+   }
+  },
+  "c3mp-c2": {
+   "all_events": {
+    "win": 23,
+    "loss": 0,
+    "tie": 5,
+    "n_events": 28,
+    "n_cmp": 23,
+    "p": 2.4e-07,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "+"
+     ],
+     [
+      "student_club__event__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col",
+      "+"
+     ],
+     [
+      "financial__district__merge_col",
+      "+"
+     ],
+     [
+      "student_club__major__merge_col",
+      "+"
+     ],
+     [
+      "financial__client__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "+"
+     ],
+     [
+      "student_club__budget__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "+"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col",
+      "+"
+     ],
+     [
+      "student_club__income__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p3",
+      "="
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "+"
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p3",
+      "="
+     ],
+     [
+      "card_games__cards__merge_col_p4",
+      "="
+     ],
+     [
+      "financial__district__merge_col_p2",
+      "="
+     ]
+    ]
+   },
+   "effective_only": {
+    "win": 21,
+    "loss": 0,
+    "tie": 1,
+    "n_events": 22,
+    "n_cmp": 21,
+    "p": 9.5e-07,
+    "detail": [
+     [
+      "thrombosis_prediction__Patient__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__drivers__merge_col",
+      "+"
+     ],
+     [
+      "student_club__event__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col",
+      "+"
+     ],
+     [
+      "financial__district__merge_col",
+      "+"
+     ],
+     [
+      "student_club__major__merge_col",
+      "+"
+     ],
+     [
+      "financial__client__merge_col",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p1",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col",
+      "+"
+     ],
+     [
+      "student_club__budget__merge_col",
+      "+"
+     ],
+     [
+      "formula_1__circuits__merge_col",
+      "+"
+     ],
+     [
+      "student_club__zip_code__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p1",
+      "+"
+     ],
+     [
+      "student_club__member__merge_col_p2",
+      "+"
+     ],
+     [
+      "student_club__income__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__frpm__merge_col_p1",
+      "+"
+     ],
+     [
+      "card_games__cards__merge_col_p2",
+      "+"
+     ],
+     [
+      "california_schools__satscores__merge_col",
+      "+"
+     ],
+     [
+      "california_schools__schools__merge_col_p2",
+      "+"
+     ],
+     [
+      "financial__district__merge_col_p1",
+      "="
+     ]
+    ]
+   },
+   "ge3_only": {
+    "win": 23,
+    "loss": 0,
+    "tie": 5,
+    "n_events": 28,
+    "n_cmp": 23,
+    "p": 2.4e-07
+   }
+  }
+ },
+ "sensitivity_453": {
+  "c1": {
+   "ex": 21,
+   "n": 453,
+   "pct": 4.6,
+   "full_ex": 22,
+   "full_pct": 4.6
+  },
+  "c2": {
+   "ex": 31,
+   "n": 453,
+   "pct": 6.8,
+   "full_ex": 41,
+   "full_pct": 8.6
+  },
+  "c3m": {
+   "ex": 34,
+   "n": 453,
+   "pct": 7.5,
+   "full_ex": 35,
+   "full_pct": 7.3
+  },
+  "c3mp": {
+   "ex": 415,
+   "n": 453,
+   "pct": 91.6,
+   "full_ex": 437,
+   "full_pct": 91.2
+  }
+ },
+ "per_db": {
+  "thrombosis_prediction": {
+   "events": 1,
+   "events_with_items": 1,
+   "events_pass": 1,
+   "items": 66,
+   "items_pass": 66
+  },
+  "formula_1": {
+   "events": 2,
+   "events_with_items": 2,
+   "events_pass": 2,
+   "items": 72,
+   "items_pass": 72
+  },
+  "student_club": {
+   "events": 8,
+   "events_with_items": 8,
+   "events_pass": 8,
+   "items": 197,
+   "items_pass": 196
+  },
+  "financial": {
+   "events": 4,
+   "events_with_items": 3,
+   "events_pass": 3,
+   "items": 66,
+   "items_pass": 66
+  },
+  "california_schools": {
+   "events": 8,
+   "events_with_items": 8,
+   "events_pass": 5,
+   "items": 47,
+   "items_pass": 28
+  },
+  "card_games": {
+   "events": 5,
+   "events_with_items": 3,
+   "events_pass": 3,
+   "items": 31,
+   "items_pass": 25
+  }
+ }
+}

@@ -399,7 +399,8 @@ print(f"archive/  {n_arch} 个作废产物 + ARCHIVE.md")
 # ---------------------------------------------------------------- MANIFEST + README
 man = {"version": "materials-v7", "files": {}, "scripts": {}, "inputs": {}}
 _SKIP_DIRS = {".git", "__pycache__", ".ipynb_checkpoints"}
-_SKIP_FILES = {"MANIFEST.json"}          # 自身无法自证 sha1，故不入清单
+_SKIP_FILES = {"MANIFEST.json",         # 自身无法自证 sha1，故不入清单
+               ".gitattributes"}         # Git 专用控制文件，与归档内容无关，不入清单
 for root, _dirs, fs in os.walk(OUTDIR):
     _dirs[:] = [d for d in _dirs if d not in _SKIP_DIRS]
     for f in sorted(fs):

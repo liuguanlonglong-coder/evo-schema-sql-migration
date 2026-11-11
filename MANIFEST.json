@@ -294,8 +294,8 @@
    "bytes": 13226
   },
   "code/pack_materials.py": {
-   "sha1": "62324581adcfcd18b7711145dadd275cbeb819de",
-   "bytes": 39519
+   "sha1": "e209a6f8f12dcffa6ade3d81d246473b317f44f6",
+   "bytes": 39624
   },
   "code/paired_ci.py": {
    "sha1": "1727a6c294abec3f8cfd2f84ff2b8ec7abd9fd8b",
@@ -306,8 +306,8 @@
    "bytes": 9351
   },
   "code/prepare_archive.py": {
-   "sha1": "dae6c069d017be66f6d35d200f1a02ae9eeee416",
-   "bytes": 22806
+   "sha1": "6c905ced6aacc0c1161ca7f825d9a3f54c1b987b",
+   "bytes": 23309
   },
   "code/probe_counterfactual.py": {
    "sha1": "3f527cbc9b485808ec98f7e159876405b00d9295",
@@ -570,7 +570,7 @@
   "probe_star_expand.py": "6f6d10e0bb230a0622775a62e6627a1fb629485c",
   "data_bounds.py": "42d41f54624c5922d977269a1208897acfa7f291",
   "probe_encoding_bounds.py": "b8cc9b0eb6a1ddb97dfa30731bd6f7fd9c2cd0dc",
-  "pack_materials.py": "62324581adcfcd18b7711145dadd275cbeb819de",
+  "pack_materials.py": "e209a6f8f12dcffa6ade3d81d246473b317f44f6",
   "make_chapter7_v9.py": "2deb0208323a7538bbb99b03be9ee921a6379a2b",
   "make_ch7_response_v9.py": "a67e4a66e7ea71bd5969c4f24817653af8bade63",
   "make_front_matter_v9.py": "1051cb16093cd349fdac77c39c41f691e1ebc0a2",
@@ -589,7 +589,7 @@
   "baseline_segment_aware.py": "768988079fd62838c9cb8114d0e7cba770f6f7c8",
   "make_ch7_response_v14.py": "71d1898fa02a5c6babb239707e4aa9c4b2aa3cc7",
   "slim_chapter7.py": "d2e786a0189b26b2b20e7984b38edb3ae6b833ff",
-  "prepare_archive.py": "dae6c069d017be66f6d35d200f1a02ae9eeee416",
+  "prepare_archive.py": "6c905ced6aacc0c1161ca7f825d9a3f54c1b987b",
   "m1_holdout_eval.py": "579d08a8c2d6007e398b05f69dd422ca6b0e7f34",
   "judge_strict_audit.py": "e7041a74ccc732b107741a11a836dfbbd3deb7b6",
   "probe_encoding_bounds_v2.py": "4764fe3517db14b1d65dad3127034f0c4fbbc45a",

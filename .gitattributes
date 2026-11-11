@@ -1,0 +1,7 @@
+# 按字节存取，禁止换行归一。
+#
+# 原因：MANIFEST.json 记录的是打包时（Windows，CRLF）每个文件的 sha1。
+# 若 Git 把文本文件归一成 LF 再入库，那么 clone 出来的文件与 MANIFEST
+# 里的 sha1 必然不符，第三方校验会误判为「材料被篡改」。
+# 加这一行后，仓库内容与 Zenodo 归档 zip 逐字节一致，sha1 可直接复核。
+* -text

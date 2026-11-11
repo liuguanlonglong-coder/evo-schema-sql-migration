@@ -259,6 +259,37 @@ else:
                    "GitHub 仓库与 Zenodo DOI 尚不存在。稿件中一切「已公开 / "
                    "released artefact / DAS is included」措辞均已删除，不要恢复。")
 
+if _repo_url:
+    _step2_block = f"""## Step 2  GitHub 仓库（本人，**已完成**）
+
+仓库：{_repo_url}
+已写入 `CITATION.cff` 的 `repository-code` 字段；它不产生 DOI，DOI 由 Step 3 的 Zenodo 预留。
+
+推送到仓库（在 `公开材料包/` 目录内执行；仓库若已初始化过则跳过 init 三行）：
+
+       git init
+       git add .
+       git commit -m "Reproduction materials v1.0"
+       git remote add origin {_repo_url}
+       git branch -M main
+       git push -u origin main
+
+推送前请确认：仓库可见性设为 **public**，且 `git status` 里没有 `archive_info.json`
+（控制文件，不入库）、没有 `__pycache__` / `*.pyc`。"""
+else:
+    _step2_block = """## Step 2  建 GitHub 仓库（本人，可选但建议）
+
+目的：**给代码一个可浏览的活链接**，填进 CITATION.cff 的 repository-code。
+它不产生 DOI，DOI 由 Step 3 的 Zenodo 生成。
+
+1. 登录 https://github.com ，新建 public repository（不要勾选 "Add a README"，
+   本地包已有 README.md，避免冲突）。
+2. 在 `公开材料包/` 目录内推送，并把实际 URL 交给下一次 `fill_doi.py --repo-url ...`。
+3. 建好后重跑 `python fill_doi.py --repo-url <URL>`，`repository-code` 才会写入。"""
+
+_step3_head = ("关键一步，**已完成**：DOI 已预留，记录仍是草稿，尚未 Publish"
+               if AI.get("doi") else "关键一步，尚未执行")
+
 checklist = f"""# GitHub / Zenodo 归档操作清单（需作者本人执行）
 
 账号邮箱：{ACCOUNT}
@@ -286,31 +317,9 @@ AI 助手可以本地生成材料包与元数据，但**不能代为登录 GitHu
 - [ ] 本人复核 `公开材料包/outputs.jsonl` 与 `prompts.md` 中不含任何内部路径、
       私有数据或未脱敏标识。
 
-## Step 2  建 GitHub 仓库（本人，可选但建议）
+{_step2_block}
 
-目的：**给代码一个可浏览的活链接**，填进 CITATION.cff 的 repository-code。
-它不产生 DOI，DOI 由 Step 3 的 Zenodo 生成。
-
-方式 A（网页，最稳妥）：
-1. 登录 https://github.com ，新建 public repository，例如
-   `schema-lineage-sql-migration`。
-2. 不要勾选 "Add a README"（本地包已有 README.md，避免冲突）。
-3. 在 `公开材料包/` 目录内执行（把 URL 换成实际仓库）：
-
-       git init
-       git add .
-       git commit -m "Reproduction materials v1.0"
-       git remote add origin [GITHUB_REPOSITORY_URL]
-       git branch -M main
-       git push -u origin main
-
-方式 B（GitHub CLI，需本机已 `gh auth login`）：
-
-       gh repo create schema-lineage-sql-migration --public --source=. --push
-
-记录下两个值：`repo_name`（仓库名）与 `repo_url`（https://github.com/用户名/仓库名）。
-
-## Step 3  Zenodo「预留 DOI」（本人，关键一步，尚未 Publish）
+## Step 3  Zenodo「预留 DOI」（本人，{_step3_head}）
 
 **用手动 New Upload，不要用 GitHub 自动集成。** 原因：Zenodo 的 GitHub
 自动发布流程**不支持发布前预留 DOI**；只有手动 Upload 能在草稿阶段点
